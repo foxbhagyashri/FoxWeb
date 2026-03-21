@@ -1,0 +1,495 @@
+/* ========================================
+   THEME MANAGEMENT - Light & Dark Mode
+   ======================================== */
+
+/* Root Variables for Light Mode (Default) */
+:root {
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --bg-tertiary: #f3f4f6;
+  --bg-card: #ffffff;
+  --bg-hover: #f3f4f6;
+  
+  /* Text Colors */
+  --text-primary: rgba(0, 0, 0, 0.80);
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
+  --text-muted: #9ca3af;
+  
+  /* Border Colors */
+  --border-primary: #e5e7eb;
+  --border-secondary: #d1d5db;
+  --border-focus: #3b82f6;
+  
+  /* Brand Colors */
+  --brand-primary: #4f46e5; /* Indigo */
+  --brand-primary-hover: #4338ca;
+  --brand-secondary: #06b6d4; /* Cyan */
+  --brand-secondary-hover: #0891b2;
+  
+  /* Accent Colors */
+  --accent-red: #ef4444;
+  --accent-green: #10b981;
+  --accent-yellow: #f59e0b;
+  
+  /* Shadow Colors */
+  --shadow-sm: rgba(0, 0, 0, 0.05);
+  --shadow-md: rgba(0, 0, 0, 0.1);
+  --shadow-lg: rgba(0, 0, 0, 0.15);
+  --shadow-xl: rgba(0, 0, 0, 0.2);
+  
+  /* Input Colors */
+  --input-bg: #f9fafb;
+  --input-border: #e5e7eb;
+  --input-text: #111827;
+  --input-placeholder: #9ca3af;
+}
+
+
+/* ========================================
+   GLOBAL THEME CLASSES
+   ======================================== */
+
+/* Background Classes */
+.theme-bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.theme-bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.theme-bg-card {
+  background-color: var(--bg-card);
+}
+
+/* Text Classes */
+.theme-text-primary {
+  color: var(--text-primary);
+}
+
+.theme-text-secondary {
+  color: var(--text-secondary);
+}
+
+.theme-text-tertiary {
+  color: var(--text-tertiary);
+}
+
+.theme-text-muted {
+  color: var(--text-muted);
+}
+
+/* Border Classes */
+.theme-border {
+  border-color: var(--border-primary);
+}
+
+.theme-border-secondary {
+  border-color: var(--border-secondary);
+}
+
+/* Button Classes */
+.theme-btn-primary {
+  background-color: var(--brand-primary);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.theme-btn-primary:hover {
+  background-color: var(--brand-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-md);
+}
+
+.theme-btn-secondary {
+  background-color: var(--brand-secondary);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.theme-btn-secondary:hover {
+  background-color: var(--brand-secondary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--shadow-md);
+}
+
+.theme-btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.theme-btn-outline:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* Input Classes */
+.theme-input {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
+  transition: all 0.2s ease;
+}
+
+/* ========================================
+   PARALLAX EFFECT CLASSES
+   ======================================== */
+
+/* Parallax Container Classes */
+.parallax-container {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.parallax-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: transform;
+}
+
+.parallax-layer-slow {
+  transform: translateY(var(--scroll-y) calc(var(--scroll-y) * 0.2));
+}
+
+.parallax-layer-medium {
+  transform: translateY(calc(var(--scroll-y) * 0.5));
+}
+
+.parallax-layer-fast {
+  transform: translateY(calc(var(--scroll-y) * 0.8));
+}
+
+/* Parallax Content Overlay */
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.1) 0%, 
+    rgba(0, 0, 0, 0.4) 50%, 
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  pointer-events: none;
+}
+
+.parallax-overlay-light {
+  background: linear-gradient(to bottom, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.3) 50%, 
+    rgba(255, 255, 255, 0.5) 100%
+  );
+}
+
+/* Parallax Text Styles */
+.parallax-hero-text {
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.parallax-subtitle {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+}
+
+/* Parallax Card Styles */
+.parallax-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  box-shadow: 0 10px 30px var(--shadow-lg);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.parallax-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px var(--shadow-xl);
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Performance Optimization */
+.parallax-optimized {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.theme-input:focus {
+  border-color: var(--border-focus);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.theme-input::placeholder {
+  color: var(--input-placeholder);
+}
+
+/* Card Classes */
+.theme-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  transition: all 0.3s ease;
+}
+
+.theme-card:hover {
+  box-shadow: 0 10px 25px var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Shadow Classes */
+.theme-shadow-sm {
+  box-shadow: 0 1px 2px var(--shadow-sm);
+}
+
+.theme-shadow-md {
+  box-shadow: 0 4px 6px var(--shadow-md);
+}
+
+.theme-shadow-lg {
+  box-shadow: 0 10px 15px var(--shadow-lg);
+}
+
+.theme-shadow-xl {
+  box-shadow: 0 20px 25px var(--shadow-xl);
+}
+
+/* ========================================
+   SMOOTH TRANSITIONS
+   ======================================== */
+
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Disable transitions during theme toggle to prevent flashing */
+.theme-transitioning * {
+  transition: none !important;
+}
+
+/* ========================================
+   NAVBAR THEME STYLES
+   ======================================== */
+
+.navbar {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.navbar-link {
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.navbar-link:hover {
+  color: var(--brand-primary);
+}
+
+.navbar-link.active {
+  color: var(--brand-primary);
+  font-weight: 600;
+}
+
+/* ========================================
+   FOOTER THEME STYLES
+   ======================================== */
+
+.footer {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   GRADIENT TEXT (Works in both modes)
+   ======================================== */
+
+.gradient-text {
+  background: linear-gradient(to right, #06b6d4, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes bounce-subtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+/* ========================================
+   PAGINATION BULLET STYLES
+   ======================================== */
+
+/* Pagination bullet colors for light and dark mode */
+.pagination-bullet {
+  background-color: #6b7280; /* Gray-500 for light mode */
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.pagination-bullet-active {
+  background-color: #4f46e5 !important; /* Indigo for active state */
+  opacity: 1 !important;
+}
+
+.dark .pagination-bullet {
+  background-color: #ffffff; /* White for dark mode */
+  opacity: 0.5;
+}
+
+.dark .pagination-bullet-active {
+  background-color: #6366f1 !important; /* Lighter indigo for dark mode active */
+  opacity: 1 !important;
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+
+@media (max-width: 768px) {
+  .theme-card {
+    padding: 1rem;
+  }
+}
+
+html, body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.page-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.page-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .page-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.page-title {
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.section-title {
+  font-size: clamp(1.875rem, 3vw, 3rem);
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+  font-family: inherit; /* Change to 'Arial', 'Helvetica', 'Georgia', etc. */
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.2vw, 1.125rem);
+  line-height: 1.7;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-family: inherit; /* Change to match your preferred font */
+}
+
+/* Gradient text for highlighted words like "Valued", "Articles" */
+.gradient-highlight {
+  background: linear-gradient(to right, #f97316, #ea580c, #dc2626);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700; /* Change weight: 400 (normal), 500 (medium), 600 (semibold), 700 (bold), 800 (extrabold) */
+}
+
+/* Vision/Mission icon styling - visible in both light and dark modes */
+.icon-adaptive {
+  filter: brightness(0) saturate(100%); /* Black in light mode */
+}
+
+.dark .icon-adaptive {
+  filter: invert(1) brightness(1); /* White in dark mode */
+}
+
+.icon-container {
+  background-color: #e5e7eb; /* gray-200 in light mode */
+  border-radius: 9999px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark .icon-container {
+  background-color: rgba(255, 255, 255, 0.1); /* white/10 in dark mode */
+}
+
+.body-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
