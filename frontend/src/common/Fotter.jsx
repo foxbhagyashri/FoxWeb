@@ -11,7 +11,7 @@ function Footer() {
   }, [location.pathname]);
   return (
     <footer className="theme-bg-secondary theme-border border-t">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 pb-3">
 
         {/* Main Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
@@ -22,7 +22,7 @@ function Footer() {
               <img
                 src={LOGO}
                 alt="Fox Aircomm Logo"
-                className="h-10 w-auto object-contain"
+                className="w-auto object-contain"
               />
             </Link>
 
@@ -52,7 +52,7 @@ function Footer() {
               )}
             </div>
 
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <span
                 className="w-2 h-2 rounded-full"
                 style={{ backgroundColor: "var(--accent-green)" }}
@@ -60,20 +60,20 @@ function Footer() {
               <span className="text-xs theme-text-secondary">
                 All systems operational
               </span>
-            </div>
+            </div> */}
 
             {/* Contact Information */}
-           
+
           </div>
-             {/* Services */}
+          {/* Services */}
           <div>
-            <h3 className="font-semibold theme-text-primary mb-4 pl-10 text-sm">
+            <h3 className="font-semibold theme-text-primary mb-4 pl-10 text-xl text-black[rgb(0 0 0)]">
               Services
             </h3>
             <ul className="space-y-3 pl-10">
               {[
                 "Digital Marketing",
-                "SEO Services", 
+                "SEO Services",
                 "Social Media Marketing",
                 "Content Marketing",
                 "Web Development",
@@ -81,7 +81,7 @@ function Footer() {
                 <li key={i}>
                   <Link
                     to="/services"
-                    className="text-sm theme-text-secondary hover:text-orange-500 transition"
+                    className="text-md font-semibold theme-text-secondary hover:text-orange-500 transition"
                   >
                     {link}
                   </Link>
@@ -92,7 +92,7 @@ function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold theme-text-primary mb-4 text-sm pl-10">
+            <h3 className="font-semibold theme-text-primary mb-4 text-xl pl-10">
               Company
             </h3>
             <ul className="space-y-3 pl-10">
@@ -109,7 +109,7 @@ function Footer() {
                     <li key={i}>
                       <Link
                         to={routes[link]}
-                        className="text-sm theme-text-secondary hover:text-orange-500 transition"
+                        className="text-md font-semibold theme-text-secondary hover:text-orange-500 transition"
                       >
                         {link}
                       </Link>
@@ -121,7 +121,7 @@ function Footer() {
           </div>
           {/* Locations (ONE LINE) */}
           <div className="lg:col-span-3">
-            <h3 className="font-semibold theme-text-primary mb-4 text-sm">
+            <h3 className="font-semibold theme-text-primary mb-4 text-xl">
               Our Locations
             </h3>
 
@@ -167,38 +167,38 @@ function Footer() {
               </div>
 
             </div>
-            
-          <div className="flex flex-wrap items-center gap-4 mt-4">
+
+            <div className="flex flex-wrap items-center gap-4 mt-4 pt-4">
               <div className="flex items-center gap-2">
                 <i className="fas fa-clock text-orange-500"></i>
-                <span className="text-sm theme-text-secondary">
+                <span className="text-md theme-text-secondary font-semibold">
                   Office Time: 09:30 AM - 06:00 PM
                 </span>
               </div>
               <div className="flex items-center gap-2">
                 <i className="fas fa-phone text-orange-500"></i>
-                <a href="tel:+918879864151" className="text-sm theme-text-secondary hover:text-orange-500 transition">
+                <a href="tel:+918879864151" className="text-md theme-text-secondary font-semibold hover:text-orange-500 transition">
                   Call us: +91 8879864151
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <i className="fas fa-envelope text-orange-500"></i>
-                <a href="mailto:info@foxaircomm.com" className="text-sm theme-text-secondary hover:text-orange-500 transition">
-                info@foxaircomm.com
+                <a href="mailto:info@foxaircomm.com" className="text-md theme-text-secondary font-semibold hover:text-orange-500 transition">
+                  info@foxaircomm.com
                 </a>
               </div>
             </div>
             {/* <h2 className="text-center pt-4 text-xl font-semibold theme-text-secondary "><span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">Fox Aircomm </span>     - Smarter Marketing. Measurable Growth.</h2> */}
           </div>
 
-      
+
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t theme-border mt-10 pt-5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-lg theme-text-secondary">
-              © 2025 Fox Aircomm — Best Digital Marketing Agency 
+            <p className="text-md font-bold theme-text-secondary">
+              © 2025 Fox Aircomm — Best Digital Marketing Agency
             </p>
 
             <div className="flex gap-6">

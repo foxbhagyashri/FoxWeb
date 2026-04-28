@@ -1,420 +1,517 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 function WebsiteDesign() {
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isMobile, setIsMobile] = useState(false);
-  const [loadedImages, setLoadedImages] = useState({});
-  const containerRef = useRef(null);
 
-  const imageUrls = [
-    "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1920&q=80",
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&q=80",
-    "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1920&q=80"
+
+
+
+
+  const process = [
+    { step: "1", title: "Research", desc: "We study your audience, competitors & goals." },
+    { step: "2", title: "Strategy", desc: "We plan UX, content & SEO structure." },
+    { step: "3", title: "Development", desc: "We build fast, scalable websites." },
+    { step: "4", title: "SEO Setup", desc: "Optimized for Google & AI search." },
+    { step: "5", title: "Launch & Growth", desc: "Testing, tracking & improvements." }
   ];
-
-  const whyChoose = [
-    "Enhance online visibility and brand credibility.",
-    "Generate high-quality leads and convert visitors into customers.",
-    "Provide a seamless 24/7 online experience for your customers."
-  ];
-
-  const developmentProcess = [
-    {
-      title: "Discovery & Planning",
-      desc: "Understanding your business goals and industry requirements.",
-      icon: "🔍",
-      step: "1"
-    },
-    {
-      title: "Design & Development",
-      desc: "Crafting wireframes, mockups, and user-friendly website interfaces.",
-      icon: "🎨",
-      step: "2"
-    },
-    {
-      title: "Content Creation",
-      desc: "Writing compelling, SEO-optimized content to engage users.",
-      icon: "✍️",
-      step: "3"
-    },
-    {
-      title: "Testing & Deployment",
-      desc: "Ensuring security, speed, and seamless performance.",
-      icon: "🚀",
-      step: "4"
-    },
-    {
-      title: "Maintenance & Support",
-      desc: "Continuous updates and technical support for smooth operation.",
-      icon: "🔧",
-      step: "5"
-    }
-  ];
-
-  const whyStandOut = [
-    {
-      title: "SEO-Optimized Web Design",
-      desc: "Get ranked higher on search engines.",
-      icon: "🔍"
-    },
-    {
-      title: "Fast & Secure Websites",
-      desc: "High-speed performance with free SSL security.",
-      icon: "⚡"
-    },
-    {
-      title: "Affordable Pricing",
-      desc: "Affordable packages with no hidden costs.",
-      icon: "💰"
-    },
-    {
-      title: "Complete Digital Solutions",
-      desc: "Web design, SEO, PPC, and social media marketing.",
-      icon: "🌐"
-    },
-    {
-      title: "Quick Turnaround",
-      desc: "Delivering high-quality websites on tight deadlines.",
-      icon: "⏱️"
-    },
-    {
-      title: "Expert Support",
-      desc: "Dedicated team for continuous maintenance and support.",
-      icon: "👨‍💻"
-    }
-  ];
-
-  useEffect(() => {
-    const loadImages = async () => {
-      const promises = imageUrls.map((url, index) =>
-        new Promise((resolve) => {
-          const img = new Image();
-          img.src = url;
-          img.onload = () => { setLoadedImages((prev) => ({ ...prev, [index]: true })); resolve(); };
-          img.onerror = () => resolve();
-        })
-      );
-      await Promise.all(promises);
-    };
-    loadImages();
-  }, []);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    if (containerRef.current) { setScrollY(-containerRef.current.getBoundingClientRect().top); }
-  }, []);
-
-  const handleMouseMove = useCallback((e) => {
-    if (isMobile) return;
-    setMousePosition({ x: (e.clientX / window.innerWidth - 0.5) * 2, y: (e.clientY / window.innerHeight - 0.5) * 2 });
-  }, [isMobile]);
-
-  useEffect(() => {
-    let ticking = false;
-    const onScroll = () => { if (!ticking) { window.requestAnimationFrame(() => { handleScroll(); ticking = false; }); ticking = true; } };
-    handleScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("mousemove", handleMouseMove); };
-  }, [handleScroll, handleMouseMove]);
 
   return (
-    <motion.div ref={containerRef} className="overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-      <style>{`
-        .parallax-layer { will-change: transform; transform-style: preserve-3d; }
-        .float-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-      `}</style>
+    <div className="bg-[#F8FAFC] text-gray-800">
 
-      {/* Hero Parallax Section */}
-      <div className="relative min-h-screen overflow-hidden bg-gray-900">
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${imageUrls[0]})`, transform: `translateY(${scrollY * 0.15}px) translateX(${mousePosition.x * 5}px) scale(${1.1 + scrollY * 0.0001})`, opacity: loadedImages[0] ? 1 : 0 }} />
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${imageUrls[1]})`, transform: `translateY(${scrollY * 0.25}px) scale(1.15)`, opacity: loadedImages[1] ? 0.4 : 0, mixBlendMode: "overlay" }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-violet-900/80 via-violet-800/50 to-black/90" />
-        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-violet-500/20 blur-3xl float-animation" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-purple-500/20 blur-3xl float-animation" style={{ animationDelay: "2s" }} />
+      {/* HERO */}
+      <section className="py-18 text-center bg-[#0529a0] text-white">
 
-        <div className="relative z-10 min-h-screen flex items-center justify-center px-4">
-          <div className="text-center max-w-5xl" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
-            <motion.span className="inline-block mb-4 px-5 md:px-7 py-2 rounded-full text-base md:text-xl font-bold bg-indigo-500 text-white" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-              Leading Website Design and Development Company in Pune
-            </motion.span>
-            <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-violet-400 via-purple-400 to-violet-400 bg-clip-text text-transparent" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
-              Website Design And Development
-            </motion.h1>
-            <motion.p className="text-xl md:text-2xl font-semibold mb-6 text-white" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-              Boost Your Online Presence with Expert Web Design and Development in Pune
-            </motion.p>
-            <motion.p className="text-base md:text-lg max-w-3xl mx-auto mb-10 text-white/90" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
-              Are you seeking a web design company in Pune to create a high-performing, responsive, and SEO-friendly website? Look no further! At Fox Air Comm, we offer cutting-edge web design and development in Pune, helping businesses establish a strong online presence and drive conversions.
-            </motion.p>
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-              <Link to="/contact" className="px-8 py-3 bg-gradient-to-r from-violet-500 to-purple-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-lg shadow-violet-500/30">Start Your Free Consultation Today</Link>
-              <Link to="/services" className="px-8 py-3 border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white/10 transition-all">All Services</Link>
-            </motion.div>
-          </div>
+        <div className="max-w-5xl mx-auto px-6">
+
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            Web Development Company in Pune That Builds Websites People Remember & Google Rewards
+          </h1>
+
+          <p className="text-gray-200 text-lg mb-4">
+            Every business wants more traffic. But what truly converts is trust.
+          </p>
+
+          <p className="text-lg font-semibold mb-5">
+            Foxaircomm builds websites that make people believe in your brand again.
+
+          </p>
+
+          <a href="tel:8879864151" className="bg-[#f85415] p-4 text-white font-bold text-xl rounded-xl">Book Your Free Strategy Call</a>
+
         </div>
-      </div>
 
-      {/* Hire Leading Agency Section */}
-      <section className="theme-bg-primary py-12 md:py-24 px-4">
-        <div className="container mx-auto max-w-6xl space-y-12">
-          <div className="text-center">
-            <motion.span
-              className="inline-block mb-4 px-5 md:px-7 py-2 rounded-full text-base md:text-xl font-bold bg-indigo-500 text-white"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Why You Need a Website
-            </motion.span>
-            <motion.h2
-              className="text-2xl md:text-3xl lg:text-4xl font-semibold theme-text-primary mb-4 md:mb-6 leading-tight"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Hire Pune's Leading Website Development Agency Now!
-            </motion.h2>
+      </section>
+
+      {/* PROBLEM */}
+      <section className="py-16 bg-[#F1F5F9]">
+        <div className="max-w-5xl mx-auto px-6">
+
+          <h2 className="text-3xl font-bold text-[#0B3C5D] mb-6">
+            What’s the real cost of having an “average” website in 2025?
+
+          </h2>
+
+          <p className="text-gray-600 mb-4">
+            Do you know that your website isn't just a digital brochure; it's your most important asset (Salesperson).
+
+          </p>
+
+          <p className="text-gray-600 mb-4">
+            Having an "average" website in 2025 means more than just looking old; it means being invisible and hampering your brand presence.
+
+          </p>
+          <p className="text-gray-600 mb-4">
+            Here’s the simple truth:
+
+          </p>
+          <p className="text-gray-600 mb-4">
+            If your site is slow, difficult to use, or doesn't appear in search results, your business is likely losing leads and revenue.
+
+          </p>
+
+
+
+
+
+          <ul className="space-y-3 text-gray-700">
+            <li>⚡ Over 88% of web designers agree that the number one reason behind a high bounce rate (i.e., the percentage of users leaving your website) is slow loading time.
+            </li>
+            <li>📱 Beyond speed, nearly 3 out of 4 visitors (73%) will abandon your site if it's not properly optimized for mobile or tablet.
+            </li>
+            <li>🧭 The third most important reason is poor navigation, showing that if users can't easily find what they need, they won't stick around.
+            </li>
+          </ul>
+
+          <div className="mt-8 p-6 bg-white rounded-xl shadow">
+            <p className="font-semibold text-lg text-[#0B3C5D]">
+              Your customers don’t care how pretty your website looks. They care how fast it answers their need.
+            </p>
+
           </div>
 
-          <div className="space-y-6">
-            <motion.div
-              className="theme-card shadow-lg rounded-2xl p-6 md:p-8"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <p className="theme-text-secondary text-base md:text-lg leading-relaxed">
-                Did you know that <span className="font-semibold theme-text-primary">64% of small businesses have a website</span>? If you don't have an online presence, you're missing out on immense growth opportunities.
+        </div>
+      </section>
+
+      {/* WHY US */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+
+          <h2 className="text-3xl font-bold mb-10 text-[#0B3C5D]">
+            What makes Foxaircomm different from other website design companies in Pune?
+
+          </h2>
+          <p>Frankly speaking, Pune is full of developers, but very few understand the details of the sales funnel, Google visibility, and customer psychological journey.
+          </p>
+          <p>We don't just build websites for the pretty look. We design them for business impact:
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 mt-5">
+
+            <div className="bg-[#F8FAFC] p-6 rounded-xl shadow">
+              <h3 className="font-semibold mb-2">⚡ Lightning Fast</h3>
+              <p className="text-gray-600">Our designed websites load in 2.5 seconds or less. Why? Because we are well-versed with the fact that every extra second of delay costs you 7% in potential sales.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="theme-card shadow-lg rounded-2xl p-6 md:p-8"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <p className="theme-text-secondary text-base md:text-lg leading-relaxed">
-                More than <span className="font-semibold theme-text-primary">30% of small businesses generate 25% or more of their revenue online</span>. Invest in the best web development services in Pune to stay ahead of the competition.
+            <div className="bg-[#F8FAFC] p-6 rounded-xl shadow">
+              <h3 className="font-semibold mb-2">🧠 Built for Humans</h3>
+              <p className="text-gray-600">We use emotionally intelligent design—subtle colors, concise, human-oriented language, and CTAs placed exactly where they feel natural to the visitor.
               </p>
-            </motion.div>
+            </div>
+
+
+            <div className="bg-[#F8FAFC] p-6 rounded-xl shadow">
+              <h3 className="font-semibold mb-2">📈 Instantly Visible:
+              </h3>
+              <p className="text-gray-600">We integrate SEO (Search Engine Optimization) and AEO (Answer Engine Optimization) into the structure so your brand is instantly understood and easily found by both search engines, AI crawlers, and people.
+
+              </p>
+              <p className="text-gray-600">Don't be satisfied with the small gains. While a basic UI update might boost conversions by 200%, comprehensive UX improvements can increase your conversion rates by up to 400% ( Source- https://blog.uxtweak.com/roi-of-ux/)
+
+              </p>
+              <p className="text-gray-600">Foxaircomm is a unique team in Pune, combining creative designers, sharp analytical marketers, and ethical coders all under one roof.
+
+              </p>
+            </div>
+
+
           </div>
 
-          <motion.div
-            className="text-center p-8 rounded-2xl bg-gradient-to-r from-indigo-500/10 to-violet-500/10 border border-indigo-500/20 shadow-lg"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-xl md:text-2xl font-semibold theme-text-primary mb-6">
-              Why Choose Our Web Development Services in Pune?
-            </h3>
-            <ul className="space-y-3 max-w-3xl mx-auto">
-              {whyChoose.map((item, index) => (
-                <li key={index} className="flex items-start gap-3 justify-center">
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center text-white text-xs flex-shrink-0 mt-0.5">
-                    ✓
-                  </div>
-                  <p className="theme-text-secondary text-base md:text-lg text-left">{item}</p>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
         </div>
       </section>
 
-      {/* Why Fox Air Comm Section */}
-      <section className="theme-bg-secondary py-12 md:py-24 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12 md:mb-16">
-            <motion.span
-              className="inline-block mb-4 px-5 md:px-7 py-2 rounded-full text-base md:text-xl font-bold bg-indigo-500 text-white"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Why Choose Us
-            </motion.span>
-            <motion.h2
-              className="text-2xl md:text-3xl lg:text-4xl font-semibold theme-text-primary mb-4 md:mb-6 leading-tight"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Why Fox Air Comm is the Best Website Design and Development Company in Pune
-            </motion.h2>
-            <motion.p
-              className="theme-text-secondary text-base md:text-lg max-w-4xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              As a trusted web development agency in Pune, we specialize in creating websites that are not only visually appealing but also optimized for performance. Our comprehensive services include web design services in Pune, content writing, graphic design, and SEO to help your business thrive online.
-            </motion.p>
+      {/* CHALLENGES */}
+      {/* CHALLENGES */}
+      <section className="py-16 bg-[#F1F5F9]">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+
+          <h2 className="text-3xl font-bold mb-10 text-[#0B3C5D]">
+            What Challenges Are Pune Businesses Facing Before They Partner With Us?
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-6">
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              <h3 className="text-xl font-bold">1. Our new website isn't showing up on Google:
+              </h3>
+              You have invested in a new website, but it's invisible to your potential customers.
+
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              <h3 className="text-xl font-bold">2. We get the traffic, but no more conversions:
+              </h3>
+              People are visiting, but they aren't taking the next steps.
+
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              <h3 className="text-xl font-bold">3. Our site is not fully optimised for mobile:
+              </h3>
+              Your developer forgot about (or ignored) optimizing for phones and tablets.
+
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              <h3 className="text-xl font-bold">4. We can't update our own content:
+              </h3>
+              You're unable to make simple, essential changes to your own business platform.
+              We've seen and fixed these problems over 100 times.
+              Most websites fail because they are built only to deliver information, not to be discovered by search engines and users.
+
+            </div>
+
+          </div>
+          {/* <p className="mt-4">Foxaircomm flips that script.
+          </p>
+          <p>We make sure your design, SEO (Search Engine Optimization), and content go hand in hand from the initial stage, so your site is built for success, not just launch.
+          </p> */}
+        </div>
+
+      </section>
+      {/* SERVICES */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+
+          <h2 className="text-3xl font-bold mb-10 text-[#0B3C5D]">
+            What technologies does Foxaircomm specialize in?
+
+          </h2>
+          <p>We design everything your brand needs —not just to survive, but to scale and achieve success online truly.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              <h3 className="text-xl font-bold">1. Corporate Website:
+              </h3>
+              Website not ranking on GoogleWe design sleek, professional business sites built to drive conversion-ready outcomes for your brand.
+
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              <h3 className="text-xl font-bold">2. E-commerce Website Development:
+
+              </h3>
+              We are an e-commerce development company that builds online stores to be reliable, fast, rank high on Google, and are designed to sell more products.
+
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              <h3 className="text-xl font-bold">3.WordPress Website Development:
+
+              </h3>
+              We are one of the best WordPress website development companies in Pune, building fully customizable, SEO-friendly WordPress sites that are simple for you to manage.
+
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              <h3 className="text-xl font-bold">4. Custom Web Development in Pune:
+
+              </h3>
+              Need something powerful? We use advanced technologies (Laravel, Angular, React, Node.js) to build platforms optimized for high performance and scalability.
+
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow">
+              <h3 className="text-xl font-bold">5. Landing Pages & Micro-sites:
+
+
+              </h3>
+              Focused designs that quickly capture high-quality leads, not just fleeting attention.
+              <br></br>
+              Every website we build is your essential digital handshake—designed to make a strong, professional impression in milliseconds.
+
+
+            </div>
+
+
           </div>
         </div>
       </section>
 
-      {/* Development Process Section */}
-      <section className="theme-bg-primary py-12 md:py-24 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-12 md:mb-16">
-            <motion.span
-              className="inline-block mb-4 px-5 md:px-7 py-2 rounded-full text-base md:text-xl font-bold bg-indigo-500 text-white"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Our Process
-            </motion.span>
-            <motion.h2
-              className="text-2xl md:text-3xl lg:text-4xl font-semibold theme-text-primary mb-4 md:mb-6 leading-tight"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Our Website Development Process
-            </motion.h2>
+      {/* PROCESS (ATTRACTIVE TIMELINE) */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+
+          <h2 className="text-3xl font-bold text-center mb-16 text-[#0B3C5D]">
+            How does Foxaircomm build websites that dominate rankings and conversions?
+          </h2>
+          <p>We are not creating websites and then implementing SEO fixes. We design websites by using SEO practices from the very start.
+          </p>
+          <p>Here is our signature 5-step process:
+          </p>
+
+          <div className="relative">
+            {/* <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200"></div> */}
+
+            <div className="grid md:grid-cols-2 gap-6">
+
+              <div className="bg-white p-6 rounded-xl shadow">
+                <h3 className="text-xl font-bold">  🔍 Deep Dive Research:</h3>
+                We initiate the process by collecting information about your competitors, understanding your audience, and details about your products/services.
+
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow">
+                <h3 className="text-xl font-bold">  🧠 User-Focused Design & Content Plan:
+                </h3>
+                We create a design that emphasizes how you want your visitors to experience (like confident, excited, or trusting). After this, we plan your website content that directly answers the specific goals people have when they search on Google (this is known as keyword mapping).
+
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow">
+                <h3 className="text-xl font-bold">  3.💻 Development & Setup:
+                </h3>
+                We write clean code that ensures maximum performance.
+
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow">
+                <h3 className="text-xl font-bold">  4.🚀 SEO + AEO Implementation:
+                </h3>
+                We set up the technical aspects (like Schema markup and internal links) and create content designed to appear instantly for those valuable featured snippets results.
+
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow">
+                <h3 className="text-xl font-bold">  5.📈 Testing & Results Review:
+                </h3>
+                We meticulously test parameters such as page speed, lead tracking, and engaged sessions on your site to ensure you get a solid Return on Investment (ROI).
+                <br></br>
+                Foxaircomm ensures your new website doesn't just launch—it launches ready to dominate and attract the right customers.
+
+              </div>
+
+            </div>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {developmentProcess.map((item, index) => (
-              <motion.div
-                key={index}
-                className="theme-card shadow-lg rounded-2xl p-6 md:p-8 hover:shadow-xl transition-all duration-300 group relative"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                  {item.step}
+
+        </div>
+      </section>
+
+      {/* TIMELINE */}
+      <section className="py-16 bg-[#F1F5F9] text-center">
+        <h2 className="text-3xl font-bold mb-8 text-[#0B3C5D]">
+          Do you Develop Websites for Both Startups and Large Companies?
+        </h2>
+
+        <p className="text-gray-700">Absolutely, yes. No matter if you are a brand-new local startup in Pune or an established, large-scale enterprise, our web solutions are designed to scale with your business.
+        </p>
+        <p className="text-gray-700">We have successfully built high-performing websites for a wide range of industries, including:
+        </p>
+        <ul>
+          <li>Healthcare and hospitals</li>
+          <li>SaaS and IT firms</li>
+          <li>Manufacturing and industrial brands</li>
+          <li>Educational institutions
+          </li>
+          <li>E-commerce retailers
+          </li>
+        </ul>
+        <p className="text-gray-700">We never believe in a one-size-fits-all approach. Each design is carefully tailored to meet the specific goals and needs of your industry.
+        </p>
+      </section>
+
+
+
+      {/* LAUNCH TIMELINE - PROFESSIONAL */}
+      {/* LAUNCH TIMELINE */}
+      <section className="py-20 bg-[#F5F7FB]">
+        <div className="max-w-6xl mx-auto px-6">
+
+          {/* Heading */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0B3C5D] flex justify-center items-center gap-2">
+              ⏱️ How Quickly Can We Launch Your New Website?
+            </h2>
+
+            <div className="w-16 h-1 bg-orange-500 mx-auto mt-4 rounded"></div>
+
+            <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
+              The launch timeline depends on the complexity of your project, but here are our typical estimates:
+            </p>
+          </div>
+
+          {/* Table Card */}
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200">
+
+            {/* Header */}
+            <div className="grid grid-cols-2 bg-[#0B3C5D] text-white">
+              <div className="p-6 flex items-center gap-3 border-r border-white/20">
+                <span className="text-xl">📋</span>
+                <p className="font-semibold text-lg">Project Types</p>
+              </div>
+              <div className="p-6 flex items-center gap-3">
+                <span className="text-xl">📅</span>
+                <p className="font-semibold text-lg">Estimated Launch Time</p>
+              </div>
+            </div>
+
+            {/* Row 1 */}
+            <div className="grid md:grid-cols-2 border-t">
+
+              {/* Left */}
+              <div className="p-6 flex gap-4 items-start">
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 text-xl">
+                  🏢
                 </div>
-                <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center mb-4 md:mb-6 text-2xl group-hover:scale-110 transition-transform">
-                  {item.icon}
+                <div>
+                  <h3 className="font-semibold text-[#0B3C5D] text-lg">
+                    Corporate / Portfolio Websites
+                  </h3>
+                  <p className="text-gray-500 text-sm mt-1">
+                    Ideal for businesses, brands and professionals who want a strong online presence.
+                  </p>
                 </div>
-                <h3 className="text-lg md:text-xl font-bold theme-text-primary mb-3">{item.title}</h3>
-                <p className="theme-text-secondary text-sm md:text-base leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+              </div>
 
-      {/* Why We Stand Out Section */}
-      <section className="theme-bg-secondary py-12 md:py-24 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12 md:mb-16">
-            <motion.span
-              className="inline-block mb-4 px-5 md:px-7 py-2 rounded-full text-base md:text-xl font-bold bg-indigo-500 text-white"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Our Advantages
-            </motion.span>
-            <motion.h2
-              className="text-2xl md:text-3xl lg:text-4xl font-semibold theme-text-primary mb-4 md:mb-6 leading-tight"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              Why Fox Air Comm Stands Out in Web Development Services Pune
-            </motion.h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {whyStandOut.map((item, index) => (
-              <motion.div
-                key={index}
-                className="theme-card shadow-lg rounded-2xl p-6 md:p-8 hover:shadow-xl transition-all duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center text-xl flex-shrink-0">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-base md:text-lg font-bold theme-text-primary mb-2">{item.title}</h3>
-                    <p className="theme-text-secondary text-sm leading-relaxed">{item.desc}</p>
-                  </div>
+              {/* Right */}
+              <div className="p-6 flex items-center gap-4 border-l bg-gray-50">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-blue-500 text-blue-500">
+                  ⏱️
                 </div>
-              </motion.div>
-            ))}
+                <div>
+                  <p className="text-xl font-bold text-[#0B3C5D]">15 – 30 days</p>
+                  <p className="text-gray-500 text-sm">
+                    Quick turnaround for a professional web presence
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Row 2 */}
+            <div className="grid md:grid-cols-2 border-t">
+
+              <div className="p-6 flex gap-4 items-start">
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-orange-100 text-orange-500 text-xl">
+                  🛒
+                </div>
+                <div>
+                  <h3 className="font-semibold text-[#0B3C5D] text-lg">
+                    E-commerce or Dynamic Websites
+                  </h3>
+                  <p className="text-gray-500 text-sm mt-1">
+                    Feature-rich websites with dynamic functionality and user-friendly experience.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6 flex items-center gap-4 border-l bg-gray-50">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-orange-500 text-orange-500">
+                  ⏱️
+                </div>
+                <div>
+                  <p className="text-xl font-bold text-[#0B3C5D]">60 – 90 days</p>
+                  <p className="text-gray-500 text-sm">
+                    Built with robust features and seamless performance
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Row 3 */}
+            <div className="grid md:grid-cols-2 border-t">
+
+              <div className="p-6 flex gap-4 items-start">
+                <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green-100 text-green-600 text-xl">
+                  🏭
+                </div>
+                <div>
+                  <h3 className="font-semibold text-[#0B3C5D] text-lg">
+                    Enterprise Solutions
+                  </h3>
+                  <p className="text-gray-500 text-sm mt-1">
+                    Advanced solutions tailored for complex business needs and integrations.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6 flex items-center gap-4 border-l bg-gray-50">
+                <div className="w-10 h-10 flex items-center justify-center rounded-full border-2 border-green-500 text-green-500">
+                  ⏱️
+                </div>
+                <div>
+                  <p className="text-xl font-bold text-[#0B3C5D]">
+                    Custom Timeline
+                  </p>
+                  <p className="text-gray-500 text-sm">
+                    Depends on integrations and features
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
           </div>
+
+          {/* Bottom Box */}
+          <div className="mt-10 bg-white border rounded-xl p-6 flex items-center gap-4 shadow-sm">
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 text-xl">
+              🚀
+            </div>
+            <p className="text-gray-700">
+              Our process is designed to be fast enough to meet your marketing deadlines,{" "}
+              <span className="font-semibold text-[#0B3C5D]">
+                while detailed enough to ensure the final product is perfect.
+              </span>
+            </p>
+          </div>
+
         </div>
       </section>
 
-      {/* Parallax CTA Section */}
-      <div className="relative min-h-[50vh] md:min-h-[60vh] overflow-hidden bg-gray-900">
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${imageUrls[2]})`, transform: `translateY(${scrollY * 0.1}px) scale(1.05)`, opacity: loadedImages[2] ? 1 : 0 }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-violet-900/50 to-black/70" />
-        <div className="relative z-10 min-h-[50vh] md:min-h-[60vh] flex items-center justify-center px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-white" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-              Take Your Business to the Next Level
-            </motion.h2>
-            <motion.p className="text-base md:text-lg mb-6 md:mb-8 text-white/80 max-w-3xl mx-auto" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              Whether you need website development services in Pune for a startup, an e-commerce store, or a corporate business, Fox Air Comm is your go-to partner. Contact us today for expert web design services in Pune and take your digital presence to new heights!
-            </motion.p>
-          </div>
-        </div>
-      </div>
+      {/* CTA */}
+      <section className="py-20 bg-[#0B3C5D] text-white text-center">
+        <h2 className="text-3xl font-bold mb-4">
+          What is the First Step to Working With You?
+        </h2>
 
-      {/* Final CTA Section */}
-      <section className="theme-bg-primary py-12 md:py-24 px-4">
-        <div className="container mx-auto max-w-4xl text-center">
-          <motion.h2
-            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-indigo-500 to-violet-500 bg-clip-text text-transparent"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            Ready to Build Your Website?
-          </motion.h2>
-          <motion.p
-            className="theme-text-secondary text-base md:text-lg lg:text-xl mb-6 md:mb-8 max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            Don't wait! Contact Fox Air Comm today to get a FREE consultation on website development services in India. Let's create an impressive online presence for your business!
-          </motion.p>
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <Link
-              to="/contact"
-              className="px-8 md:px-10 py-3 md:py-4 bg-gradient-to-r from-indigo-500 to-violet-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-xl"
-            >
-              Get Free Consultation
-            </Link>
-            <Link
-              to="/enquiry"
-              className="px-8 md:px-10 py-3 md:py-4 border-2 border-indigo-500 text-indigo-500 rounded-full font-semibold hover:bg-indigo-500 hover:text-white transition-all"
-            >
-              Send Enquiry
-            </Link>
-          </motion.div>
-        </div>
+        <p className="mb-6 text-gray-200">
+          It's simple: we start with a free 30-minute strategy session.
+
+        </p>
+        <p>In this quick call, we will:
+        </p>
+        <ul>
+          <li>Analyse your current website.
+          </li>
+          <li>Identify what's holding you back (those "invisible losses")-
+          </li>
+          <li>Map out exactly how to fix those issues—fast.
+          </li>
+        </ul>
+        <p className="mb-5 mt-3">Expect no jargon and no hard sales pitch. Just honest, straightforward insight from a team that has successfully <br></br> built and optimized over 120 digital experiences across Pune and India.
+
+        </p>
+
+        <Link to="/contact" className="bg-[#FF7A00] px-8 py-3 rounded-lg font-semibold">
+          Book Free Consultation
+        </Link>
       </section>
-    </motion.div>
+
+    </div>
   );
 }
 

@@ -37,52 +37,72 @@ function Home() {
 
   // Testimonial data
   const testimonialData = [
-    { 
-      id: 1, 
-      name: "Ganesh Sasane", 
+    {
+      id: 1,
+      name: "Ganesh Sasane",
       title: "Head of Sasane Education Society",
-      rating: 5.0, 
+      rating: 5.0,
       quote: "I am using SEO and Social Media Marketing services for my Sasane New English School, and the results have been outstanding. Fox Aircomm Pvt Ltd is truly the best digital marketing agency in Pune. Their expertise in optimizing online visibility and engaging with the right audience has helped our school gain more recognition.",
       truncatedQuote: "I am using SEO and Social Media Marketing services for my Sasane New English School, and the results have been outstanding...",
       icon: "fas fa-user",
       iconColor: "text-blue-600"
     },
-    { 
-      id: 2, 
-      name: "Shyamsunder Jilla", 
+    {
+      id: 2,
+      name: "Shyamsunder Jilla",
       title: "Head Of Arealpro Estate",
-      rating: 5.0, 
-      quote: "Perfect, Good understanding of Clients need.", 
+      rating: 5.0,
+      quote: "Perfect, Good understanding of Clients need.",
       truncatedQuote: "Perfect, Good understanding of Clients need.",
       icon: "fas fa-user",
       iconColor: "text-green-600"
     },
-    { 
-      id: 3, 
-      name: "Shree kalyan Jewellers", 
+    {
+      id: 3,
+      name: "Shree kalyan Jewellers",
       title: "Owner",
-      rating: 5.0, 
-      quote: "I am Using Last 1 Year Whatsapp Software.BEST SUPPORT BHAVESHBHAI", 
+      rating: 5.0,
+      quote: "I am Using Last 1 Year Whatsapp Software.BEST SUPPORT BHAVESHBHAI",
       truncatedQuote: "I am Using Last 1 Year Whatsapp Software.BEST SUPPORT BHAVESHBHAI",
       icon: "fas fa-user",
       iconColor: "text-purple-600"
     },
-    { 
-      id: 4, 
-      name: "Pandit R Kirhan", 
+    {
+      id: 4,
+      name: "Pandit R Kirhan",
       title: "Numerologist",
-      rating: 5.0, 
+      rating: 5.0,
       quote: "I am professional Numerologist, i have connected to fix aircomm pvt. Ltd for my social media shedule last 6 months, for Post ing add shedule give me large response for my webinar. I am very thankful for such co-operation, all team members are very punctuate and friendly.",
       truncatedQuote: "I am professional Numerologist, i have connected to fix aircomm pvt. Ltd for my social media shedule last 6 months...",
       icon: "fas fa-user",
       iconColor: "text-orange-600"
     },
-    { 
-      id: 5, 
-      name: "Bhushan Lad", 
+    {
+      id: 5,
+      name: "Bhushan Lad",
       title: "Resha Interior",
-      rating: 5.0, 
+      rating: 5.0,
       quote: "Fox Aircomm Private Limited is truly an outstanding social media agency! Their expertise in digital marketing and strategic ad campaigns has significantly boosted our business visibility and customer engagement. From creative content to precise targeting, their team ensures maximum ROI. Their dedication, professionalism, and data-driven approach make them one of the best in the industry. Highly recommended for anyone looking to scale their business through social media marketing!",
+      truncatedQuote: "Fox Aircomm Private Limited is truly an outstanding social media agency! Their expertise in digital marketing and strategic ad campaigns...",
+      icon: "fas fa-user",
+      iconColor: "text-red-600"
+    },
+    {
+      id: 6,
+      name: "Ram Vishwakarma",
+      title: "",
+      rating: 5.0,
+      quote: "Good Digital marketing company with experienced skilled people. Professional attidute and good service provider.",
+      truncatedQuote: "Fox Aircomm Private Limited is truly an outstanding social media agency! Their expertise in digital marketing and strategic ad campaigns...",
+      icon: "fas fa-user",
+      iconColor: "text-red-600"
+    },
+    {
+      id: 7,
+      name: "Tejas Kansara",
+      title: "",
+      rating: 5.0,
+      quote: "I have been using Fox Aircomm’s WhatsApp services and data extractor software for the past 3 years, and my experience has been very good. The platform is reliable, easy to use, and helps streamline communication efficiently. Customer support is also responsive and helpful whenever needed. Overall, it’s a great solution for businesses looking to manage WhatsApp communication and data effectively.",
       truncatedQuote: "Fox Aircomm Private Limited is truly an outstanding social media agency! Their expertise in digital marketing and strategic ad campaigns...",
       icon: "fas fa-user",
       iconColor: "text-red-600"
@@ -92,7 +112,7 @@ function Home() {
   // Testimonial Card Component
   const TestimonialCard = ({ testimonial, isActive = false }) => {
     const [isExpanded, setIsExpanded] = React.useState(false);
-    
+
     const renderStars = () => {
       return Array.from({ length: 5 }).map((_, i) => (
         <i
@@ -151,7 +171,7 @@ function Home() {
               } scrollbar-thin scrollbar-thumb-orange-500 scrollbar-track-gray-200`}>
               {displayQuote}
             </div>
-            
+
             {needsReadMore && (
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
@@ -173,8 +193,8 @@ function Home() {
 
   return (
     <div className="w-full mx-auto">
-      <div className="bg-gray-50">
-     <Herosection />
+      <div className="bg-[#ff62001f]">
+        <Herosection />
 
       </div>
       {/* Who We Are Section */}
@@ -316,10 +336,10 @@ function Home() {
       <div className="page-container pt-20 pb-16">
         <div
           className="rounded-3xl w-full max-w-7xl mx-auto bg-gradient-to-r from-white via-orange-50 to-yellow-50 flex flex-col md:flex-row items-center justify-between py-8 px-6 md:px-12 shadow-lg  border border-orange-100/50"
-          // style={{
-          //   background:
-          //     "linear-gradient(90deg, #fff 0%, #fff7ed 50%, #fefce8 100%)",
-          // }}
+        // style={{
+        //   background:
+        //     "linear-gradient(90deg, #fff 0%, #fff7ed 50%, #fefce8 100%)",
+        // }}
         >
           <div className="flex-1 text-center mb-8 md:mb-0">
             <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
@@ -488,8 +508,8 @@ function Home() {
                 {/* Enquire Now Button */}
                 <div className="pt-4">
                   <button
-                  
-className="px-8 py-3 w-full rounded-xl font-semibold text-white
+
+                    className="px-8 py-3 w-full rounded-xl font-semibold text-white
                          bg-gradient-to-r from-orange-500 to-red-500
                          hover:scale-[1.03] transition-all shadow-lg shadow-orange-500/30"                  >
                     Enquire Now
@@ -510,9 +530,9 @@ className="px-8 py-3 w-full rounded-xl font-semibold text-white
             {/* Left: Features List */}
             <div className="flex-1">
               <h2 className="text-4xl  font-bold mb-4 py-2">
-                FoxAircomm Advantages: 
+                FoxAircomm Advantages:
                 Your Competitive Edge
-              </h2> 
+              </h2>
 
               <p className="subtitle mb-8">
                 Explore the unique benefits that set FoxAircomm apart, giving you
@@ -557,113 +577,113 @@ className="px-8 py-3 w-full rounded-xl font-semibold text-white
             </div>
 
             {/* Right: Modern Chart with Axes */}
-        <div className="flex-1 flex items-center justify-center w-full  ">
-  <div className="relative w-full  bg-white rounded-2xl shadow-lg border border-gray-100 px-6 pt-5 pb-6">
+            <div className="flex-1 flex items-center justify-center w-full  ">
+              <div className="relative w-full  bg-white rounded-2xl shadow-lg border border-gray-100 px-6 pt-5 pb-6">
 
-    {/* Title */}
-    <div >
-      <h4 className="text-base font-semibold text-gray-800">
-        Client Growth Performance
-      </h4>
-      <p className="text-sm text-gray-500 mt-1">
-        Growth percentage compared with industry average (max 90%)
-      </p>
-    </div>
+                {/* Title */}
+                <div >
+                  <h4 className="text-base font-semibold text-gray-800">
+                    Client Growth Performance
+                  </h4>
+                  <p className="text-sm text-gray-500 mt-1">
+                    Growth percentage compared with industry average (max 90%)
+                  </p>
+                </div>
 
-    {/* Chart */}
-    <div className="relative h-full">
-      <svg
-        width="100%"
-        height="100%"
-        viewBox="0 0 440 260"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* Grid */}
-        <line x1="60" y1="220" x2="400" y2="220" stroke="#e5e7eb" strokeWidth="2" />
-        <line x1="60" y1="160" x2="400" y2="160" stroke="#e5e7eb" />
-        <line x1="60" y1="100" x2="400" y2="100" stroke="#e5e7eb" />
-        <line x1="60" y1="40" x2="400" y2="40" stroke="#e5e7eb" />
-        <line x1="60" y1="40" x2="60" y2="220" stroke="#e5e7eb" strokeWidth="2" />
+                {/* Chart */}
+                <div className="relative h-full">
+                  <svg
+                    width="100%"
+                    height="100%"
+                    viewBox="0 0 440 260"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    {/* Grid */}
+                    <line x1="60" y1="220" x2="400" y2="220" stroke="#e5e7eb" strokeWidth="2" />
+                    <line x1="60" y1="160" x2="400" y2="160" stroke="#e5e7eb" />
+                    <line x1="60" y1="100" x2="400" y2="100" stroke="#e5e7eb" />
+                    <line x1="60" y1="40" x2="400" y2="40" stroke="#e5e7eb" />
+                    <line x1="60" y1="40" x2="60" y2="220" stroke="#e5e7eb" strokeWidth="2" />
 
-        {/* Y-axis labels */}
-        <text x="20" y="225" fontSize="12" fill="#6b7280">0%</text>
-        <text x="20" y="165" fontSize="12" fill="#6b7280">30%</text>
-        <text x="20" y="105" fontSize="12" fill="#6b7280">60%</text>
-        <text x="20" y="45" fontSize="12" fill="#6b7280">90%</text>
+                    {/* Y-axis labels */}
+                    <text x="20" y="225" fontSize="12" fill="#6b7280">0%</text>
+                    <text x="20" y="165" fontSize="12" fill="#6b7280">30%</text>
+                    <text x="20" y="105" fontSize="12" fill="#6b7280">60%</text>
+                    <text x="20" y="45" fontSize="12" fill="#6b7280">90%</text>
 
-        {/* X-axis labels */}
-        <text x="60" y="245" fontSize="12" fill="#6b7280">2019</text>
-        <text x="160" y="245" fontSize="12" fill="#6b7280">2021</text>
-        <text x="260" y="245" fontSize="12" fill="#6b7280">2023</text>
-        <text x="360" y="245" fontSize="12" fill="#6b7280">2025</text>
+                    {/* X-axis labels */}
+                    <text x="60" y="245" fontSize="12" fill="#6b7280">2019</text>
+                    <text x="160" y="245" fontSize="12" fill="#6b7280">2021</text>
+                    <text x="260" y="245" fontSize="12" fill="#6b7280">2023</text>
+                    <text x="360" y="245" fontSize="12" fill="#6b7280">2025</text>
 
-        {/* Industry Average */}
-        <polyline
-          points="60,200 160,185 260,175 360,170 400,165"
-          fill="none"
-          stroke="#9ca3af"
-          strokeWidth="3"
-          strokeDasharray="6 6"
-        />
+                    {/* Industry Average */}
+                    <polyline
+                      points="60,200 160,185 260,175 360,170 400,165"
+                      fill="none"
+                      stroke="#9ca3af"
+                      strokeWidth="3"
+                      strokeDasharray="6 6"
+                    />
 
-        {/* Fox Aircomm Clients */}
-        <polyline
-          points="60,200 160,160 260,120 360,85 400,60"
-          fill="none"
-          stroke="#6366f1"
-          strokeWidth="4"
-        />
+                    {/* Fox Aircomm Clients */}
+                    <polyline
+                      points="60,200 160,160 260,120 360,85 400,60"
+                      fill="none"
+                      stroke="#6366f1"
+                      strokeWidth="4"
+                    />
 
-        {/* Fox Label */}
-        <g>
-          <circle cx="400" cy="60" r="14" fill="url(#foxGradient)" />
-          <text
-            x="400"
-            y="65"
-            textAnchor="middle"
-            fontSize="14"
-            fontWeight="bold"
-            fill="#fff"
-          >
-            F
-          </text>
-          <text
-            x="310"
-            y="40"
-            fontSize="13"
-            fill="#111827"
-            fontWeight="600"
-          >
-            Fox Aircomm Clients
-          </text>
-        </g>
+                    {/* Fox Label */}
+                    <g>
+                      <circle cx="400" cy="60" r="14" fill="url(#foxGradient)" />
+                      <text
+                        x="400"
+                        y="65"
+                        textAnchor="middle"
+                        fontSize="14"
+                        fontWeight="bold"
+                        fill="#fff"
+                      >
+                        F
+                      </text>
+                      <text
+                        x="310"
+                        y="40"
+                        fontSize="13"
+                        fill="#111827"
+                        fontWeight="600"
+                      >
+                        Fox Aircomm Clients
+                      </text>
+                    </g>
 
-        {/* Industry Label */}
-        <text x="300" y="190" fontSize="13" fill="#6b7280">
-          Industry Average
-        </text>
+                    {/* Industry Label */}
+                    <text x="300" y="190" fontSize="13" fill="#6b7280">
+                      Industry Average
+                    </text>
 
-        {/* Gradient */}
-        <defs>
-          <linearGradient id="foxGradient" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#6366f1" />
-            <stop offset="100%" stopColor="#a78bfa" />
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
+                    {/* Gradient */}
+                    <defs>
+                      <linearGradient id="foxGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#6366f1" />
+                        <stop offset="100%" stopColor="#a78bfa" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
 
-    {/* Valid Message */}
-    {/* <div className="mt-4 pt-4 border-t border-gray-100">
+                {/* Valid Message */}
+                {/* <div className="mt-4 pt-4 border-t border-gray-100">
       <p className="text-sm text-gray-600 leading-relaxed">
         📈 <span className="font-medium text-gray-800">Realistic & measurable growth:</span>{" "}
         Our clients achieve up to <strong>90% business growth</strong> over time,
         consistently outperforming the industry average without unrealistic claims.
       </p>
     </div> */}
-  </div>
-</div>
+              </div>
+            </div>
 
 
           </div>
@@ -672,95 +692,95 @@ className="px-8 py-3 w-full rounded-xl font-semibold text-white
 
       {/* Testimonial Section */}
       <section className="min-h-screen flex flex-col justify-center items-center py-10 theme-bg-primary overflow-hidden relative">
-          {/* Title */}
+        {/* Title */}
         <h2 className="section-title mb-16">
-            What  <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">Customers</span> Say
-          </h2>
+          What  <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">Customers</span> Say
+        </h2>
 
-          {/* Swiper Container */}
+        {/* Swiper Container */}
         <div className="w-full max-w-6xl relative pb-32 px-4 md:px-6">
-            <Swiper
-              modules={[Pagination, Navigation, Autoplay]}
-              loop={true}
-              slidesPerView={3}
-              centeredSlides={true}
-              spaceBetween={20}
-              grabCursor={true}
-              speed={600}
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-              }}
-              onSlideChange={(swiper) => {
-                setActiveIndex(swiper.realIndex);
-              }}
-              pagination={{
-                el: `.${paginationClass}`,
-                clickable: true,
-                bulletClass: 'pagination-bullet w-3 h-3 rounded-full transition-all duration-300 theme-bg-primary',
-                bulletActiveClass: 'pagination-bullet-active',
-                horizontalClass: 'mt-12',
-              }}
-              navigation={{
-                nextEl: `.${nextButtonClass}`,
-                prevEl: `.${prevButtonClass}`,
-              }}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                640: {
-                  slidesPerView: 2,
-                  spaceBetween: 30,
-                  centeredSlides: false,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 40,
-                  centeredSlides: true,
-                }
-              }}
-              className="w-full h-[420px]"
-            >
-              {testimonialData.map((testimonial, index) => {
-                // Calculate which slide is actually active (centered)
-                const isActive = index === activeIndex;
+          <Swiper
+            modules={[Pagination, Navigation, Autoplay]}
+            loop={true}
+            slidesPerView={3}
+            centeredSlides={true}
+            spaceBetween={20}
+            grabCursor={true}
+            speed={600}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            onSlideChange={(swiper) => {
+              setActiveIndex(swiper.realIndex);
+            }}
+            pagination={{
+              el: `.${paginationClass}`,
+              clickable: true,
+              bulletClass: 'pagination-bullet w-3 h-3 rounded-full transition-all duration-300 theme-bg-primary',
+              bulletActiveClass: 'pagination-bullet-active',
+              horizontalClass: 'mt-12',
+            }}
+            navigation={{
+              nextEl: `.${nextButtonClass}`,
+              prevEl: `.${prevButtonClass}`,
+            }}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+                centeredSlides: false,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+                centeredSlides: true,
+              }
+            }}
+            className="w-full h-[420px]"
+          >
+            {testimonialData.map((testimonial, index) => {
+              // Calculate which slide is actually active (centered)
+              const isActive = index === activeIndex;
 
-                return (
-                  <SwiperSlide
-                    key={testimonial.id}
-                    className="!flex !items-center !justify-center !h-auto"
-                  >
-                    <div className="w-full px-2">
-                      <TestimonialCard
-                        testimonial={testimonial}
-                        isActive={isActive}
-                      />
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
+              return (
+                <SwiperSlide
+                  key={testimonial.id}
+                  className="!flex !items-center !justify-center !h-auto"
+                >
+                  <div className="w-full px-2">
+                    <TestimonialCard
+                      testimonial={testimonial}
+                      isActive={isActive}
+                    />
+                  </div>
+                </SwiperSlide>
+              );
+            })}
 
-            </Swiper>
+          </Swiper>
 
-            {/* Unified Navigation and Pagination Container */}
-            <div className="flex justify-center items-center space-x-6 absolute bottom-0 left-0 right-0 z-10 w-full theme-bg-primary">
+          {/* Unified Navigation and Pagination Container */}
+          <div className="flex justify-center items-center space-x-6 absolute bottom-0 left-0 right-0 z-10 w-full theme-bg-primary">
 
-              {/* Previous Button */}
-              <div className={`${prevButtonClass} w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center transition-all hover:bg-indigo-700 hover:scale-110 cursor-pointer shadow-lg active:scale-95`}>
-                <i className="ri-arrow-left-s-line text-2xl"></i>
-              </div>
-
-              {/* Pagination Dots */}
-              <div className={`${paginationClass} flex space-x-4 text-center justify-center theme-primary`}></div>
-
-              {/* Next Button */}
-              <div className={`${nextButtonClass} w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center transition-all hover:bg-indigo-700 hover:scale-110 cursor-pointer shadow-lg active:scale-95`}>
-                <i className="ri-arrow-right-s-line text-2xl"></i>
-              </div>
+            {/* Previous Button */}
+            <div className={`${prevButtonClass} w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center transition-all hover:bg-indigo-700 hover:scale-110 cursor-pointer shadow-lg active:scale-95`}>
+              <i className="ri-arrow-left-s-line text-2xl"></i>
             </div>
+
+            {/* Pagination Dots */}
+            <div className={`${paginationClass} flex space-x-4 text-center justify-center theme-primary`}></div>
+
+            {/* Next Button */}
+            <div className={`${nextButtonClass} w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center transition-all hover:bg-indigo-700 hover:scale-110 cursor-pointer shadow-lg active:scale-95`}>
+              <i className="ri-arrow-right-s-line text-2xl"></i>
+            </div>
+          </div>
 
         </div>
 

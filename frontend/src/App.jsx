@@ -40,6 +40,7 @@ import {
 import Navbar from '../src/common/Navbar'
 import Footer from '../src/common/Fotter'
 import ConstructionManagementSoftware from './components/services/ConstructionManagementSoftware'
+import BlogDetail from './components/Blogs/BlogDetail'
 
 // Page transition variants
 const pageVariants = {
@@ -188,7 +189,7 @@ function App() {
               <Terms />
             </motion.div>
           } />
-          
+
           {/* Digital Marketing Services */}
           <Route path="/services/social-media-marketing" element={
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
@@ -205,7 +206,7 @@ function App() {
               <GoogleAdwords />
             </motion.div>
           } />
-          
+
           {/* Bulk Marketing Services */}
           <Route path="/services/bulk-sms" element={
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
@@ -227,7 +228,7 @@ function App() {
               <VoiceCall />
             </motion.div>
           } />
-          
+
           {/* Software Services */}
           <Route path="/services/website-design" element={
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
@@ -254,7 +255,7 @@ function App() {
               <WhatsAppMarketingSoftware />
             </motion.div>
           } />
-          
+
           {/* Design Services */}
           <Route path="/services/graphics-design" element={
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
@@ -281,7 +282,7 @@ function App() {
               <VideoEditing />
             </motion.div>
           } />
-          
+
           {/* Influencer Marketing */}
           <Route path="/services/influencer-marketing" element={
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
@@ -289,15 +290,23 @@ function App() {
             </motion.div>
           } />
 
-           <Route path="/services/construction-management-software" element={
+          <Route path="/services/construction-management-software" element={
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <ConstructionManagementSoftware />
             </motion.div>
           } />
+
+
+          <Route path="/Blogs/BlogDetail" element={
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <BlogDetail />
+            </motion.div>
+          } />
+
         </Routes>
       </AnimatePresence>
 
-       <Footer /> 
+      <Footer />
     </>
   )
 }

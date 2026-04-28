@@ -6,8 +6,8 @@ import secimg from "../assets/Team/Sarvesh.png";
 import thirdimg from "../assets/Team/ITManeger.jpg";
 import fourthimg from "../assets/Team/Salesmaneger.png";
 import fifthimg from "../assets/Team/Socialmediahead.png";
-import visionImg from "../assets/vision.png";
-import missionImg from "../assets/mission.png";
+import visionImg from "/vision-img.png";
+import missionImg from "/mission-img.png";
 
 /* ================= STATS ================= */
 const Stat = ({ value, label }) => (
@@ -187,7 +187,7 @@ function Aboutus() {
       education: "North Maharashtra University , Master of Science (MS).",
     },
 
-     {
+    {
       name: "Firoz Shaik",
       title: "Digital Marketing Manager",
       description: "Expertise in digital marketing with a strong focus on building brand visibility and driving sustainable online growth. Proven experience across SEO, paid advertising, social media marketing, and content strategy to deliver measurable results. Skilled in combining creative storytelling with data-driven insights to optimize campaign performance. Adept at working across multiple industries to create tailored digital solutions. Committed to building trust, engagement, and long-term brand value through consistent and impactful digital experiences.",
@@ -217,9 +217,9 @@ function Aboutus() {
       const firstSection = document.querySelector('.theme-bg-primary');
       if (firstSection) {
         setTimeout(() => {
-          firstSection.scrollIntoView({ 
-            behavior: 'smooth', 
-            block: 'start' 
+          firstSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
           });
         }, 100); // Small delay to ensure component is mounted
       }
@@ -233,8 +233,10 @@ function Aboutus() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Image - Left side */}
           <div className="flex justify-center lg:justify-center">
-            <div className="icon-container">
-              <img src={visionImg} alt="Vision" className="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain icon-adaptive" />
+            <div className="relative theme-border-secondary theme-shadow-md theme-bg-secondary p-8 md:p-12 rounded-3xl">
+              <div className="icon-container">
+                <img src={visionImg} alt="Vision" className=" md:w-100  lg:w-100 border-2 rounded-md" />
+              </div>
             </div>
           </div>
 
@@ -277,12 +279,9 @@ function Aboutus() {
           <div className="flex justify-center lg:justify-center">
             <div className="relative theme-border-secondary theme-shadow-md theme-bg-secondary p-8 md:p-12 rounded-3xl">
               <div className="icon-container mb-4 md:mb-6 mx-auto w-fit">
-                <img src={missionImg} alt="Mission" className="w-16 h-16 md:w-20 md:h-20 object-contain icon-adaptive" />
+                <img src={missionImg} alt="Mission" className=" md:w-100  lg:w-100 border-2 rounded-md" />
               </div>
-              <div className="flex justify-center gap-4 md:gap-6 text-indigo-500">
-                <Cog className="w-5 h-5 md:w-6 md:h-6" />
-                <Cog className="w-5 h-5 md:w-6 md:h-6" />
-              </div>
+
             </div>
           </div>
         </div>
@@ -298,7 +297,7 @@ function Aboutus() {
             className="rounded-2xl w-fit h-fit theme-border-secondary theme-shadow-md theme-bg-secondary rounded-3xl grid grid-cols-2 gap-6 md:gap-8 py-10 md:py-10 px-6 md:px-11 shadow-xl"
           >
             {/* Years Experience - 100% achieved */}
-            <motion.div 
+            <motion.div
               className="flex flex-col items-center p-4"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -308,10 +307,10 @@ function Aboutus() {
               <div className="relative w-28 h-28 md:w-30 md:h-30">
                 <svg className="w-full h-full transform -rotate-90">
                   <circle cx="50%" cy="50%" r="42%" stroke="#fde8dc" strokeWidth="12" fill="none" className="dark:stroke-gray-700" />
-                  <circle 
-                    cx="50%" cy="50%" r="42%" 
-                    stroke="url(#orangeGradient)" 
-                    strokeWidth="12" 
+                  <circle
+                    cx="50%" cy="50%" r="42%"
+                    stroke="url(#orangeGradient)"
+                    strokeWidth="12"
                     fill="none"
                     strokeLinecap="round"
                     strokeDasharray="264"
@@ -335,7 +334,7 @@ function Aboutus() {
             </motion.div>
 
             {/* Total Clients - 100% achieved */}
-            <motion.div 
+            <motion.div
               className="flex flex-col items-center p-4"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -345,10 +344,10 @@ function Aboutus() {
               <div className="relative w-28 h-28 md:w-30 md:h-30">
                 <svg className="w-full h-full transform -rotate-90">
                   <circle cx="50%" cy="50%" r="42%" stroke="#fde8dc" strokeWidth="12" fill="none" className="dark:stroke-gray-700" />
-                  <circle 
-                    cx="50%" cy="50%" r="42%" 
-                    stroke="url(#orangeGradient)" 
-                    strokeWidth="12" 
+                  <circle
+                    cx="50%" cy="50%" r="42%"
+                    stroke="url(#orangeGradient)"
+                    strokeWidth="12"
                     fill="none"
                     strokeLinecap="round"
                     strokeDasharray="264"
@@ -366,7 +365,7 @@ function Aboutus() {
             </motion.div>
 
             {/* Client Retention - 90% */}
-            <motion.div 
+            <motion.div
               className="flex flex-col items-center p-4"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -376,10 +375,10 @@ function Aboutus() {
               <div className="relative w-28 h-28 md:w-30 md:h-30">
                 <svg className="w-full h-full transform -rotate-90">
                   <circle cx="50%" cy="50%" r="42%" stroke="#fde8dc" strokeWidth="12" fill="none" className="dark:stroke-gray-700" />
-                  <circle 
-                    cx="50%" cy="50%" r="42%" 
-                    stroke="url(#orangeGradient)" 
-                    strokeWidth="12" 
+                  <circle
+                    cx="50%" cy="50%" r="42%"
+                    stroke="url(#orangeGradient)"
+                    strokeWidth="12"
                     fill="none"
                     strokeLinecap="round"
                     strokeDasharray="264"
@@ -397,7 +396,7 @@ function Aboutus() {
             </motion.div>
 
             {/* Project Completions - 100% achieved */}
-            <motion.div 
+            <motion.div
               className="flex flex-col items-center p-4"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -407,10 +406,10 @@ function Aboutus() {
               <div className="relative w-28 h-28 md:w-30 md:h-30">
                 <svg className="w-full h-full transform -rotate-90">
                   <circle cx="50%" cy="50%" r="42%" stroke="#fde8dc" strokeWidth="12" fill="none" className="dark:stroke-gray-700" />
-                  <circle 
-                    cx="50%" cy="50%" r="42%" 
-                    stroke="url(#orangeGradient)" 
-                    strokeWidth="12" 
+                  <circle
+                    cx="50%" cy="50%" r="42%"
+                    stroke="url(#orangeGradient)"
+                    strokeWidth="12"
                     fill="none"
                     strokeLinecap="round"
                     strokeDasharray="264"
@@ -444,8 +443,8 @@ function Aboutus() {
             </h2>
 
             <p className="theme-text-secondary text-base md:text-lg max-w-xl leading-relaxed">
-              With over a decade of experience and hundreds of successful projects, 
-              we've built a reputation for delivering exceptional results. Our commitment 
+              With over a decade of experience and hundreds of successful projects,
+              we've built a reputation for delivering exceptional results. Our commitment
               to excellence is reflected in our high client retention rate.
             </p>
           </motion.div>
@@ -489,293 +488,293 @@ function Aboutus() {
         {/* Our Story - Timeline Section */}
         <section className="theme-bg-primary pt-8 md:pt-0">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-       
 
-          {/* Corporate Milestones Timeline */}
-          <div className="relative p-4 md:p-10 overflow-hidden shadow-2xl rounded-2xl">
-            {/* Background Pattern */}
-            
 
-            {/* Title */}
-            <div className="relative z-10 text-center mb-8 md:mb-12">
-              <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 md:mb-6">
-                Our <span className="theme-text-primary">Milestones</span>
-              </h2>
-            </div>
+            {/* Corporate Milestones Timeline */}
+            <div className="relative p-4 md:p-10 overflow-hidden shadow-2xl rounded-2xl">
+              {/* Background Pattern */}
 
-            {/* Desktop Timeline - Horizontal Shields */}
-            <div className="hidden lg:block relative z-10 pt-11">
-              {/* Connection Line */}
-              <div className="absolute bottom-20 left-[10%] right-[10%] h-1 bg-gradient-to-r from-[#5B8FA3] via-[#6B9B5F] via-[#A67C52] via-[#5B8FA3] to-[#8B5BA3]"></div>
-              
-              <div className="grid grid-cols-5 gap-4 pb-24">
+
+              {/* Title */}
+              <div className="relative z-10 text-center mb-8 md:mb-12">
+                <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 md:mb-6">
+                  Our <span className="theme-text-primary">Milestones</span>
+                </h2>
+              </div>
+
+              {/* Desktop Timeline - Horizontal Shields */}
+              <div className="hidden lg:block relative z-10 pt-11">
+                {/* Connection Line */}
+                <div className="absolute bottom-20 left-[10%] right-[10%] h-1 bg-gradient-to-r from-[#5B8FA3] via-[#6B9B5F] via-[#A67C52] via-[#5B8FA3] to-[#8B5BA3]"></div>
+
+                <div className="grid grid-cols-5 gap-4 pb-24">
+                  {/* Foundation */}
+                  <div className="group relative">
+                    <div className="flex flex-col items-center">
+                      {/* Shield Shape */}
+                      <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                        <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Foundation</h4>
+                        <p className="text-white text-sm leading-relaxed text-center">
+                          Established Fox Aircomm Private Limited as a digital marketing agency in Pune, Maharashtra.
+                        </p>
+                      </div>
+
+                      {/* Bottom Icon Circle */}
+                      <div className="w-16 h-16 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300 mb-4">
+                        <span className="text-2xl">🏢</span>
+                      </div>
+
+                      {/* Year Label */}
+                      <div className="text-3xl font-black text-[#5B8FA3]">2014</div>
+                    </div>
+                  </div>
+
+                  {/* Service Expansion */}
+                  <div className="group relative">
+                    <div className="flex flex-col items-center">
+                      <div className="relative bg-gradient-to-b from-[#6B9B5F] to-[#5A8A4F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                        <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Service Expansion</h4>
+                        <p className="text-white text-sm leading-relaxed text-center">
+                          Expanded services to include SEO, Social Media Marketing, and PPC campaigns for diverse industries.
+                        </p>
+                      </div>
+
+                      <div className="w-16 h-16 bg-white rounded-full border-4 border-[#6B9B5F] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300 mb-4">
+                        <span className="text-2xl">📈</span>
+                      </div>
+
+                      <div className="text-3xl font-black text-[#6B9B5F]">2016-2018</div>
+                    </div>
+                  </div>
+
+                  {/* Multi-Branch System */}
+                  <div className="group relative">
+                    <div className="flex flex-col items-center">
+                      <div className="relative bg-gradient-to-b from-[#A67C52] to-[#8F6B42] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                        <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Multi-Branch System</h4>
+                        <p className="text-white text-sm leading-relaxed text-center">
+                          Established branches in Mumbai and Ahmedabad to serve clients across major business hubs.
+                        </p>
+                      </div>
+
+                      <div className="w-16 h-16 bg-white rounded-full border-4 border-[#A67C52] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300 mb-4">
+                        <span className="text-2xl">🏭</span>
+                      </div>
+
+                      <div className="text-3xl font-black text-[#A67C52]">2019-2021</div>
+                    </div>
+                  </div>
+
+                  {/* Digital Excellence */}
+                  <div className="group relative">
+                    <div className="flex flex-col items-center">
+                      <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                        <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Digital Excellence</h4>
+                        <p className="text-white text-sm leading-relaxed text-center">
+                          Recognized as leading digital marketing agency with 500+ satisfied clients and proven ROI-driven results.
+                        </p>
+                      </div>
+
+                      <div className="w-16 h-16 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300 mb-4">
+                        <span className="text-2xl">🌍</span>
+                      </div>
+
+                      <div className="text-3xl font-black text-[#5B8FA3]">2022-2024</div>
+                    </div>
+                  </div>
+
+                  {/* Future */}
+                  <div className="group relative">
+                    <div className="flex flex-col items-center">
+                      <div className="relative bg-gradient-to-b from-[#8B5BA3] to-[#724A8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 h-72 flex flex-col mb-4">
+                        <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Future</h4>
+                        <p className="text-white text-sm leading-relaxed text-center">
+                          AI-powered marketing solutions and global expansion to transform digital marketing landscape.
+                        </p>
+                      </div>
+
+                      <div className="w-16 h-16 bg-white rounded-full border-4 border-[#8B5BA3] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300 mb-4">
+                        <span className="text-2xl">🚀</span>
+                      </div>
+
+                      <div className="text-3xl font-black text-[#8B5BA3]">Future</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tablet Timeline - 2 Columns */}
+              <div className="hidden md:block lg:hidden relative z-10 pb-24">
+                <div className="grid grid-cols-2 gap-8 mb-16">
+                  {/* Foundation */}
+                  <div className="group relative">
+                    <div className="flex flex-col items-center">
+                      <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                        <h4 className="text-white font-black text-xl mb-3 text-center border-b-2 border-white pb-2">Foundation</h4>
+                        <p className="text-white text-sm leading-relaxed text-center">
+                          Established Fox Aircomm Private Limited as a digital marketing agency in Pune, Maharashtra.
+                        </p>
+                      </div>
+                      <div className="w-16 h-16 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl mb-4">
+                        <span className="text-2xl">🏢</span>
+                      </div>
+                      <div className="text-xl font-black text-[#5B8FA3]">2014</div>
+                    </div>
+                  </div>
+
+                  {/* Service Expansion */}
+                  <div className="group relative">
+                    <div className="flex flex-col items-center">
+                      <div className="relative bg-gradient-to-b from-[#6B9B5F] to-[#5A8A4F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                        <h4 className="text-white font-black text-xl mb-3 text-center border-b-2 border-white pb-2">Service Expansion</h4>
+                        <p className="text-white text-sm leading-relaxed text-center">
+                          Expanded services to include SEO, Social Media Marketing, and PPC campaigns for diverse industries.
+                        </p>
+                      </div>
+                      <div className="w-16 h-16 bg-white rounded-full border-4 border-[#6B9B5F] flex items-center justify-center shadow-xl mb-4">
+                        <span className="text-2xl">📈</span>
+                      </div>
+                      <div className="text-xl font-black text-[#6B9B5F]">2016-2018</div>
+                    </div>
+                  </div>
+
+                  {/* Multi-Branch System */}
+                  <div className="group relative">
+                    <div className="flex flex-col items-center">
+                      <div className="relative bg-gradient-to-b from-[#A67C52] to-[#8F6B42] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                        <h4 className="text-white font-black text-xl mb-3 text-center border-b-2 border-white pb-2">Multi-Branch System</h4>
+                        <p className="text-white text-sm leading-relaxed text-center">
+                          Established branches in Mumbai and Ahmedabad to serve clients across major business hubs.
+                        </p>
+                      </div>
+                      <div className="w-16 h-16 bg-white rounded-full border-4 border-[#A67C52] flex items-center justify-center shadow-xl mb-4">
+                        <span className="text-2xl">🏭</span>
+                      </div>
+                      <div className="text-xl font-black text-[#A67C52]">2019-2021</div>
+                    </div>
+                  </div>
+
+                  {/* Digital Excellence */}
+                  <div className="group relative">
+                    <div className="flex flex-col items-center">
+                      <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                        <h4 className="text-white font-black text-xl mb-3 text-center border-b-2 border-white pb-2">Digital Excellence</h4>
+                        <p className="text-white text-sm leading-relaxed text-center">
+                          Recognized as leading digital marketing agency with 500+ satisfied clients and proven ROI-driven results.
+                        </p>
+                      </div>
+                      <div className="w-16 h-16 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl mb-4">
+                        <span className="text-2xl">🌍</span>
+                      </div>
+                      <div className="text-xl font-black text-[#5B8FA3]">2022-2024</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Future - Centered */}
+                <div className="group relative">
+                  <div className="max-w-sm mx-auto flex flex-col items-center">
+                    <div className="relative bg-gradient-to-b from-[#8B5BA3] to-[#724A8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 h-72 flex flex-col mb-4">
+                      <h4 className="text-white font-black text-xl mb-3 text-center border-b-2 border-white pb-2">Future</h4>
+                      <p className="text-white text-sm leading-relaxed text-center">
+                        Future growth and innovation.
+                      </p>
+                    </div>
+                    <div className="w-16 h-16 bg-white rounded-full border-4 border-[#8B5BA3] flex items-center justify-center shadow-xl mb-4">
+                      <span className="text-2xl">🚀</span>
+                    </div>
+                    <div className="text-3xl font-black text-[#8B5BA3]">Future</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile Timeline - Vertical */}
+              <div className="md:hidden relative z-10 space-y-16">
                 {/* Foundation */}
                 <div className="group relative">
-                  <div className="flex flex-col items-center">
-                    {/* Shield Shape */}
-                    <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                  <div className="relative">
+                    <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
+                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2014</div>
                       <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Foundation</h4>
-                      <p className="text-white text-sm leading-relaxed text-center">
+                      <p className="text-white text-xs leading-relaxed text-center">
                         Established Fox Aircomm Private Limited as a digital marketing agency in Pune, Maharashtra.
                       </p>
                     </div>
-                    
-                    {/* Bottom Icon Circle */}
-                    <div className="w-16 h-16 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300 mb-4">
-                      <span className="text-2xl">🏢</span>
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl">
+                      <span className="text-xl">🏢</span>
                     </div>
-
-                    {/* Year Label */}
-                    <div className="text-3xl font-black text-[#5B8FA3]">2014</div>
                   </div>
                 </div>
 
                 {/* Service Expansion */}
                 <div className="group relative">
-                  <div className="flex flex-col items-center">
-                    <div className="relative bg-gradient-to-b from-[#6B9B5F] to-[#5A8A4F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                  <div className="relative">
+                    <div className="relative bg-gradient-to-b from-[#6B9B5F] to-[#5A8A4F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
+                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2016-2018</div>
                       <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Service Expansion</h4>
-                      <p className="text-white text-sm leading-relaxed text-center">
+                      <p className="text-white text-xs leading-relaxed text-center">
                         Expanded services to include SEO, Social Media Marketing, and PPC campaigns for diverse industries.
                       </p>
                     </div>
-                    
-                    <div className="w-16 h-16 bg-white rounded-full border-4 border-[#6B9B5F] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300 mb-4">
-                      <span className="text-2xl">📈</span>
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-[#6B9B5F] flex items-center justify-center shadow-xl">
+                      <span className="text-xl">📈</span>
                     </div>
-
-                    <div className="text-3xl font-black text-[#6B9B5F]">2016-2018</div>
                   </div>
                 </div>
 
                 {/* Multi-Branch System */}
                 <div className="group relative">
-                  <div className="flex flex-col items-center">
-                    <div className="relative bg-gradient-to-b from-[#A67C52] to-[#8F6B42] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                  <div className="relative">
+                    <div className="relative bg-gradient-to-b from-[#A67C52] to-[#8F6B42] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
+                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2019-2021</div>
                       <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Multi-Branch System</h4>
-                      <p className="text-white text-sm leading-relaxed text-center">
+                      <p className="text-white text-xs leading-relaxed text-center">
                         Established branches in Mumbai and Ahmedabad to serve clients across major business hubs.
                       </p>
                     </div>
-                    
-                    <div className="w-16 h-16 bg-white rounded-full border-4 border-[#A67C52] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300 mb-4">
-                      <span className="text-2xl">🏭</span>
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-[#A67C52] flex items-center justify-center shadow-xl">
+                      <span className="text-xl">🏭</span>
                     </div>
-
-                    <div className="text-3xl font-black text-[#A67C52]">2019-2021</div>
                   </div>
                 </div>
 
                 {/* Digital Excellence */}
                 <div className="group relative">
-                  <div className="flex flex-col items-center">
-                    <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
+                  <div className="relative">
+                    <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
+                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2022-2024</div>
                       <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Digital Excellence</h4>
-                      <p className="text-white text-sm leading-relaxed text-center">
+                      <p className="text-white text-xs leading-relaxed text-center">
                         Recognized as leading digital marketing agency with 500+ satisfied clients and proven ROI-driven results.
                       </p>
                     </div>
-                    
-                    <div className="w-16 h-16 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300 mb-4">
-                      <span className="text-2xl">🌍</span>
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl">
+                      <span className="text-xl">🌍</span>
                     </div>
-
-                    <div className="text-3xl font-black text-[#5B8FA3]">2022-2024</div>
                   </div>
                 </div>
 
                 {/* Future */}
                 <div className="group relative">
-                  <div className="flex flex-col items-center">
-                    <div className="relative bg-gradient-to-b from-[#8B5BA3] to-[#724A8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 h-72 flex flex-col mb-4">
+                  <div className="relative">
+                    <div className="relative bg-gradient-to-b from-[#8B5BA3] to-[#724A8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 group-hover:scale-105  h-64 flex flex-col">
                       <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Future</h4>
-                      <p className="text-white text-sm leading-relaxed text-center">
+                      <p className="text-white text-xs leading-relaxed text-center">
                         AI-powered marketing solutions and global expansion to transform digital marketing landscape.
                       </p>
                     </div>
-                    
-                    <div className="w-16 h-16 bg-white rounded-full border-4 border-[#8B5BA3] flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300 mb-4">
-                      <span className="text-2xl">🚀</span>
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-[#8B5BA3] flex items-center justify-center shadow-xl">
+                      <span className="text-xl">🚀</span>
                     </div>
-
-                    <div className="text-3xl font-black text-[#8B5BA3]">Future</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Tablet Timeline - 2 Columns */}
-            <div className="hidden md:block lg:hidden relative z-10 pb-24">
-              <div className="grid grid-cols-2 gap-8 mb-16">
-                {/* Foundation */}
-                <div className="group relative">
-                  <div className="flex flex-col items-center">
-                    <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
-                      <h4 className="text-white font-black text-xl mb-3 text-center border-b-2 border-white pb-2">Foundation</h4>
-                      <p className="text-white text-sm leading-relaxed text-center">
-                        Established Fox Aircomm Private Limited as a digital marketing agency in Pune, Maharashtra.
-                      </p>
-                    </div>
-                    <div className="w-16 h-16 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl mb-4">
-                      <span className="text-2xl">🏢</span>
-                    </div>
-                    <div className="text-xl font-black text-[#5B8FA3]">2014</div>
-                  </div>
-                </div>
-
-                {/* Service Expansion */}
-                <div className="group relative">
-                  <div className="flex flex-col items-center">
-                    <div className="relative bg-gradient-to-b from-[#6B9B5F] to-[#5A8A4F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
-                      <h4 className="text-white font-black text-xl mb-3 text-center border-b-2 border-white pb-2">Service Expansion</h4>
-                      <p className="text-white text-sm leading-relaxed text-center">
-                        Expanded services to include SEO, Social Media Marketing, and PPC campaigns for diverse industries.
-                      </p>
-                    </div>
-                    <div className="w-16 h-16 bg-white rounded-full border-4 border-[#6B9B5F] flex items-center justify-center shadow-xl mb-4">
-                      <span className="text-2xl">📈</span>
-                    </div>
-                    <div className="text-xl font-black text-[#6B9B5F]">2016-2018</div>
-                  </div>
-                </div>
-
-                {/* Multi-Branch System */}
-                <div className="group relative">
-                  <div className="flex flex-col items-center">
-                    <div className="relative bg-gradient-to-b from-[#A67C52] to-[#8F6B42] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
-                      <h4 className="text-white font-black text-xl mb-3 text-center border-b-2 border-white pb-2">Multi-Branch System</h4>
-                      <p className="text-white text-sm leading-relaxed text-center">
-                        Established branches in Mumbai and Ahmedabad to serve clients across major business hubs.
-                      </p>
-                    </div>
-                    <div className="w-16 h-16 bg-white rounded-full border-4 border-[#A67C52] flex items-center justify-center shadow-xl mb-4">
-                      <span className="text-2xl">🏭</span>
-                    </div>
-                    <div className="text-xl font-black text-[#A67C52]">2019-2021</div>
-                  </div>
-                </div>
-
-                {/* Digital Excellence */}
-                <div className="group relative">
-                  <div className="flex flex-col items-center">
-                    <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-72 flex flex-col mb-4">
-                      <h4 className="text-white font-black text-xl mb-3 text-center border-b-2 border-white pb-2">Digital Excellence</h4>
-                      <p className="text-white text-sm leading-relaxed text-center">
-                        Recognized as leading digital marketing agency with 500+ satisfied clients and proven ROI-driven results.
-                      </p>
-                    </div>
-                    <div className="w-16 h-16 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl mb-4">
-                      <span className="text-2xl">🌍</span>
-                    </div>
-                    <div className="text-xl font-black text-[#5B8FA3]">2022-2024</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Future - Centered */}
-              <div className="group relative">
-                <div className="max-w-sm mx-auto flex flex-col items-center">
-                  <div className="relative bg-gradient-to-b from-[#8B5BA3] to-[#724A8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 h-72 flex flex-col mb-4">
-                    <h4 className="text-white font-black text-xl mb-3 text-center border-b-2 border-white pb-2">Future</h4>
-                    <p className="text-white text-sm leading-relaxed text-center">
-                      Future growth and innovation.
-                    </p>
-                  </div>
-                  <div className="w-16 h-16 bg-white rounded-full border-4 border-[#8B5BA3] flex items-center justify-center shadow-xl mb-4">
-                    <span className="text-2xl">🚀</span>
-                  </div>
-                  <div className="text-3xl font-black text-[#8B5BA3]">Future</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Mobile Timeline - Vertical */}
-            <div className="md:hidden relative z-10 space-y-16">
-              {/* Foundation */}
-              <div className="group relative">
-                <div className="relative">
-                  <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
-                    <div className="text-3xl font-black text-white/80 mb-2 text-center">2014</div>
-                    <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Foundation</h4>
-                    <p className="text-white text-xs leading-relaxed text-center">
-                      Established Fox Aircomm Private Limited as a digital marketing agency in Pune, Maharashtra.
-                    </p>
-                  </div>
-                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl">
-                    <span className="text-xl">🏢</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Service Expansion */}
-              <div className="group relative">
-                <div className="relative">
-                  <div className="relative bg-gradient-to-b from-[#6B9B5F] to-[#5A8A4F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
-                    <div className="text-3xl font-black text-white/80 mb-2 text-center">2016-2018</div>
-                    <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Service Expansion</h4>
-                    <p className="text-white text-xs leading-relaxed text-center">
-                      Expanded services to include SEO, Social Media Marketing, and PPC campaigns for diverse industries.
-                    </p>
-                  </div>
-                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-[#6B9B5F] flex items-center justify-center shadow-xl">
-                    <span className="text-xl">📈</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Multi-Branch System */}
-              <div className="group relative">
-                <div className="relative">
-                  <div className="relative bg-gradient-to-b from-[#A67C52] to-[#8F6B42] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
-                    <div className="text-3xl font-black text-white/80 mb-2 text-center">2019-2021</div>
-                    <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Multi-Branch System</h4>
-                    <p className="text-white text-xs leading-relaxed text-center">
-                      Established branches in Mumbai and Ahmedabad to serve clients across major business hubs.
-                    </p>
-                  </div>
-                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-[#A67C52] flex items-center justify-center shadow-xl">
-                    <span className="text-xl">🏭</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Digital Excellence */}
-              <div className="group relative">
-                <div className="relative">
-                  <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
-                    <div className="text-3xl font-black text-white/80 mb-2 text-center">2022-2024</div>
-                    <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Digital Excellence</h4>
-                    <p className="text-white text-xs leading-relaxed text-center">
-                      Recognized as leading digital marketing agency with 500+ satisfied clients and proven ROI-driven results.
-                    </p>
-                  </div>
-                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl">
-                    <span className="text-xl">🌍</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Future */}
-              <div className="group relative">
-                <div className="relative">
-                  <div className="relative bg-gradient-to-b from-[#8B5BA3] to-[#724A8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 group-hover:scale-105  h-64 flex flex-col">
-                    <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Future</h4>
-                    <p className="text-white text-xs leading-relaxed text-center">
-                      AI-powered marketing solutions and global expansion to transform digital marketing landscape.
-                    </p>
-                  </div>
-                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-14 h-14 bg-white rounded-full border-4 border-[#8B5BA3] flex items-center justify-center shadow-xl">
-                    <span className="text-xl">🚀</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      
-      
+
+
       </div>
     </section>
   );

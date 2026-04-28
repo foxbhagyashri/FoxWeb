@@ -256,7 +256,7 @@ function Navbar() {
                 <span className="w-6 h-6 flex items-center justify-center rounded-lg bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-md">
                   <FiPhoneCall className="text-sm" />
                 </span>
-                <span className="text-base hover:text-orange-400 transition-colors duration-200">
+                <span className="text-base font-bold hover:text-orange-400 transition-colors duration-200">
                   +91 8879864151
                 </span>
               </a>
