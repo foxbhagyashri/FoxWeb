@@ -22,35 +22,15 @@ function Footer() {
               <img
                 src={LOGO}
                 alt="Fox Aircomm Logo"
-                className="w-auto object-contain"
+                className="w-30 object-contain"
               />
             </Link>
 
-            <p className="text-sm theme-text-secondary mb-4 leading-relaxed">
-              Best Digital Marketing Agency. We help businesses grow with
-              innovative, result-driven digital solutions.
+            <p className="text-md font-semibold text-black theme-text-secondary mb-4 leading-relaxed italic">
+           "Empower your brand with India’s trusted digital marketing partner—driving growth, engagement, and success in the digital age."
             </p>
 
-            <div className="flex gap-3 mb-4">
-              {[
-                { icon: "facebook-f", url: "https://www.facebook.com/foxaircommservice/" },
-                { icon: "linkedin-in", url: "https://www.linkedin.com/company/foxaircomm/?originalSubdomain=in" },
-                { icon: "instagram", url: "https://www.instagram.com/fox_aircomm.pvt.ltd/?hl=en" },
-                { icon: "whatsapp", url: "https://wa.me/918879864151" }
-              ].map(
-                (item, i) => (
-                  <a
-                    key={i}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 flex items-center justify-center rounded bg-white text-black dark:hover:shadow-lg dark:hover:shadow-white/20 transition"
-                  >
-                    <i className={`fab fa-${item.icon} text-sm`} />
-                  </a>
-                )
-              )}
-            </div>
+
 
             {/* <div className="flex items-center gap-2">
               <span
@@ -198,8 +178,28 @@ function Footer() {
         <div className="border-t theme-border mt-10 pt-5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-md font-bold theme-text-secondary">
-              © 2025 Fox Aircomm — Best Digital Marketing Agency
+              © 2025 Fox Aircomm Pvt Ltd — Best Digital Marketing Agency
             </p>
+            <div className="flex gap-3">
+              {[
+                { icon: "facebook-f", url: "https://www.facebook.com/foxaircommservice/" },
+                { icon: "linkedin-in", url: "https://www.linkedin.com/company/foxaircomm/?originalSubdomain=in" },
+                { icon: "instagram", url: "https://www.instagram.com/fox_aircomm.pvt.ltd/?hl=en" },
+                { icon: "whatsapp", url: "https://wa.me/918879864151" }
+              ].map(
+                (item, i) => (
+                  <a
+                    key={i}
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 flex items-center justify-center rounded bg-white text-black dark:hover:shadow-lg dark:hover:shadow-white/20 transition"
+                  >
+                    <i className={`fab fa-${item.icon} text-sm`} />
+                  </a>
+                )
+              )}
+            </div>
 
             <div className="flex gap-6">
               {["Terms & Condition", "Privacy Policy"].map((item, i) => {
@@ -211,7 +211,7 @@ function Footer() {
                   <Link
                     key={i}
                     to={routes[item]}
-                    className="text-sm theme-text-secondary hover:text-orange-500 transition"
+                    className="text-md font-bold text-black theme-text-secondary hover:text-orange-500 transition"
                   >
                     {item}
                   </Link>

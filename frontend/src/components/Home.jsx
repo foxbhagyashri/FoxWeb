@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Play,
   Megaphone,
@@ -17,6 +17,7 @@ import landingImg from "../assets/service/landingimg.png";
 import mobileImg from "../assets/home/mobile.png";
 import branchImg from "../assets/home/branch.png";
 
+
 // Import Swiper components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
@@ -28,6 +29,58 @@ import "swiper/css/navigation";
 import Herosection from "./home/Herosection";
 
 function Home() {
+
+
+
+   const [formData, setFormData] = useState({
+      fullName: '',
+      email: '',
+      businessName: '',
+      contactNumber: '',
+      typeOfService: 'Social Media Marketing',
+      consent: false
+    });
+  
+    const [errors, setErrors] = useState({});
+  
+    const handleInputChange = (e) => {
+      const { name, value, type, checked } = e.target;
+      setFormData(prev => ({
+        ...prev,
+        [name]: type === 'checkbox' ? checked : value
+      }));
+    };
+  
+    const validateForm = () => {
+      const newErrors = {};
+      if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
+      if (!formData.email.trim()) newErrors.email = 'Email is required';
+      else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+      if (!formData.consent) newErrors.consent = 'Consent is required';
+      return newErrors;
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const newErrors = validateForm();
+      if (Object.keys(newErrors).length === 0) {
+        // Handle form submission here
+        console.log('Form submitted:', formData);
+        alert('Thank you for your enquiry! We will contact you soon.');
+        onClose();
+        // Reset form
+        setFormData({
+          fullName: '',
+          email: '',
+          businessName: '',
+          contactNumber: '',
+          typeOfService: 'Social Media Marketing',
+          consent: false
+        });
+      } else {
+        setErrors(newErrors);
+      }
+    };
   const navigate = useNavigate();
 
   // Ensure page starts at top
@@ -200,11 +253,11 @@ function Home() {
       {/* Who We Are Section */}
       <div className="page-container py-6">
         <div className="text-center mb-16">
-          <h2 className="section-title mb-4">
-            Who We Are and Why
+          <h2 className=" mb-2 text-3xl font-bold">
+            Who We Are?
           </h2>
-          <h3 className="text-5xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-            Businesses Trust Us?
+          <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+            Why  Businesses Trust Us?
           </h3>
         </div>
 
@@ -301,10 +354,10 @@ function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h2 className="section-title mb-1">
+              <h2 className="font-bold text-3xl mb-1">
                 All the Experience in the
               </h2>
-              <h3 className="text-[clamp(1.875rem,3vw,3rem)] font-bold  bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent ">
+              <h3 className=" text-3xl font-bold  bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent ">
                 Social Media
               </h3>
 
@@ -380,7 +433,7 @@ function Home() {
         {/* Section Heading */}
         <div className="page-container">
           <div className="text-center mb-12">
-            <h2 className="section-title text-center mb-12">
+            <h2 className="font-bold text-3xl text-center mb-12">
               Working With{" "}
               <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">
                 Fox Aircomm
@@ -451,71 +504,104 @@ function Home() {
             {/* RIGHT CARD – CONTACT FORM */}
             <div className="theme-card p-8 rounded-2xl w-full w-[50%] h-full min-h-[500px]">
               {/* Form Fields */}
-              <div className="space-y-4 h-full flex flex-col justify-between">
-                {/* Full Name Field */}
+              <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Full Name */}
                 <div>
-                  <label className="block text-sm font-medium theme-text-primary mb-2">
-                    Full Name
-                  </label>
                   <input
                     type="text"
-                    placeholder="Enter your full name..."
-                    className="w-full px-4 py-3 rounded-lg text-sm theme-input"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    placeholder="Full name*"
+                    className={`w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border ${errors.fullName ? 'border-red-500' : 'theme-border'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
                   />
+                  {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
                 </div>
 
-                {/* Email Address Field */}
+                {/* Email */}
                 <div>
-                  <label className="block text-sm font-medium theme-text-primary mb-2">
-                    Email Address
-                  </label>
                   <input
                     type="email"
-                    placeholder="Enter your email address..."
-                    className="w-full px-4 py-3 rounded-lg text-sm theme-input"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Email address*"
+                    className={`w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border ${errors.email ? 'border-red-500' : 'theme-border'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
                   />
+                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
 
-                {/* Phone Number Field */}
+                {/* Business Name */}
                 <div>
-                  <label className="block text-sm font-medium theme-text-primary mb-2">
-                    Phone Number
-                  </label>
-                  <div className="flex gap-2">
-                    <div className="flex items-center px-3 py-3  theme-text-secondary  ">
-                      <span className="text-sm ">IND +91</span>
-                    </div>
-                    <input
-                      type="tel"
-                      placeholder="Enter Your mobile number"
-                      className="flex-1 px-4 py-3 rounded-lg text-sm theme-input"
-                    />
-                  </div>
-                </div>
-
-                {/* Message Field */}
-                <div className="flex-1">
-                  <label className="block text-sm font-medium theme-text-primary mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    placeholder="Enter your main text here..."
-                    rows="3"
-                    className="w-full px-4 py-3 rounded-lg text-sm theme-input resize-none h-20"
+                  <input
+                    type="text"
+                    name="businessName"
+                    value={formData.businessName}
+                    onChange={handleInputChange}
+                    placeholder="Business Name"
+                    className="w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
 
-                {/* Enquire Now Button */}
-                <div className="pt-4">
-                  <button
-
-                    className="px-8 py-3 w-full rounded-xl font-semibold text-white
-                         bg-gradient-to-r from-orange-500 to-red-500
-                         hover:scale-[1.03] transition-all shadow-lg shadow-orange-500/30"                  >
-                    Enquire Now
-                  </button>
+                {/* Contact Number */}
+                <div>
+                  <input
+                    type="tel"
+                    name="contactNumber"
+                    value={formData.contactNumber}
+                    onChange={handleInputChange}
+                    placeholder="Contact Number"
+                    className="w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
                 </div>
-              </div>
+
+                {/* Type of Service */}
+                <div>
+                  <select
+                    name="typeOfService"
+                    value={formData.typeOfService}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 rounded-lg theme-input theme-text-primary border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="Social Media Marketing">Social Media Marketing</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Mobile App Development">Mobile App Development</option>
+                    <option value="SEO Services">SEO Services</option>
+                    <option value="Content Marketing">Content Marketing</option>
+                    {/* <option value="PPC Advertising">PPC Advertising</option> */}
+                    <option value="Google Adwords">Google Adwords</option>
+                    <option value="Email Marketing">Email Marketing</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+
+                {/* Consent Checkbox */}
+                <div className="space-y-3">
+                  <label className="flex items-start space-x-3">
+                    <input
+                      type="checkbox"
+                      name="consent"
+                      checked={formData.consent}
+                      onChange={handleInputChange}
+                      className={`mt-1 w-4 h-4 rounded border ${errors.consent ? 'border-red-500' : 'theme-border'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                    />
+                    <span className="text-sm theme-text-secondary leading-relaxed">
+                      I authorize company representatives to Call, SMS, RCS, Email or WhatsApp me about its products and offers. This consent overrides any registration for DNC/NDNC.
+                    </span>
+                  </label>
+                  {errors.consent && <p className="text-red-500 text-sm">{errors.consent}</p>}
+                </div>
+
+                {/* Submit Button */}
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg"
+                >
+                  Send Message
+                </motion.button>
+              </form>
             </div>
           </div>
         </div>
@@ -529,8 +615,8 @@ function Home() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
             {/* Left: Features List */}
             <div className="flex-1">
-              <h2 className="text-4xl  font-bold mb-4 py-2">
-                FoxAircomm Advantages:
+              <h2 className="text-3xl  font-bold mb-4 py-2">
+                FoxAircomm Advantages:<br></br>
                 Your Competitive Edge
               </h2>
 
@@ -693,7 +779,7 @@ function Home() {
       {/* Testimonial Section */}
       <section className="min-h-screen flex flex-col justify-center items-center py-10 theme-bg-primary overflow-hidden relative">
         {/* Title */}
-        <h2 className="section-title mb-16">
+        <h2 className="text-3xl font-bold mb-16">
           What  <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">Customers</span> Say
         </h2>
 

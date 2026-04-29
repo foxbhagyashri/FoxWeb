@@ -101,7 +101,7 @@ function Career() {
               <h3 className="text-lg font-semibold theme-text-secondary uppercase tracking-wider">
                 JOB OPENINGS
               </h3>
-              <h2 className="page-title leading-tight">
+              <h2 className="text-3xl font-bold leading-tight">
                 What makes us
                 <span className="block bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">stand out ?</span>
               </h2>

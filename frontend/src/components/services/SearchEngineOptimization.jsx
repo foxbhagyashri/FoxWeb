@@ -129,7 +129,26 @@ function SearchEngineOptimization() {
             </ul>
             <p>Within 90 days:
             </p>
+            <ul className="space-y-3 text-gray-700">
+              <li>Traffic reduced by ~38% (intentional—to remove low-conversion queries)
+
+              </li>
+
+              <li>Conversion rate improved from 0.9% to 2.2%
+
+              </li>
+              <li>Qualified leads increased by 2.4x
+              </li>
+              <li>Average deal value increased by ~30%
+
+              </li>
+            </ul>
+            <p>Results may vary based on industry and competition, but the pattern remains consistent.
+            </p>
+            <p>SEO works when it aligns with buying behavior—not browsing behavior.
+            </p>
           </div>
+
         </div>
       </section>
 
@@ -141,21 +160,29 @@ function SearchEngineOptimization() {
             badge="Services"
             title="SEO Services in Pune — What You Actually Get"
           />
-
-          <div className="grid md:grid-cols-2 gap-6">
+          <p>Most agencies describe SEO as a list of activities.
+            Effective SEO is defined by outcomes.
+          </p>
+          <p>At Foxaircomm, execution focuses on:
+          </p>
+          <div className="grid md:grid-cols-2 gap-6 mt-5">
 
             {[
-              "Technical SEO fixes",
-              "Conversion-focused pages",
-              "Google Maps optimization",
-              "Keyword strategy aligned with inquiries"
+              "Removing technical barriers that limit rankings",
+              "Building pages that turn search traffic into actual business inquiries",
+              "Optimizing Google Maps to increase direct calls and local visibility",
+              "Structuring keyword strategy to move users from search → inquiry",
+              "Tracking performance through lead flow, conversion rates, and revenue signals"
             ].map((item, i) => (
               <div key={i} className="p-6 border rounded-xl">
                 {item}
               </div>
             ))}
 
+
           </div>
+          <p className="mt-4">This approach is especially relevant for enterprises where SEO execution must align with measurable ROI.
+          </p>
         </div>
       </section>
 
@@ -165,24 +192,144 @@ function SearchEngineOptimization() {
 
           <SectionHeader
             badge="Process"
-            title="How Our SEO Strategy Works"
+            title="How Our SEO Strategy Works (Foxaircomm Lead-First SEO Framework™)"
           />
+
+          <p className="text-gray-600 mb-10 max-w-3xl">
+            SEO execution follows a structured system designed for lead generation.
+          </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            {[
-              "Revenue Gap Audit",
-              "Intent Mapping Engine",
-              "Conversion Page Deployment",
-              "Google Maps Optimization",
-              "Tracking & Optimization"
-            ].map((item, i) => (
-              <div key={i} className="bg-white p-6 rounded-xl border">
-                {item}
-              </div>
-            ))}
+            {/* Card 1 */}
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Revenue Gap Audit
+              </h3>
+              <p className="text-sm text-gray-600">
+                Identifies the gap between current visibility and actual business outcomes.
+              </p>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Intent Mapping Engine
+              </h3>
+              <p className="text-sm text-gray-600">
+                Keywords are evaluated using a Lead Probability Index (LPI):
+                <ul>
+                  <li>Commercial intent
+                  </li>
+                  <li>Likelihood of inquiry
+                  </li>
+                  <li>Real conversion behavior
+                  </li>
+                </ul><br></br>
+                This scoring is based on actual conversion patterns—not theoretical keyword value.
+                <br></br>
+                Low-performing keywords are eliminated early.
+
+              </p>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Conversion Page Deployment
+
+              </h3>
+              <p className="text-sm text-gray-600">
+                Pages are structured to guide action:
+                <ul>
+                  <li>Service pages → inquiries
+                  </li>
+                  <li>Supporting content → intent building
+                  </li>
+                  <li>Homepage → authority
+                  </li>
+                </ul>
+              </p>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Google Maps Optimization
+
+              </h3>
+              <p className="text-sm text-gray-600">
+                Focus on:
+                <ul>
+                  <li>Category accuracy
+                  </li>
+                  <li>Proximity signals
+                  </li>
+                  <li>Review and engagement signals
+                  </li>
+                  <li>Engagement actions (calls, clicks, direction requests) that strengthen rankings over time
+                  </li>
+                </ul>
+              </p>
+            </div>
+
+            {/* Card 5 */}
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Tracking & Optimization
+              </h3>
+              <p className="text-sm text-gray-600">
+                Measured through:
+                <ul>
+                  <li>Calls</li>
+                  <li>Inquiries</li>
+                  <li>Conversion rates</li>
+                  <li>Lead quality
+                  </li>
+                </ul><br></br>
+                In simple terms, we rank fewer keywords—but the ones that actually generate inquiries.
+
+              </p>
+            </div>
+
+
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Google Maps SEO in Pune — Why It Drives Faster Results
+
+              </h3>
+              <p className="text-sm text-gray-600">
+                Local search behavior in Pune and PCMC is highly action-driven.
+                <br></br>
+                Users typically:
+
+                <ul>
+                  <li>Search with “near me” intent
+                  </li>
+                  <li>Call directly from listings
+                  </li>
+                  <li>Choose based on reviews and visibility
+                  </li>
+
+                </ul><br></br>
+                Key observations:
+
+
+                <ul>
+                  <li>40–65% of leads come directly from Maps
+                  </li>
+                  <li>Top 3 listings capture the majority of interactions
+                  </li>
+                  <li>Review keywords to improve ranking relevance
+</li>
+<li>Businesses with consistent review velocity outperform static profiles
+</li>
+                </ul>
+              </p>
+            </div>
 
           </div>
+
         </div>
       </section>
 

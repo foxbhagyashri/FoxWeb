@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import {
   Megaphone,
   Mail,
@@ -11,8 +11,13 @@ import {
 } from "lucide-react";
 
 import { motion } from "framer-motion";
+import Enquiry from "../Enquiry";
 
 const Herosection = () => {
+
+
+  const [showEnquiry, setShowEnquiry] = useState(false);
+
   return (
     <div className="grid lg:grid-cols-2 gap-14 items-center page-container py-5">
 
@@ -20,7 +25,7 @@ const Herosection = () => {
       <div className="space-y-8">
         {/* Heading */}
         <div className="space-y-3">
-          <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900">
+          <h1 className="text-4xl md:text-4xl lg:text-4xl font-bold leading-tight text-gray-900">
             Many Business Challenges
             <span className="block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
               One Powerful Solution
@@ -28,12 +33,12 @@ const Herosection = () => {
           </h1>
 
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-indigo-600">
-            Fox Aircomm
+            Fox Aircomm Pvt Ltd
           </h2>
         </div>
 
         {/* Description */}
-        <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl">
+        <p className="text-base md:text-lg text-black-600 dark:text-black-400 leading-relaxed max-w-xl">
           Fox AirComm Pvt. Ltd is a full-stack digital growth agency helping
           brands scale through data-driven marketing, design, and technology.
         </p>
@@ -41,7 +46,7 @@ const Herosection = () => {
         {/* CTA */}
         <div className="flex gap-4 pt-3">
           <button
-            onClick={() => navigate("/contact")}
+            onClick={() => setShowEnquiry(true)}
             className="px-8 py-3 rounded-xl font-semibold text-white
                          bg-gradient-to-r from-orange-500 to-red-500
                          hover:scale-[1.03] transition-all shadow-lg shadow-orange-500/30"
@@ -50,6 +55,8 @@ const Herosection = () => {
           </button>
         </div>
       </div>
+      {/* Enquiry Popup */}
+      <Enquiry isOpen={showEnquiry} onClose={() => setShowEnquiry(false)} />
 
       {/* Right Section - Orbital Animation */}
       <div className="md:flex items-center justify-center animate-fade-in pb-1 hidden md:block">

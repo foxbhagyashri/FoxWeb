@@ -228,7 +228,7 @@ function Aboutus() {
 
   return (
     <section className="theme-bg-primary py-12 md:py-24">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 space-y-16 md:space-y-28">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 space-y-16 ">
         {/* ================= VISION ================= */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
           {/* Image - Left side */}
@@ -246,7 +246,7 @@ function Aboutus() {
               Vision
             </span>
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold theme-text-primary mb-4 md:mb-6 leading-tight">
+            <h2 className="text-3xl md:text-3xl lg:text-3xl font-bold theme-text-primary mb-4 md:mb-6 leading-tight">
               Our Vision Is To Be a Global Digital Growth Partner
             </h2>
 
@@ -265,7 +265,7 @@ function Aboutus() {
               Mission
             </span>
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold theme-text-primary mb-4 md:mb-6 leading-tight">
+            <h2 className="text-3xl md:text-3xl lg:text-3xl font-bold theme-text-primary mb-4 md:mb-6 leading-tight">
               Our Mission Is To Deliver Results Driven Digital Experiences
             </h2>
 
@@ -438,7 +438,7 @@ function Aboutus() {
               Our Achievements
             </span>
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold theme-text-primary mb-4 md:mb-6 leading-tight">
+            <h2 className="text-3xl md:text-3xl lg:text-3xl font-bold theme-text-primary mb-4 md:mb-6 leading-tight">
               Numbers That Speak For Our Success
             </h2>
 
@@ -451,10 +451,10 @@ function Aboutus() {
         </div>
 
         {/* ================= EXPERTISE ================= */}
-        <section className="pt-8 md:pt-14">
+        <section className=" md:pt-4">
           <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24 items-center px-2 md:px-4">
             <div className="text-center md:text-left">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold theme-text-primary mb-4 md:mb-6 pb-2 md:pb-5">
+              <h2 className="text-3xl md:text-3xl lg:text-3xl font-bold theme-text-primary mb-4 md:mb-6 pb-2 md:pb-5">
                 Your Best{" "}
                 <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                   Digital Growth Partner.
@@ -497,13 +497,13 @@ function Aboutus() {
 
               {/* Title */}
               <div className="relative z-10 text-center mb-8 md:mb-12">
-                <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold theme-text-primary mb-4 md:mb-6">
+                <h2 className="text-3xl md:text-3xl lg:text-3xl font-bold theme-text-primary mb-2 md:mb-6">
                   Our <span className="theme-text-primary">Milestones</span>
                 </h2>
               </div>
 
               {/* Desktop Timeline - Horizontal Shields */}
-              <div className="hidden lg:block relative z-10 pt-11">
+              <div className="hidden lg:block relative z-10 ">
                 {/* Connection Line */}
                 <div className="absolute bottom-20 left-[10%] right-[10%] h-1 bg-gradient-to-r from-[#5B8FA3] via-[#6B9B5F] via-[#A67C52] via-[#5B8FA3] to-[#8B5BA3]"></div>
 
@@ -525,7 +525,7 @@ function Aboutus() {
                       </div>
 
                       {/* Year Label */}
-                      <div className="text-3xl font-black text-[#5B8FA3]">2014</div>
+                      <div className="text-3xl font-black text-[#5B8FA3]">2016</div>
                     </div>
                   </div>
 
@@ -597,7 +597,7 @@ function Aboutus() {
                         <span className="text-2xl">🚀</span>
                       </div>
 
-                      <div className="text-3xl font-black text-[#8B5BA3]">Future</div>
+                      <div className="text-3xl font-black text-[#8B5BA3]">2025-2026</div>
                     </div>
                   </div>
                 </div>
@@ -618,7 +618,7 @@ function Aboutus() {
                       <div className="w-16 h-16 bg-white rounded-full border-4 border-[#5B8FA3] flex items-center justify-center shadow-xl mb-4">
                         <span className="text-2xl">🏢</span>
                       </div>
-                      <div className="text-xl font-black text-[#5B8FA3]">2014</div>
+                      <div className="text-xl font-black text-[#5B8FA3]">2016</div>
                     </div>
                   </div>
 
@@ -683,7 +683,7 @@ function Aboutus() {
                     <div className="w-16 h-16 bg-white rounded-full border-4 border-[#8B5BA3] flex items-center justify-center shadow-xl mb-4">
                       <span className="text-2xl">🚀</span>
                     </div>
-                    <div className="text-3xl font-black text-[#8B5BA3]">Future</div>
+                    <div className="text-3xl font-black text-[#8B5BA3]">2025-2026</div>
                   </div>
                 </div>
               </div>
@@ -694,7 +694,7 @@ function Aboutus() {
                 <div className="group relative">
                   <div className="relative">
                     <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
-                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2014</div>
+                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2016</div>
                       <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Foundation</h4>
                       <p className="text-white text-xs leading-relaxed text-center">
                         Established Fox Aircomm Private Limited as a digital marketing agency in Pune, Maharashtra.
@@ -710,7 +710,7 @@ function Aboutus() {
                 <div className="group relative">
                   <div className="relative">
                     <div className="relative bg-gradient-to-b from-[#6B9B5F] to-[#5A8A4F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
-                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2016-2018</div>
+                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2017-2020</div>
                       <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Service Expansion</h4>
                       <p className="text-white text-xs leading-relaxed text-center">
                         Expanded services to include SEO, Social Media Marketing, and PPC campaigns for diverse industries.
@@ -726,7 +726,7 @@ function Aboutus() {
                 <div className="group relative">
                   <div className="relative">
                     <div className="relative bg-gradient-to-b from-[#A67C52] to-[#8F6B42] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
-                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2019-2021</div>
+                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2020-2022</div>
                       <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Multi-Branch System</h4>
                       <p className="text-white text-xs leading-relaxed text-center">
                         Established branches in Mumbai and Ahmedabad to serve clients across major business hubs.
@@ -742,7 +742,7 @@ function Aboutus() {
                 <div className="group relative">
                   <div className="relative">
                     <div className="relative bg-gradient-to-b from-[#5B8FA3] to-[#4A7C8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 transform group-hover:scale-105 transition-all duration-300 h-64 flex flex-col">
-                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2022-2024</div>
+                      <div className="text-3xl font-black text-white/80 mb-2 text-center">2023-2025</div>
                       <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Digital Excellence</h4>
                       <p className="text-white text-xs leading-relaxed text-center">
                         Recognized as leading digital marketing agency with 500+ satisfied clients and proven ROI-driven results.
@@ -758,7 +758,7 @@ function Aboutus() {
                 <div className="group relative">
                   <div className="relative">
                     <div className="relative bg-gradient-to-b from-[#8B5BA3] to-[#724A8F] rounded-t-3xl rounded-b-full border-4 border-white shadow-2xl p-6 pb-10 group-hover:scale-105  h-64 flex flex-col">
-                      <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">Future</h4>
+                      <h4 className="text-white font-black text-lg mb-3 text-center border-b-2 border-white pb-2">2026</h4>
                       <p className="text-white text-xs leading-relaxed text-center">
                         AI-powered marketing solutions and global expansion to transform digital marketing landscape.
                       </p>

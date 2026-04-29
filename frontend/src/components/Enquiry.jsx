@@ -55,26 +55,26 @@ const Enquiry = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-<AnimatePresence>
-  <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
-    
-    {/* Backdrop */}
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="absolute inset-0 bg-black/60 backdrop-blur-sm z-[9999]"
-      onClick={onClose}
-    />
+    <AnimatePresence>
+      <div className="fixed inset-0 z-[10000] flex items-center justify-center p-4">
 
-    {/* Modal */}
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.9, y: 20 }}
-      transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
-      className="relative theme-bg-card rounded-2xl shadow-2xl max-w-lg w-full mx-4 my-8 md:my-12 z-[10001]"
-    >
+        {/* Backdrop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm z-[9999]"
+          onClick={onClose}
+        />
+
+        {/* Modal */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
+          className="relative theme-bg-card rounded-2xl shadow-2xl max-w-lg w-full mx-4 my-8 md:my-12 z-[10001]"
+        >
 
           {/* Close Button */}
           <button
