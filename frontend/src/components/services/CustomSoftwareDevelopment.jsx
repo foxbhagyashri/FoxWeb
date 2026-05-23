@@ -1,165 +1,300 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import { Link } from "react-router-dom";
+// import { Helmet } from "react-helmet";
+
+/* Section Header */
+const SectionHeader = ({ badge, title }) => (
+  <div className="max-w-4xl mb-12">
+    <span className="inline-block mb-4 px-4 py-1.5 text-sm font-semibold text-[#0529a0] border border-[#0529a0]/20 rounded-full bg-white">
+      {badge}
+    </span>
+
+    <h2 className="text-3xl md:text-4xl font-bold text-[#0529a0] leading-tight mb-4">
+      {title}
+    </h2>
+
+    <div className="w-16 h-1 bg-[#f85415] rounded"></div>
+  </div>
+);
+
+const faqData = [
+  {
+    question:
+      "What is construction management software used for?",
+    answer:
+      "Construction management software helps businesses manage projects, labor, contractors, budgets, timelines, billing, reports, and communication from a single platform.",
+  },
+  {
+    question:
+      "Can Foxaircomm build custom construction management software?",
+    answer:
+      "Yes. Foxaircomm develops customized construction management software solutions based on your workflow, team structure, reporting needs, and project requirements.",
+  },
+  {
+    question:
+      "Which construction businesses benefit from this software?",
+    answer:
+      "Builders, contractors, infrastructure companies, architects, civil engineers, real estate developers, and project management firms benefit significantly from construction software solutions.",
+  },
+  {
+    question:
+      "Can the software manage multiple construction projects?",
+    answer:
+      "Yes. The software can manage multiple ongoing projects, contractor teams, budgets, progress tracking, approvals, and reporting through a centralized dashboard.",
+  },
+];
 
 function CustomSoftwareDevelopment() {
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isMobile, setIsMobile] = useState(false);
-  const [loadedImages, setLoadedImages] = useState({});
-  const containerRef = useRef(null);
-
-  const imageUrls = [
-    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1920&q=80",
-    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&q=80",
-    "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=1920&q=80"
-  ];
-
-  const features = [
-    { icon: "💻", title: "Custom Applications", desc: "Tailored software solutions built specifically for your business needs" },
-    { icon: "🔌", title: "API Integration", desc: "Seamless integration with third-party services and existing systems" },
-    { icon: "☁️", title: "Cloud Solutions", desc: "Scalable cloud-based applications for modern business operations" },
-    { icon: "📱", title: "Cross-Platform", desc: "Applications that work seamlessly across web, mobile, and desktop" },
-    { icon: "🔒", title: "Security First", desc: "Enterprise-grade security built into every solution" },
-    { icon: "⚡", title: "Agile Development", desc: "Fast, iterative development with regular updates and feedback" }
-  ];
-
-  const expertise = [
-    { title: "Enterprise Software", desc: "Large-scale business applications", icon: "🏢" },
-    { title: "CRM Systems", desc: "Customer relationship management", icon: "👥" },
-    { title: "ERP Solutions", desc: "Enterprise resource planning", icon: "📊" },
-    { title: "Automation Tools", desc: "Business process automation", icon: "🤖" }
-  ];
-
-  useEffect(() => {
-    const loadImages = async () => {
-      const promises = imageUrls.map((url, index) =>
-        new Promise((resolve) => {
-          const img = new Image();
-          img.src = url;
-          img.onload = () => { setLoadedImages((prev) => ({ ...prev, [index]: true })); resolve(); };
-          img.onerror = () => resolve();
-        })
-      );
-      await Promise.all(promises);
-    };
-    loadImages();
-  }, []);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    if (containerRef.current) { setScrollY(-containerRef.current.getBoundingClientRect().top); }
-  }, []);
-
-  const handleMouseMove = useCallback((e) => {
-    if (isMobile) return;
-    setMousePosition({ x: (e.clientX / window.innerWidth - 0.5) * 2, y: (e.clientY / window.innerHeight - 0.5) * 2 });
-  }, [isMobile]);
-
-  useEffect(() => {
-    let ticking = false;
-    const onScroll = () => { if (!ticking) { window.requestAnimationFrame(() => { handleScroll(); ticking = false; }); ticking = true; } };
-    handleScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("mousemove", handleMouseMove); };
-  }, [handleScroll, handleMouseMove]);
-
   return (
-    <motion.div ref={containerRef} className="overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-      <style>{`
-        .parallax-layer { will-change: transform; transform-style: preserve-3d; }
-        .float-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-      `}</style>
+    <div className="overflow-hidden bg-white">
 
-      {/* Hero Parallax Section */}
-      <div className="relative min-h-screen overflow-hidden bg-gray-900">
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${imageUrls[0]})`, transform: `translateY(${scrollY * 0.15}px) translateX(${mousePosition.x * 5}px) scale(${1.1 + scrollY * 0.0001})`, opacity: loadedImages[0] ? 1 : 0 }} />
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${imageUrls[1]})`, transform: `translateY(${scrollY * 0.25}px) scale(1.15)`, opacity: loadedImages[1] ? 0.4 : 0, mixBlendMode: "overlay" }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-800/50 to-black/90" />
-        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-blue-500/20 blur-3xl float-animation" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-cyan-500/20 blur-3xl float-animation" style={{ animationDelay: "2s" }} />
+      {/* SEO SECTION */}
+      {/* <Helmet> */}
+        <title>
+          Construction Management Software Company in Pune | Foxaircomm
+        </title>
 
-        <div className="relative z-10 min-h-screen flex items-center justify-center px-4">
-          <div className="text-center" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-sm font-semibold bg-blue-500/20 text-blue-300 backdrop-blur-sm border border-blue-500/30" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-              Software Solutions
-            </motion.span>
-            <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
-              Custom Software Development
-            </motion.h1>
-            <motion.p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-white/80" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-              Build powerful, scalable software solutions tailored to your business requirements
-            </motion.p>
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-              <Link to="/contact" className="px-8 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-lg shadow-blue-500/30">Get Started</Link>
-              <Link to="/services" className="px-8 py-3 border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white/10 transition-all">All Services</Link>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+        <meta
+          name="description"
+          content="Foxaircomm develops custom construction management software in Pune for builders, contractors, and infrastructure companies. Manage projects, contractors, budgets, billing, reporting, inventory, and site operations through one centralized platform."
+        />
 
-      {/* Features Section */}
-      <section className="theme-bg-primary py-20 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold bg-blue-500 text-white" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>What We Offer</motion.span>
-            <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Software Development Features</motion.h2>
+        <meta
+          name="keywords"
+          content="Construction Management Software Pune, Construction Software Development Pune, Builder Management Software, Contractor Management Software, Construction ERP Software Pune, Real Estate Software Development Pune, Infrastructure Project Management Software, Foxaircomm"
+        />
+
+        <link
+          rel="canonical"
+          href="https://www.foxaircomm.com/construction-management-software-pune"
+        />
+
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Construction Management Software Company in Pune"
+        />
+
+        <meta
+          property="og:description"
+          content="Custom construction management software solutions for builders, contractors, and infrastructure companies in Pune."
+        />
+
+        <meta
+          property="og:url"
+          content="https://www.foxaircomm.com/construction-management-software-pune"
+        />
+
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta
+          name="twitter:title"
+          content="Construction Management Software Company in Pune"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Foxaircomm develops scalable construction management software for project tracking, contractor management, budgeting, billing, reporting, and operational automation."
+        />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "Construction Management Software",
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "Web",
+            description:
+              "Custom construction management software developed for builders, contractors, infrastructure companies, and real estate developers in Pune.",
+            provider: {
+              "@type": "Organization",
+              name: "Foxaircomm",
+              url: "https://www.foxaircomm.com",
+            },
+            areaServed: {
+              "@type": "City",
+              name: "Pune",
+            },
+          })}
+        </script>
+      {/* </Helmet> */}
+
+      {/* HERO */}
+      <section className="bg-[#0529a0] text-white py-24 px-4 text-center">
+        <div className="max-w-5xl mx-auto">
+
+          <span className="inline-block bg-white/10 border border-white/20 text-sm px-4 py-1.5 rounded-full mb-6">
+            Construction Management Software Company in Pune
+          </span>
+
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            Construction Management Software in Pune for Builders & Contractors
+          </h1>
+
+          <p className="text-gray-200 mb-4 leading-relaxed">
+            Construction projects fail when communication, timelines,
+            contractors, budgets, and approvals are managed manually.
+            Delays, cost overruns, and project confusion become inevitable.
+          </p>
+
+          <p className="text-gray-200 mb-4 leading-relaxed">
+            Foxaircomm develops construction management software designed
+            for builders, contractors, developers, and infrastructure companies
+            that need complete visibility across projects, teams, billing,
+            materials, and site operations.
+          </p>
+
+          <p className="text-gray-200 mb-8 leading-relaxed">
+            From project planning and contractor tracking to budgeting,
+            reporting, attendance, and billing management, our software
+            centralizes everything into one scalable platform.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              to="/contact"
+              className="bg-[#f85415] px-8 py-4 rounded-xl font-semibold hover:bg-orange-600 transition"
+            >
+              Book Free Demo
+            </Link>
+
+            <Link
+              to="/contact"
+              className="border border-white/30 px-8 py-4 rounded-xl font-semibold"
+            >
+              Request Consultation
+            </Link>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((item, index) => (
-              <motion.div key={index} className="p-8 rounded-2xl theme-bg-card border theme-border shadow-sm hover:shadow-xl transition-all duration-300 group" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 transition-transform">{item.icon}</div>
-                <h3 className="text-xl font-bold theme-text-primary mb-3">{item.title}</h3>
-                <p className="theme-text-secondary">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+
         </div>
       </section>
 
-      {/* Parallax CTA Section */}
-      <div className="relative min-h-[60vh] overflow-hidden bg-gray-900">
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${imageUrls[2]})`, transform: `translateY(${scrollY * 0.1}px) scale(1.05)`, opacity: loadedImages[2] ? 1 : 0 }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-slate-900/50 to-black/70" />
-        <div className="relative z-10 min-h-[60vh] flex items-center justify-center px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 text-white" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Ready to Build Your Custom Software?</motion.h2>
-            <motion.p className="text-lg mb-8 text-white/80 max-w-2xl mx-auto" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Transform your ideas into powerful software solutions</motion.p>
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <Link to="/contact" className="px-10 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-xl">Contact Us Today</Link>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+      {/* DIFFERENCE */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
 
-      {/* Expertise Section */}
-      <section className="theme-bg-primary py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold bg-blue-500 text-white" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Solutions</motion.span>
-            <motion.h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Software Solutions</motion.h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {expertise.map((item, index) => (
-              <motion.div key={index} className="p-8 rounded-2xl theme-bg-card border theme-border shadow-sm hover:shadow-xl transition-all duration-300" initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <div className="flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-2xl flex-shrink-0">{item.icon}</div>
-                  <div><h3 className="text-xl font-bold theme-text-primary mb-2">{item.title}</h3><p className="theme-text-secondary">{item.desc}</p></div>
-                </div>
-              </motion.div>
+          <SectionHeader
+            badge="Why Choose Us"
+            title="What Makes Our Construction Management Software Different"
+          />
+
+          <p className="mb-8 text-gray-600 max-w-4xl">
+            Most construction businesses still rely on spreadsheets,
+            WhatsApp communication, and disconnected systems.
+            Foxaircomm builds centralized software that improves visibility,
+            accountability, and project execution.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+
+            {[
+              "Centralized project tracking across multiple sites",
+              "Real-time contractor, labor, and attendance management",
+              "Material purchase and inventory monitoring",
+              "Budget tracking and expense management",
+              "Approval workflows for faster decision-making",
+              "Custom dashboards for project progress reporting",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-6 border rounded-2xl hover:shadow-lg transition"
+              >
+                <p className="text-gray-700 font-medium">
+                  {item}
+                </p>
+              </div>
             ))}
+
           </div>
+
         </div>
       </section>
-    </motion.div>
+
+      {/* CASE STUDY */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Case Study"
+            title="How Construction Software Improved Project Execution"
+          />
+
+          <div className="bg-white p-10 rounded-3xl border">
+
+            <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+              Challenges Before Software Implementation
+            </h3>
+
+            <ul className="space-y-4 text-gray-700 mb-10">
+              <li>• Builder managing multiple projects across Pune and PCMC</li>
+              <li>• Delayed contractor coordination and approvals</li>
+              <li>• Material tracking issues causing budget overruns</li>
+              <li>• No centralized reporting system</li>
+            </ul>
+
+            <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+              What Foxaircomm Implemented
+            </h3>
+
+            <ul className="space-y-4 text-gray-700 mb-10">
+              <li>• Multi-project management dashboard</li>
+              <li>• Contractor and attendance tracking system</li>
+              <li>• Budget monitoring and expense approvals</li>
+              <li>• Real-time reporting and project status updates</li>
+            </ul>
+
+            <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+              Results Within 6 Months
+            </h3>
+
+            <div className="grid md:grid-cols-4 gap-6">
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h4 className="text-3xl font-bold text-[#f85415] mb-2">
+                  37%
+                </h4>
+                <p className="text-sm text-gray-600">
+                  Faster Project Coordination
+                </p>
+              </div>
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h4 className="text-3xl font-bold text-[#f85415] mb-2">
+                  42%
+                </h4>
+                <p className="text-sm text-gray-600">
+                  Reduction in Reporting Delays
+                </p>
+              </div>
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h4 className="text-3xl font-bold text-[#f85415] mb-2">
+                  29%
+                </h4>
+                <p className="text-sm text-gray-600">
+                  Better Budget Visibility
+                </p>
+              </div>
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h4 className="text-3xl font-bold text-[#f85415] mb-2">
+                  2.5x
+                </h4>
+                <p className="text-sm text-gray-600">
+                  Improved Operational Efficiency
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+    </div>
   );
 }
 

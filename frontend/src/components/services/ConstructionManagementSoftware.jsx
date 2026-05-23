@@ -1,744 +1,529 @@
-import React from 'react'
-import { motion } from "framer-motion";
-import { Link } from 'react-router-dom';
-import {
-  Layers,
-  FileSpreadsheet,
-  BarChart3,
-  Users,
-  Warehouse,
-  Receipt,
-  Building2,
-} from "lucide-react";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const ConstructionManagementSoftware = () => {
+/* Section Header */
+const SectionHeader = ({ badge, title }) => (
+  <div className="max-w-4xl mb-12">
+    <span className="inline-block mb-4 px-4 py-1.5 text-sm font-semibold text-[#0529a0] border border-[#0529a0]/20 rounded-full bg-white">
+      {badge}
+    </span>
+
+    <h2 className="text-3xl md:text-4xl font-bold text-[#0529a0] leading-tight mb-4">
+      {title}
+    </h2>
+
+    <div className="w-16 h-1 bg-[#f85415] rounded"></div>
+  </div>
+);
+
+const faqData = [
+  {
+    question:
+      "What is construction management software used for?",
+    answer:
+      "Construction management software helps businesses manage projects, labor, contractors, budgets, timelines, billing, reports, and communication from a single platform.",
+  },
+  {
+    question:
+      "Can Foxaircomm build custom construction management software?",
+    answer:
+      "Yes. Foxaircomm develops customized construction management software solutions based on your workflow, team structure, reporting needs, and project requirements.",
+  },
+  {
+    question:
+      "Which construction businesses benefit from this software?",
+    answer:
+      "Builders, contractors, infrastructure companies, architects, civil engineers, real estate developers, and project management firms benefit significantly from construction software solutions.",
+  },
+  {
+    question:
+      "Can the software manage multiple construction projects?",
+    answer:
+      "Yes. The software can manage multiple ongoing projects, contractor teams, budgets, progress tracking, approvals, and reporting through a centralized dashboard.",
+  },
+];
+
+function ConstructionManagementSoftware() {
   return (
-     <motion.div className="overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-      <style>{`
-        .parallax-layer { will-change: transform; transform-style: preserve-3d; }
-        .float-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-      `}</style>
-      <div className="relative h-[70vh] md:h-[85vh] overflow-hidden">
+    <div className="overflow-hidden bg-white">
 
-  {/* Background */}
-  <div
-    className="absolute inset-0 bg-cover bg-center scale-110"
-    style={{ backgroundImage: `url('/assets/images/construction-management-system.png')` }}
-  />
+      {/* HERO */}
+      <section className="bg-[#0529a0] text-white py-24 px-4 text-center">
+        <div className="max-w-5xl mx-auto">
 
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black/65" />
-
-  {/* Content */}
-  <div className="relative z-10 h-full flex items-center px-4">
-    <div className="container mx-auto max-w-6xl">
-
-      <div className="max-w-3xl">
-
-        {/* Eyebrow */}
-        <motion.p
-          className="text-sm font-semibold tracking-wide text-white uppercase mb-4"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Custom CRM Software Development for Construction Companies
-        </motion.p>
-
-        {/* Heading */}
-        <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl font-semibold
-                     text-white leading-tight mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.6 }}
-        >
-          Custom CRM Software Development
-          <span className="block text-gray-300">
-            for Construction Companies
+          <span className="inline-block bg-white/10 border border-white/20 text-sm px-4 py-1.5 rounded-full mb-6">
+            Construction Management Software Company in Pune
           </span>
-        </motion.h1>
 
-        {/* Subtitle */}
-        <motion.p
-          className="text-base md:text-lg text-gray-300
-                     leading-relaxed max-w-2xl mb-8"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          Requirement-Driven CRM & ERP Solutions Built for Real Construction Operations
-        </motion.p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            Construction Management Software in Pune for Builders & Contractors
+          </h1>
 
-        {/* CTA */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
-          <Link
-            to="/contact"
-            className="inline-flex items-center justify-center
-                       px-8 py-3.5 bg-white text-gray-900
-                       font-semibold rounded-md
-                       hover:bg-gray-100 transition-colors"
-          >
-            Request a Consultation
-          </Link>
+          <p className="text-gray-200 mb-4 leading-relaxed">
+            Construction projects fail when communication, timelines,
+            contractors, budgets, and approvals are managed manually.
+            Delays, cost overruns, and project confusion become inevitable.
+          </p>
 
-          <Link
-            to="/services"
-            className="inline-flex items-center justify-center
-                       px-8 py-3.5 border border-gray-400
-                       text-gray-200 font-semibold rounded-md
-                       hover:border-white hover:text-white
-                       transition-colors"
-          >
-            View Our Services
-          </Link>
-        </motion.div>
+          <p className="text-gray-200 mb-4 leading-relaxed">
+            Foxaircomm develops construction management software designed
+            for builders, contractors, developers, and infrastructure companies
+            that need complete visibility across projects, teams, billing,
+            materials, and site operations.
+          </p>
 
-      </div>
-    </div>
-  </div>
-</div>
-<section className="container mx-auto max-w-7xl py-14 px-4">
+          <p className="text-gray-200 mb-8 leading-relaxed">
+            From project planning and contractor tracking to budgeting,
+            reporting, attendance, and billing management, our software
+            centralizes everything into one scalable platform.
+          </p>
 
-  <div className="max-w-7xl space-y-8">
-
-    {/* Heading */}
-    <motion.h2
-      className="text-3xl md:text-4xl lg:text-5xl font-bold 
-                 theme-text-primary leading-snug"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      Custom CRM Software Development That Fits Construction Workflows
-    </motion.h2>
-
-    {/* Paragraph */}
-    <motion.p
-      className="theme-text-secondary text-base md:text-lg leading-relaxed 
-                 max-w-7xl"
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.1, duration: 0.6 }}
-    >
-      Most CRM software is built for sales teams. Construction companies don’t
-      work like sales-driven businesses.
-      <br />
-      <br />
-      They operate through{" "}
-      <span className="font-semibold theme-text-primary">
-        projects, sites, labour, materials, assets, vendors, and purchase orders
-      </span>
-      . That’s why ready-made CRM systems fail in construction environments.
-      <br />
-      <br />
-      We specialize in{" "}
-      <span className="font-semibold theme-text-primary">
-        custom CRM software development for construction companies
-      </span>
-      , where the CRM is tightly integrated with ERP, project management,
-      warehouse, asset, and purchase order systems.
-    </motion.p>
-
-  </div>
-</section>
-
-
-<section className="container mx-auto max-w-7xl px-4 py-1">
-
-  {/* Wrapper */}
-  <div className="space-y-12">
-
-    {/* Main Heading */}
-    <motion.h2
-      className="text-4xl font-bold 
-                 text-gray-900 leading-tight"
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-    >
-      What is CRM Software?
-    </motion.h2>
-
-    {/* Paragraphs */}
-    <motion.div
-      className="space-y-6 text-lg md:text-xl text-gray-700 
-                 leading-[1.85] max-w-4xl"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.1, duration: 0.7 }}
-    >
-      <p>
-        <span className="font-bold text-gray-900">CRM software</span> stands for{" "}
-        <span className="font-bold text-gray-900">
-          Customer Relationship Management software
-        </span>
-        .
-      </p>
-
-      <p>
-        CRM software is a system that helps businesses{" "}
-        <span className="font-bold text-gray-900">
-          manage customers, leads, vendors, and all related communication in one
-          place
-        </span>
-        .
-      </p>
-    </motion.div>
-
-    {/* Sub Heading */}
-    <motion.h3
-      className="text-2xl md:text-3xl font-bold text-gray-900"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.15, duration: 0.7 }}
-    >
-      What CRM software does:
-    </motion.h3>
-
-    {/* Grid List */}
-    <motion.div
-      className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.2, duration: 0.7 }}
-    >
-      {/* Card 1 */}
-      <div className="flex items-start gap-4 p-6 rounded-2xl 
-                      border border-gray-200 bg-white shadow-md w-full">
-        <div className="w-12 h-12 flex items-center justify-center 
-                        rounded-xl bg-indigo-50 text-indigo-600 text-xl font-bold">
-          ✓
-        </div>
-        <p className="text-gray-700 text-lg leading-relaxed">
-          Stores{" "}
-          <span className="font-bold text-gray-900">
-            customer & lead details
-          </span>{" "}
-          (name, phone, email, company)
-        </p>
-      </div>
-
-      {/* Card 2 */}
-      <div className="flex items-start gap-4 p-6 rounded-2xl 
-                      border border-gray-200 bg-white shadow-md w-full">
-        <div className="w-12 h-12 flex items-center justify-center 
-                        rounded-xl bg-indigo-50 text-indigo-600 text-xl font-bold">
-          ✓
-        </div>
-        <p className="text-gray-700 text-lg leading-relaxed">
-          Tracks{" "}
-          <span className="font-bold text-gray-900">
-            calls, emails, meetings, and follow-ups
-          </span>
-        </p>
-      </div>
-
-      {/* Card 3 */}
-      <div className="flex items-start gap-4 p-6 rounded-2xl 
-                      border border-gray-200 bg-white shadow-md w-full">
-        <div className="w-12 h-12 flex items-center justify-center 
-                        rounded-xl bg-indigo-50 text-indigo-600 text-xl font-bold">
-          ✓
-        </div>
-        <p className="text-gray-700 text-lg leading-relaxed">
-          Manages the{" "}
-          <span className="font-bold text-gray-900">
-            sales or enquiry lifecycle
-          </span>{" "}
-          (new lead → active → closed)
-        </p>
-      </div>
-
-      {/* Card 4 */}
-      <div className="flex items-start gap-4 p-6 rounded-2xl 
-                      border border-gray-200 bg-white shadow-md w-full">
-        <div className="w-12 h-12 flex items-center justify-center 
-                        rounded-xl bg-indigo-50 text-indigo-600 text-xl font-bold">
-          ✓
-        </div>
-        <p className="text-gray-700 text-lg leading-relaxed">
-          Helps teams{" "}
-          <span className="font-bold text-gray-900">
-            remember who to contact and when
-          </span>
-        </p>
-      </div>
-
-      {/* Card 5 Full Width */}
-      <div className="flex items-start gap-4 p-6 rounded-2xl 
-                      border border-gray-200 bg-white shadow-md w-full md:col-span-2">
-        <div className="w-12 h-12 flex items-center justify-center 
-                        rounded-xl bg-indigo-50 text-indigo-600 text-xl font-bold">
-          ✓
-        </div>
-        <p className="text-gray-700 text-lg leading-relaxed">
-          Gives{" "}
-          <span className="font-bold text-gray-900">
-            dashboards and reports
-          </span>{" "}
-          for better decisions
-        </p>
-      </div>
-    </motion.div>
-  </div>
-</section>
-
-
-<section className="container mx-auto max-w-7xl px-4 py-10">
-
-  <div className="max-w-7xl space-y-10">
-
-    {/* Heading */}
-    <motion.h3
-    as="h3"
-      className="text-3xl font-bold 
-                 text-gray-900 leading-tight"
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-    >
-      Why businesses use CRM software:
-    </motion.h3>
-
-    {/* List Grid */}
-    <motion.div
-      className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.15, duration: 0.7 }}
-    >
-      {/* Item 1 */}
-      <div className="flex items-center gap-4 p-6 rounded-2xl bg-white 
-                      border border-gray-200 shadow-sm hover:shadow-md transition">
-        <div className="w-12 h-12 flex items-center justify-center rounded-xl 
-                        bg-indigo-50 text-indigo-600 text-xl font-bold">
-          ✓
-        </div>
-        <p className="text-lg font-medium text-gray-800">
-          No missed follow-ups
-        </p>
-      </div>
-
-      {/* Item 2 */}
-      <div className="flex items-center gap-4 p-6 rounded-2xl bg-white 
-                      border border-gray-200 shadow-sm hover:shadow-md transition">
-        <div className="w-12 h-12 flex items-center justify-center rounded-xl 
-                        bg-indigo-50 text-indigo-600 text-xl font-bold">
-          ✓
-        </div>
-        <p className="text-lg font-medium text-gray-800">
-          Better customer communication
-        </p>
-      </div>
-
-      {/* Item 3 */}
-      <div className="flex items-center gap-4 p-6 rounded-2xl bg-white 
-                      border border-gray-200 shadow-sm hover:shadow-md transition">
-        <div className="w-12 h-12 flex items-center justify-center rounded-xl 
-                        bg-indigo-50 text-indigo-600 text-xl font-bold">
-          ✓
-        </div>
-        <p className="text-lg font-medium text-gray-800">
-          Organized customer data
-        </p>
-      </div>
-
-      {/* Item 4 */}
-      <div className="flex items-center gap-4 p-6 rounded-2xl bg-white 
-                      border border-gray-200 shadow-sm hover:shadow-md transition">
-        <div className="w-12 h-12 flex items-center justify-center rounded-xl 
-                        bg-indigo-50 text-indigo-600 text-xl font-bold">
-          ✓
-        </div>
-        <p className="text-lg font-medium text-gray-800">
-          Improved sales and service efficiency
-        </p>
-      </div>
-
-      {/* Item 5 Full Width */}
-      <div className="flex items-center gap-4 p-6 rounded-2xl bg-white 
-                      border border-gray-200 shadow-sm hover:shadow-md transition
-                      sm:col-span-2">
-        <div className="w-12 h-12 flex items-center justify-center rounded-xl 
-                        bg-indigo-50 text-indigo-600 text-xl font-bold">
-          ✓
-        </div>
-        <p className="text-lg font-medium text-gray-800">
-          Clear visibility for management
-        </p>
-      </div>
-    </motion.div>
-  </div>
-</section>
-<section className="container mx-auto max-w-7xl px-4 py-5">
-
-  <div className="space-y-14">
-
-    {/* Title */}
-    <motion.div
-      className=" max-w-7xl mx-auto space-y-4"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-    >
-      <h2 className="text-4xl font-extrabold text-gray-900">
-        Simple example:
-      </h2>
-
-      <p className="text-lg text-gray-600 leading-relaxed">
-        This example shows how businesses manage customer data without a CRM and
-        how the same process becomes organized and efficient with a CRM system.
-      </p>
-
-      <p className="text-lg text-gray-600">
-        Without CRM, information is scattered, and follow-ups are missed.
-      </p>
-
-      <p className="text-lg text-gray-600">
-        With CRM, all customer interactions are tracked in one centralized platform.
-      </p>
-    </motion.div>
-
-    {/* Comparison Table */}
-    <motion.div
-      className="grid grid-cols-1 md:grid-cols-2 gap-8"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.1, duration: 0.8 }}
-    >
-      {/* WITHOUT CRM Column */}
-      <div className="rounded-3xl border border-gray-200 bg-white shadow-sm overflow-hidden">
-        <div className="bg-gray-50 px-8 py-6">
-          <h3 className="text-2xl font-bold text-gray-900 text-center">
-            Without CRM
-          </h3>
-        </div>
-
-        <div className="divide-y divide-gray-200">
-          {[
-            "Leads stored in Excel sheets",
-            "Follow-ups managed through WhatsApp",
-            "Calls and discussions are often forgotten",
-            "No clear view of lead status",
-            "Data scattered across tools",
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="px-8 py-6 text-gray-700 text-lg text-center"
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              to="/contact"
+              className="bg-[#f85415] px-8 py-4 rounded-xl font-semibold hover:bg-orange-600 transition"
             >
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>
+              Book Free Demo
+            </Link>
 
-      {/* WITH CRM Column */}
-      <div className="rounded-3xl border border-indigo-200 bg-indigo-50 shadow-sm overflow-hidden">
-        <div className="bg-indigo-600 px-8 py-6">
-          <h3 className="text-2xl font-bold text-white text-center">
-            With CRM
-          </h3>
-        </div>
-
-        <div className="divide-y divide-indigo-200">
-          {[
-            "All leads are stored in one centralized system",
-            "Automatic follow-up reminders and alerts",
-            "Complete call and communication history saved",
-            "Clear visibility of every lead’s current stage",
-            "All customer information in one place",
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="px-8 py-6 text-gray-800 text-lg text-center"
+            <Link
+              to="/contact"
+              className="border border-white/30 px-8 py-4 rounded-xl font-semibold"
             >
-              {item}
-            </div>
-          ))}
+              Request Consultation
+            </Link>
+          </div>
+
         </div>
-      </div>
-    </motion.div>
-  </div>
-</section>
-<section className="container mx-auto max-w-7xl px-4 py-4">
+      </section>
 
-  <motion.div
-    className="max-w-7xl mx-auto rounded-2xl 
-               border border-gray-200 bg-white 
-               shadow-sm px-10 py-9
-               relative overflow-hidden"
-    initial={{ opacity: 0, y: 18 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6 }}
-  >
-    {/* Accent Line */}
-    <div className="absolute left-0 top-0 h-full w-1 bg-indigo-600" />
+      {/* DIFFERENCE */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
 
-    {/* Title */}
-    <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-7">
-      Important note (real-world clarity):
-    </h3>
+          <SectionHeader
+            badge="Why Choose Us"
+            title="What Makes Our Construction Management Software Different"
+          />
 
-    {/* Points */}
-    <div className="space-y-5 text-lg text-gray-700 leading-relaxed">
+          <p className="mb-8 text-gray-600 max-w-4xl">
+            Most construction businesses still rely on spreadsheets,
+            WhatsApp communication, and disconnected systems.
+            Foxaircomm builds centralized software that improves visibility,
+            accountability, and project execution.
+          </p>
 
-      <div className="flex items-start gap-3">
-        <span className="mt-2 w-2.5 h-2.5 rounded-full bg-indigo-600" />
-        <p>
-          <span className="font-semibold text-gray-900">Normal CRM</span> = Focuses
-          mainly on customers & sales
-        </p>
-      </div>
+          <div className="grid md:grid-cols-2 gap-6">
 
-      <div className="flex items-start gap-3">
-        <span className="mt-2 w-2.5 h-2.5 rounded-full bg-indigo-600" />
-        <p>
-          <span className="font-semibold text-gray-900">Custom CRM</span> = Built
-          as per business workflow
-        </p>
-      </div>
+            {[
+              "Centralized project tracking across multiple sites",
+              "Real-time contractor, labor, and attendance management",
+              "Material purchase and inventory monitoring",
+              "Budget tracking and expense management",
+              "Approval workflows for faster decision-making",
+              "Custom dashboards for project progress reporting",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-6 border rounded-2xl hover:shadow-lg transition"
+              >
+                <p className="text-gray-700 font-medium">
+                  {item}
+                </p>
+              </div>
+            ))}
 
-      <div className="flex items-start gap-3">
-        <span className="mt-2 w-2.5 h-2.5 rounded-full bg-indigo-600" />
-        <p>
-          <span className="font-semibold text-gray-900">Construction CRM</span> =
-          CRM + projects + vendors + operations
-        </p>
-      </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* CASE STUDY */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Case Study"
+            title="How Construction Software Improved Project Execution"
+          />
+
+          <div className="bg-white p-10 rounded-3xl border">
+
+            <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+              Challenges Before Software Implementation
+            </h3>
+
+            <ul className="space-y-4 text-gray-700 mb-10">
+              <li>• Builder managing multiple projects across Pune and PCMC</li>
+              <li>• Delayed contractor coordination and approvals</li>
+              <li>• Material tracking issues causing budget overruns</li>
+              <li>• No centralized reporting system</li>
+            </ul>
+
+            <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+              What Foxaircomm Implemented
+            </h3>
+
+            <ul className="space-y-4 text-gray-700 mb-10">
+              <li>• Multi-project management dashboard</li>
+              <li>• Contractor and attendance tracking system</li>
+              <li>• Budget monitoring and expense approvals</li>
+              <li>• Real-time reporting and project status updates</li>
+            </ul>
+
+            <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+              Results Within 6 Months
+            </h3>
+
+            <div className="grid md:grid-cols-4 gap-6">
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h4 className="text-3xl font-bold text-[#f85415] mb-2">
+                  37%
+                </h4>
+                <p className="text-sm text-gray-600">
+                  Faster Project Coordination
+                </p>
+              </div>
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h4 className="text-3xl font-bold text-[#f85415] mb-2">
+                  42%
+                </h4>
+                <p className="text-sm text-gray-600">
+                  Reduction in Reporting Delays
+                </p>
+              </div>
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h4 className="text-3xl font-bold text-[#f85415] mb-2">
+                  29%
+                </h4>
+                <p className="text-sm text-gray-600">
+                  Better Budget Visibility
+                </p>
+              </div>
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h4 className="text-3xl font-bold text-[#f85415] mb-2">
+                  2.5x
+                </h4>
+                <p className="text-sm text-gray-600">
+                  Improved Operational Efficiency
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Modules"
+            title="Construction Management Software Features"
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {[
+              "Project planning and milestone tracking",
+              "Contractor and subcontractor management",
+              "Labor attendance and payroll management",
+              "Material inventory and procurement tracking",
+              "Budget estimation and expense monitoring",
+              "Billing, invoices, and payment tracking",
+              "Site progress reports and image uploads",
+              "Approval workflows and document management",
+              "Real-time analytics and reporting dashboards",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-7 border rounded-2xl hover:shadow-lg transition"
+              >
+                <p className="text-gray-700">{item}</p>
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Process"
+            title="How We Build Construction Management Software"
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {[
+              {
+                title: "Requirement Analysis",
+                desc:
+                  "We study your construction workflow, reporting structure, and operational bottlenecks.",
+              },
+              {
+                title: "Software Planning",
+                desc:
+                  "Modules, dashboards, approval flows, and user roles are structured based on business operations.",
+              },
+              {
+                title: "UI/UX Design",
+                desc:
+                  "User-friendly dashboards are created for project managers, contractors, and admin teams.",
+              },
+              {
+                title: "Development & Integration",
+                desc:
+                  "Core features, automation workflows, and reporting systems are developed and integrated.",
+              },
+              {
+                title: "Testing & Deployment",
+                desc:
+                  "The software is tested across devices, workflows, and user roles before deployment.",
+              },
+              {
+                title: "Support & Scaling",
+                desc:
+                  "Foxaircomm provides ongoing support, upgrades, and scalability for future growth.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white p-7 rounded-2xl border hover:shadow-lg transition"
+              >
+                <h3 className="text-xl font-semibold text-[#0529a0] mb-4">
+                  {item.title}
+                </h3>
+
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* INDUSTRIES */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Industries"
+            title="Who Uses Our Construction Management Software"
+          />
+
+          <div className="grid lg:grid-cols-3 gap-8">
+
+            <div className="border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+                Real Estate Developers
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed">
+                Manage residential and commercial construction projects,
+                approvals, budgeting, and contractor coordination efficiently.
+              </p>
+            </div>
+
+            <div className="border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+                Civil Contractors
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed">
+                Monitor labor, materials, billing, attendance,
+                and execution timelines across multiple sites.
+              </p>
+            </div>
+
+            <div className="border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+                Infrastructure Companies
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed">
+                Handle large-scale project execution, approvals,
+                vendor coordination, and centralized reporting systems.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Pricing"
+            title="Construction Software Development Cost in Pune"
+          />
+
+          <div className="grid md:grid-cols-3 gap-6 text-center">
+
+            <div className="bg-white border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-4">
+                Basic Software
+              </h3>
+
+              <p className="text-3xl font-bold text-[#f85415] mb-2">
+                ₹80K – ₹2L
+              </p>
+
+              <p className="text-gray-600">
+                Small Teams & Contractors
+              </p>
+            </div>
+
+            <div className="bg-white border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-4">
+                Mid-Level ERP
+              </h3>
+
+              <p className="text-3xl font-bold text-[#f85415] mb-2">
+                ₹2L – ₹6L
+              </p>
+
+              <p className="text-gray-600">
+                Multi-Project Businesses
+              </p>
+            </div>
+
+            <div className="bg-white border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-4">
+                Enterprise Solutions
+              </h3>
+
+              <p className="text-3xl font-bold text-[#f85415] mb-2">
+                ₹6L+
+              </p>
+
+              <p className="text-gray-600">
+                Large Infrastructure Companies
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* WHY FAIL */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Challenges"
+            title="Why Construction Businesses Face Operational Delays"
+          />
+
+          <div className="grid md:grid-cols-2 gap-6">
+
+            {[
+              "Manual project tracking and reporting",
+              "No centralized contractor coordination system",
+              "Budget leakages and delayed approvals",
+              "Poor communication between teams and sites",
+              "Lack of real-time project visibility",
+              "Disconnected billing and procurement systems",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="border rounded-2xl p-6"
+              >
+                <p className="text-gray-700">{item}</p>
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-5xl mx-auto">
+
+          <SectionHeader
+            badge="FAQs"
+            title="Frequently Asked Questions"
+          />
+
+          <div className="space-y-6">
+
+            {faqData.map((faq, i) => (
+              <div
+                key={i}
+                className="bg-white border rounded-2xl p-7"
+              >
+                <h3 className="text-xl font-semibold text-[#0529a0] mb-3">
+                  {faq.question}
+                </h3>
+
+                <p className="text-gray-600 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 bg-[#0529a0] text-white text-center px-4">
+        <div className="max-w-4xl mx-auto">
+
+          <h2 className="text-4xl font-bold mb-6">
+            Streamline Your Construction Operations with Smart Software
+          </h2>
+
+          <p className="text-gray-200 text-lg leading-relaxed mb-10">
+            Foxaircomm helps construction businesses automate operations,
+            improve project visibility, and reduce execution delays
+            through custom software solutions.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-5">
+
+            <Link
+              to="/contact"
+              className="bg-[#f85415] hover:bg-orange-600 transition px-8 py-4 rounded-xl font-semibold"
+            >
+              Book Free Consultation
+            </Link>
+
+            <Link
+              to="/contact"
+              className="border border-white/30 px-8 py-4 rounded-xl font-semibold"
+            >
+              Request Software Demo
+            </Link>
+
+          </div>
+
+        </div>
+      </section>
 
     </div>
-  </motion.div>
-</section>
-<section className="container mx-auto max-w-7xl px-4 py-10">
-
-  <div className="max-w-7xl space-y-10">
-
-    {/* Heading */}
-    <motion.h2
-      className="text-4xl  font-bold 
-                 text-gray-900 leading-tight tracking-tight"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-    >
-      Industry Focus: Construction & Project-Based Businesses
-    </motion.h2>
-
-    {/* Intro Text */}
-    <motion.p
-      className="text-lg md:text-xl text-gray-700 leading-relaxed"
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.1, duration: 0.7 }}
-    >
-      Our custom CRM development services are designed for:
-    </motion.p>
-
-    {/* Bullet List */}
-    <motion.ul
-      className="space-y-3 text-lg text-gray-700 pl-8 list-disc"
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.2, duration: 0.7 }}
-    >
-      <li>Construction companies</li>
-      <li>Builders and contractors</li>
-      <li>Real estate developers</li>
-      <li>Infrastructure and project-based organizations</li>
-    </motion.ul>
-
-    {/* Closing Line */}
-    <motion.p
-      className="text-lg md:text-xl text-gray-700 leading-relaxed pt-1"
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.3, duration: 0.7 }}
-    >
-      Especially businesses managing{" "}
-      <span className="font-semibold text-gray-900">
-        multiple projects, sites, vendors, and operational teams
-      </span>
-      .
-    </motion.p>
-
-  </div>
-</section>
-<section className="container mx-auto max-w-7xl px-4 py-5">
-
-  <div className="max-w-7xl space-y-10">
-
-    {/* Heading */}
-    <motion.div
-      className="space-y-4 max-w-4xl"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7 }}
-    >
-      <h2 className="text-3xl font-bold text-gray-900">
-        Core Problems Our Custom CRM Software Solves
-      </h2>
-
-      <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-        From real construction industry experience, we address these challenges:
-      </p>
-    </motion.div>
-
-<motion.div
-  className="grid grid-cols-1 md:grid-cols-2 gap-8"
-  initial={{ opacity: 0, y: 25 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ delay: 0.1, duration: 0.8 }}
->
-  {[
-    {
-      icon: Layers,
-      text: "Disconnected systems for projects, CRM, and operations",
-    },
-    {
-      icon: FileSpreadsheet,
-      text: "Data scattered across Excel, WhatsApp, and manual registers",
-    },
-    {
-      icon: BarChart3,
-      text: "No real-time visibility of project progress and costs",
-    },
-    {
-      icon: Users,
-      text: "Labour attendance and payments handled manually",
-    },
-    {
-      icon: Warehouse,
-      text: "Material loss due to weak warehouse control",
-    },
-  ].map((item, index) => {
-    const Icon = item.icon;
-
-    return (
-      <div
-        key={index}
-        className="group flex items-start gap-5 p-7 rounded-2xl 
-                   border border-gray-200 bg-white shadow-sm
-                   hover:shadow-xl hover:-translate-y-1
-                   transition-all duration-300"
-      >
-        {/* Icon Box (Same Style as Your Example) */}
-        <div
-          className="flex-shrink-0 w-12 h-12 rounded-lg border border-gray-200
-                     flex items-center justify-center text-indigo-600 text-xl
-                     group-hover:border-indigo-300 group-hover:bg-indigo-50
-                     transition"
-        >
-          <Icon className="w-5 h-5" />
-        </div>
-
-        {/* Text */}
-        <p className="text-lg text-gray-800 leading-relaxed font-medium">
-          {item.text}
-        </p>
-      </div>
-    );
-  })}
-</motion.div>
-
-
-
-
-    {/* Divider */}
-<div className="border-t border-gray-200 pt-1" />
-
-    {/* Second Part Grid */}
-<motion.div
-  className="grid grid-cols-1 md:grid-cols-2 gap-8"
-  initial={{ opacity: 0, y: 25 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ delay: 0.15, duration: 0.8 }}
->
-  {[
-    {
-      icon: Receipt,
-      text: "Unapproved purchase orders and budget leakage",
-    },
-    {
-      icon: Building2,
-      text: "No single system for assets, machinery, and vendors",
-    },
-  ].map((item, index) => {
-    const Icon = item.icon;
-
-    return (
-      <div
-        key={index}
-        className="group flex items-start gap-5 p-7 rounded-2xl 
-                   border border-gray-200 bg-white shadow-sm
-                   hover:shadow-xl hover:-translate-y-1
-                   transition-all duration-300"
-      >
-        {/* Icon Box */}
-        <div
-          className="flex-shrink-0 w-12 h-12 rounded-lg border border-gray-200
-                     flex items-center justify-center text-indigo-600 text-xl
-                     group-hover:border-indigo-300 group-hover:bg-indigo-50
-                     transition"
-        >
-          <Icon className="w-5 h-5" />
-        </div>
-
-        {/* Text */}
-        <p className="text-lg text-gray-800 leading-relaxed font-medium">
-          {item.text}
-        </p>
-      </div>
-    );
-  })}
-</motion.div>
-
-    {/* Closing Statement */}
-    <motion.p
-      className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-4xl pt-6"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.2, duration: 0.8 }}
-    >
-      The problem is not the absence of software — it is the absence of a{" "}
-      <span className="font-semibold text-gray-900">
-        custom-built, connected CRM system
-      </span>
-      .
-    </motion.p>
-
-  </div>
-</section>
-
-
-          </motion.div>
-      
-  )
+  );
 }
 
-export default ConstructionManagementSoftware
+export default ConstructionManagementSoftware;

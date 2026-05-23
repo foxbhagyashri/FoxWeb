@@ -41,6 +41,11 @@ import Navbar from '../src/common/Navbar'
 import Footer from '../src/common/Fotter'
 import ConstructionManagementSoftware from './components/services/ConstructionManagementSoftware'
 import BlogDetail from './components/Blogs/BlogDetail'
+import WebDevelopmentServiceAhemdabad from "./components/Ahemdabad/WebDevelopmentServiceAhemdabad";
+import SocialMediaMarketingServiceAhemdabad from "./components/Ahemdabad/SocialMediaMarketingServiceAhemdabad";
+import FloatingContact from "./components/FloatingContact";
+import AhmedabadSection from "./components/AhmedabadSection";
+
 
 // Page transition variants
 const pageVariants = {
@@ -303,10 +308,51 @@ function App() {
             </motion.div>
           } />
 
+
+          <Route
+            path="ahmedabad/web-development-service"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <WebDevelopmentServiceAhemdabad />
+              </motion.div>
+            }
+          />
+
+
+          <Route
+            path="ahmedabad/SocialMediaMarketingServiceAhemdabad"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <SocialMediaMarketingServiceAhemdabad />
+              </motion.div>
+            }
+          />
+
+
+
         </Routes>
+
+
+
+
       </AnimatePresence>
 
+      <AhmedabadSection />
+
       <Footer />
+      <FloatingContact />
     </>
   )
 }

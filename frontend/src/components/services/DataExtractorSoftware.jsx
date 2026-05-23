@@ -1,274 +1,480 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import { Link } from "react-router-dom";
 
+/* Section Header */
+const SectionHeader = ({ badge, title, description }) => (
+  <div className="max-w-4xl mb-12">
+    <span className="inline-block mb-4 px-4 py-1.5 text-sm font-semibold text-[#0529a0] border border-[#0529a0]/20 rounded-full bg-white">
+      {badge}
+    </span>
+
+    <h2 className="text-3xl md:text-4xl font-bold text-[#0529a0] leading-tight mb-4">
+      {title}
+    </h2>
+
+    {description && (
+      <p className="text-gray-600 text-lg leading-relaxed">
+        {description}
+      </p>
+    )}
+
+    <div className="w-16 h-1 bg-[#f85415] rounded mt-5"></div>
+  </div>
+);
+
+const faqData = [
+  {
+    question:
+      "What makes Foxaircomm’s data extractor different from other tools?",
+    answer:
+      "Foxaircomm provides a structured data extraction solution that converts publicly available online data into clean, ready-to-use datasets with local support and customised setups.",
+  },
+  {
+    question:
+      "How does your data extractor actually help a business?",
+    answer:
+      "It automates lead generation, competitor analysis, product research, and market data collection, reducing hours of manual work into minutes.",
+  },
+  {
+    question:
+      "Can Foxaircomm extract data from Google search results?",
+    answer:
+      "Yes. Our Google data extraction setup helps businesses collect publicly available Google search data, business listings, and SERP insights efficiently.",
+  },
+  {
+    question:
+      "Does the data extractor require technical expertise?",
+    answer:
+      "No. The solution is designed for non-technical users. Our team configures the extraction process and delivers the output in Excel, CSV, or JSON formats.",
+  },
+  {
+    question:
+      "What type of data can Foxaircomm extract?",
+    answer:
+      "Business listings, pricing details, reviews, competitor data, webpage content, URLs, contact information, and structured tables.",
+  },
+];
+
 function DataExtractorSoftware() {
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isMobile, setIsMobile] = useState(false);
-  const [loadedImages, setLoadedImages] = useState({});
-  const containerRef = useRef(null);
-
-  const imageUrls = [
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80",
-    "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1920&q=80",
-    "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80"
-  ];
-
-  const whyChoose = [
-    { 
-      icon: "🏆", 
-      title: "Proven Track Record", 
-      desc: "With almost a decade of experience in data extraction and management, Fox Aircomm has built a reputation for delivering exceptional B2C services across various industries. We've successfully supported businesses in streamlining their data management processes, improving operational efficiency, and boosting sales." 
-    },
-    { 
-      icon: "🎯", 
-      title: "B2C Focused Solutions", 
-      desc: "With automated data capture software, you can set up schedules for data extraction, reducing the need for manual intervention. This feature ensures that your data collection processes are consistent and timely." 
-    },
-    { 
-      icon: "👥", 
-      title: "User-Friendly Interface", 
-      desc: "Fox Aircomm ensures that our Data Extractor Software is intuitive, making it easy for your team to extract the right data without any technical expertise. Our tools are designed for speed, accuracy, and reliability—ensuring that your business always has access to the insights it needs." 
-    },
-    { 
-      icon: "⚡", 
-      title: "Real-Time Data Processing", 
-      desc: "Our software works in real-time to help you quickly extract and organize data as per your business needs. Whether you're extracting information from websites, CRM platforms, or other data sources, you can expect a smooth experience that minimizes delays and errors." 
-    },
-    { 
-      icon: "🔧", 
-      title: "Customization Options", 
-      desc: "We understand that every business has different data extraction needs. Our software is customizable to fit your specific requirements, ensuring that you get the most relevant data for your marketing, sales, and customer relationship strategies." 
-    }
-  ];
-
-  const keyFeatures = [
-    { 
-      icon: "📈", 
-      title: "Scalable Solutions", 
-      desc: "Whether you're a small startup or an enterprise-level business, our Data Extractor Software can scale with your growth. We offer solutions that adapt to both small and large datasets with high accuracy and speed." 
-    },
-    { 
-      icon: "🔒", 
-      title: "Secure and Compliant", 
-      desc: "At Fox Aircomm, we prioritize data security. Our software is designed with the latest encryption and security protocols, ensuring that the data you extract is stored and processed securely. We comply with industry standards and regulations to protect your business and customer data." 
-    },
-    { 
-      icon: "📊", 
-      title: "Comprehensive Reports", 
-      desc: "Get actionable insights through comprehensive reports generated by our software. These reports help you analyze the data and create strategies that drive business growth and enhance customer satisfaction." 
-    },
-    { 
-      icon: "🕒", 
-      title: "24/7 Support", 
-      desc: "Our team is always available to provide customer support whenever you need assistance. Whether you're dealing with technical issues or need help optimizing your data extraction process, we are just a call away." 
-    }
-  ];
-
-  const benefits = [
-    { 
-      icon: "💬", 
-      title: "Improved Customer Engagement", 
-      desc: "By extracting and organizing customer data efficiently, you can develop personalized marketing campaigns and improve customer engagement." 
-    },
-    { 
-      icon: "📉", 
-      title: "Data-Driven Decisions", 
-      desc: "With accurate and timely data, your business can make better, data-driven decisions, leading to more effective strategies and improved ROI." 
-    },
-    { 
-      icon: "⚙️", 
-      title: "Increased Efficiency", 
-      desc: "Our software eliminates the need for manual data collection, reducing errors and saving time. This allows your team to focus on more important tasks that drive growth." 
-    },
-    { 
-      icon: "💰", 
-      title: "Cost-Effective", 
-      desc: "With Fox Aircomm's Data Extractor Software, you get an affordable solution that delivers high value. It's an ideal choice for businesses looking to streamline their operations and gain competitive advantages in the market." 
-    }
-  ];
-
-  const whyFoxAircomm = [
-    { icon: "📅", title: "9 Years of Experience", desc: "With nearly a decade of experience in data extraction, we are well-equipped to handle any challenges that your business faces in managing its data." },
-    { icon: "🛠️", title: "24/7 Customer Support", desc: "We provide ongoing assistance to ensure your data extraction needs are met at all times." },
-    { icon: "✨", title: "Customized Solutions", desc: "We tailor our software to suit your business needs, providing a personalized experience." }
-  ];
-
-  useEffect(() => {
-    const loadImages = async () => {
-      const promises = imageUrls.map((url, index) =>
-        new Promise((resolve) => {
-          const img = new Image();
-          img.src = url;
-          img.onload = () => { setLoadedImages((prev) => ({ ...prev, [index]: true })); resolve(); };
-          img.onerror = () => resolve();
-        })
-      );
-      await Promise.all(promises);
-    };
-    loadImages();
-  }, []);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    if (containerRef.current) { setScrollY(-containerRef.current.getBoundingClientRect().top); }
-  }, []);
-
-  const handleMouseMove = useCallback((e) => {
-    if (isMobile) return;
-    setMousePosition({ x: (e.clientX / window.innerWidth - 0.5) * 2, y: (e.clientY / window.innerHeight - 0.5) * 2 });
-  }, [isMobile]);
-
-  useEffect(() => {
-    let ticking = false;
-    const onScroll = () => { if (!ticking) { window.requestAnimationFrame(() => { handleScroll(); ticking = false; }); ticking = true; } };
-    handleScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("mousemove", handleMouseMove); };
-  }, [handleScroll, handleMouseMove]);
-
   return (
-    <motion.div ref={containerRef} className="overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-      <style>{`
-        .parallax-layer { will-change: transform; transform-style: preserve-3d; }
-        .float-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-      `}</style>
+    <div className="overflow-hidden bg-white">
 
-      {/* Hero Parallax Section */}
-      <div className="relative min-h-screen overflow-hidden bg-gray-900">
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${imageUrls[0]})`, transform: `translateY(${scrollY * 0.15}px) translateX(${mousePosition.x * 5}px) scale(${1.1 + scrollY * 0.0001})`, opacity: loadedImages[0] ? 1 : 0 }} />
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${imageUrls[1]})`, transform: `translateY(${scrollY * 0.25}px) scale(1.15)`, opacity: loadedImages[1] ? 0.4 : 0, mixBlendMode: "overlay" }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-900/80 via-sky-800/50 to-black/90" />
-        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-sky-500/20 blur-3xl float-animation" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-indigo-500/20 blur-3xl float-animation" style={{ animationDelay: "2s" }} />
+      {/* HERO */}
+      <section className="bg-[#0529a0] text-white py-24 px-4">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
-        <div className="relative z-10 min-h-screen flex items-center justify-center px-4">
-          <div className="text-center" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-sm font-semibold bg-indigo-500/20 text-indigo-300 backdrop-blur-sm border border-indigo-500/30" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-              Revolutionize Your Data Management
-            </motion.span>
-            <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
-              Transform Your B2C Business with Advanced Data Extraction Software
-            </motion.h1>
-            <motion.p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-white/80" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-              At Fox Aircomm, we specialize in providing Data Extractor Software solutions tailored for B2C services to help businesses collect, organize, and extract critical data efficiently. With over 9 years of experience, our team has worked with numerous clients across Pune, PCMC, and Akrudi, offering 24/7 support to ensure seamless operations.
-            </motion.p>
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-              <Link to="/contact" className="px-8 py-3 bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-lg shadow-sky-500/30">Get Started</Link>
-              <Link to="/services" className="px-8 py-3 border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white/10 transition-all">All Services</Link>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+          <div>
 
-      {/* Why Choose Section */}
-      <section className="theme-bg-primary py-20 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold bg-indigo-500 text-white" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Why Choose Us</motion.span>
-            <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Why Choose Fox Aircomm's Data Extractor Software?</motion.h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {whyChoose.map((item, index) => (
-              <motion.div key={index} className="p-8 rounded-2xl theme-bg-card border theme-border shadow-sm hover:shadow-xl transition-all duration-300 group" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 transition-transform">{item.icon}</div>
-                <h3 className="text-xl font-bold theme-text-primary mb-3">{item.title}</h3>
-                <p className="theme-text-secondary">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+            <span className="inline-block mb-5 px-4 py-1.5 text-sm font-semibold border border-white/20 rounded-full bg-white/10">
+              Data Extractor Software in Pune
+            </span>
 
-      {/* Key Features Section */}
-      <section className="theme-bg-secondary py-20 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold bg-cyan-500 text-white" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Key Features</motion.span>
-            <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-cyan-500 to-indigo-500 bg-clip-text text-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Key Features of Our Data Extractor Software</motion.h2>
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
+              Data Extractor Software for Businesses in Pune – Powered by Foxaircomm
+            </h1>
+
+            <p className="text-gray-200 mb-5 leading-relaxed">
+              Extract clean, accurate, and ready-to-use data from websites,
+              directories, and Google search results without manual effort or
+              technical complexity.
+            </p>
+
+            <p className="text-gray-200 mb-8 leading-relaxed">
+              Ideal for sales teams, competitor research, lead generation,
+              pricing analysis, and business intelligence.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+
+              <Link
+                to="/contact"
+                className="bg-[#f85415] hover:bg-orange-600 transition px-8 py-4 rounded-xl font-semibold"
+              >
+                Request Free Demo
+              </Link>
+
+              <Link
+                to="/contact"
+                className="border border-white/30 px-8 py-4 rounded-xl font-semibold"
+              >
+                Talk to Our Team
+              </Link>
+
+            </div>
+
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {keyFeatures.map((item, index) => (
-              <motion.div key={index} className="p-8 rounded-2xl theme-bg-card border theme-border shadow-sm hover:shadow-xl transition-all duration-300 group" initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <div className="flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-500 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">{item.icon}</div>
-                  <div>
-                    <h3 className="text-xl font-bold theme-text-primary mb-2">{item.title}</h3>
-                    <p className="theme-text-secondary">{item.desc}</p>
-                  </div>
+
+          <div className="bg-white rounded-3xl p-8 shadow-2xl text-gray-900">
+
+            <h3 className="text-2xl font-bold text-[#0529a0] mb-8">
+              What You Can Extract
+            </h3>
+
+            <div className="grid gap-5">
+
+              {[
+                "Business listings & contact details",
+                "Google search result data",
+                "Product pricing & competitor data",
+                "Reviews & ratings",
+                "URLs, webpage text & structured tables",
+                "Local business and service provider data",
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="border rounded-xl p-5 hover:shadow-md transition"
+                >
+                  <p className="font-medium text-gray-700">
+                    {item}
+                  </p>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+
+            </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="theme-bg-primary py-20 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold bg-indigo-500 text-white" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Business Benefits</motion.span>
-            <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-indigo-500 to-cyan-500 bg-clip-text text-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>How Fox Aircomm's Data Extractor Software Can Benefit Your B2C Business</motion.h2>
+      {/* WHY FOXAIRCOMM */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Why Choose Us"
+            title="What Makes Foxaircomm’s Data Extractor Different"
+            description="A complete data extraction environment designed for businesses that depend on accurate and fast information."
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            {[
+              "Structured data extraction from multiple public sources",
+              "Google search result extraction support",
+              "Custom extraction setups based on business goals",
+              "Local onboarding and support from Pune-based experts",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="border rounded-2xl p-7 hover:shadow-lg transition"
+              >
+                <p className="text-gray-700 font-medium leading-relaxed">
+                  {item}
+                </p>
+              </div>
+            ))}
+
           </div>
+
+        </div>
+      </section>
+
+      {/* HOW IT HELPS */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Benefits"
+            title="How the Data Extractor Helps Businesses"
+          />
+
           <div className="grid md:grid-cols-2 gap-8">
-            {benefits.map((item, index) => (
-              <motion.div key={index} className="p-8 rounded-2xl theme-bg-card border theme-border shadow-sm hover:shadow-xl transition-all duration-300 group" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <div className="flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform">{item.icon}</div>
-                  <div>
-                    <h3 className="text-xl font-bold theme-text-primary mb-2">{item.title}</h3>
-                    <p className="theme-text-secondary">{item.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+
+            <div className="bg-white p-8 rounded-3xl border">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+                Eliminate Manual Work
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed">
+                Automate lead generation, market research, competitor analysis,
+                and product data collection without spending hours manually
+                browsing websites.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl border">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+                Faster Business Decisions
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed">
+                Convert publicly available online data into structured datasets
+                for CRM systems, reports, spreadsheets, sales teams, and
+                analytics workflows.
+              </p>
+            </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* Parallax CTA Section */}
-      <div className="relative min-h-[60vh] overflow-hidden bg-gray-900">
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${imageUrls[2]})`, transform: `translateY(${scrollY * 0.1}px) scale(1.05)`, opacity: loadedImages[2] ? 1 : 0 }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-indigo-900/50 to-black/70" />
-        <div className="relative z-10 min-h-[60vh] flex items-center justify-center px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 text-white" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Let's Grow Your Business Online</motion.h2>
-            <motion.p className="text-lg mb-8 text-white/80 max-w-2xl mx-auto" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Get in touch with Fox Aircomm today to revolutionize your B2C service with our Data Extractor Software</motion.p>
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <Link to="/contact" className="px-10 py-4 bg-gradient-to-r from-indigo-500 to-cyan-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-xl">Contact Us Today</Link>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+      {/* FEATURES */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
 
-      {/* Why Fox Aircomm Section */}
-      <section className="theme-bg-primary py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold bg-cyan-500 text-white" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Why Fox Aircomm</motion.span>
-            <motion.h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-cyan-500 to-indigo-500 bg-clip-text text-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Why Fox Aircomm?</motion.h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {whyFoxAircomm.map((item, index) => (
-              <motion.div key={index} className="p-8 rounded-2xl theme-bg-card border theme-border shadow-sm hover:shadow-xl transition-all duration-300" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-indigo-500 flex items-center justify-center mb-6 text-2xl">{item.icon}</div>
-                <h3 className="text-xl font-bold theme-text-primary mb-3">{item.title}</h3>
-                <p className="theme-text-secondary">{item.desc}</p>
-              </motion.div>
+          <SectionHeader
+            badge="Features"
+            title="What the Data Extraction Tool Can Handle"
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {[
+              "Google search result extraction",
+              "Business directory scraping",
+              "Competitor price monitoring",
+              "Product detail extraction",
+              "Review and rating collection",
+              "Lead generation database building",
+              "Category-wise structured datasets",
+              "Public business contact extraction",
+              "Bulk website data extraction",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-[#F8FAFC] border rounded-2xl p-7 hover:shadow-lg transition"
+              >
+                <p className="font-medium text-gray-700">
+                  {item}
+                </p>
+              </div>
             ))}
+
           </div>
+
         </div>
       </section>
-    </motion.div>
+
+      {/* GOOGLE EXTRACTION */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Google Extraction"
+            title="Google Search Data Extractor Software"
+          />
+
+          <div className="bg-white border rounded-3xl p-10">
+
+            <p className="text-gray-700 leading-relaxed mb-6">
+              Foxaircomm provides a dedicated Google data extractor setup
+              designed to pull publicly available information from Google
+              search listings, snippets, and local business results.
+            </p>
+
+            <p className="text-gray-700 leading-relaxed mb-10">
+              Businesses use this solution for competitor intelligence,
+              lead generation, market research, and category-level analysis.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-6">
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h3 className="text-3xl font-bold text-[#f85415] mb-2">
+                  SERP
+                </h3>
+
+                <p className="text-gray-600">
+                  Search Result Extraction
+                </p>
+              </div>
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h3 className="text-3xl font-bold text-[#f85415] mb-2">
+                  Maps
+                </h3>
+
+                <p className="text-gray-600">
+                  Business Listing Data
+                </p>
+              </div>
+
+              <div className="border rounded-2xl p-6 text-center">
+                <h3 className="text-3xl font-bold text-[#f85415] mb-2">
+                  Leads
+                </h3>
+
+                <p className="text-gray-600">
+                  Market Intelligence Data
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* INDUSTRIES */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Industries"
+            title="Who Benefits Most From This Solution in Pune"
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {[
+              "Sales and lead generation teams",
+              "Market research companies",
+              "Consultants and agencies",
+              "E-commerce businesses",
+              "Service providers and local brands",
+              "Competitive intelligence teams",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="border rounded-2xl p-7 hover:shadow-lg transition"
+              >
+                <p className="text-gray-700 font-medium">
+                  {item}
+                </p>
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* SECURITY */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Security"
+            title="Secure and Compliant Data Extraction"
+          />
+
+          <div className="bg-white rounded-3xl border p-10">
+
+            <p className="text-gray-700 leading-relaxed mb-5">
+              Foxaircomm follows responsible extraction and data-handling practices.
+              The system only collects publicly available information and does not
+              access restricted or confidential content.
+            </p>
+
+            <p className="text-gray-700 leading-relaxed">
+              Every extraction setup is aligned with internal business workflows
+              and regional compliance expectations.
+            </p>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* CUSTOMIZATION */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Customization"
+            title="Custom Data Extraction Setups for Businesses"
+          />
+
+          <div className="grid md:grid-cols-2 gap-8">
+
+            <div className="border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+                Flexible Extraction Workflows
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed">
+                Configure daily scraping, scheduled extraction, bulk processing,
+                competitor tracking, and custom data pipelines based on your
+                business requirements.
+              </p>
+            </div>
+
+            <div className="border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+                Multiple Export Formats
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed">
+                Export extracted datasets into Excel, CSV, JSON, or structured
+                formats ready for CRM systems, ERP tools, and reporting dashboards.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-5xl mx-auto">
+
+          <SectionHeader
+            badge="FAQs"
+            title="Frequently Asked Questions"
+          />
+
+          <div className="space-y-6">
+
+            {faqData.map((faq, i) => (
+              <div
+                key={i}
+                className="bg-white border rounded-2xl p-7"
+              >
+                <h3 className="text-xl font-semibold text-[#0529a0] mb-4">
+                  {faq.question}
+                </h3>
+
+                <p className="text-gray-600 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 bg-[#0529a0] text-white text-center px-4">
+        <div className="max-w-4xl mx-auto">
+
+          <h2 className="text-4xl font-bold mb-6">
+            Start Extracting Business Data Faster
+          </h2>
+
+          <p className="text-gray-200 text-lg leading-relaxed mb-10">
+            Schedule a free demo with Foxaircomm and discover how automated
+            data extraction can improve lead generation, competitor research,
+            and business intelligence workflows.
+          </p>
+
+          <div className="flex flex-wrap justify-center gap-5">
+
+            <Link
+              to="/contact"
+              className="bg-[#f85415] hover:bg-orange-600 transition px-8 py-4 rounded-xl font-semibold"
+            >
+              Book Free Demo
+            </Link>
+
+            <Link
+              to="/contact"
+              className="border border-white/30 px-8 py-4 rounded-xl font-semibold"
+            >
+              Request Custom Setup
+            </Link>
+
+          </div>
+
+        </div>
+      </section>
+
+    </div>
   );
 }
 

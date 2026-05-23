@@ -1,165 +1,418 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import { Link } from "react-router-dom";
 
+/* Section Header */
+const SectionHeader = ({ badge, title }) => (
+  <div className="max-w-4xl mb-12">
+    <span className="inline-block mb-4 px-4 py-1.5 text-sm font-semibold text-[#0529a0] border border-[#0529a0]/20 rounded-full bg-white">
+      {badge}
+    </span>
+
+    <h2 className="text-3xl md:text-4xl font-bold text-[#0529a0] leading-tight mb-4">
+      {title}
+    </h2>
+
+    <div className="w-16 h-1 bg-[#f85415] rounded"></div>
+  </div>
+);
+
 function WhatsAppMarketingSoftware() {
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isMobile, setIsMobile] = useState(false);
-  const [loadedImages, setLoadedImages] = useState({});
-  const containerRef = useRef(null);
-
-  const imageUrls = [
-    "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1920&q=80",
-    "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=1920&q=80",
-    "https://images.unsplash.com/photo-1553775282-20af80779df7?w=1920&q=80"
-  ];
-
-  const features = [
-    { icon: "📱", title: "Bulk Messaging", desc: "Send personalized messages to thousands of contacts instantly" },
-    { icon: "🤖", title: "Auto-Reply Bot", desc: "Automated responses for common queries and customer support" },
-    { icon: "📊", title: "Campaign Analytics", desc: "Track delivery rates, read receipts, and engagement metrics" },
-    { icon: "👥", title: "Contact Management", desc: "Organize and segment your contact lists effectively" },
-    { icon: "📝", title: "Template Messages", desc: "Create and save message templates for quick campaigns" },
-    { icon: "📅", title: "Scheduled Campaigns", desc: "Plan and schedule your marketing campaigns in advance" }
-  ];
-
-  const expertise = [
-    { title: "Promotional Campaigns", desc: "Product launches and offers", icon: "🎁" },
-    { title: "Customer Engagement", desc: "Build lasting relationships", icon: "💬" },
-    { title: "Notifications", desc: "Updates and reminders", icon: "🔔" },
-    { title: "Support Automation", desc: "24/7 customer support", icon: "🎧" }
-  ];
-
-  useEffect(() => {
-    const loadImages = async () => {
-      const promises = imageUrls.map((url, index) =>
-        new Promise((resolve) => {
-          const img = new Image();
-          img.src = url;
-          img.onload = () => { setLoadedImages((prev) => ({ ...prev, [index]: true })); resolve(); };
-          img.onerror = () => resolve();
-        })
-      );
-      await Promise.all(promises);
-    };
-    loadImages();
-  }, []);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    if (containerRef.current) { setScrollY(-containerRef.current.getBoundingClientRect().top); }
-  }, []);
-
-  const handleMouseMove = useCallback((e) => {
-    if (isMobile) return;
-    setMousePosition({ x: (e.clientX / window.innerWidth - 0.5) * 2, y: (e.clientY / window.innerHeight - 0.5) * 2 });
-  }, [isMobile]);
-
-  useEffect(() => {
-    let ticking = false;
-    const onScroll = () => { if (!ticking) { window.requestAnimationFrame(() => { handleScroll(); ticking = false; }); ticking = true; } };
-    handleScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("mousemove", handleMouseMove); };
-  }, [handleScroll, handleMouseMove]);
-
   return (
-    <motion.div ref={containerRef} className="overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-      <style>{`
-        .parallax-layer { will-change: transform; transform-style: preserve-3d; }
-        .float-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-      `}</style>
+    <div className="overflow-hidden">
 
-      {/* Hero Parallax Section */}
-      <div className="relative min-h-screen overflow-hidden bg-gray-900">
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${imageUrls[0]})`, transform: `translateY(${scrollY * 0.15}px) translateX(${mousePosition.x * 5}px) scale(${1.1 + scrollY * 0.0001})`, opacity: loadedImages[0] ? 1 : 0 }} />
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${imageUrls[1]})`, transform: `translateY(${scrollY * 0.25}px) scale(1.15)`, opacity: loadedImages[1] ? 0.4 : 0, mixBlendMode: "overlay" }} />
-        <div className="absolute inset-0 bg-gradient-to-b from-green-900/80 via-green-800/50 to-black/90" />
-        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-green-500/20 blur-3xl float-animation" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 rounded-full bg-lime-500/20 blur-3xl float-animation" style={{ animationDelay: "2s" }} />
+      {/* HERO */}
+      <section className="bg-[#0529a0] text-white py-24 px-4 text-center">
+        <div className="max-w-4xl mx-auto">
 
-        <div className="relative z-10 min-h-screen flex items-center justify-center px-4">
-          <div className="text-center" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-sm font-semibold bg-green-500/20 text-green-300 backdrop-blur-sm border border-green-500/30" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-              Marketing Software
-            </motion.span>
-            <motion.h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-green-400 via-lime-400 to-green-400 bg-clip-text text-transparent" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6 }}>
-              WhatsApp Marketing Software
-            </motion.h1>
-            <motion.p className="text-lg md:text-xl max-w-3xl mx-auto mb-10 text-white/80" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-              Powerful WhatsApp marketing tools to reach and engage your audience effectively
-            </motion.p>
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-              <Link to="/contact" className="px-8 py-3 bg-gradient-to-r from-green-500 to-lime-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-lg shadow-green-500/30">Get Started</Link>
-              <Link to="/services" className="px-8 py-3 border-2 border-white/30 text-white rounded-full font-semibold hover:bg-white/10 transition-all">All Services</Link>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+          <span className="inline-block bg-white/10 border border-white/20 text-sm px-4 py-1.5 rounded-full mb-6">
+            WhatsApp Marketing Services in Pune
+          </span>
 
-      {/* Features Section */}
-      <section className="theme-bg-primary py-20 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold bg-green-500 text-white" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>What We Offer</motion.span>
-            <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-500 to-lime-500 bg-clip-text text-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>WhatsApp Marketing Features</motion.h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((item, index) => (
-              <motion.div key={index} className="p-8 rounded-2xl theme-bg-card border theme-border shadow-sm hover:shadow-xl transition-all duration-300 group" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-lime-500 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 transition-transform">{item.icon}</div>
-                <h3 className="text-xl font-bold theme-text-primary mb-3">{item.title}</h3>
-                <p className="theme-text-secondary">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            WhatsApp Marketing Company in Pune That Generates Leads & Customer Engagement
+          </h1>
+
+          <p className="text-gray-200 mb-3">
+            Most businesses use WhatsApp only for communication. Very few use it as a structured lead generation and customer engagement channel.
+          </p>
+
+          <p className="text-gray-200 mb-3">
+            A results-focused WhatsApp marketing company helps businesses automate follow-ups, improve response rates, generate qualified inquiries, and increase customer retention.
+          </p>
+
+          <p className="text-gray-200 mb-3">
+            At Foxaircomm, WhatsApp marketing campaigns are designed around buyer intent, automation workflows, broadcast engagement, and conversion-focused communication strategies.
+          </p>
+
+          <p className="text-gray-200 mb-3">
+            We help service businesses, e-commerce brands, educational institutes, healthcare providers, and local businesses across Pune and PCMC improve lead generation using WhatsApp marketing.
+          </p>
+
+          <p className="text-gray-200 mb-5">
+            Based on campaign insights across multiple industries, WhatsApp consistently delivers higher engagement and faster response rates compared to traditional email and social media communication channels.
+          </p>
+
+          <Link
+            to="/contact"
+            className="bg-[#f85415] px-8 py-4 rounded-lg font-semibold"
+          >
+            Get Free WhatsApp Marketing Audit
+          </Link>
         </div>
       </section>
 
-      {/* Parallax CTA Section */}
-      <div className="relative min-h-[60vh] overflow-hidden bg-gray-900">
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${imageUrls[2]})`, transform: `translateY(${scrollY * 0.1}px) scale(1.05)`, opacity: loadedImages[2] ? 1 : 0 }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-green-900/50 to-black/70" />
-        <div className="relative z-10 min-h-[60vh] flex items-center justify-center px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 text-white" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Ready to Supercharge Your WhatsApp Marketing?</motion.h2>
-            <motion.p className="text-lg mb-8 text-white/80 max-w-2xl mx-auto" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Get the tools you need to succeed on WhatsApp</motion.p>
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <Link to="/contact" className="px-10 py-4 bg-gradient-to-r from-green-500 to-lime-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-xl">Contact Us Today</Link>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+      {/* WHAT MAKES DIFFERENCE */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
 
-      {/* Expertise Section */}
-      <section className="theme-bg-primary py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold bg-green-500 text-white" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Use Cases</motion.span>
-            <motion.h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-green-500 to-lime-500 bg-clip-text text-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>WhatsApp Marketing Solutions</motion.h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {expertise.map((item, index) => (
-              <motion.div key={index} className="p-8 rounded-2xl theme-bg-card border theme-border shadow-sm hover:shadow-xl transition-all duration-300" initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <div className="flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-green-500 to-lime-500 flex items-center justify-center text-2xl flex-shrink-0">{item.icon}</div>
-                  <div><h3 className="text-xl font-bold theme-text-primary mb-2">{item.title}</h3><p className="theme-text-secondary">{item.desc}</p></div>
-                </div>
-              </motion.div>
+          <SectionHeader
+            badge="Strategy"
+            title="What Makes a Results-Focused WhatsApp Marketing Company Different"
+          />
+
+          <p className="mb-5 text-gray-700">
+            A high-performing WhatsApp marketing agency focuses on conversations that generate conversions — not just message delivery.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+
+            {[
+              "Builds automated WhatsApp funnels for lead nurturing",
+              "Improves inquiry response speed and customer engagement",
+              "Uses broadcast campaigns to increase repeat inquiries and sales",
+              "Tracks engagement, click-throughs, and lead conversion rates",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-6 border rounded-xl hover:shadow-md transition"
+              >
+                {item}
+              </div>
             ))}
+
           </div>
+
+          <p className="mt-4 text-gray-700">
+            Businesses comparing WhatsApp marketing services in Pune increasingly prioritize conversion-focused communication strategies instead of manual messaging workflows.
+          </p>
+
         </div>
       </section>
-    </motion.div>
+
+      {/* CASE STUDY */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Case Study"
+            title="Proof That WhatsApp Marketing Generates Real Business Results"
+          />
+
+          <div className="bg-white p-8 rounded-2xl border">
+
+            <p className="mb-4 text-gray-700">
+              A service-based business in Baner struggled with delayed inquiry follow-ups and low customer response rates.
+            </p>
+
+            <p className="mb-4 text-gray-700">
+              Business category: Local service business with high inquiry dependency.
+            </p>
+
+            <p className="mb-4 text-gray-700">
+              Leads were coming through ads and social media, but slow response times caused inquiry drop-offs.
+            </p>
+
+            <p className="mb-4 text-gray-700">
+              The WhatsApp marketing strategy included:
+            </p>
+
+            <ul className="space-y-3 text-gray-700">
+              <li>🚀 Automated WhatsApp lead response workflows</li>
+              <li>📈 Broadcast campaigns for repeat engagement</li>
+              <li>📞 Click-to-WhatsApp ads integration</li>
+              <li>💬 Personalized inquiry nurturing sequences</li>
+            </ul>
+
+            <p className="mt-5 mb-3 font-medium">
+              Within 90 days:
+            </p>
+
+            <ul className="space-y-3 text-gray-700">
+              <li>Lead response time improved by 70%</li>
+              <li>Qualified inquiries increased by 2.3x</li>
+              <li>Customer engagement rates improved significantly</li>
+              <li>Repeat customer inquiries increased by 40%</li>
+            </ul>
+
+            <p className="mt-5 text-gray-700">
+              Results vary by industry, but WhatsApp marketing consistently improves customer engagement and inquiry conversion speed.
+            </p>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Services"
+            title="WhatsApp Marketing Services in Pune — What You Actually Get"
+          />
+
+          <p className="text-gray-700">
+            Most agencies treat WhatsApp marketing as simple messaging.
+            Effective WhatsApp marketing is built around automation, engagement, and lead conversion.
+          </p>
+
+          <p className="text-gray-700 mt-2">
+            At Foxaircomm, execution focuses on:
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6 mt-5">
+
+            {[
+              "WhatsApp API integration and automation setup",
+              "Broadcast campaigns for promotions and customer engagement",
+              "Lead nurturing workflows and follow-up automation",
+              "Click-to-WhatsApp ad campaign integration",
+              "Customer support and inquiry automation systems",
+              "Conversion-focused messaging strategies",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-6 border rounded-xl"
+              >
+                {item}
+              </div>
+            ))}
+
+          </div>
+
+          <p className="mt-4 text-gray-700">
+            This approach helps businesses improve customer communication, response speed, and inquiry conversion rates.
+          </p>
+
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Process"
+            title="How Our WhatsApp Marketing Strategy Works"
+          />
+
+          <p className="text-gray-600 mb-10 max-w-3xl">
+            WhatsApp marketing campaigns follow a structured lead generation and customer engagement framework.
+          </p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Communication Gap Audit
+              </h3>
+
+              <p className="text-sm text-gray-600">
+                Identifies where inquiries are being lost due to delayed responses or weak engagement systems.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Audience Segmentation
+              </h3>
+
+              <p className="text-sm text-gray-600">
+                Users are segmented based on inquiry behavior, purchase intent, and engagement history.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Automation Workflow Setup
+              </h3>
+
+              <p className="text-sm text-gray-600">
+                Automated responses and nurturing workflows are built to improve response consistency.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Broadcast Campaign Deployment
+              </h3>
+
+              <p className="text-sm text-gray-600">
+                Promotional and engagement campaigns are launched to increase customer interaction.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Retargeting & Follow-Ups
+              </h3>
+
+              <p className="text-sm text-gray-600">
+                Warm leads are re-engaged using structured WhatsApp follow-up campaigns.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl border">
+              <h3 className="font-semibold text-[#0529a0] mb-2">
+                Tracking & Optimization
+              </h3>
+
+              <p className="text-sm text-gray-600">
+                Campaigns are optimized based on open rates, response rates, inquiries, and conversions.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* INDUSTRIES */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Industries"
+            title="WhatsApp Marketing Strategy Must Change by Industry"
+          />
+
+          <div className="grid lg:grid-cols-3 gap-8">
+
+            <div className="border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+                Service Businesses
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed">
+                WhatsApp inquiry automation, appointment reminders, and consultation follow-up campaigns.
+              </p>
+            </div>
+
+            <div className="border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+                E-Commerce Brands
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed">
+                Cart recovery campaigns, order updates, product promotions, and repeat customer engagement workflows.
+              </p>
+            </div>
+
+            <div className="border rounded-3xl p-8">
+              <h3 className="text-2xl font-bold text-[#0529a0] mb-5">
+                Educational Institutes
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed">
+                Admission inquiry handling, student engagement campaigns, and automated follow-up systems.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Pricing"
+            title="WhatsApp Marketing Pricing in Pune"
+          />
+
+          <div className="grid md:grid-cols-3 gap-6 text-center">
+
+            <div className="p-6 border rounded-xl bg-white">
+              <h3 className="font-bold text-[#0529a0]">
+                Basic Automation
+              </h3>
+
+              <p className="text-gray-600 mt-2">
+                ₹10K – ₹25K/month
+              </p>
+            </div>
+
+            <div className="p-6 border rounded-xl bg-white">
+              <h3 className="font-bold text-[#0529a0]">
+                Growth Campaigns
+              </h3>
+
+              <p className="text-gray-600 mt-2">
+                ₹25K – ₹60K/month
+              </p>
+            </div>
+
+            <div className="p-6 border rounded-xl bg-white">
+              <h3 className="font-bold text-[#0529a0]">
+                Enterprise Solutions
+              </h3>
+
+              <p className="text-gray-600 mt-2">
+                ₹60K+
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* WHY FAIL */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Problem"
+            title="Why Your WhatsApp Marketing Is Not Generating Leads"
+          />
+
+          <ul className="space-y-4 text-gray-700">
+            <li>❌ No automation or follow-up structure</li>
+            <li>❌ Generic broadcast messaging without personalization</li>
+            <li>❌ Slow inquiry response times</li>
+            <li>❌ No lead nurturing workflows</li>
+            <li>❌ No tracking for conversions or engagement</li>
+          </ul>
+
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-[#0529a0] text-white text-center px-4">
+        <div className="max-w-4xl mx-auto">
+
+          <h2 className="text-3xl font-bold mb-6">
+            Improve Customer Engagement & Lead Generation With WhatsApp Marketing
+          </h2>
+
+          <p className="mb-8 text-gray-200">
+            We’ll identify what’s limiting your WhatsApp marketing performance and show exactly how to improve conversions within 48 hours.
+          </p>
+
+          <Link
+            to="/contact"
+            className="bg-[#f85415] px-8 py-4 rounded-lg font-semibold"
+          >
+            Book Free WhatsApp Marketing Consultation
+          </Link>
+
+        </div>
+      </section>
+
+    </div>
   );
 }
 

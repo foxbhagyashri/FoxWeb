@@ -1,227 +1,395 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 import { Link } from "react-router-dom";
+// import { Helmet } from "react-helmet";
+
+/* Section Header */
+const SectionHeader = ({ badge, title }) => (
+  <div className="max-w-4xl mb-12">
+    <span className="inline-block mb-4 px-4 py-1.5 text-sm font-semibold text-[#0529a0] border border-[#0529a0]/20 rounded-full bg-white">
+      {badge}
+    </span>
+
+    <h2 className="text-3xl md:text-4xl font-bold text-[#0529a0] leading-tight mb-4">
+      {title}
+    </h2>
+
+    <div className="w-16 h-1 bg-[#f85415] rounded"></div>
+  </div>
+);
 
 function BulkSMS() {
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isMobile, setIsMobile] = useState(false);
-  const [loadedImages, setLoadedImages] = useState({});
-  const containerRef = useRef(null);
-
-  const imageUrls = [
-    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1920&q=80",
-    "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1920&q=80",
-    "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1920&q=80"
-  ];
-
-  const features = [
-    { icon: "📱", title: "Mass Messaging", desc: "Send thousands of SMS messages instantly to your audience" },
-    { icon: "⚡", title: "Instant Delivery", desc: "Lightning-fast delivery with 99.9% uptime guarantee" },
-    { icon: "📊", title: "Delivery Reports", desc: "Real-time tracking and comprehensive delivery analytics" },
-    { icon: "👤", title: "Personalization", desc: "Dynamic content with personalized messages for each recipient" },
-    { icon: "📅", title: "Scheduled Campaigns", desc: "Plan and schedule SMS campaigns for optimal timing" },
-    { icon: "🔒", title: "DND Filtering", desc: "Automatic DND number filtering for compliance" }
-  ];
-
-  const expertise = [
-    { title: "Promotional SMS", desc: "Marketing messages to boost sales and engagement", icon: "📢" },
-    { title: "Transactional SMS", desc: "OTPs, alerts, and notifications for your customers", icon: "🔔" },
-    { title: "API Integration", desc: "Seamless integration with your existing systems", icon: "🔗" },
-    { title: "Unicode Support", desc: "Multi-language SMS support for regional reach", icon: "🌐" }
-  ];
-
-  useEffect(() => {
-    const loadImages = async () => {
-      const promises = imageUrls.map((url, index) =>
-        new Promise((resolve) => {
-          const img = new Image();
-          img.src = url;
-          img.onload = () => { setLoadedImages((prev) => ({ ...prev, [index]: true })); resolve(); };
-          img.onerror = () => resolve();
-        })
-      );
-      await Promise.all(promises);
-    };
-    loadImages();
-  }, []);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  const handleScroll = useCallback(() => {
-    if (containerRef.current) { setScrollY(-containerRef.current.getBoundingClientRect().top); }
-  }, []);
-
-  const handleMouseMove = useCallback((e) => {
-    if (isMobile) return;
-    setMousePosition({ x: (e.clientX / window.innerWidth - 0.5) * 2, y: (e.clientY / window.innerHeight - 0.5) * 2 });
-  }, [isMobile]);
-
-  useEffect(() => {
-    let ticking = false;
-    const onScroll = () => { if (!ticking) { window.requestAnimationFrame(() => { handleScroll(); ticking = false; }); ticking = true; } };
-    handleScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => { window.removeEventListener("scroll", onScroll); window.removeEventListener("mousemove", handleMouseMove); };
-  }, [handleScroll, handleMouseMove]);
-
   return (
-    <motion.div ref={containerRef} className="overflow-hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
-      <style>{`
-        .parallax-layer { will-change: transform; transform-style: preserve-3d; }
-        .float-animation { animation: float 6s ease-in-out infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
-      `}</style>
+    <div className="overflow-hidden">
 
-    <div className="relative h-[70vh] md:h-[80vh] overflow-hidden">
+      {/* SEO META TAGS */}
+      {/* <Helmet> */}
+        <title>
+          Bulk SMS Services in Pune | RCS & SMS Marketing Company Pune
+        </title>
 
-  {/* Background */}
-  <div
-    className="absolute inset-0 bg-cover bg-center scale-105"
-    style={{ backgroundImage: `url('/assets/images/bulk-sms.jpg')` }}
-  />
+        <meta
+          name="description"
+          content="Foxaircomm provides Bulk SMS, transactional SMS, promotional SMS, and RCS marketing services in Pune. Improve customer engagement, lead generation, OTP delivery, and communication automation with high-delivery SMS campaigns."
+        />
 
-  {/* Overlay */}
-  <div className="absolute inset-0 bg-black/60" />
+        <meta
+          name="keywords"
+          content="Bulk SMS services Pune, SMS marketing company Pune, RCS marketing Pune, promotional SMS Pune, transactional SMS Pune, OTP SMS services Pune, bulk SMS provider Pune, business SMS solutions Pune, Foxaircomm"
+        />
 
-  {/* Content */}
-  <div className="relative z-10 h-full flex items-center px-4">
-    <div className="container mx-auto max-w-6xl">
+        <link
+          rel="canonical"
+          href="https://www.foxaircomm.com/bulk-sms-services-pune"
+        />
 
-      <div className="max-w-3xl">
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Bulk SMS Services in Pune | RCS & SMS Marketing Company"
+        />
 
-        {/* Eyebrow text */}
-        <motion.p
-          className="text-sm font-semibold tracking-wide text-white uppercase mb-4"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Bulk SMS Service Provider In Pune
-        </motion.p>
+        <meta
+          property="og:description"
+          content="Generate leads and improve customer engagement with professional Bulk SMS and RCS marketing services in Pune."
+        />
 
-        {/* Heading */}
-        <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl font-semibold
-               text-white leading-tight mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.6 }}
-        >
-          Bulk SMS Marketing
-          <span className="block text-gray-300">
-            Reach Customers Instantly & Boost Engagement
+        <meta
+          property="og:url"
+          content="https://www.foxaircomm.com/bulk-sms-services-pune"
+        />
+
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta
+          name="twitter:title"
+          content="Bulk SMS Services in Pune | Foxaircomm"
+        />
+
+        <meta
+          name="twitter:description"
+          content="Professional Bulk SMS, transactional SMS, and RCS marketing solutions for businesses in Pune."
+        />
+      {/* </Helmet> */}
+
+      {/* HERO */}
+      <section className="bg-[#0529a0] text-white py-24 px-4 text-center">
+        <div className="max-w-4xl mx-auto">
+
+          <span className="inline-block bg-white/10 border border-white/20 text-sm px-4 py-1.5 rounded-full mb-6">
+            Bulk SMS & RCS Marketing Services in Pune
           </span>
-        </motion.h1>
 
-        {/* Description */}
-        <motion.p
-          className="text-base md:text-lg text-gray-300
-               leading-relaxed max-w-2xl mb-8"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-        >
-          Send promotional, transactional, and OTP messages to thousands of users
-          in seconds with our reliable Bulk SMS platform. Perfect for marketing,
-          alerts, and business communication.
-        </motion.p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">
+            Bulk SMS Company in Pune That Improves Customer Engagement & Lead Generation
+          </h1>
 
-        {/* CTA Buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-        >
+          <p className="text-gray-200 mb-3">
+            Bulk SMS marketing is still one of the fastest and most effective
+            communication channels for businesses looking to improve customer
+            engagement, inquiry generation, and communication automation.
+          </p>
+
+          <p className="text-gray-200 mb-3">
+            A professional bulk SMS company helps businesses automate messaging,
+            improve delivery rates, send transactional alerts, and increase
+            customer response using personalized SMS campaigns.
+          </p>
+
+          <p className="text-gray-200 mb-3">
+            At Foxaircomm, Bulk SMS and RCS marketing campaigns are designed
+            around customer intent, automation workflows, engagement tracking,
+            and conversion-focused communication systems.
+          </p>
+
+          <p className="text-gray-200 mb-3">
+            We provide bulk SMS services for healthcare providers, educational
+            institutes, service businesses, e-commerce brands, real estate
+            companies, and enterprises across Pune and PCMC.
+          </p>
+
+          <p className="text-gray-200 mb-5">
+            Our SMS marketing solutions help businesses improve customer
+            communication, generate qualified leads, increase repeat engagement,
+            and automate important notifications with high delivery performance.
+          </p>
+
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center
-                 px-8 py-3.5 bg-white text-gray-900
-                 font-semibold rounded-md
-                 hover:bg-gray-100 transition-colors"
+            className="bg-[#f85415] px-8 py-4 rounded-lg font-semibold hover:bg-orange-600 transition"
           >
-            Request SMS Demo
+            Get Free Bulk SMS Consultation
           </Link>
+
+        </div>
+      </section>
+
+      {/* STRATEGY */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Strategy"
+            title="What Makes a Results-Focused Bulk SMS Company Different"
+          />
+
+          <p className="mb-5 text-gray-700">
+            A high-performing bulk SMS marketing agency focuses on customer
+            engagement, communication speed, automation, and inquiry conversion —
+            not just message delivery volume.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+
+            {[
+              "High-delivery bulk SMS campaigns for business communication",
+              "Automated transactional SMS and OTP systems",
+              "Personalized promotional SMS campaigns for customer engagement",
+              "RCS messaging campaigns with interactive customer experiences",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-6 border rounded-xl hover:shadow-md transition"
+              >
+                {item}
+              </div>
+            ))}
+
+          </div>
+
+          <p className="mt-4 text-gray-700">
+            Businesses searching for bulk SMS services in Pune increasingly
+            prioritize automation, engagement tracking, and customer response
+            optimization instead of basic bulk messaging systems.
+          </p>
+
+        </div>
+      </section>
+
+      {/* CASE STUDY */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-6xl mx-auto">
+
+          <SectionHeader
+            badge="Case Study"
+            title="How Bulk SMS Marketing Improved Customer Engagement"
+          />
+
+          <div className="bg-white p-8 rounded-2xl border">
+
+            <p className="mb-4 text-gray-700">
+              A healthcare clinic in Pune faced low patient engagement and
+              missed appointment confirmations due to inconsistent follow-up
+              communication.
+            </p>
+
+            <p className="mb-4 text-gray-700">
+              Business category: Appointment-based healthcare services.
+            </p>
+
+            <p className="mb-4 text-gray-700">
+              Patients frequently missed appointment reminders, resulting in
+              lower operational efficiency and reduced repeat visits.
+            </p>
+
+            <p className="mb-4 text-gray-700">
+              The Bulk SMS strategy included:
+            </p>
+
+            <ul className="space-y-3 text-gray-700">
+              <li>📲 Automated appointment reminder SMS campaigns</li>
+              <li>🚀 Personalized follow-up messaging workflows</li>
+              <li>📈 Promotional SMS campaigns for repeat engagement</li>
+              <li>💬 Transactional SMS automation for confirmations</li>
+            </ul>
+
+            <p className="mt-5 mb-3 font-medium">
+              Within 90 days:
+            </p>
+
+            <ul className="space-y-3 text-gray-700">
+              <li>Appointment confirmation rates improved significantly</li>
+              <li>Customer engagement increased by 2.1x</li>
+              <li>Missed follow-ups reduced substantially</li>
+              <li>Repeat customer visits improved by 40%</li>
+            </ul>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Services"
+            title="Bulk SMS Services in Pune — What You Actually Get"
+          />
+
+          <p className="text-gray-700">
+            Most providers treat SMS marketing as simple bulk message delivery.
+            Effective SMS marketing is built around customer engagement,
+            automation, and conversion-focused communication.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6 mt-8">
+
+            {[
+              "Promotional Bulk SMS campaigns",
+              "Transactional SMS services",
+              "OTP SMS integration solutions",
+              "RCS messaging campaigns",
+              "Lead nurturing and customer engagement workflows",
+              "API integration for SMS automation",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="p-6 border rounded-xl"
+              >
+                {item}
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="py-20 bg-[#F8FAFC] px-4">
+        <div className="max-w-7xl mx-auto">
+
+          <SectionHeader
+            badge="Process"
+            title="How Our Bulk SMS Marketing Strategy Works"
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {[
+              {
+                title: "Communication Audit",
+                desc: "Identify customer engagement gaps and messaging inefficiencies.",
+              },
+              {
+                title: "Audience Segmentation",
+                desc: "Segment audiences based on engagement behavior and conversion intent.",
+              },
+              {
+                title: "Campaign Automation",
+                desc: "Build automated SMS workflows for faster communication.",
+              },
+              {
+                title: "Campaign Deployment",
+                desc: "Launch promotional, transactional, and engagement-focused SMS campaigns.",
+              },
+              {
+                title: "Follow-Up Systems",
+                desc: "Re-engage warm leads and inactive customers using automated workflows.",
+              },
+              {
+                title: "Performance Optimization",
+                desc: "Track delivery rates, response rates, clicks, and conversions.",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white p-6 rounded-xl border"
+              >
+                <h3 className="font-semibold text-[#0529a0] mb-2">
+                  {item.title}
+                </h3>
+
+                <p className="text-sm text-gray-600">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-white px-4">
+        <div className="max-w-5xl mx-auto">
+
+          <SectionHeader
+            badge="FAQs"
+            title="Frequently Asked Questions"
+          />
+
+          <div className="space-y-6">
+
+            <div className="border rounded-2xl p-6">
+              <h3 className="font-bold text-[#0529a0] mb-3">
+                What is Bulk SMS marketing?
+              </h3>
+
+              <p className="text-gray-700">
+                Bulk SMS marketing allows businesses to send promotional,
+                transactional, OTP, and engagement messages to customers at
+                scale using automated SMS systems.
+              </p>
+            </div>
+
+            <div className="border rounded-2xl p-6">
+              <h3 className="font-bold text-[#0529a0] mb-3">
+                What industries use Bulk SMS services?
+              </h3>
+
+              <p className="text-gray-700">
+                Healthcare, education, e-commerce, real estate, finance,
+                logistics, and service businesses commonly use bulk SMS
+                marketing for customer communication and lead generation.
+              </p>
+            </div>
+
+            <div className="border rounded-2xl p-6">
+              <h3 className="font-bold text-[#0529a0] mb-3">
+                What is the difference between SMS and RCS messaging?
+              </h3>
+
+              <p className="text-gray-700">
+                SMS delivers plain text messages, while RCS messaging supports
+                interactive experiences including images, buttons, branding,
+                and rich customer engagement features.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-[#0529a0] text-white text-center px-4">
+        <div className="max-w-4xl mx-auto">
+
+          <h2 className="text-3xl font-bold mb-6">
+            Improve Customer Engagement With Bulk SMS Marketing
+          </h2>
+
+          <p className="mb-8 text-gray-200">
+            We’ll identify what is limiting your customer communication
+            performance and show exactly how to improve engagement, lead
+            generation, and customer response rates.
+          </p>
 
           <Link
-            to="/services"
-            className="inline-flex items-center justify-center
-                 px-8 py-3.5 border border-gray-400
-                 text-gray-200 font-semibold rounded-md
-                 hover:border-white hover:text-white
-                 transition-colors"
+            to="/contact"
+            className="bg-[#f85415] px-8 py-4 rounded-lg font-semibold hover:bg-orange-600 transition"
           >
-            Explore All Services
+            Book Free Bulk SMS Consultation
           </Link>
-        </motion.div>
 
-      </div>
+        </div>
+      </section>
+
     </div>
-  </div>
-</div>
-
-
-      {/* Features Section */}
-      <section className="theme-bg-primary py-20 px-4">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16">
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold bg-orange-500 text-white" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>What We Offer</motion.span>
-            <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Our Bulk SMS Features</motion.h2>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((item, index) => (
-              <motion.div key={index} className="p-8 rounded-2xl theme-bg-card border theme-border shadow-sm hover:shadow-xl transition-all duration-300 group" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 transition-transform">{item.icon}</div>
-                <h3 className="text-xl font-bold theme-text-primary mb-3">{item.title}</h3>
-                <p className="theme-text-secondary">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Parallax CTA Section */}
-      <div className="relative min-h-[60vh] overflow-hidden bg-gray-900">
-        <div className="parallax-layer absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${imageUrls[2]})`, transform: `translateY(${scrollY * 0.1}px) scale(1.05)`, opacity: loadedImages[2] ? 1 : 0 }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-orange-900/50 to-black/70" />
-        <div className="relative z-10 min-h-[60vh] flex items-center justify-center px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.h2 className="text-3xl md:text-5xl font-bold mb-6 text-white" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Ready to Reach Your Audience?</motion.h2>
-            <motion.p className="text-lg mb-8 text-white/80 max-w-2xl mx-auto" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>Start sending bulk SMS campaigns that convert</motion.p>
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <Link to="/contact" className="px-10 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full font-semibold hover:scale-105 transition-transform shadow-xl">Contact Us Today</Link>
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
-      {/* Expertise Section */}
-      <section className="theme-bg-primary py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <motion.span className="inline-block mb-4 px-6 py-2 rounded-full text-base font-bold bg-orange-500 text-white" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>SMS Types</motion.span>
-            <motion.h2 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>Complete SMS Solutions</motion.h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {expertise.map((item, index) => (
-              <motion.div key={index} className="p-8 rounded-2xl theme-bg-card border theme-border shadow-sm hover:shadow-xl transition-all duration-300" initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }}>
-                <div className="flex items-start gap-6">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center text-2xl flex-shrink-0">{item.icon}</div>
-                  <div><h3 className="text-xl font-bold theme-text-primary mb-2">{item.title}</h3><p className="theme-text-secondary">{item.desc}</p></div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </motion.div>
   );
 }
 
