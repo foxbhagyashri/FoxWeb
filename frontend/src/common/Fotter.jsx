@@ -27,7 +27,7 @@ function Footer() {
             </Link>
 
             <p className="text-md font-semibold text-black theme-text-secondary mb-4 leading-relaxed italic">
-           "Empower your brand with India’s trusted digital marketing partner—driving growth, engagement, and success in the digital age."
+              "Empower your brand with India’s trusted digital marketing partner—driving growth, engagement, and success in the digital age."
             </p>
 
 
@@ -101,7 +101,7 @@ function Footer() {
           </div>
           {/* Locations (ONE LINE) */}
           <div className="lg:col-span-3">
-            <h3 className="font-semibold theme-text-primary mb-4 text-xl">
+            <h3 className="font-semibold theme-text-primary mb-4 text-xl text-center">
               Our Locations
             </h3>
 
@@ -109,12 +109,12 @@ function Footer() {
 
               {/* Pune */}
               <div>
-                <p className="font-medium theme-text-primary mb-1">
+                <p className="font-medium theme-text-primary mb-2 text-center">
                   Pune
                 </p>
                 <iframe
                   title="Pune Office"
-                  src="https://www.google.com/maps?q=Jai+Ganesh+Vision+Akurdi+Pune&output=embed"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.3635604935907!2d73.78211697372403!3d18.64767466528227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b932b28d611b%3A0x12cb3926a3034efe!2sFox%20Aircomm%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1779945492796!5m2!1sen!2sin"
                   className="w-full h-32 rounded-md border theme-border"
                   loading="lazy"
                 />
@@ -122,7 +122,7 @@ function Footer() {
 
               {/* Mumbai */}
               <div>
-                <p className="font-medium theme-text-primary mb-1">
+                <p className="font-medium theme-text-primary mb-2 text-center">
                   Mumbai
                 </p>
                 <iframe
@@ -135,7 +135,7 @@ function Footer() {
 
               {/* Ahmedabad */}
               <div>
-                <p className="font-medium theme-text-primary mb-1">
+                <p className="font-medium theme-text-primary mb-2 text-center">
                   Ahmedabad
                 </p>
                 <iframe

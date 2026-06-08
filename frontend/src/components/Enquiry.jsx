@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { submitEnquiry } from '../lib/formsApi';
 
 const Enquiry = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -12,6 +15,8 @@ const Enquiry = ({ isOpen, onClose }) => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -30,23 +35,29 @@ const Enquiry = ({ isOpen, onClose }) => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError('');
     const newErrors = validateForm();
     if (Object.keys(newErrors).length === 0) {
-      // Handle form submission here
-      console.log('Form submitted:', formData);
-      alert('Thank you for your enquiry! We will contact you soon.');
-      onClose();
-      // Reset form
-      setFormData({
-        fullName: '',
-        email: '',
-        businessName: '',
-        contactNumber: '',
-        typeOfService: 'Social Media Marketing',
-        consent: false
-      });
+      try {
+        setIsSubmitting(true);
+        await submitEnquiry(formData);
+        onClose();
+        setFormData({
+          fullName: '',
+          email: '',
+          businessName: '',
+          contactNumber: '',
+          typeOfService: 'Social Media Marketing',
+          consent: false
+        });
+        navigate('/thank-you?type=enquiry');
+      } catch (err) {
+        setSubmitError(err?.response?.data?.message || 'Failed to send. Please try again.');
+      } finally {
+        setIsSubmitting(false);
+      }
     } else {
       setErrors(newErrors);
     }
@@ -94,6 +105,11 @@ const Enquiry = ({ isOpen, onClose }) => {
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {submitError ? (
+                <div className="rounded-lg border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">
+                  {submitError}
+                </div>
+              ) : null}
               {/* Full Name */}
               <div>
                 <input
@@ -186,9 +202,10 @@ const Enquiry = ({ isOpen, onClose }) => {
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg"
+                disabled={isSubmitting}
+                className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>
             </form>
           </div>

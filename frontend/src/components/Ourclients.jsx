@@ -134,7 +134,7 @@ function Ourclients() {
               <img
                 src={client.src}
                 alt={client.name}
-                className="max-h-30 object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-300"
+                className="max-h-20 object-contain  group-hover:grayscale-0 group-hover:scale-110 transition duration-300"
               />
             </div>
           ))}

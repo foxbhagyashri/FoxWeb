@@ -45,6 +45,8 @@ import WebDevelopmentServiceAhemdabad from "./components/Ahemdabad/WebDevelopmen
 import SocialMediaMarketingServiceAhemdabad from "./components/Ahemdabad/SocialMediaMarketingServiceAhemdabad";
 import FloatingContact from "./components/FloatingContact";
 import AhmedabadSection from "./components/AhmedabadSection";
+import CustomCRMDevelopment from './components/services/Custom-CRM-Development'
+import ThankYou from '../src/components/ThankYou'
 
 
 // Page transition variants
@@ -115,6 +117,17 @@ function App() {
               transition={pageTransition}
             >
               <Conactus />
+            </motion.div>
+          } />
+          <Route path="/thank-you" element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <ThankYou />
             </motion.div>
           } />
           <Route path="/career" element={
@@ -298,6 +311,12 @@ function App() {
           <Route path="/services/construction-management-software" element={
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <ConstructionManagementSoftware />
+            </motion.div>
+          } />
+
+          <Route path="/services/custom-crm-development" element={
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <CustomCRMDevelopment />
             </motion.div>
           } />
 

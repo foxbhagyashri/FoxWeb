@@ -57,7 +57,7 @@ const serviceCategories = [
   {
     title: "CUSTOMER SOFTWARES",
     items: [
-      { label: "CRM", id: "CRM", path: "/services/crm" },
+      { label: "CRM", id: "CRM", path: "/services/custom-crm-development" },
       { label: "Construction Management Software", id: "construction-management-software", path: "/services/construction-management-software" }
     ]
   }
@@ -112,13 +112,12 @@ function Navbar() {
   return (
     <>
       {/* Main Navbar */}
-     <motion.nav
-  className={`navbar sticky top-0 z-[9999] w-full
+      <motion.nav
+        className={`navbar sticky top-0 z-[9999] w-full
   bg-white dark:bg-gray-900
-  shadow-md transition-all duration-300 ${
-    isScrolled ? "backdrop-blur-md" : ""
-  }`}
->
+  shadow-md transition-all duration-300 ${isScrolled ? "backdrop-blur-md" : ""
+          }`}
+      >
 
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
@@ -144,7 +143,7 @@ function Navbar() {
                 { to: "/about", label: "About Us" },
                 { to: "/services", label: "Services", hasDropdown: true },
                 { to: "/clients", label: "Clients" },
-                { to: "/career", label: "Career" },
+                { to: "/career-form", label: "Career" },
                 { to: "/blog", label: "Articles" },
                 { to: "/contact", label: "Contact Us" }
               ].map((item, index) => (
@@ -167,18 +166,16 @@ function Navbar() {
                         to={item.to}
                         onClick={(e) => handleNavClick(item.to, e)}
                         className={({ isActive }) =>
-                          `navbar-link flex justify-center gap-1 text-base font-medium relative transition-all duration-300 ${
-                            isActive
-                              ? "active theme-text-primary"
-                              : "theme-text-secondary hover:theme-text-primary"
+                          `navbar-link flex justify-center gap-1 text-base font-medium relative transition-all duration-300 ${isActive
+                            ? "active theme-text-primary"
+                            : "theme-text-secondary hover:theme-text-primary"
                           }`
                         }
                       >
                         {item.label}
                         <svg
-                          className={`w-4 h-4 mt-1.5 transition-transform duration-300 ${
-                            showServicesDropdown ? "rotate-180" : ""
-                          }`}
+                          className={`w-4 h-4 mt-1.5 transition-transform duration-300 ${showServicesDropdown ? "rotate-180" : ""
+                            }`}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -283,156 +280,156 @@ function Navbar() {
           </div>
 
           {/* ✅ Mobile Menu Dropdown */}
-<AnimatePresence>
-  {mobileMenuOpen && (
-    <motion.div
-      initial={{ opacity: 0, y: -15 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -15 }}
-      transition={{ duration: 0.25 }}
-      className="md:hidden absolute top-20 left-0 w-full
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.25 }}
+                className="md:hidden absolute top-20 left-0 w-full
                  bg-white dark:bg-gray-900
                  rounded-b-2xl shadow-2xl
                  p-5 space-y-4 z-[9999]"
-    >
-      {/* ✅ Mobile Links */}
-      <NavLink
-        to="/"
-        onClick={(e) => handleNavClick("/", e)}
-        className="block px-4 py-3 rounded-xl font-medium
+              >
+                {/* ✅ Mobile Links */}
+                <NavLink
+                  to="/"
+                  onClick={(e) => handleNavClick("/", e)}
+                  className="block px-4 py-3 rounded-xl font-medium
                    theme-text-secondary hover:bg-orange-50 hover:text-orange-600 transition"
-      >
-        Home
-      </NavLink>
+                >
+                  Home
+                </NavLink>
 
-      <NavLink
-        to="/about"
-        onClick={(e) => handleNavClick("/about", e)}
-        className="block px-4 py-3 rounded-xl font-medium
+                <NavLink
+                  to="/about"
+                  onClick={(e) => handleNavClick("/about", e)}
+                  className="block px-4 py-3 rounded-xl font-medium
                    theme-text-secondary hover:bg-orange-50 hover:text-orange-600 transition"
-      >
-        About Us
-      </NavLink>
+                >
+                  About Us
+                </NavLink>
 
-      {/* ✅ Services Toggle Button */}
-   <button
-  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-  className="w-full flex justify-between items-center px-4 py-3 rounded-xl
+                {/* ✅ Services Toggle Button */}
+                <button
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className="w-full flex justify-between items-center px-4 py-3 rounded-xl
              font-semibold theme-text-secondary
              hover:bg-orange-50 hover:text-orange-600 transition"
->
-  Services
+                >
+                  Services
 
-  {/* ✅ React Icon Dropdown Arrow */}
-  <motion.span
-    animate={{ rotate: mobileServicesOpen ? 180 : 0 }}
-    transition={{ duration: 0.25 }}
-    className="text-xl"
-  >
-    <FiChevronDown />
-  </motion.span>
-</button>
+                  {/* ✅ React Icon Dropdown Arrow */}
+                  <motion.span
+                    animate={{ rotate: mobileServicesOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="text-xl"
+                  >
+                    <FiChevronDown />
+                  </motion.span>
+                </button>
 
 
-      {/* ✅ Services Dropdown List */}
-      <AnimatePresence>
-        {mobileServicesOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="ml-4 pl-3 border-l border-orange-200"
-          >
-            <div
-              className="mt-2 space-y-2 max-h-60 overflow-y-auto pr-2
+                {/* ✅ Services Dropdown List */}
+                <AnimatePresence>
+                  {mobileServicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="ml-4 pl-3 border-l border-orange-200"
+                    >
+                      <div
+                        className="mt-2 space-y-2 max-h-60 overflow-y-auto pr-2
                          scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-transparent"
-            >
-              {serviceCategories.map((cat) =>
-                cat.items.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={(e) => handleNavClick(s.path, e)}
-                    className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-xl
+                      >
+                        {serviceCategories.map((cat) =>
+                          cat.items.map((s) => (
+                            <button
+                              key={s.id}
+                              onClick={(e) => handleNavClick(s.path, e)}
+                              className="flex items-center gap-3 w-full text-left px-3 py-2 rounded-xl
                                text-sm font-medium theme-text-secondary
                                hover:bg-orange-50 hover:text-orange-600
                                transition-all group"
-                  >
-                    {/* ✅ Icon */}
-                    <span className="w-8 h-8 flex items-center justify-center rounded-lg
+                            >
+                              {/* ✅ Icon */}
+                              <span className="w-8 h-8 flex items-center justify-center rounded-lg
                                      bg-gradient-to-r from-orange-500 to-red-500
                                      text-white shadow-md">
-                      {s.id.includes("seo") ? (
-                        <FiTrendingUp />
-                      ) : s.id.includes("website") ? (
-                        <FiGlobe />
-                      ) : s.id.includes("ecommerce") ? (
-                        <FiShoppingCart />
-                      ) : s.id.includes("whatsapp") ? (
-                        <FiSmartphone />
-                      ) : (
-                        <FiLayers />
-                      )}
-                    </span>
+                                {s.id.includes("seo") ? (
+                                  <FiTrendingUp />
+                                ) : s.id.includes("website") ? (
+                                  <FiGlobe />
+                                ) : s.id.includes("ecommerce") ? (
+                                  <FiShoppingCart />
+                                ) : s.id.includes("whatsapp") ? (
+                                  <FiSmartphone />
+                                ) : (
+                                  <FiLayers />
+                                )}
+                              </span>
 
-                    {/* Service Name */}
-                    <span className="flex-1">{s.label}</span>
+                              {/* Service Name */}
+                              <span className="flex-1">{s.label}</span>
 
-                    {/* Arrow */}
-                    <FiChevronRight className="opacity-0 group-hover:opacity-100 transition" />
-                  </button>
-                ))
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                              {/* Arrow */}
+                              <FiChevronRight className="opacity-0 group-hover:opacity-100 transition" />
+                            </button>
+                          ))
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
-      {/* ✅ Contact Link */}
-      <NavLink
-        to="/contact"
-        onClick={(e) => handleNavClick("/contact", e)}
-        className="block px-4 py-3 rounded-xl font-medium
+                {/* ✅ Contact Link */}
+                <NavLink
+                  to="/contact"
+                  onClick={(e) => handleNavClick("/contact", e)}
+                  className="block px-4 py-3 rounded-xl font-medium
                    theme-text-secondary hover:bg-orange-50 hover:text-orange-600 transition"
-      >
-        Contact Us
-      </NavLink>
+                >
+                  Contact Us
+                </NavLink>
 
-      {/* ✅ Bottom Section */}
-      <div className="border-t pt-4 space-y-3">
-        {/* Phone */}
-        <a
-          href="tel:+918879864151"
-          className="flex items-center gap-3 px-4 py-3 rounded-xl
+                {/* ✅ Bottom Section */}
+                <div className="border-t pt-4 space-y-3">
+                  {/* Phone */}
+                  <a
+                    href="tel:+918879864151"
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl
                      bg-orange-50 border border-orange-200
                      hover:bg-orange-100 transition"
-        >
-          <span className="w-10 h-10 flex items-center justify-center rounded-xl
+                  >
+                    <span className="w-10 h-10 flex items-center justify-center rounded-xl
                            bg-gradient-to-r from-orange-500 to-red-500
                            text-white shadow-md">
-            <FiPhoneCall className="text-lg" />
-          </span>
+                      <FiPhoneCall className="text-lg" />
+                    </span>
 
-          <span className="font-semibold text-gray-800 dark:text-white">
-            +91 8879864151
-          </span>
-        </a>
+                    <span className="font-semibold text-gray-800 dark:text-white">
+                      +91 8879864151
+                    </span>
+                  </a>
 
-        {/* Enquire Button */}
-        <button
-          onClick={() => setShowEnquiry(true)}
-          className="w-full py-3 rounded-xl font-bold text-white text-lg
+                  {/* Enquire Button */}
+                  <button
+                    onClick={() => setShowEnquiry(true)}
+                    className="w-full py-3 rounded-xl font-bold text-white text-lg
                      bg-gradient-to-r from-orange-500 to-red-500
                      shadow-lg shadow-orange-500/30
                      hover:scale-[1.02] active:scale-[0.98]
                      transition-all"
-        >
-          Enquire Now 
-        </button>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
+                  >
+                    Enquire Now
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
 
         </div>

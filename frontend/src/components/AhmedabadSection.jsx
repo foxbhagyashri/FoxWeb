@@ -85,7 +85,7 @@ export default function AhmedabadSection() {
           </div>
 
           {/* Email Marketing */}
-          <div className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden hover:border-white/20 hover:bg-white/10 hover:-translate-y-1 hover:shadow-2xl">
+          {/* <div className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden hover:border-white/20 hover:bg-white/10 hover:-translate-y-1 hover:shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-blue-500 opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300 pointer-events-none" />
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center mb-5 shadow-lg">
               <Send className="w-5 h-5 text-white" />
@@ -95,7 +95,7 @@ export default function AhmedabadSection() {
             <a href="/services/email-marketing" className="mt-4 flex items-center gap-1 text-xs font-semibold text-cyan-400 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">
               Learn more <ArrowRight className="w-3.5 h-3.5" />
             </a>
-          </div>
+          </div> */}
 
           {/* Content Marketing */}
           <div className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden hover:border-white/20 hover:bg-white/10 hover:-translate-y-1 hover:shadow-2xl">
@@ -124,7 +124,7 @@ export default function AhmedabadSection() {
           </div>
 
 
-           <div className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden hover:border-white/20 hover:bg-white/10 hover:-translate-y-1 hover:shadow-2xl">
+          <div className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 transition-all duration-300 cursor-pointer overflow-hidden hover:border-white/20 hover:bg-white/10 hover:-translate-y-1 hover:shadow-2xl">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300 pointer-events-none" />
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mb-5 shadow-lg">
               <BarChart2 className="w-5 h-5 text-white" />
@@ -139,56 +139,7 @@ export default function AhmedabadSection() {
         </div>
 
         {/* Contact Bar */}
-        <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-transparent to-violet-600/5 pointer-events-none rounded-2xl" />
-          <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
 
-            {/* Address */}
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center flex-shrink-0 shadow-md">
-                <MapPin className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <p className="text-slate-500 text-xs uppercase tracking-widest font-semibold mb-0.5">Address</p>
-                <span className="text-slate-300 text-sm font-medium">Ahmedabad, Gujarat, India</span>
-              </div>
-            </div>
-
-            {/* Phone */}
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center flex-shrink-0 shadow-md">
-                <Phone className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <p className="text-slate-500 text-xs uppercase tracking-widest font-semibold mb-0.5">Phone</p>
-                <a href="tel:+919999999999" className="text-white text-sm hover:text-blue-400 transition-colors font-medium">+91 99999 99999</a>
-              </div>
-            </div>
-
-            {/* Email */}
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center flex-shrink-0 shadow-md">
-                <Mail className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <p className="text-slate-500 text-xs uppercase tracking-widest font-semibold mb-0.5">Email</p>
-                <a href="mailto:ahmedabad@foxaircomm.com" className="text-white text-sm hover:text-blue-400 transition-colors font-medium">ahmedabad@foxaircomm.com</a>
-              </div>
-            </div>
-
-            {/* Hours */}
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center flex-shrink-0 shadow-md">
-                <Clock className="w-4 h-4 text-white" />
-              </div>
-              <div>
-                <p className="text-slate-500 text-xs uppercase tracking-widest font-semibold mb-0.5">Hours</p>
-                <span className="text-slate-300 text-sm font-medium">Mon – Sat, 9 AM – 6 PM</span>
-              </div>
-            </div>
-
-          </div>
-        </div>
 
       </div>
     </section>

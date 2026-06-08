@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import careerImage from '../assets/home/career.png';
+import { submitCareer } from '../lib/formsApi';
 
 function CareerForm() {
   const navigate = useNavigate();
@@ -89,6 +90,8 @@ function CareerForm() {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -156,24 +159,40 @@ function CareerForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError('');
 
     if (validateForm()) {
-      // Handle form submission
-      console.log('Form submitted:', formData);
-      alert('Application submitted successfully!');
+      try {
+        setIsSubmitting(true);
+        const fd = new FormData();
+        fd.append('name', formData.name);
+        fd.append('email', formData.email);
+        fd.append('phone', formData.phone);
+        fd.append('role', formData.role);
+        fd.append('project', formData.project);
+        fd.append('salary', formData.salary);
+        fd.append('cvFile', formData.cvFile);
 
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        role: 'Social Media Executive',
-        project: '',
-        salary: '',
-        cvFile: null
-      });
+        await submitCareer(fd);
+        alert('Application submitted successfully!');
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          role: 'Social Media Executive',
+          project: '',
+          salary: '',
+          cvFile: null
+        });
+      } catch (err) {
+        setSubmitError(err?.response?.data?.message || 'Failed to send. Please try again.');
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -201,97 +220,9 @@ function CareerForm() {
         initial="hidden"
         animate="visible"
       >
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="flex justify-center items-center min-h-screen  px-4 m-auto">
 
           {/* Left Side - Enhanced with animations */}
-          <motion.div
-            className="space-y-8"
-            variants={leftSideVariants}
-          >
-            {/* Enhanced Career Image */}
-            <motion.div
-              className="relative group"
-              variants={imageVariants}
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/5 to-brand-secondary/5 rounded-2xl blur-xl group-hover:blur-xl transition-all duration-500"></div>
-              <img
-                src={careerImage}
-                alt="Career Opportunities"
-                className="w-100 h-auto rounded-2xl shadow-2xl relative z-10 transform transition-transform duration-500 object-contain"
-              />
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              />
-            </motion.div>
-
-            {/* Animated Text Content */}
-            <motion.div className="space-y-3" variants={textVariants}>
-              <div className="space-y-1">
-                <motion.h3
-                  className="text-lg font-semibold theme-text-secondary uppercase tracking-wider inline-block"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  JOB OPENINGS
-                </motion.h3>
-              </div>
-
-              <motion.h2
-                className="section-title leading-tight"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                What makes us
-                <motion.span
-                  className="block bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  stand out?
-                </motion.span>
-              </motion.h2>
-            </motion.div>
-
-            <motion.p
-              className="subtitle max-w-lg -mt-15"
-              variants={textVariants}
-            >
-              Discover what sets us apart and why talented professionals choose to build their careers with us.
-            </motion.p>
-
-            <motion.div
-              className="pt-8"
-              variants={textVariants}
-            >
-              <motion.a
-                href="/career"
-                className="inline-flex items-center gap-3 px-8 py-4 theme-text-primary bg-gradient-to-b from-brand-primary to-brand-secondary text-white font-semibold text-lg rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 active:scale-95"
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" }}
-                whileTap={{ scale: 0.95 }}
-              >
-                View Openings
-                <motion.svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <path
-                    d="M5 12H19M19 12L12 5M19 12L12 19"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </motion.svg>
-              </motion.a>
-            </motion.div>
-          </motion.div>
 
           {/* Right Side - Enhanced Form Section */}
           <motion.div
@@ -299,7 +230,7 @@ function CareerForm() {
             variants={rightSideVariants}
           >
             <motion.div
-              className="theme-card rounded-2xl shadow-2xl p-6 md:p-8 backdrop-blur-lg bg-white/90 dark:bg-gray-900/90 border border-white/20"
+              className="theme-card rounded-2xl shadow-2xl p-6 md:p-8 backdrop-blur-lg bg-white/90 dark:bg-gray-900/90 border border-white/20 max-w-2xl mx-auto"
               whileHover={{ y: -5 }}
               transition={{ duration: 0.3 }}
             >
@@ -308,13 +239,13 @@ function CareerForm() {
                 variants={formVariants}
               >
                 <motion.h3
-                  className="section-title leading-tight"
+                  className="section-title leading-tight text-center"
                   whileHover={{ scale: 1.02 }}
                 >
                   Application Form
                 </motion.h3>
                 <motion.p
-                  className="subtitle"
+                  className="subtitle text-center"
                   whileHover={{ scale: 1.01 }}
                 >
                   Fill in your details to apply for the position
@@ -326,6 +257,11 @@ function CareerForm() {
                 className="grid grid-cols-1 md:grid-cols-2 gap-5"
                 variants={formVariants}
               >
+                {submitError ? (
+                  <div className="md:col-span-2 rounded-lg border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">
+                    {submitError}
+                  </div>
+                ) : null}
                 {/* Enhanced Name Field */}
                 <motion.div
                   className="md:col-span-1"
@@ -449,13 +385,21 @@ function CareerForm() {
                     className={`w-full px-4 py-3 rounded-lg theme-input transition-all duration-300 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary ${errors.role ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : ''}`}
                     whileFocus={{ scale: 1.02, boxShadow: "0 0 0 3px rgba(99, 102, 241, 0.1)" }}
                   >
-                    <option value="Social Media Executive">Social Media Executive</option>
-                    <option value="Digital Marketing Manager">Digital Marketing Manager</option>
+                    <option value="Social Media Executive">Social Media Executive (5 Positions)</option>
+                    <option value="Digital Marketing Manager">Digital Marketing Manager (2 Positions)</option>
                     <option value="Content Writer">Content Writer</option>
-                    <option value="SEO Specialist">SEO Specialist</option>
+                    <option value="SEO Executive">SEO Executive (3 Positions)</option>
                     {/* <option value="PPC Specialist">PPC Specialist</option> */}
                     <option value="Social Media Manager">Social Media Manager</option>
                     <option value="Marketing Analyst">Marketing Analyst</option>
+                    <option value="Business Development Executive">Business Development Executive (10 Positions)</option>
+                    <option value="Business Development Manager">Business Development Manager (2 Positions)</option>
+                    <option value="Sales Executive">Sales Executive (5 Positions)</option>
+                    <option value="Assistant Sales Manager">Asst. Sales Manager (5 Positions)</option>
+                    <option value="Renewal And Client Service Executive">Renewal And Client Service Executive (5 Positions)</option>
+                    <option value="Renewal Manager">Renewal Manager (2 Positions)</option>
+                    <option value="Asst. Manager Social Media">Asst. Manager Social Media (2 Positions)</option>
+                    <option value="Graphics and video editor">Graphics and Video Editor (5 Positions)</option>
                   </motion.select>
                   {errors.role && (
                     <motion.p
@@ -468,30 +412,6 @@ function CareerForm() {
                   )}
                 </motion.div>
 
-                {/* Enhanced Project Description */}
-                <motion.div
-                  className="md:col-span-2"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <motion.label
-                    htmlFor="project"
-                    className="block text-sm font-medium theme-text-primary mb-2"
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    Tell us About a project that you worked on and felt proud of IT.
-                  </motion.label>
-                  <motion.textarea
-                    id="project"
-                    name="project"
-                    value={formData.project}
-                    onChange={handleInputChange}
-                    rows={3}
-                    className="w-full px-4 py-3 rounded-lg theme-input resize-none transition-all duration-300 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary"
-                    placeholder="Describe your project and what made you proud of it..."
-                    whileFocus={{ scale: 1.02, boxShadow: "0 0 0 3px rgba(99, 102, 241, 0.1)" }}
-                  />
-                </motion.div>
 
                 {/* Enhanced Salary Information */}
                 <motion.div
@@ -527,6 +447,76 @@ function CareerForm() {
                   )}
                 </motion.div>
 
+
+
+                <motion.div
+                  className="md:col-span-1"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <motion.label
+                    htmlFor="phone"
+                    className="block text-sm font-medium theme-text-primary mb-2"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Total Experience <span className="text-red-500">*</span>
+                  </motion.label>
+                  <motion.input
+                    type="text"
+                    id="totalExperience"
+                    name="totalExperience"
+                    value={formData.totalExperience}
+                    onChange={handleInputChange}
+                    className={`w-full px-4 py-3 rounded-lg theme-input transition-all duration-300 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary ${errors.totalExperience ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : ''}`}
+                    placeholder="Enter your total experience"
+                    whileFocus={{ scale: 1.02, boxShadow: "0 0 0 3px rgba(99, 102, 241, 0.1)" }}
+                  />
+                  {errors.totalExperience && (
+                    <motion.p
+                      className="mt-1 text-sm text-red-500"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      {errors.totalExperience}
+                    </motion.p>
+                  )}
+                </motion.div>
+
+
+                <motion.div
+                  className="md:col-span-1"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <motion.label
+                    htmlFor="phone"
+                    className="block text-sm font-medium theme-text-primary mb-2"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    Relevant Experience <span className="text-red-500">*</span>
+                  </motion.label>
+                  <motion.input
+                    type="text"
+                    id="relevantExperience"
+                    name="relevantExperience"
+                    value={formData.relevantExperience}
+                    onChange={handleInputChange}
+                    className={`w-full px-4 py-3 rounded-lg theme-input transition-all duration-300 focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary ${errors.relevantExperience ? 'border-red-500 bg-red-50 dark:bg-red-900/20' : ''}`}
+                    placeholder="Enter your relevant experience"
+                    whileFocus={{ scale: 1.02, boxShadow: "0 0 0 3px rgba(99, 102, 241, 0.1)" }}
+                  />
+                  {errors.relevantExperience && (
+                    <motion.p
+                      className="mt-1 text-sm text-red-500"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      {errors.relevantExperience}
+                    </motion.p>
+                  )}
+                </motion.div>
+
+
                 {/* Enhanced CV Upload */}
                 <motion.div
                   className="md:col-span-2"
@@ -552,8 +542,8 @@ function CareerForm() {
                     <motion.label
                       htmlFor="cvFile"
                       className={`flex items-center justify-center w-full px-3 py-1 border-2 border-dashed rounded-lg cursor-pointer transition-all duration-300 ${errors.cvFile
-                          ? 'border-red-500 bg-red-50 dark:bg-red-900/20'
-                          : 'border-gray-300 dark:border-gray-600 hover:border-brand-primary hover:bg-brand-primary/5'
+                        ? 'border-red-500 bg-red-50 dark:bg-red-900/20'
+                        : 'border-gray-300 dark:border-gray-600 hover:border-brand-primary hover:bg-brand-primary/5'
                         } theme-bg-secondary`}
                       whileHover={{ scale: 1.02, borderColor: "rgb(99, 102, 241)" }}
                       whileTap={{ scale: 0.98 }}
@@ -608,6 +598,7 @@ function CareerForm() {
                 >
                   <motion.button
                     type="submit"
+                    disabled={isSubmitting}
                     className="w-full theme-btn-primary py-3.5 px-6 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transform transition-all duration-300 relative overflow-hidden group"
                     whileHover={{
                       scale: 1.05,
@@ -623,7 +614,7 @@ function CareerForm() {
                       className="relative z-10 flex items-center justify-center gap-2 theme-text-primary "
                       whileHover={{ scale: 1.05 }}
                     >
-                      Submit Now
+                      {isSubmitting ? 'Submitting...' : 'Submit Now'}
                       <motion.svg
                         width="20"
                         height="20"
