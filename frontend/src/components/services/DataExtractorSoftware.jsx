@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 /* Section Header */
@@ -58,6 +59,15 @@ const faqData = [
 function DataExtractorSoftware() {
   return (
     <div className="overflow-hidden bg-white">
+
+      <Helmet>
+        <title>
+          Data Extraction Software Services in Pune | Fox Aircomm
+
+        </title>
+        <meta name="description" content="Automate data collection with custom data extraction tools from Fox Aircomm, Akurdi PCMC Pune. Save time on manual research and reporting." />
+      </Helmet>
+
 
       {/* HERO */}
       <section className="bg-[#0529a0] text-white py-24 px-4">

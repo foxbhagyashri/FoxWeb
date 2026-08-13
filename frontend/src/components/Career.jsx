@@ -6,6 +6,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Helmet } from 'react-helmet';
 
 function Career() {
   const careerBenefits = [
@@ -92,6 +93,15 @@ function Career() {
   const nextButtonClass = 'career-button-next';
   return (
     <div className="min-h-screen theme-bg-primary py-16 lg:py-20">
+
+
+      <Helmet>
+        <title>Careers at Fox Aircomm | Jobs in Pune
+
+        </title>
+        <meta name="description" content="Join the Fox Aircomm team in Akurdi, PCMC Pune. Explore current openings in digital marketing, design, development and more." />
+      </Helmet>
+
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
 

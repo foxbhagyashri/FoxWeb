@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import careerImage from '../assets/home/career.png';
-import { submitCareer } from '../lib/formsApi';
+// import { submitCareer } from '../lib/formsApi';
 
 function CareerForm() {
   const navigate = useNavigate();

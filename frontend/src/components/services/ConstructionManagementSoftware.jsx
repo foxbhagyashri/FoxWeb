@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 /* Section Header */
@@ -46,6 +47,17 @@ const faqData = [
 function ConstructionManagementSoftware() {
   return (
     <div className="overflow-hidden bg-white">
+
+      <Helmet>
+        <title>
+          Construction Management Software in Pune | Fox Aircomm
+
+        </title>
+        <meta
+          name="description"
+          content="Fox Aircomm builds construction management software for contractors in Pune, covering ERP, project tracking, billing and labour management in one system."
+        />
+      </Helmet>
 
       {/* HERO */}
       <section className="bg-[#0529a0] text-white py-24 px-4 text-center">

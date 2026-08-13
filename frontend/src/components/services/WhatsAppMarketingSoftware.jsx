@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 /* Section Header */
@@ -19,6 +20,13 @@ const SectionHeader = ({ badge, title }) => (
 function WhatsAppMarketingSoftware() {
   return (
     <div className="overflow-hidden">
+
+      <Helmet>
+        <title>WhatsApp Marketing Services in Pune | Fox Aircomm
+        </title>
+        <meta name="description" content="Fox Aircomm offers WhatsApp marketing services in Pune, including bulk messaging, WhatsApp API and automation solutions for small and growing businesses." />
+      </Helmet>
+
 
       {/* HERO */}
       <section className="bg-[#0529a0] text-white py-24 px-4 text-center">

@@ -24,6 +24,10 @@ const Enquiry = ({ isOpen, onClose }) => {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+    // Clear the field-level error as the user types
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   const validateForm = () => {
@@ -38,28 +42,36 @@ const Enquiry = ({ isOpen, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitError('');
+    setErrors({});  // clear stale field errors on every submit attempt
+
     const newErrors = validateForm();
-    if (Object.keys(newErrors).length === 0) {
-      try {
-        setIsSubmitting(true);
-        await submitEnquiry(formData);
-        onClose();
-        setFormData({
-          fullName: '',
-          email: '',
-          businessName: '',
-          contactNumber: '',
-          typeOfService: 'Social Media Marketing',
-          consent: false
-        });
-        navigate('/thank-you?type=enquiry');
-      } catch (err) {
-        setSubmitError(err?.response?.data?.message || 'Failed to send. Please try again.');
-      } finally {
-        setIsSubmitting(false);
-      }
-    } else {
+    if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      await submitEnquiry(formData);
+      onClose();
+      setFormData({
+        fullName: '',
+        email: '',
+        businessName: '',
+        contactNumber: '',
+        typeOfService: 'Social Media Marketing',
+        consent: false
+      });
+      navigate('/thank-you?type=enquiry');
+    } catch (err) {
+      // Works whether formsApi uses fetch (err.message) or axios (err.response.data.message)
+      const message =
+        err?.response?.data?.message ||
+        err?.message ||
+        'Failed to send. Please try again.';
+      setSubmitError(message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -105,11 +117,14 @@ const Enquiry = ({ isOpen, onClose }) => {
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              {submitError ? (
+
+              {/* Submit Error Banner */}
+              {submitError && (
                 <div className="rounded-lg border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">
                   {submitError}
                 </div>
-              ) : null}
+              )}
+
               {/* Full Name */}
               <div>
                 <input
@@ -173,7 +188,6 @@ const Enquiry = ({ isOpen, onClose }) => {
                   <option value="Mobile App Development">Mobile App Development</option>
                   <option value="SEO Services">SEO Services</option>
                   <option value="Content Marketing">Content Marketing</option>
-                  {/* <option value="PPC Advertising">PPC Advertising</option> */}
                   <option value="Google Adwords">Google Adwords</option>
                   <option value="Email Marketing">Email Marketing</option>
                   <option value="Other">Other</option>
@@ -182,7 +196,7 @@ const Enquiry = ({ isOpen, onClose }) => {
 
               {/* Consent Checkbox */}
               <div className="space-y-3">
-                <label className="flex items-start space-x-3">
+                <label className="flex items-start space-x-3 cursor-pointer">
                   <input
                     type="checkbox"
                     name="consent"
@@ -207,6 +221,7 @@ const Enquiry = ({ isOpen, onClose }) => {
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>
+
             </form>
           </div>
         </motion.div>

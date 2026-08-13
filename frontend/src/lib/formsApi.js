@@ -1,20 +1,19 @@
-import axios from 'axios';
+const API_URL = "http://localhost:5173/api/enquiry.php";
 
-const apiBase = import.meta.env.VITE_API_URL || '';
-
-export async function submitEnquiry(payload) {
-  const res = await axios.post(`${apiBase}/api/forms/enquiry`, payload);
-  return res.data;
-}
-
-export async function submitContact(payload) {
-  const res = await axios.post(`${apiBase}/api/forms/contact`, payload);
-  return res.data;
-}
-
-export async function submitCareer(formData) {
-  const res = await axios.post(`${apiBase}/api/forms/career`, formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
+export const submitEnquiry = async (formData) => {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
   });
-  return res.data;
-}
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Failed to send enquiry");
+  }
+
+  return data;
+};

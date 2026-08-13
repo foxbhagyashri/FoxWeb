@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 // import { Helmet } from "react-helmet";
 
@@ -50,75 +51,23 @@ function CustomSoftwareDevelopment() {
 
       {/* SEO SECTION */}
       {/* <Helmet> */}
+
+      <Helmet>
+
         <title>
-          Construction Management Software Company in Pune | Foxaircomm
+          Custom Software Development Company in Pune
         </title>
 
         <meta
           name="description"
-          content="Foxaircomm develops custom construction management software in Pune for builders, contractors, and infrastructure companies. Manage projects, contractors, budgets, billing, reporting, inventory, and site operations through one centralized platform."
+          content="Fox Aircomm designs and develops custom software solutions for businesses in Akurdi, PCMC Pune, Mumbai and Ahmedabad, built around your workflow."
         />
 
-        <meta
-          name="keywords"
-          content="Construction Management Software Pune, Construction Software Development Pune, Builder Management Software, Contractor Management Software, Construction ERP Software Pune, Real Estate Software Development Pune, Infrastructure Project Management Software, Foxaircomm"
-        />
 
-        <link
-          rel="canonical"
-          href="https://www.foxaircomm.com/construction-management-software-pune"
-        />
+      </Helmet>
 
-        {/* Open Graph */}
-        <meta
-          property="og:title"
-          content="Construction Management Software Company in Pune"
-        />
 
-        <meta
-          property="og:description"
-          content="Custom construction management software solutions for builders, contractors, and infrastructure companies in Pune."
-        />
 
-        <meta
-          property="og:url"
-          content="https://www.foxaircomm.com/construction-management-software-pune"
-        />
-
-        <meta property="og:type" content="website" />
-
-        {/* Twitter */}
-        <meta
-          name="twitter:title"
-          content="Construction Management Software Company in Pune"
-        />
-
-        <meta
-          name="twitter:description"
-          content="Foxaircomm develops scalable construction management software for project tracking, contractor management, budgeting, billing, reporting, and operational automation."
-        />
-
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            name: "Construction Management Software",
-            applicationCategory: "BusinessApplication",
-            operatingSystem: "Web",
-            description:
-              "Custom construction management software developed for builders, contractors, infrastructure companies, and real estate developers in Pune.",
-            provider: {
-              "@type": "Organization",
-              name: "Foxaircomm",
-              url: "https://www.foxaircomm.com",
-            },
-            areaServed: {
-              "@type": "City",
-              name: "Pune",
-            },
-          })}
-        </script>
       {/* </Helmet> */}
 
       {/* HERO */}

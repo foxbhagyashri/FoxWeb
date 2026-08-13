@@ -22,7 +22,8 @@ const serviceCategories = [
     items: [
       { label: "Social Media Marketing", id: "social-media", path: "/services/social-media-marketing" },
       { label: "Search Engine Optimization", id: "seo", path: "/services/seo" },
-      { label: "Google Adwords", id: "google-adwords", path: "/services/google-adwords" }
+      { label: "Google Adwords", id: "google-adwords", path: "/services/google-adwords" },
+      { label: "PPC Management", id: "ppc-management", path: "/services/PPC-Management-Services-in-Pune" }
     ]
   },
   {
@@ -141,7 +142,7 @@ function Navbar() {
               {[
                 { to: "/", label: "Home" },
                 { to: "/about", label: "About Us" },
-                { to: "/services", label: "Services", hasDropdown: true },
+                { to: "#", label: "Services", hasDropdown: true },
                 { to: "/clients", label: "Clients" },
                 { to: "/career-form", label: "Career" },
                 { to: "/blog", label: "Articles" },

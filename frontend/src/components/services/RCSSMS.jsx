@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 /* Section Header */
@@ -19,6 +20,13 @@ const SectionHeader = ({ badge, title }) => (
 function RCSSMS() {
   return (
     <div className="overflow-hidden">
+
+      <Helmet>
+        <title>RCS Messaging Services in Pune | Fox Aircomm
+        </title>
+        <meta name="description" content="Send rich, interactive RCS messages to customers with Fox Aircomm's RCS SMS services in Akurdi PCMC Pune. Higher engagement than standard SMS." />
+      </Helmet>
+
 
       {/* HERO */}
       <section className="bg-[#0529a0] text-white py-24 px-4 text-center">

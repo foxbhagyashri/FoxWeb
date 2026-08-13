@@ -8,6 +8,8 @@ import fourthimg from "../assets/Team/Salesmaneger.png";
 import fifthimg from "../assets/Team/Socialmediahead.png";
 import visionImg from "/vision-img.png";
 import missionImg from "/mission-img.png";
+import { Helmet } from "react-helmet";
+
 
 /* ================= STATS ================= */
 const Stat = ({ value, label }) => (
@@ -34,65 +36,75 @@ const ProfileCard = ({ profile }) => {
   } = profile;
 
   return (
-    <div className="theme-card shadow-xl rounded-[28px] p-6 md:p-10 max-w-6xl max-h-7xl mx-auto">
-      <div className="flex flex-col md:flex-row items-center md:items-start">
-        {/* Image */}
-        <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-10">
-          <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden bg-gradient-to-br from-indigo-500/30 to-purple-500/30 p-1 relative">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-[95%] h-[95%] rounded-full border border-indigo-400/30 absolute" />
-              <div className="w-[75%] h-[75%] rounded-full border border-purple-400/30 absolute" />
+
+    <>
+      <Helmet>
+        <title>  Digital Marketing Agency, Pune | About Fox Aircomm
+        </title>
+        <meta name="description" content="Meet the team behind Fox Aircomm, a digital marketing agency in Akurdi, PCMC Pune serving Mumbai & Ahmedabad. Our story, mission and approach." />
+      </Helmet>
+
+      <div className="theme-card shadow-xl rounded-[28px] p-6 md:p-10 max-w-6xl max-h-7xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center md:items-start">
+          {/* Image */}
+          <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-10">
+            <div className="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden bg-gradient-to-br from-indigo-500/30 to-purple-500/30 p-1 relative">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[95%] h-[95%] rounded-full border border-indigo-400/30 absolute" />
+                <div className="w-[75%] h-[75%] rounded-full border border-purple-400/30 absolute" />
+              </div>
+              <img
+                src={imgSrc}
+                alt={name}
+                className="w-full h-full object-cover rounded-full relative z-10"
+              />
             </div>
-            <img
-              src={imgSrc}
-              alt={name}
-              className="w-full h-full object-cover rounded-full relative z-10"
-            />
+          </div>
+
+
+          {/* Content */}
+          <div className="text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-semibold theme-text-primary mb-1">
+              {name}
+            </h2>
+            <h3 className="text-sm theme-text-secondary mb-5">{title}</h3>
+
+            <p className="theme-text-secondary text-base leading-relaxed">
+              {description}
+            </p>
+
+            {subscribers && (
+              <div className="mt-4 flex gap-3 flex-wrap justify-center md:justify-start text-xs">
+                <span className="px-3 py-1 rounded bg-indigo-500/15 text-indigo-500">
+                  {subscribers} subscribers
+                </span>
+                <span className="px-3 py-1 rounded bg-purple-500/15 text-purple-500">
+                  {students} Startups mentored
+                </span>
+              </div>
+            )}
+
+            {years && (
+              <div className="mt-4 theme-text-muted text-xs">
+                {name === "Anil Patharde" ? (
+                  <p>{years}+ Years Experience in Software Development</p>
+                ) : name === "Priyanka Bagul" ? (
+                  <p>{years}+ Sales experience</p>
+                ) : name === "Firoz Shaik" ? (
+                  <p>{years}+ Years of Expertise in Digital Marketing and Brand Growth</p>
+                ) : (
+                  <p>{years}+ years industry experience</p>
+                )}
+                {education && <p className="mt-1">{education}</p>}
+              </div>
+            )}
           </div>
         </div>
 
-
-        {/* Content */}
-        <div className="text-center md:text-left">
-          <h2 className="text-3xl md:text-4xl font-semibold theme-text-primary mb-1">
-            {name}
-          </h2>
-          <h3 className="text-sm theme-text-secondary mb-5">{title}</h3>
-
-          <p className="theme-text-secondary text-base leading-relaxed">
-            {description}
-          </p>
-
-          {subscribers && (
-            <div className="mt-4 flex gap-3 flex-wrap justify-center md:justify-start text-xs">
-              <span className="px-3 py-1 rounded bg-indigo-500/15 text-indigo-500">
-                {subscribers} subscribers
-              </span>
-              <span className="px-3 py-1 rounded bg-purple-500/15 text-purple-500">
-                {students} Startups mentored
-              </span>
-            </div>
-          )}
-
-          {years && (
-            <div className="mt-4 theme-text-muted text-xs">
-              {name === "Anil Patharde" ? (
-                <p>{years}+ Years Experience in Software Development</p>
-              ) : name === "Priyanka Bagul" ? (
-                <p>{years}+ Sales experience</p>
-              ) : name === "Firoz Shaik" ? (
-                <p>{years}+ Years of Expertise in Digital Marketing and Brand Growth</p>
-              ) : (
-                <p>{years}+ years industry experience</p>
-              )}
-              {education && <p className="mt-1">{education}</p>}
-            </div>
-          )}
-        </div>
       </div>
-
-    </div>
+    </>
   );
+
 };
 
 /* ================= SKILLS DATA ================= */
@@ -777,6 +789,7 @@ function Aboutus() {
 
       </div>
     </section>
+
   );
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 // import { Helmet } from "react-helmet";
 
@@ -23,13 +24,15 @@ function BulkSMS() {
 
       {/* SEO META TAGS */}
       {/* <Helmet> */}
+      <Helmet>
         <title>
-          Bulk SMS Services in Pune | RCS & SMS Marketing Company Pune
+          Bulk SMS Service Provider in Pune, PCMC | Fox Aircomm
+
         </title>
 
         <meta
           name="description"
-          content="Foxaircomm provides Bulk SMS, transactional SMS, promotional SMS, and RCS marketing services in Pune. Improve customer engagement, lead generation, OTP delivery, and communication automation with high-delivery SMS campaigns."
+          content="Affordable, high-delivery bulk SMS services for businesses in Akurdi, PCMC & Pune. Promotional and transactional campaigns from Fox Aircomm."
         />
 
         <meta
@@ -70,7 +73,8 @@ function BulkSMS() {
           name="twitter:description"
           content="Professional Bulk SMS, transactional SMS, and RCS marketing solutions for businesses in Pune."
         />
-      {/* </Helmet> */}
+        {/* </Helmet> */}
+      </Helmet>
 
       {/* HERO */}
       <section className="bg-[#0529a0] text-white py-24 px-4 text-center">

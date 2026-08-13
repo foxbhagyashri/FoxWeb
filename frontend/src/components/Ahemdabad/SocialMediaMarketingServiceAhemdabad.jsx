@@ -136,23 +136,8 @@ const whenCards = [
 ];
 
 
+// ── EngagementChart no longer owns ref/show — it just renders ──
 function EngagementChart() {
-
-    const [show, setShow] = useState(false);
-    const ref = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([e]) => { if (e.isIntersecting) setShow(true); },
-            { threshold: 0.1 }
-        );
-        if (ref.current) observer.observe(ref.current);
-        return () => observer.disconnect();
-    }, []);
-
-    const fade = (delay = 0) =>
-        `transition-all duration-700 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`;
-
     return (
         <div>
             <svg viewBox="0 0 300 90" className="w-full" preserveAspectRatio="none">
@@ -199,11 +184,23 @@ export default function SocialMediaService() {
         setOpen(open === id ? null : id);
     };
 
+    // ── Hero entrance animation ──
     const [show, setShow] = useState(false);
-
     useEffect(() => {
         const t = setTimeout(() => setShow(true), 80);
         return () => clearTimeout(t);
+    }, []);
+
+    // ── Scroll-triggered animation for the who/when section ──
+    const [sectionVisible, setSectionVisible] = useState(false);
+    const ref = useRef(null);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([e]) => { if (e.isIntersecting) setSectionVisible(true); },
+            { threshold: 0.1 }
+        );
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
     }, []);
 
     return (
@@ -500,13 +497,14 @@ export default function SocialMediaService() {
             </section>
 
 
+            {/* ── ref now lives here in SocialMediaService, where it's used ── */}
             <section ref={ref} className="w-full bg-white py-20 px-6 md:px-12 overflow-hidden">
                 <div className="max-w-6xl mx-auto space-y-24">
 
                     {/* ── SECTION 1: WHO NEEDS THIS ── */}
                     <div>
                         {/* Header */}
-                        <div className={`text-center mb-12 ${fade()} transition-all duration-700 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+                        <div className={`text-center mb-12 transition-all duration-700 ${sectionVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
                             <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#F07830] bg-orange-50 border border-orange-100 px-4 py-1.5 rounded-full mb-4">
                                 Who It's For
                             </span>
@@ -529,8 +527,7 @@ export default function SocialMediaService() {
                   hover:shadow-lg hover:-translate-y-1 hover:border-[#0B3C5D]/20
                   transition-all duration-300 cursor-default
                   ${card.span ? "md:col-span-2" : ""}
-                  ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
-                  transition-all duration-700`}
+                  ${sectionVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
                                     style={{ transitionDelay: `${i * 80 + 150}ms` }}
                                 >
                                     {/* Left accent bar */}
@@ -555,7 +552,7 @@ export default function SocialMediaService() {
                     {/* ── SECTION 2: WHEN TO INVEST ── */}
                     <div>
                         {/* Header */}
-                        <div className={`text-center mb-12 transition-all duration-700 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ transitionDelay: "100ms" }}>
+                        <div className={`text-center mb-12 transition-all duration-700 ${sectionVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={{ transitionDelay: "100ms" }}>
                             <span className="inline-block text-xs font-bold uppercase tracking-widest text-red-600 bg-red-50 border border-red-100 px-4 py-1.5 rounded-full mb-4">
                                 Warning Signs
                             </span>
@@ -576,7 +573,7 @@ export default function SocialMediaService() {
                                     className={`group flex items-start gap-4 bg-gray-50 border border-gray-100 rounded-2xl p-6
                   hover:bg-red-50 hover:border-red-100 hover:shadow-md hover:-translate-y-1
                   transition-all duration-300 cursor-default
-                  ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                  ${sectionVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
                                     style={{ transitionDelay: `${i * 80 + 200}ms` }}
                                 >
                                     {/* Warning icon */}
@@ -599,7 +596,7 @@ export default function SocialMediaService() {
 
                         {/* Bottom CTA */}
                         <div
-                            className={`mt-10 flex flex-col sm:flex-row items-center justify-between gap-5 bg-[#0B3C5D] rounded-2xl px-8 py-6 transition-all duration-700 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                            className={`mt-10 flex flex-col sm:flex-row items-center justify-between gap-5 bg-[#0B3C5D] rounded-2xl px-8 py-6 transition-all duration-700 ${sectionVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
                             style={{ transitionDelay: "500ms" }}
                         >
                             <div>
@@ -624,130 +621,79 @@ export default function SocialMediaService() {
             <section className="w-full bg-white py-16 px-6 md:px-12">
                 <div className="max-w-6xl mx-auto">
 
-                    {/* SECTION 1 - WHO NEEDS THIS */}
-                    <div className="mb-16">
+                    {/* WHO NEEDS THIS */}
+                    <div className="mb-14">
+                        <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#185FA5] bg-[#E6F1FB] px-4 py-1.5 rounded-full mb-4">
+                            Who it's for
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                            Who needs social media marketing services
+                        </h2>
+                        <p className="text-gray-500 max-w-2xl mb-8 text-sm leading-relaxed">
+                            Businesses across industries benefit from structured strategies,
+                            especially when growth becomes inconsistent or unpredictable.
+                        </p>
 
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                                Who Needs Social Media Marketing Services
-                            </h2>
-                            <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
-                                Businesses across industries benefit from structured strategies,
-                                especially when growth becomes inconsistent or unpredictable.
-                            </p>
-                        </div>
-
-                        <div className="grid md:grid-cols-2 gap-6">
-
-                            <div className="p-6 border rounded-xl shadow-sm">
-                                <h4 className="font-semibold text-lg mb-2 flex items-center gap-2">
-                                    <Target className="text-blue-600" />
-                                    Startups
-                                </h4>
-                                <p className="text-gray-600 text-sm">
-                                    Build visibility and trust quickly to attract early adopters and establish brand identity.
-                                </p>
+                        <div className="grid md:grid-cols-2 gap-3">
+                            {[
+                                { icon: "🚀", title: "Startups", desc: "Build visibility and trust quickly to attract early adopters and establish brand identity." },
+                                { icon: "📍", title: "Local service businesses", desc: "Clinics, salons, and consultants can generate consistent leads through location-based targeting." },
+                                { icon: "💼", title: "B2B companies", desc: "Platforms like LinkedIn help build authority, nurture leads, and influence decision-makers." },
+                                { icon: "🛍️", title: "E-commerce brands", desc: "Drive product discovery, retargeting, and repeat purchases through content and ads." },
+                            ].map((item) => (
+                                <div key={item.title} className="flex gap-4 items-start p-5 border border-gray-100 rounded-xl hover:border-gray-300 transition-colors duration-200">
+                                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-lg flex-shrink-0">
+                                        {item.icon}
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold text-gray-900 text-sm mb-1">{item.title}</h4>
+                                        <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
+                            <div className="flex gap-4 items-start p-5 border border-gray-100 rounded-xl hover:border-gray-300 transition-colors duration-200 md:col-span-2">
+                                <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-lg flex-shrink-0">🏥</div>
+                                <div>
+                                    <h4 className="font-semibold text-gray-900 text-sm mb-1">Healthcare organisations</h4>
+                                    <p className="text-sm text-gray-500 leading-relaxed">Educate patients, build credibility, and increase appointment bookings through informative content.</p>
+                                </div>
                             </div>
-
-                            <div className="p-6 border rounded-xl shadow-sm">
-                                <h4 className="font-semibold text-lg mb-2 flex items-center gap-2">
-                                    <Target className="text-blue-600" />
-                                    Local Service Businesses
-                                </h4>
-                                <p className="text-gray-600 text-sm">
-                                    Clinics, salons, and consultants can generate consistent leads through location-based targeting.
-                                </p>
-                            </div>
-
-                            <div className="p-6 border rounded-xl shadow-sm">
-                                <h4 className="font-semibold text-lg mb-2 flex items-center gap-2">
-                                    <Target className="text-blue-600" />
-                                    B2B Companies
-                                </h4>
-                                <p className="text-gray-600 text-sm">
-                                    Platforms like LinkedIn help build authority, nurture leads, and influence decision-makers.
-                                </p>
-                            </div>
-
-                            <div className="p-6 border rounded-xl shadow-sm">
-                                <h4 className="font-semibold text-lg mb-2 flex items-center gap-2">
-                                    <Target className="text-blue-600" />
-                                    E-commerce Brands
-                                </h4>
-                                <p className="text-gray-600 text-sm">
-                                    Drive product discovery, retargeting, and repeat purchases through content and ads.
-                                </p>
-                            </div>
-
-                            <div className="p-6 border rounded-xl shadow-sm md:col-span-2">
-                                <h4 className="font-semibold text-lg mb-2 flex items-center gap-2">
-                                    <Target className="text-blue-600" />
-                                    Healthcare Organisations
-                                </h4>
-                                <p className="text-gray-600 text-sm">
-                                    Educate patients, build credibility, and increase appointment bookings through informative content.
-                                </p>
-                            </div>
-
                         </div>
                     </div>
 
-                    {/* SECTION 2 - WHEN TO INVEST */}
+                    {/* DIVIDER */}
+                    <div className="border-t border-gray-100 mb-14" />
+
+                    {/* WHEN TO INVEST */}
                     <div>
+                        <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#993C1D] bg-[#FAECE7] px-4 py-1.5 rounded-full mb-4">
+                            Warning signs
+                        </span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                            When should you invest in social media marketing
+                        </h2>
+                        <p className="text-gray-500 max-w-2xl mb-8 text-sm leading-relaxed">
+                            Many businesses delay action — but these signals clearly indicate it's time to invest.
+                        </p>
 
-                        <div className="text-center mb-12">
-                            <h3 className="text-2xl md:text-3xl font-semibold text-gray-900">
-                                When Should You Invest in Social Media Marketing
-                            </h3>
-                            <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
-                                Many businesses delay action — but these signals clearly indicate it’s time to invest.
-                            </p>
+                        <div className="grid md:grid-cols-2 gap-3">
+                            {[
+                                { icon: "📉", title: "Low reach despite regular posting", desc: "Indicates lack of algorithm alignment and ineffective content strategy." },
+                                { icon: "📊", title: "Inconsistent engagement", desc: "Random likes and comments show messaging is not resonating with a defined audience." },
+                                { icon: "🔻", title: "Weak lead generation", desc: "Social media is not contributing to enquiries or conversions due to an unoptimised funnel." },
+                                { icon: "👻", title: "Poor brand visibility", desc: "When competitors dominate online conversations, your brand loses relevance." },
+                            ].map((item) => (
+                                <div key={item.title} className="flex gap-4 items-start p-5 border border-gray-100 rounded-xl hover:border-orange-100 transition-colors duration-200 group">
+                                    <div className="w-9 h-9 rounded-xl bg-[#FAECE7] flex items-center justify-center text-base flex-shrink-0 group-hover:bg-[#F0997B]/30 transition-colors duration-200">
+                                        {item.icon}
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-[#993C1D] transition-colors duration-200">{item.title}</h4>
+                                        <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-
-                        <div className="grid md:grid-cols-2 gap-6">
-
-                            <div className="p-6 bg-gray-50 rounded-xl flex gap-4">
-                                <AlertCircle className="text-red-500 mt-1" />
-                                <div>
-                                    <h4 className="font-semibold mb-1">Low Reach Despite Regular Posting</h4>
-                                    <p className="text-sm text-gray-600">
-                                        Indicates lack of algorithm alignment and ineffective content strategy.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="p-6 bg-gray-50 rounded-xl flex gap-4">
-                                <AlertCircle className="text-red-500 mt-1" />
-                                <div>
-                                    <h4 className="font-semibold mb-1">Inconsistent Engagement</h4>
-                                    <p className="text-sm text-gray-600">
-                                        Random likes and comments show messaging is not resonating with a defined audience.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="p-6 bg-gray-50 rounded-xl flex gap-4">
-                                <AlertCircle className="text-red-500 mt-1" />
-                                <div>
-                                    <h4 className="font-semibold mb-1">Weak Lead Generation</h4>
-                                    <p className="text-sm text-gray-600">
-                                        Social media is not contributing to enquiries or conversions due to an unoptimised funnel.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="p-6 bg-gray-50 rounded-xl flex gap-4">
-                                <AlertCircle className="text-red-500 mt-1" />
-                                <div>
-                                    <h4 className="font-semibold mb-1">Poor Brand Visibility</h4>
-                                    <p className="text-sm text-gray-600">
-                                        When competitors dominate online conversations, your brand loses relevance.
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
                     </div>
 
                 </div>
@@ -757,139 +703,114 @@ export default function SocialMediaService() {
 
             <section className="w-full bg-gray-50 py-16 px-6 md:px-12">
                 <div className="max-w-6xl mx-auto">
+                    <div className="grid lg:grid-cols-2 gap-8">
 
-                    {/* SECTION 1 - PROCESS */}
-                    <div className="mb-16">
-
-                        <div className="text-center mb-12">
-                            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-                                How Foxaircomm Executes Social Media Campaigns
+                        {/* LEFT — TIMELINE PROCESS */}
+                        <div>
+                            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#0C447C] bg-[#E6F1FB] px-4 py-1.5 rounded-full mb-3">
+                                How it works
+                            </span>
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                                Campaign execution
                             </h2>
-                            <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
-                                Our approach is systematic, data-driven, and aligned with real business outcomes.
+                            <p className="text-gray-500 text-sm leading-relaxed mb-8">
+                                A systematic 6-step process from research to results.
                             </p>
+
+                            <div className="relative pl-10">
+                                {/* Vertical line */}
+                                <div className="absolute left-[15px] top-1 bottom-1 w-px bg-gray-200" />
+
+                                {[
+                                    { n: "1", icon: "👥", title: "Audience research", desc: "Demographics, interests & behaviour to identify high-value audiences." },
+                                    { n: "2", icon: "🗂️", title: "Platform strategy", desc: "Select platforms where your audience actively engages." },
+                                    { n: "3", icon: "📅", title: "Content planning", desc: "Structured calendars balancing education, engagement & promotion." },
+                                    { n: "4", icon: "📤", title: "Campaign execution", desc: "Consistent posting & storytelling across all selected platforms." },
+                                    { n: "5", icon: "🎯", title: "Paid social advertising", desc: "Targeted campaigns to drive reach, traffic & qualified leads." },
+                                    { n: "6", icon: "📈", title: "Analytics & optimisation", desc: "Track CTR, CPL & conversions to continuously improve ROI." },
+                                ].map((step, i) => (
+                                    <div key={step.n} className={`relative ${i !== 5 ? "mb-5" : ""}`}>
+                                        {/* Dot */}
+                                        <div className="absolute -left-10 w-[30px] h-[30px] rounded-full bg-[#E6F1FB] border-2 border-[#B5D4F4] flex items-center justify-center text-xs font-bold text-[#185FA5]">
+                                            {step.n}
+                                        </div>
+                                        {/* Card */}
+                                        <div className="bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-gray-200 transition-colors duration-200">
+                                            <h4 className="text-sm font-semibold text-gray-900 mb-1">
+                                                <span className="mr-1.5">{step.icon}</span>
+                                                {step.title}
+                                            </h4>
+                                            <p className="text-xs text-gray-500 leading-relaxed">{step.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
 
-                        <div className="grid md:grid-cols-2 gap-6">
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm border">
-                                <h4 className="font-semibold text-lg mb-2">1. Audience Research</h4>
-                                <p className="text-sm text-gray-600">
-                                    We analyse demographics, interests, and behaviour patterns to identify high-value audiences.
-                                </p>
-                            </div>
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm border">
-                                <h4 className="font-semibold text-lg mb-2">2. Platform Strategy</h4>
-                                <p className="text-sm text-gray-600">
-                                    Selecting the right platforms based on where your audience actively engages.
-                                </p>
-                            </div>
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm border">
-                                <h4 className="font-semibold text-lg mb-2">3. Content Planning</h4>
-                                <p className="text-sm text-gray-600">
-                                    Structured calendars balancing educational, engaging, and promotional content.
-                                </p>
-                            </div>
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm border">
-                                <h4 className="font-semibold text-lg mb-2">4. Campaign Execution</h4>
-                                <p className="text-sm text-gray-600">
-                                    Consistent posting and storytelling across platforms to strengthen brand communication.
-                                </p>
-                            </div>
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm border">
-                                <h4 className="font-semibold text-lg mb-2">5. Paid Social Advertising</h4>
-                                <p className="text-sm text-gray-600">
-                                    Running targeted campaigns to drive reach, traffic, and qualified leads.
-                                </p>
-                            </div>
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm border">
-                                <h4 className="font-semibold text-lg mb-2">6. Analytics & Optimisation</h4>
-                                <p className="text-sm text-gray-600">
-                                    Tracking CTR, CPL, engagement, and conversions to continuously improve ROI.
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    {/* SECTION 2 - DELIVERABLES */}
-                    <div>
-
-                        <div className="text-center mb-12">
-                            <h3 className="text-2xl md:text-3xl font-semibold text-gray-900">
-                                What You Get with Our Social Media Marketing Services in Ahmedabad
-                            </h3>
-                            <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
-                                When you invest in professional social media marketing services in Ahmedabad, you need clarity on execution. At Foxaircomm, we provide structured deliverables aligned with business growth.
-
+                        {/* RIGHT — DELIVERABLES */}
+                        <div>
+                            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#27500A] bg-[#EAF3DE] px-4 py-1.5 rounded-full mb-3">
+                                What you receive
+                            </span>
+                            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                                Service deliverables
+                            </h2>
+                            <p className="text-gray-500 text-sm leading-relaxed mb-8">
+                                Clear, structured outputs for every client engagement.
                             </p>
-                        </div>
 
-                        <div className="grid md:grid-cols-2 gap-6">
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm flex gap-4">
-                                <CheckCircle className="text-green-600 mt-1" />
-                                <div>
-                                    <h4 className="font-semibold mb-1">Content Creation & Posting</h4>
-                                    <p className="text-sm text-gray-600">
-                                        High-quality creatives, captions, and reels tailored for engagement and algorithms.
-                                    </p>
-                                </div>
+                            <div className="flex flex-col gap-3">
+                                {[
+                                    {
+                                        icon: "🖼️",
+                                        bg: "bg-[#E6F1FB]",
+                                        title: "Content creation & posting",
+                                        desc: "Creatives, captions, and reels tailored for engagement and platform algorithms.",
+                                    },
+                                    {
+                                        icon: "📣",
+                                        bg: "bg-[#FAEEDA]",
+                                        title: "Paid advertising management",
+                                        desc: "Campaign setup, targeting, budget management, and optimisation for better ROI.",
+                                    },
+                                    {
+                                        icon: "📊",
+                                        bg: "bg-[#EAF3DE]",
+                                        title: "Monthly performance reporting",
+                                        desc: "Detailed reports on reach, engagement, leads, and campaign insights.",
+                                    },
+                                    {
+                                        icon: "🗓️",
+                                        bg: "bg-[#EEEDFE]",
+                                        title: "Content calendar planning",
+                                        desc: "Structured monthly planning aligned with your business goals.",
+                                    },
+                                    {
+                                        icon: "💬",
+                                        bg: "bg-[#E1F5EE]",
+                                        title: "Strategy & review meetings",
+                                        desc: "Regular sessions to refine campaigns, introduce ideas, and scale performance.",
+                                    },
+                                ].map((d) => (
+                                    <div
+                                        key={d.title}
+                                        className="flex items-start gap-3 bg-white border border-gray-100 rounded-xl px-4 py-3 hover:border-gray-200 transition-colors duration-200"
+                                    >
+                                        <div className={`w-9 h-9 rounded-lg ${d.bg} flex items-center justify-center text-lg flex-shrink-0`}>
+                                            {d.icon}
+                                        </div>
+                                        <div>
+                                            <h4 className="text-sm font-semibold text-gray-900 mb-0.5">{d.title}</h4>
+                                            <p className="text-xs text-gray-500 leading-relaxed">{d.desc}</p>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm flex gap-4">
-                                <CheckCircle className="text-green-600 mt-1" />
-                                <div>
-                                    <h4 className="font-semibold mb-1">Paid Advertising Management</h4>
-                                    <p className="text-sm text-gray-600">
-                                        Campaign setup, targeting, budget management, and optimisation for better ROI.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm flex gap-4">
-                                <CheckCircle className="text-green-600 mt-1" />
-                                <div>
-                                    <h4 className="font-semibold mb-1">Monthly Performance Reporting</h4>
-                                    <p className="text-sm text-gray-600">
-                                        Detailed reports on reach, engagement, leads, and campaign insights.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm flex gap-4">
-                                <CheckCircle className="text-green-600 mt-1" />
-                                <div>
-                                    <h4 className="font-semibold mb-1">Content Calendar Planning</h4>
-                                    <p className="text-sm text-gray-600">
-                                        Structured monthly planning aligned with your business goals.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="p-6 bg-white rounded-xl shadow-sm flex gap-4 md:col-span-2">
-                                <CheckCircle className="text-green-600 mt-1" />
-                                <div>
-                                    <h4 className="font-semibold mb-1">Strategy & Review Meetings</h4>
-                                    <p className="text-sm text-gray-600">
-                                        Regular discussions to refine campaigns, introduce new ideas, and scale performance.
-                                    </p>
-                                </div>
-                            </div>
-
                         </div>
 
                     </div>
-
                 </div>
             </section>
-
-
             <section className="w-full bg-white py-16 px-6 md:px-12">
                 <div className="max-w-6xl mx-auto">
 
@@ -899,8 +820,8 @@ export default function SocialMediaService() {
                             Common Business Problems & How We Solve Them
                         </h2>
                         <p className="mt-4 text-gray-600 max-w-3xl mx-auto">
-                            Most businesses don’t fail because of effort — they fail due to lack of structured strategy.
-                            Here’s how we bridge that gap.
+                            Most businesses don't fail because of effort — they fail due to lack of structured strategy.
+                            Here's how we bridge that gap.
                         </p>
                     </div>
 
@@ -932,7 +853,7 @@ export default function SocialMediaService() {
                                 <h4 className="font-semibold">Followers Not Converting into Leads</h4>
                             </div>
                             <p className="text-sm text-gray-600 mb-4">
-                                A high follower count doesn’t guarantee business if there’s no conversion strategy.
+                                A high follower count doesn't guarantee business if there's no conversion strategy.
                             </p>
 
                             <div className="flex gap-3">
@@ -994,7 +915,7 @@ export default function SocialMediaService() {
                         </p>
 
                         <p className="mt-4 font-medium">
-                            Social media is no longer optional — it’s a core growth channel.
+                            Social media is no longer optional — it's a core growth channel.
                         </p>
                     </div>
 
@@ -1270,7 +1191,7 @@ export default function SocialMediaService() {
                     Grow Your Brand with Social Media
                 </h2>
                 <p className="mb-6 text-blue-100">
-                    Let’s build a strategy that drives engagement, leads, and real growth.
+                    Let's build a strategy that drives engagement, leads, and real growth.
                 </p>
                 <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold">
                     Start Your Campaign

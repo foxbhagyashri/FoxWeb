@@ -17,7 +17,6 @@ import landingImg from "../assets/service/landingimg.png";
 import mobileImg from "../assets/home/mobile.png";
 import branchImg from "../assets/home/branch.png";
 
-
 // Import Swiper components
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
@@ -27,60 +26,58 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Herosection from "./home/Herosection";
+import { Helmet } from "react-helmet";
 
 function Home() {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    businessName: '',
+    contactNumber: '',
+    typeOfService: 'Social Media Marketing',
+    consent: false
+  });
 
+  const [errors, setErrors] = useState({});
 
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
 
-   const [formData, setFormData] = useState({
-      fullName: '',
-      email: '',
-      businessName: '',
-      contactNumber: '',
-      typeOfService: 'Social Media Marketing',
-      consent: false
-    });
-  
-    const [errors, setErrors] = useState({});
-  
-    const handleInputChange = (e) => {
-      const { name, value, type, checked } = e.target;
-      setFormData(prev => ({
-        ...prev,
-        [name]: type === 'checkbox' ? checked : value
-      }));
-    };
-  
-    const validateForm = () => {
-      const newErrors = {};
-      if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
-      if (!formData.email.trim()) newErrors.email = 'Email is required';
-      else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
-      if (!formData.consent) newErrors.consent = 'Consent is required';
-      return newErrors;
-    };
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const newErrors = validateForm();
-      if (Object.keys(newErrors).length === 0) {
-        // Handle form submission here
-        console.log('Form submitted:', formData);
-        alert('Thank you for your enquiry! We will contact you soon.');
-        onClose();
-        // Reset form
-        setFormData({
-          fullName: '',
-          email: '',
-          businessName: '',
-          contactNumber: '',
-          typeOfService: 'Social Media Marketing',
-          consent: false
-        });
-      } else {
-        setErrors(newErrors);
-      }
-    };
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
+    if (!formData.email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+    if (!formData.consent) newErrors.consent = 'Consent is required';
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = validateForm();
+    if (Object.keys(newErrors).length === 0) {
+      // Handle form submission here
+      console.log('Form submitted:', formData);
+      alert('Thank you for your enquiry! We will contact you soon.');
+      // Reset form
+      setFormData({
+        fullName: '',
+        email: '',
+        businessName: '',
+        contactNumber: '',
+        typeOfService: 'Social Media Marketing',
+        consent: false
+      });
+    } else {
+      setErrors(newErrors);
+    }
+  };
+
   const navigate = useNavigate();
 
   // Ensure page starts at top
@@ -155,7 +152,7 @@ function Home() {
       name: "Tejas Kansara",
       title: "",
       rating: 5.0,
-      quote: "I have been using Fox Aircomm’s WhatsApp services and data extractor software for the past 3 years, and my experience has been very good. The platform is reliable, easy to use, and helps streamline communication efficiently. Customer support is also responsive and helpful whenever needed. Overall, it’s a great solution for businesses looking to manage WhatsApp communication and data effectively.",
+      quote: "I have been using Fox Aircomm's WhatsApp services and data extractor software for the past 3 years, and my experience has been very good. The platform is reliable, easy to use, and helps streamline communication efficiently. Customer support is also responsive and helpful whenever needed. Overall, it's a great solution for businesses looking to manage WhatsApp communication and data effectively.",
       truncatedQuote: "Fox Aircomm Private Limited is truly an outstanding social media agency! Their expertise in digital marketing and strategic ad campaigns...",
       icon: "fas fa-user",
       iconColor: "text-red-600"
@@ -245,637 +242,632 @@ function Home() {
   const nextButtonClass = 'swiper-button-next-custom';
 
   return (
-    <div className="w-full mx-auto">
-      <div className="bg-[#ff62001f]">
-        <Herosection />
+    <>
+      <Helmet>
+        <title>Digital Marketing Agency in Akurdi, PCMC Pune | Fox Aircomm</title>
+        <meta
+          name="description"
+          content="Fox Aircomm is a digital marketing agency in Akurdi, PCMC Pune, serving Ahmedabad & Mumbai. SEO, Google Ads, social media & web design that drive real leads."
+        />
+        {/* <meta name="keywords" content="Digital Marketing Agency Pune, Social Media Marketing Pune, SEO Services Pune, Web Development Pune, Fox Aircomm Pvt Ltd" /> */}
+      </Helmet>
 
-      </div>
-      {/* Who We Are Section */}
-      <div className="page-container py-6">
-        <div className="text-center mb-16">
-          <h2 className=" mb-2 text-3xl font-bold">
-            Who We Are?
-          </h2>
-          <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-            Why  Businesses Trust Us?
-          </h3>
+      <div className="w-full mx-auto">
+        <div className="bg-[#ff62001f]">
+          <Herosection />
         </div>
 
-        {/* Trust Cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {/* Card 1 - Local */}
-          <div className="theme-card p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
-            <div className="mb-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-white" />
-              </div>
-              <h4 className="text-xl font-bold theme-text-primary mb-3">
-                We're local, just like you
-              </h4>
-            </div>
-            <p className="theme-text-secondary leading-relaxed">
-              We're not any random big-city agency that doesn't understand Pune
-              and PCMC. We know what works for your local customers.
-            </p>
-          </div>
-
-          {/* Card 2 - Honest */}
-          <div className="theme-card p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
-            <div className="mb-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-white" />
-              </div>
-              <h4 className="text-xl font-bold theme-text-primary mb-3">
-                We're honest about results
-              </h4>
-            </div>
-            <p className="theme-text-secondary leading-relaxed">
-              We don't hide anything behind confusing charts or fancy terms. We
-              show you the real numbers, which state our work is making a
-              difference.
-            </p>
-          </div>
-
-          {/* Card 3 - Proven Track Record */}
-          <div className="theme-card p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
-            <div className="mb-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mb-4">
-                <Megaphone className="w-6 h-6 text-white" />
-              </div>
-              <h4 className="text-xl font-bold theme-text-primary mb-3">
-                We have a proven track record
-              </h4>
-            </div>
-            <p className="theme-text-secondary leading-relaxed">
-              We've served more than 15 industries—from hospitals to retail
-              stores—and succeeded online.
-            </p>
-          </div>
-        </div>
-      </div>
-      {/* Experience & Social Media Stats Section */}
-      <div className="page-container py-16 lg:py-10">
-        <div className="grid lg:grid-cols-2 gap-50 items-center">
-          {/* Left Side - Mobile Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="relative flex items-center justify-center"
-          >
-            <div className="relative">
-              {/* Decorative Background Elements */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/15 to-orange-500/10 rounded-3xl blur-3xl"></div>
-
-              {/* Mobile Image */}
-              <div className="relative z-10">
-                <motion.img
-                  src={mobileImg}
-                  alt="Social Media Marketing"
-                  className="w-full max-w-md mx-auto"
-                  whileHover={{
-                    rotateY: 18,
-                    rotateX: -8,
-                    scale: 1.04,
-                  }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  style={{ perspective: 1200 }}
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Side - Stats & Info */}
-          <div className="space-y-3">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="font-bold text-3xl mb-1">
-                All the Experience in the
-              </h2>
-              <h3 className=" text-3xl font-bold  bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent ">
-                Social Media
-              </h3>
-
-            </motion.div>
-            <div className="grid grid-cols-2 gap-6">{/* Stats Cards */}</div>
-
-            {/* Additional Description */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="
-                theme-primary-text
-                text-[1.05rem]
-                leading-relaxed
-                max-w-xl
-                mx-auto
-                [text-wrap:balance]"
-            >
-              We bring years of expertise in social media marketing, helping
-              <br />businesses grow their online presence and engage with their <br />
-              audience effectively.
-            </motion.p>
-          </div>
-        </div>
-      </div>
-      {/* Value Card Section */}
-      <div className="page-container pt-20 pb-16">
-        <div
-          className="rounded-3xl w-full max-w-7xl mx-auto bg-gradient-to-r from-white via-orange-50 to-yellow-50 flex flex-col md:flex-row items-center justify-between py-8 px-6 md:px-12 shadow-lg  border border-orange-100/50"
-        // style={{
-        //   background:
-        //     "linear-gradient(90deg, #fff 0%, #fff7ed 50%, #fefce8 100%)",
-        // }}
-        >
-          <div className="flex-1 text-center mb-8 md:mb-0">
-            <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
-              10+
-            </div>
-            <div className="uppercase tracking-widest text-xs md:text-sm text-gray-500 font-semibold">
-              Years Experience
-            </div>
-          </div>
-          <div className="flex-1 text-center mb-8 md:mb-0">
-            <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
-              500+
-            </div>
-            <div className="uppercase tracking-widest text-xs md:text-sm text-gray-500 font-semibold">
-              Total Clients
-            </div>
-          </div>
-          <div className="flex-1 text-center mb-8 md:mb-0">
-            <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
-              5
-            </div>
-            <div className="uppercase tracking-widest text-xs md:text-sm text-gray-500 font-semibold">
-              Average Review
-            </div>
-          </div>
-          <div className="flex-1 text-center">
-            <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
-              50+
-            </div>
-            <div className="uppercase tracking-widest text-xs md:text-sm text-gray-500 font-semibold">
-              Professional Team
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* applying  */}
-      <section className="py-5 bg-gray-50">
-        {/* Section Heading */}
-        <div className="page-container">
-          <div className="text-center mb-12">
-            <h2 className="font-bold text-3xl text-center mb-12">
-              Working With{" "}
-              <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">
-                Fox Aircomm
-              </span>
+        {/* Who We Are Section */}
+        <div className="page-container py-6">
+          <div className="text-center mb-16">
+            <h2 className=" mb-2 text-3xl font-bold">
+              Who We Are?
             </h2>
+            <h3 className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+              Why  Businesses Trust Us?
+            </h3>
           </div>
 
-          {/* Main Content */}
-          <div className="w-full grid md:grid-cols-2 gap-12 items-start justify-center max-w-7xl mx-auto">
-
-            {/* LEFT CARD – PROCESS */}
-            <div className="theme-card p-10 rounded-2xl w-full w-[50%] h-full min-h-[520px] space-y-6 pt-12">
-
-              {/* Step 1 */}
-              <div className="flex gap-4">
-                <div className="w-14 h-12 rounded-full flex items-center justify-center font-bold text-xl"
-                  style={{ backgroundColor: "var(--bg-hover)", color: "var(--brand-primary)" }}>
-                  1
+          {/* Trust Cards */}
+          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {/* Card 1 - Local */}
+            <div className="theme-card p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
+              <div className="mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-white" />
                 </div>
-                <div>
-                  <h4 className="text-2xl font-medium  theme-text-primary">
-                    Learn
-                  </h4>
-                  <p className="text-lg theme-text-secondary leading-relaxed">
-                    Understand your business goals, audience, competitors, and market.
-                  </p>
-                </div>
+                <h4 className="text-xl font-bold theme-text-primary mb-3">
+                  We're local, just like you
+                </h4>
               </div>
-
-              <div className="border-t theme-border"></div>
-
-              {/* Step 2 */}
-              <div className="flex gap-4">
-                <div className="w-14 h-12 rounded-full flex items-center justify-center font-bold text-xl"
-                  style={{ backgroundColor: "var(--bg-hover)", color: "var(--accent-yellow)" }}>
-                  2
-                </div>
-                <div>
-                  <h4 className="text-2xl font-medium  theme-text-primary">
-                    Apply
-                  </h4>
-                  <p className="text-lg theme-text-secondary leading-relaxed">
-                    Create and execute result-driven digital marketing strategies.
-                  </p>
-                </div>
-              </div>
-
-              <div className="border-t theme-border"></div>
-
-              {/* Step 3 */}
-              <div className="flex gap-6">
-                <div className="w-14 h-12 rounded-full flex items-center justify-center font-bold text-xl"
-                  style={{ backgroundColor: "var(--bg-hover)", color: "var(--accent-green)" }}>
-                  3
-                </div>
-                <div>
-                  <h4 className="text-2xl font-medium theme-text-primary">
-                    Grow
-                  </h4>
-                  <p className="text-lg theme-text-secondary leading-relaxed">
-                    Track performance, optimise campaigns, and scale your business.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* RIGHT CARD – CONTACT FORM */}
-            <div className="theme-card p-8 rounded-2xl w-full w-[50%] h-full min-h-[500px]">
-              {/* Form Fields */}
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Full Name */}
-                <div>
-                  <input
-                    type="text"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    placeholder="Full name*"
-                    className={`w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border ${errors.fullName ? 'border-red-500' : 'theme-border'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                  />
-                  {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
-                </div>
-
-                {/* Email */}
-                <div>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="Email address*"
-                    className={`w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border ${errors.email ? 'border-red-500' : 'theme-border'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                  />
-                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-                </div>
-
-                {/* Business Name */}
-                <div>
-                  <input
-                    type="text"
-                    name="businessName"
-                    value={formData.businessName}
-                    onChange={handleInputChange}
-                    placeholder="Business Name"
-                    className="w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                {/* Contact Number */}
-                <div>
-                  <input
-                    type="tel"
-                    name="contactNumber"
-                    value={formData.contactNumber}
-                    onChange={handleInputChange}
-                    placeholder="Contact Number"
-                    className="w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                {/* Type of Service */}
-                <div>
-                  <select
-                    name="typeOfService"
-                    value={formData.typeOfService}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-lg theme-input theme-text-primary border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="Social Media Marketing">Social Media Marketing</option>
-                    <option value="Web Development">Web Development</option>
-                    <option value="Mobile App Development">Mobile App Development</option>
-                    <option value="SEO Services">SEO Services</option>
-                    <option value="Content Marketing">Content Marketing</option>
-                    {/* <option value="PPC Advertising">PPC Advertising</option> */}
-                    <option value="Google Adwords">Google Adwords</option>
-                    <option value="Email Marketing">Email Marketing</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </div>
-
-                {/* Consent Checkbox */}
-                <div className="space-y-3">
-                  <label className="flex items-start space-x-3">
-                    <input
-                      type="checkbox"
-                      name="consent"
-                      checked={formData.consent}
-                      onChange={handleInputChange}
-                      className={`mt-1 w-4 h-4 rounded border ${errors.consent ? 'border-red-500' : 'theme-border'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                    />
-                    <span className="text-sm theme-text-secondary leading-relaxed">
-                      I authorize company representatives to Call, SMS, RCS, Email or WhatsApp me about its products and offers. This consent overrides any registration for DNC/NDNC.
-                    </span>
-                  </label>
-                  {errors.consent && <p className="text-red-500 text-sm">{errors.consent}</p>}
-                </div>
-
-                {/* Submit Button */}
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg"
-                >
-                  Send Message
-                </motion.button>
-              </form>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-
-      {/* Parallax Effect / Comparison Section */}
-      <section className="w-full  theme-bg-primary py-5 px-2 md:px-0 bg-gray-50">
-        <div className="page-container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
-            {/* Left: Features List */}
-            <div className="flex-1">
-              <h2 className="text-3xl  font-bold mb-4 py-2">
-                FoxAircomm Advantages:<br></br>
-                Your Competitive Edge
-              </h2>
-
-              <p className="subtitle mb-8">
-                Explore the unique benefits that set FoxAircomm apart, giving you
-                the competitive edge in your digital journey.
+              <p className="theme-text-secondary leading-relaxed">
+                We're not any random big-city agency that doesn't understand Pune
+                and PCMC. We know what works for your local customers.
               </p>
-
-              <ul className="space-y-4 text-lg theme-text-primary">
-                <li className="flex items-center gap-2">
-                  <span className="font-medium">
-                    Structured + result-driven approach
-                  </span>
-                  <span className="text-[color:var(--accent-green)] text-xl">
-                    ✔
-                  </span>
-                </li>
-
-                <li className="flex items-center gap-2">
-                  <span className="font-medium">Fastest 1:1 client support</span>
-                  <span className="text-[color:var(--accent-green)] text-xl">
-                    ✔
-                  </span>
-                </li>
-
-                <li className="flex items-center gap-2">
-                  <span className="font-medium">
-                    Integrated marketing platform
-                  </span>
-                  <span className="text-[color:var(--accent-green)] text-xl">
-                    ✔
-                  </span>
-                </li>
-
-                <li className="flex items-center gap-2">
-                  <span className="font-medium">
-                    Brand profile highlighted on top portals
-                  </span>
-                  <span className="text-[color:var(--accent-green)] text-xl">
-                    ✔
-                  </span>
-                </li>
-              </ul>
             </div>
 
-            {/* Right: Modern Chart with Axes */}
-            <div className="flex-1 flex items-center justify-center w-full  ">
-              <div className="relative w-full  bg-white rounded-2xl shadow-lg border border-gray-100 px-6 pt-5 pb-6">
-
-                {/* Title */}
-                <div >
-                  <h4 className="text-base font-semibold text-gray-800">
-                    Client Growth Performance
-                  </h4>
-                  <p className="text-sm text-gray-500 mt-1">
-                    Growth percentage compared with industry average (max 90%)
-                  </p>
+            {/* Card 2 - Honest */}
+            <div className="theme-card p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
+              <div className="mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center mb-4">
+                  <TrendingUp className="w-6 h-6 text-white" />
                 </div>
-
-                {/* Chart */}
-                <div className="relative h-full">
-                  <svg
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 440 260"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    {/* Grid */}
-                    <line x1="60" y1="220" x2="400" y2="220" stroke="#e5e7eb" strokeWidth="2" />
-                    <line x1="60" y1="160" x2="400" y2="160" stroke="#e5e7eb" />
-                    <line x1="60" y1="100" x2="400" y2="100" stroke="#e5e7eb" />
-                    <line x1="60" y1="40" x2="400" y2="40" stroke="#e5e7eb" />
-                    <line x1="60" y1="40" x2="60" y2="220" stroke="#e5e7eb" strokeWidth="2" />
-
-                    {/* Y-axis labels */}
-                    <text x="20" y="225" fontSize="12" fill="#6b7280">0%</text>
-                    <text x="20" y="165" fontSize="12" fill="#6b7280">30%</text>
-                    <text x="20" y="105" fontSize="12" fill="#6b7280">60%</text>
-                    <text x="20" y="45" fontSize="12" fill="#6b7280">90%</text>
-
-                    {/* X-axis labels */}
-                    <text x="60" y="245" fontSize="12" fill="#6b7280">2019</text>
-                    <text x="160" y="245" fontSize="12" fill="#6b7280">2021</text>
-                    <text x="260" y="245" fontSize="12" fill="#6b7280">2023</text>
-                    <text x="360" y="245" fontSize="12" fill="#6b7280">2025</text>
-
-                    {/* Industry Average */}
-                    <polyline
-                      points="60,200 160,185 260,175 360,170 400,165"
-                      fill="none"
-                      stroke="#9ca3af"
-                      strokeWidth="3"
-                      strokeDasharray="6 6"
-                    />
-
-                    {/* Fox Aircomm Clients */}
-                    <polyline
-                      points="60,200 160,160 260,120 360,85 400,60"
-                      fill="none"
-                      stroke="#6366f1"
-                      strokeWidth="4"
-                    />
-
-                    {/* Fox Label */}
-                    <g>
-                      <circle cx="400" cy="60" r="14" fill="url(#foxGradient)" />
-                      <text
-                        x="400"
-                        y="65"
-                        textAnchor="middle"
-                        fontSize="14"
-                        fontWeight="bold"
-                        fill="#fff"
-                      >
-                        F
-                      </text>
-                      <text
-                        x="310"
-                        y="40"
-                        fontSize="13"
-                        fill="#111827"
-                        fontWeight="600"
-                      >
-                        Fox Aircomm Clients
-                      </text>
-                    </g>
-
-                    {/* Industry Label */}
-                    <text x="300" y="190" fontSize="13" fill="#6b7280">
-                      Industry Average
-                    </text>
-
-                    {/* Gradient */}
-                    <defs>
-                      <linearGradient id="foxGradient" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#6366f1" />
-                        <stop offset="100%" stopColor="#a78bfa" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-
-                {/* Valid Message */}
-                {/* <div className="mt-4 pt-4 border-t border-gray-100">
-      <p className="text-sm text-gray-600 leading-relaxed">
-        📈 <span className="font-medium text-gray-800">Realistic & measurable growth:</span>{" "}
-        Our clients achieve up to <strong>90% business growth</strong> over time,
-        consistently outperforming the industry average without unrealistic claims.
-      </p>
-    </div> */}
+                <h4 className="text-xl font-bold theme-text-primary mb-3">
+                  We're honest about results
+                </h4>
               </div>
+              <p className="theme-text-secondary leading-relaxed">
+                We don't hide anything behind confusing charts or fancy terms. We
+                show you the real numbers, which state our work is making a
+                difference.
+              </p>
             </div>
 
-
+            {/* Card 3 - Proven Track Record */}
+            <div className="theme-card p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10">
+              <div className="mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mb-4">
+                  <Megaphone className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="text-xl font-bold theme-text-primary mb-3">
+                  We have a proven track record
+                </h4>
+              </div>
+              <p className="theme-text-secondary leading-relaxed">
+                We've served more than 15 industries—from hospitals to retail
+                stores—and succeeded online.
+              </p>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* Testimonial Section */}
-      <section className="min-h-screen flex flex-col justify-center items-center py-10 theme-bg-primary overflow-hidden relative">
-        {/* Title */}
-        <h2 className="text-3xl font-bold mb-16">
-          What  <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">Customers</span> Say
-        </h2>
+        {/* Experience & Social Media Stats Section */}
+        <div className="page-container py-16 lg:py-10">
+          <div className="grid lg:grid-cols-2 gap-50 items-center">
+            {/* Left Side - Mobile Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative flex items-center justify-center"
+            >
+              <div className="relative">
+                {/* Decorative Background Elements */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/15 to-orange-500/10 rounded-3xl blur-3xl"></div>
 
-        {/* Swiper Container */}
-        <div className="w-full max-w-6xl relative pb-32 px-4 md:px-6">
-          <Swiper
-            modules={[Pagination, Navigation, Autoplay]}
-            loop={true}
-            slidesPerView={3}
-            centeredSlides={true}
-            spaceBetween={20}
-            grabCursor={true}
-            speed={600}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            onSlideChange={(swiper) => {
-              setActiveIndex(swiper.realIndex);
-            }}
-            pagination={{
-              el: `.${paginationClass}`,
-              clickable: true,
-              bulletClass: 'pagination-bullet w-3 h-3 rounded-full transition-all duration-300 theme-bg-primary',
-              bulletActiveClass: 'pagination-bullet-active',
-              horizontalClass: 'mt-12',
-            }}
-            navigation={{
-              nextEl: `.${nextButtonClass}`,
-              prevEl: `.${prevButtonClass}`,
-            }}
-            breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-              },
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 30,
-                centeredSlides: false,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 40,
-                centeredSlides: true,
-              }
-            }}
-            className="w-full h-[420px]"
-          >
-            {testimonialData.map((testimonial, index) => {
-              // Calculate which slide is actually active (centered)
-              const isActive = index === activeIndex;
+                {/* Mobile Image */}
+                <div className="relative z-10">
+                  <motion.img
+                    src={mobileImg}
+                    alt="Social Media Marketing"
+                    className="w-full max-w-md mx-auto"
+                    whileHover={{
+                      rotateY: 18,
+                      rotateX: -8,
+                      scale: 1.04,
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    style={{ perspective: 1200 }}
+                  />
+                </div>
+              </div>
+            </motion.div>
 
-              return (
-                <SwiperSlide
-                  key={testimonial.id}
-                  className="!flex !items-center !justify-center !h-auto"
-                >
-                  <div className="w-full px-2">
-                    <TestimonialCard
-                      testimonial={testimonial}
-                      isActive={isActive}
+            {/* Right Side - Stats & Info */}
+            <div className="space-y-3">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="font-bold text-3xl mb-1">
+                  All the Experience in the
+                </h2>
+                <h3 className=" text-3xl font-bold  bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent ">
+                  Social Media
+                </h3>
+              </motion.div>
+              <div className="grid grid-cols-2 gap-6">{/* Stats Cards */}</div>
+
+              {/* Additional Description */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="
+                  theme-primary-text
+                  text-[1.05rem]
+                  leading-relaxed
+                  max-w-xl
+                  mx-auto
+                  [text-wrap:balance]"
+              >
+                We bring years of expertise in social media marketing, helping
+                <br />businesses grow their online presence and engage with their <br />
+                audience effectively.
+              </motion.p>
+            </div>
+          </div>
+        </div>
+
+        {/* Value Card Section */}
+        <div className="page-container pt-20 pb-16">
+          <div className="rounded-3xl w-full max-w-7xl mx-auto bg-gradient-to-r from-white via-orange-50 to-yellow-50 flex flex-col md:flex-row items-center justify-between py-8 px-6 md:px-12 shadow-lg  border border-orange-100/50">
+            <div className="flex-1 text-center mb-8 md:mb-0">
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
+                10+
+              </div>
+              <div className="uppercase tracking-widest text-xs md:text-sm text-gray-500 font-semibold">
+                Years Experience
+              </div>
+            </div>
+            <div className="flex-1 text-center mb-8 md:mb-0">
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
+                500+
+              </div>
+              <div className="uppercase tracking-widest text-xs md:text-sm text-gray-500 font-semibold">
+                Total Clients
+              </div>
+            </div>
+            <div className="flex-1 text-center mb-8 md:mb-0">
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
+                5
+              </div>
+              <div className="uppercase tracking-widest text-xs md:text-sm text-gray-500 font-semibold">
+                Average Review
+              </div>
+            </div>
+            <div className="flex-1 text-center">
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
+                50+
+              </div>
+              <div className="uppercase tracking-widest text-xs md:text-sm text-gray-500 font-semibold">
+                Professional Team
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* applying */}
+        <section className="py-5 bg-gray-50">
+          {/* Section Heading */}
+          <div className="page-container">
+            <div className="text-center mb-12">
+              <h2 className="font-bold text-3xl text-center mb-12">
+                Working With{" "}
+                <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">
+                  Fox Aircomm
+                </span>
+              </h2>
+            </div>
+
+            {/* Main Content */}
+            <div className="w-full grid md:grid-cols-2 gap-12 items-start justify-center max-w-7xl mx-auto">
+
+              {/* LEFT CARD – PROCESS */}
+              <div className="theme-card p-10 rounded-2xl w-full w-[50%] h-full min-h-[520px] space-y-6 pt-12">
+
+                {/* Step 1 */}
+                <div className="flex gap-4">
+                  <div className="w-14 h-12 rounded-full flex items-center justify-center font-bold text-xl"
+                    style={{ backgroundColor: "var(--bg-hover)", color: "var(--brand-primary)" }}>
+                    1
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-medium  theme-text-primary">
+                      Learn
+                    </h4>
+                    <p className="text-lg theme-text-secondary leading-relaxed">
+                      Understand your business goals, audience, competitors, and market.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="border-t theme-border"></div>
+
+                {/* Step 2 */}
+                <div className="flex gap-4">
+                  <div className="w-14 h-12 rounded-full flex items-center justify-center font-bold text-xl"
+                    style={{ backgroundColor: "var(--bg-hover)", color: "var(--accent-yellow)" }}>
+                    2
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-medium  theme-text-primary">
+                      Apply
+                    </h4>
+                    <p className="text-lg theme-text-secondary leading-relaxed">
+                      Create and execute result-driven digital marketing strategies.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="border-t theme-border"></div>
+
+                {/* Step 3 */}
+                <div className="flex gap-6">
+                  <div className="w-14 h-12 rounded-full flex items-center justify-center font-bold text-xl"
+                    style={{ backgroundColor: "var(--bg-hover)", color: "var(--accent-green)" }}>
+                    3
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-medium theme-text-primary">
+                      Grow
+                    </h4>
+                    <p className="text-lg theme-text-secondary leading-relaxed">
+                      Track performance, optimise campaigns, and scale your business.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* RIGHT CARD – CONTACT FORM */}
+              <div className="theme-card p-8 rounded-2xl w-full w-[50%] h-full min-h-[500px]">
+                {/* Form Fields */}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Full Name */}
+                  <div>
+                    <input
+                      type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleInputChange}
+                      placeholder="Full name*"
+                      className={`w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border ${errors.fullName ? 'border-red-500' : 'theme-border'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                    />
+                    {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Email address*"
+                      className={`w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border ${errors.email ? 'border-red-500' : 'theme-border'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                    />
+                    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                  </div>
+
+                  {/* Business Name */}
+                  <div>
+                    <input
+                      type="text"
+                      name="businessName"
+                      value={formData.businessName}
+                      onChange={handleInputChange}
+                      placeholder="Business Name"
+                      className="w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
-                </SwiperSlide>
-              );
-            })}
 
-          </Swiper>
+                  {/* Contact Number */}
+                  <div>
+                    <input
+                      type="tel"
+                      name="contactNumber"
+                      value={formData.contactNumber}
+                      onChange={handleInputChange}
+                      placeholder="Contact Number"
+                      className="w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
 
-          {/* Unified Navigation and Pagination Container */}
-          <div className="flex justify-center items-center space-x-6 absolute bottom-0 left-0 right-0 z-10 w-full theme-bg-primary">
+                  {/* Type of Service */}
+                  <div>
+                    <select
+                      name="typeOfService"
+                      value={formData.typeOfService}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 rounded-lg theme-input theme-text-primary border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="Social Media Marketing">Social Media Marketing</option>
+                      <option value="Web Development">Web Development</option>
+                      <option value="Mobile App Development">Mobile App Development</option>
+                      <option value="SEO Services">SEO Services</option>
+                      <option value="Content Marketing">Content Marketing</option>
+                      <option value="Google Adwords">Google Adwords</option>
+                      <option value="Email Marketing">Email Marketing</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
 
-            {/* Previous Button */}
-            <div className={`${prevButtonClass} w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center transition-all hover:bg-indigo-700 hover:scale-110 cursor-pointer shadow-lg active:scale-95`}>
-              <i className="ri-arrow-left-s-line text-2xl"></i>
-            </div>
+                  {/* Consent Checkbox */}
+                  <div className="space-y-3">
+                    <label className="flex items-start space-x-3">
+                      <input
+                        type="checkbox"
+                        name="consent"
+                        checked={formData.consent}
+                        onChange={handleInputChange}
+                        className={`mt-1 w-4 h-4 rounded border ${errors.consent ? 'border-red-500' : 'theme-border'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                      />
+                      <span className="text-sm theme-text-secondary leading-relaxed">
+                        I authorize company representatives to Call, SMS, RCS, Email or WhatsApp me about its products and offers. This consent overrides any registration for DNC/NDNC.
+                      </span>
+                    </label>
+                    {errors.consent && <p className="text-red-500 text-sm">{errors.consent}</p>}
+                  </div>
 
-            {/* Pagination Dots */}
-            <div className={`${paginationClass} flex space-x-4 text-center justify-center theme-primary`}></div>
-
-            {/* Next Button */}
-            <div className={`${nextButtonClass} w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center transition-all hover:bg-indigo-700 hover:scale-110 cursor-pointer shadow-lg active:scale-95`}>
-              <i className="ri-arrow-right-s-line text-2xl"></i>
+                  {/* Submit Button */}
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 shadow-lg"
+                  >
+                    Send Message
+                  </motion.button>
+                </form>
+              </div>
             </div>
           </div>
 
-        </div>
+        </section>
 
-        {/* Decorative elements */}
-        <div className="absolute left-0 top-1/4 w-64 h-64 bg-gradient-to-r from-indigo-500/30 to-purple-500/30   rounded-full blur-3xl opacity-60 -z-10"></div>
-        <div className="absolute right-0bottom-1/4 w-64 h-64 bg-gradient-to-l from-orange-500/30 to-pink-500/30   rounded-full blur-3xl opacity-60 -z-10"></div>
+        {/* Parallax Effect / Comparison Section */}
+        <section className="w-full  theme-bg-primary py-5 px-2 md:px-0 bg-gray-50">
+          <div className="page-container">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20">
+              {/* Left: Features List */}
+              <div className="flex-1">
+                <h2 className="text-3xl  font-bold mb-4 py-2">
+                  FoxAircomm Advantages:<br></br>
+                  Your Competitive Edge
+                </h2>
 
-      </section>
-    </div>
+                <p className="subtitle mb-8">
+                  Explore the unique benefits that set FoxAircomm apart, giving you
+                  the competitive edge in your digital journey.
+                </p>
+
+                <ul className="space-y-4 text-lg theme-text-primary">
+                  <li className="flex items-center gap-2">
+                    <span className="font-medium">
+                      Structured + result-driven approach
+                    </span>
+                    <span className="text-[color:var(--accent-green)] text-xl">
+                      ✔
+                    </span>
+                  </li>
+
+                  <li className="flex items-center gap-2">
+                    <span className="font-medium">Fastest 1:1 client support</span>
+                    <span className="text-[color:var(--accent-green)] text-xl">
+                      ✔
+                    </span>
+                  </li>
+
+                  <li className="flex items-center gap-2">
+                    <span className="font-medium">
+                      Integrated marketing platform
+                    </span>
+                    <span className="text-[color:var(--accent-green)] text-xl">
+                      ✔
+                    </span>
+                  </li>
+
+                  <li className="flex items-center gap-2">
+                    <span className="font-medium">
+                      Brand profile highlighted on top portals
+                    </span>
+                    <span className="text-[color:var(--accent-green)] text-xl">
+                      ✔
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Right: Modern Chart with Axes */}
+              <div className="flex-1 flex items-center justify-center w-full  ">
+                <div className="relative w-full  bg-white rounded-2xl shadow-lg border border-gray-100 px-6 pt-5 pb-6">
+
+                  {/* Title */}
+                  <div >
+                    <h4 className="text-base font-semibold text-gray-800">
+                      Client Growth Performance
+                    </h4>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Growth percentage compared with industry average (max 90%)
+                    </p>
+                  </div>
+
+                  {/* Chart */}
+                  <div className="relative h-full">
+                    <svg
+                      width="100%"
+                      height="100%"
+                      viewBox="0 0 440 260"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      {/* Grid */}
+                      <line x1="60" y1="220" x2="400" y2="220" stroke="#e5e7eb" strokeWidth="2" />
+                      <line x1="60" y1="160" x2="400" y2="160" stroke="#e5e7eb" />
+                      <line x1="60" y1="100" x2="400" y2="100" stroke="#e5e7eb" />
+                      <line x1="60" y1="40" x2="400" y2="40" stroke="#e5e7eb" />
+                      <line x1="60" y1="40" x2="60" y2="220" stroke="#e5e7eb" strokeWidth="2" />
+
+                      {/* Y-axis labels */}
+                      <text x="20" y="225" fontSize="12" fill="#6b7280">0%</text>
+                      <text x="20" y="165" fontSize="12" fill="#6b7280">30%</text>
+                      <text x="20" y="105" fontSize="12" fill="#6b7280">60%</text>
+                      <text x="20" y="45" fontSize="12" fill="#6b7280">90%</text>
+
+                      {/* X-axis labels */}
+                      <text x="60" y="245" fontSize="12" fill="#6b7280">2019</text>
+                      <text x="160" y="245" fontSize="12" fill="#6b7280">2021</text>
+                      <text x="260" y="245" fontSize="12" fill="#6b7280">2023</text>
+                      <text x="360" y="245" fontSize="12" fill="#6b7280">2025</text>
+
+                      {/* Industry Average */}
+                      <polyline
+                        points="60,200 160,185 260,175 360,170 400,165"
+                        fill="none"
+                        stroke="#9ca3af"
+                        strokeWidth="3"
+                        strokeDasharray="6 6"
+                      />
+
+                      {/* Fox Aircomm Clients */}
+                      <polyline
+                        points="60,200 160,160 260,120 360,85 400,60"
+                        fill="none"
+                        stroke="#6366f1"
+                        strokeWidth="4"
+                      />
+
+                      {/* Fox Label */}
+                      <g>
+                        <circle cx="400" cy="60" r="14" fill="url(#foxGradient)" />
+                        <text
+                          x="400"
+                          y="65"
+                          textAnchor="middle"
+                          fontSize="14"
+                          fontWeight="bold"
+                          fill="#fff"
+                        >
+                          F
+                        </text>
+                        <text
+                          x="310"
+                          y="40"
+                          fontSize="13"
+                          fill="#111827"
+                          fontWeight="600"
+                        >
+                          Fox Aircomm Clients
+                        </text>
+                      </g>
+
+                      {/* Industry Label */}
+                      <text x="300" y="190" fontSize="13" fill="#6b7280">
+                        Industry Average
+                      </text>
+
+                      {/* Gradient */}
+                      <defs>
+                        <linearGradient id="foxGradient" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#6366f1" />
+                          <stop offset="100%" stopColor="#a78bfa" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonial Section */}
+        <section className="min-h-screen flex flex-col justify-center items-center py-10 theme-bg-primary overflow-hidden relative">
+          {/* Title */}
+          <h2 className="text-3xl font-bold mb-16">
+            What  <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">Customers</span> Say
+          </h2>
+
+          {/* Swiper Container */}
+          <div className="w-full max-w-6xl relative pb-32 px-4 md:px-6">
+            <Swiper
+              modules={[Pagination, Navigation, Autoplay]}
+              loop={true}
+              slidesPerView={3}
+              centeredSlides={true}
+              spaceBetween={20}
+              grabCursor={true}
+              speed={600}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              onSlideChange={(swiper) => {
+                setActiveIndex(swiper.realIndex);
+              }}
+              pagination={{
+                el: `.${paginationClass}`,
+                clickable: true,
+                bulletClass: 'pagination-bullet w-3 h-3 rounded-full transition-all duration-300 theme-bg-primary',
+                bulletActiveClass: 'pagination-bullet-active',
+                horizontalClass: 'mt-12',
+              }}
+              navigation={{
+                nextEl: `.${nextButtonClass}`,
+                prevEl: `.${prevButtonClass}`,
+              }}
+              breakpoints={{
+                320: {
+                  slidesPerView: 1,
+                  spaceBetween: 20,
+                },
+                640: {
+                  slidesPerView: 2,
+                  spaceBetween: 30,
+                  centeredSlides: false,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 40,
+                  centeredSlides: true,
+                }
+              }}
+              className="w-full h-[420px]"
+            >
+              {testimonialData.map((testimonial, index) => {
+                // Calculate which slide is actually active (centered)
+                const isActive = index === activeIndex;
+
+                return (
+                  <SwiperSlide
+                    key={testimonial.id}
+                    className="!flex !items-center !justify-center !h-auto"
+                  >
+                    <div className="w-full px-2">
+                      <TestimonialCard
+                        testimonial={testimonial}
+                        isActive={isActive}
+                      />
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+
+            </Swiper>
+
+            {/* Unified Navigation and Pagination Container */}
+            <div className="flex justify-center items-center space-x-6 absolute bottom-0 left-0 right-0 z-10 w-full theme-bg-primary">
+
+              {/* Previous Button */}
+              <div className={`${prevButtonClass} w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center transition-all hover:bg-indigo-700 hover:scale-110 cursor-pointer shadow-lg active:scale-95`}>
+                <i className="ri-arrow-left-s-line text-2xl"></i>
+              </div>
+
+              {/* Pagination Dots */}
+              <div className={`${paginationClass} flex space-x-4 text-center justify-center theme-primary`}></div>
+
+              {/* Next Button */}
+              <div className={`${nextButtonClass} w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center transition-all hover:bg-indigo-700 hover:scale-110 cursor-pointer shadow-lg active:scale-95`}>
+                <i className="ri-arrow-right-s-line text-2xl"></i>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Decorative elements */}
+          <div className="absolute left-0 top-1/4 w-64 h-64 bg-gradient-to-r from-indigo-500/30 to-purple-500/30   rounded-full blur-3xl opacity-60 -z-10"></div>
+          <div className="absolute right-0bottom-1/4 w-64 h-64 bg-gradient-to-l from-orange-500/30 to-pink-500/30   rounded-full blur-3xl opacity-60 -z-10"></div>
+
+        </section>
+      </div>
+    </>
   );
 }
 

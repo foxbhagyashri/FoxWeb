@@ -43,10 +43,25 @@ import ConstructionManagementSoftware from './components/services/ConstructionMa
 import BlogDetail from './components/Blogs/BlogDetail'
 import WebDevelopmentServiceAhemdabad from "./components/Ahemdabad/WebDevelopmentServiceAhemdabad";
 import SocialMediaMarketingServiceAhemdabad from "./components/Ahemdabad/SocialMediaMarketingServiceAhemdabad";
+import GraphicDesignService from './components/Ahemdabad/GraphicDesignServicesAhemdabad';
 import FloatingContact from "./components/FloatingContact";
 import AhmedabadSection from "./components/AhmedabadSection";
-import CustomCRMDevelopment from './components/services/Custom-CRM-Development'
-import ThankYou from '../src/components/ThankYou'
+import CustomCRMDevelopment from './components/services/Custom-CRM-Development';
+import ThankYou from '../src/components/ThankYou';
+import PPCmanagement from './components/services/PPC-Management-Services-in-Pune';
+import SearchEngineOptimizationAhmdabad from './components/Ahemdabad/SEO-Company-in-Ahmedabad'
+import PPCCompanyAhemdabad from './components/Ahemdabad/PPC-Company-in-Ahmedabad'
+import RCSMessageAhemdabad from './components/Ahemdabad/RCS-Messaging-Services-in-Ahmedabad'
+import EcommWebsiteDevelopmentAhemdabad from './components/Ahemdabad/E-Commerce-Website-Development-Ahmedabad'
+import BulkSmsAhemdabad from './components/Ahemdabad/Bulk-SMS-Service-in-Ahmedabad'
+import WhatsAppMarketingAhemdabad from './components/Ahemdabad/WhatsApp-Marketing-Services-in-Ahmedabad'
+import BenefitsOfDigitalMarketingSmallBusiness from './components/Blogs/benefits-of-digital-marketing-For-Small-Businesses'
+import WhyFoxaircommbestSocialmediaagency from './components/Blogs/Why-Foxaircomm-Is-the-Best-Social-Media-Marketing-Agency-in-Pune'
+import What7typesofDigitalMarketingyouknow from './components/Blogs/What-Are-The-7-Types-Of-Digital-Marketing-You-Must-Know-In-2025'
+import Top10questionaskmarketingAgency from './components/Blogs/Top-10-Questions-to-Ask-Before-Hiring-a-Digital-Marketing-Agency'
+import HowtodoSeoforWebsite from './components/Blogs/How-to-Do-SEO-for-website'
+import AdvantagesOfDigigtalMarketing from './components/Blogs/Advantages-Of-Digital-Marketing-For-Small-Businesses-nd-Startups'
+import HowGoogleAdsimproveperformance from './components/Blogs/How-Google-Ads-AI-Improves-Campaign-Performance-and-Increases-Conversions'
 
 
 // Page transition variants
@@ -321,6 +336,14 @@ function App() {
           } />
 
 
+          <Route path="/services/PPC-Management-Services-in-Pune" element={
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <PPCmanagement />
+            </motion.div>
+          } />
+
+
+
           <Route path="/Blogs/BlogDetail" element={
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <BlogDetail />
@@ -360,8 +383,169 @@ function App() {
           />
 
 
+          <Route
+            path="ahmedabad/GraphicDesignServicesAhemdabad"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <GraphicDesignService />
+              </motion.div>
+            }
+          />
+
+
+          <Route
+            path="ahmedabad/SEO-Company-in-Ahmedabad"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <SearchEngineOptimizationAhmdabad />
+              </motion.div>
+            }
+          />
+
+
+
+          <Route
+            path="ahmedabad/PPC-Company-in-Ahmedabad"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <PPCCompanyAhemdabad />
+              </motion.div>
+            }
+          />
+
+          <Route
+            path="ahmedabad/RCS-Messaging-Services-in-Ahmedabad"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <RCSMessageAhemdabad />
+              </motion.div>
+            }
+          />
+
+
+          <Route
+            path="ahmedabad/E-Commerce-Website-Development-Ahmedabad"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <EcommWebsiteDevelopmentAhemdabad />
+              </motion.div>
+            }
+          />
+
+
+          <Route
+            path="ahmedabad/Bulk-SMS-Service-in-Ahmedabad"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <BulkSmsAhemdabad />
+              </motion.div>
+            }
+          />
+
+
+          <Route
+            path="ahmedabad/WhatsApp-Marketing-Services-in-Ahmedabad"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <WhatsAppMarketingAhemdabad />
+              </motion.div>
+            }
+          />
+
+
+
+
+          <Route path="/Blogs/Benefits-of-digital-marketing-For-Small-Businesses" element={
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <BenefitsOfDigitalMarketingSmallBusiness />
+            </motion.div>
+          } />
+
+          <Route path="/Blogs/Why-Foxaircomm-Is-the-Best-Social-Media-Marketing-Agency-in-Pune" element={
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <WhyFoxaircommbestSocialmediaagency />
+            </motion.div>
+          } />
+
+          <Route path="/Blogs/What-Are-The-7-Types-Of-Digital-Marketing-You-Must-Know-In-2025" element={
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <What7typesofDigitalMarketingyouknow />
+            </motion.div>
+          } />
+
+          <Route path="/Blogs/Top-10-Questions-to-Ask-Before-Hiring-a-Digital-Marketing-Agency" element={
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <Top10questionaskmarketingAgency />
+            </motion.div>
+          } />
+
+          <Route path="/Blogs/How-to-Do-SEO-for-website" element={
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <HowtodoSeoforWebsite />
+            </motion.div>
+          } />
+
+
+          <Route path="/Blogs/Advantages-Of-Digital-Marketing-For-Small-Businesses-nd-Startups" element={
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <AdvantagesOfDigigtalMarketing />
+            </motion.div>
+          } />
+
+
+          <Route path="/Blogs/How-Google-Ads-AI-Improves-Campaign-Performance-and-Increases-Conversions" element={
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <HowGoogleAdsimproveperformance />
+            </motion.div>
+          } />
+
 
         </Routes>
+
+
+
 
 
 

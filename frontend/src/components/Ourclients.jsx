@@ -12,6 +12,7 @@ import client9 from "../assets/clients/31635165110.png"
 import landingimg from "../assets/service/landingimg.png";
 import service1 from "../assets/service/service1.png";
 import service2 from "../assets/service/service2.png";
+import { Helmet } from 'react-helmet'
 
 const images = [
   { src: service2, slogan: "Trusted by 500+ Brands to Scale Online." },
@@ -70,6 +71,14 @@ function Ourclients() {
 
   return (
     <section className="py-20 bg-gradient-to-b from-white to-[#f9fafc]">
+
+      <Helmet>
+        <title>
+          Our Clients | Fox Aircomm Digital Marketing, Pune
+
+        </title>
+        <meta name="description" content="See the businesses across Akurdi, Pune, Mumbai and Ahmedabad that trust Fox Aircomm for digital marketing, web design and software solutions." />
+      </Helmet>
 
       <div className="container mx-auto px-4 space-y-16">
 

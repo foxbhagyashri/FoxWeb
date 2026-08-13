@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { submitContact } from "../lib/formsApi";
+import { Helmet } from "react-helmet";
+// import { submitContact } from "../lib/formsApi";
 
 const ContactUsPage = () => {
   const navigate = useNavigate();
@@ -92,6 +93,15 @@ const ContactUsPage = () => {
 
   return (
     <div className="min-h-screen bg-white py-16 px-4">
+
+      <Helmet>
+        <title>Contact Fox Aircomm | Digital Marketing Agency, Akurdi Pune
+
+        </title>
+        <meta name="description" content="Get in touch with Fox Aircomm for digital marketing in Akurdi, PCMC Pune, Mumbai and Ahmedabad. Call, email or fill our inquiry form for a free consult." />
+
+      </Helmet>
+
       <div className="max-w-6xl mx-auto">
 
         <div className="grid lg:grid-cols-2 gap-14 items-center">
