@@ -20,41 +20,35 @@ const Herosection = () => {
 
   return (
     <div
-      className="relative grid lg:grid-cols-2  gap-14 items-center page-container py-5 pt-30 pb-30"
-      // style={{
-      //   backgroundImage: "url('/socialmediamarketing.jpg')", // 👈 Replace with your image path e.g. '/hero-bg.jpg'
-      //   backgroundSize: "cover",
-      //   backgroundPosition: "center",
-      //   backgroundRepeat: "no-repeat",
-      // }}
+      className="relative grid lg:grid-cols-2 gap-12 lg:gap-14 items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16"
     >
       {/* Overlay - adjust opacity as needed */}
-      <div className="absolute inset-0  z-0" />
+      <div className="absolute inset-0 z-0" />
 
       {/* Left Section */}
       <div className="relative z-10 space-y-8">
         <div className="space-y-3">
-          <h1 className="text-4xl md:text-4xl lg:text-4xl font-bold leading-tight text-gray-900">
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-gray-800">
             Many Business Challenges
-            <span className="block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent mt-1">
               One Powerful Solution
             </span>
           </h1>
 
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-indigo-600">
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-indigo-600">
             Fox Aircomm Pvt Ltd
           </h2>
         </div>
 
-        <p className="text-base md:text-lg text-black-600 dark:text-black-400 leading-relaxed max-w-xl">
+        <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-xl">
           Fox AirComm Pvt. Ltd is a full-stack digital growth agency helping
           brands scale through data-driven marketing, design, and technology.
         </p>
 
-        <div className="flex gap-4 pt-3">
+        <div className="flex gap-4 pt-2">
           <button
             onClick={() => setShowEnquiry(true)}
-            className="px-8 py-3 rounded-xl font-semibold text-white
+            className="px-8 py-3.5 rounded-xl font-semibold text-white cursor-pointer
                        bg-gradient-to-r from-orange-500 to-red-500
                        hover:scale-[1.03] transition-all shadow-lg shadow-orange-500/30"
           >
@@ -77,10 +71,10 @@ const Herosection = () => {
 
           {/* Center Text */}
           <div className="relative z-10 text-center">
-            <h3 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+            <h3 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-1">
               20+
             </h3>
-            <p className="text-lg theme-text-primary font-semibold pr-5">
+            <p className="text-lg text-gray-700 font-semibold text-center">
               Services
             </p>
           </div>

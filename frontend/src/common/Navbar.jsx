@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import LOGO from "../assets/home/Logo.png";
 import Enquiry from "../components/Enquiry";
 import {
@@ -77,6 +77,14 @@ function Navbar() {
 
   const navigate = useNavigate();
 
+  // Framer Motion spring physics for butter-smooth scroll line animation
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   useEffect(() => {
     const savedMode =
       localStorage.getItem("darkMode") === null
@@ -110,49 +118,56 @@ function Navbar() {
     }, 300);
   };
 
+  const location = useLocation();
+  const isServicesActive = location.pathname.startsWith('/services');
+
   return (
     <>
       {/* Main Navbar */}
       <motion.nav
-        className={`navbar sticky top-0 z-[9999] w-full
-  bg-white dark:bg-gray-900
-  shadow-md transition-all duration-300 ${isScrolled ? "backdrop-blur-md" : ""
-          }`}
+        className={`navbar sticky top-0 z-[9999] w-full bg-white dark:bg-gray-900 shadow-sm transition-all duration-300 ${
+          isScrolled ? "backdrop-blur-md bg-white/95" : ""
+        }`}
       >
+        {/* Top Ultra-Smooth Scroll Progress Line */}
+        <motion.div
+          className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-orange-500 via-red-500 to-amber-400 z-[10000] origin-left pointer-events-none shadow-sm"
+          style={{ scaleX }}
+        />
 
-        <div className="container mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <motion.div
               className="flex-shrink-0"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <NavLink to="/" onClick={(e) => handleNavClick("/", e)}>
                 <img
                   src={LOGO}
                   alt="Fox Aircomm Logo"
-                  className="h-12 md:h-18 w-auto object-contain theme-border rounded-lg p-2"
+                  className="h-10 md:h-14 w-auto object-contain"
                 />
               </NavLink>
             </motion.div>
 
-            {/* ✅ Desktop Navigation Links (UNCHANGED) */}
-            <div className="hidden md:flex items-center justify-between gap-8">
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center gap-6 lg:gap-8">
               {[
                 { to: "/", label: "Home" },
                 { to: "/about", label: "About Us" },
-                { to: "#", label: "Services", hasDropdown: true },
+                { to: "/services", label: "Services", hasDropdown: true },
                 { to: "/clients", label: "Clients" },
                 { to: "/career-form", label: "Career" },
                 { to: "/blog", label: "Articles" },
                 { to: "/contact", label: "Contact Us" }
               ].map((item, index) => (
                 <motion.div
-                  key={item.to}
-                  initial={{ opacity: 0, y: -20 }}
+                  key={item.label}
+                  initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
                   className="relative"
                   onMouseEnter={() =>
                     item.hasDropdown && setShowServicesDropdown(true)
@@ -166,17 +181,17 @@ function Navbar() {
                       <NavLink
                         to={item.to}
                         onClick={(e) => handleNavClick(item.to, e)}
-                        className={({ isActive }) =>
-                          `navbar-link flex justify-center gap-1 text-base font-medium relative transition-all duration-300 ${isActive
-                            ? "active theme-text-primary"
-                            : "theme-text-secondary hover:theme-text-primary"
-                          }`
-                        }
+                        className={`navbar-link flex items-center gap-1 text-base font-medium transition-all duration-200 ${
+                          isServicesActive
+                            ? "text-blue-600 font-semibold"
+                            : "text-gray-700 hover:text-blue-600"
+                        }`}
                       >
                         {item.label}
                         <svg
-                          className={`w-4 h-4 mt-1.5 transition-transform duration-300 ${showServicesDropdown ? "rotate-180" : ""
-                            }`}
+                          className={`w-4 h-4 transition-transform duration-200 ${
+                            showServicesDropdown ? "rotate-180 text-blue-600" : ""
+                          }`}
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -236,7 +251,13 @@ function Navbar() {
                     <NavLink
                       to={item.to}
                       onClick={(e) => handleNavClick(item.to, e)}
-                      className="navbar-link text-base font-medium theme-text-secondary hover:theme-text-primary"
+                      className={({ isActive }) =>
+                        `navbar-link text-base font-medium transition-all duration-200 ${
+                          isActive
+                            ? "text-blue-600 font-semibold"
+                            : "text-gray-700 hover:text-blue-600"
+                        }`
+                      }
                     >
                       {item.label}
                     </NavLink>
