@@ -253,11 +253,7 @@ function Home() {
       </Helmet>
 
       <div className="w-full mx-auto">
-        <div className="bg-gradient-to-b from-orange-50/60 via-amber-50/30 to-slate-50/20 border-b border-orange-100/40 relative overflow-hidden">
-          {/* Faint ambient background glow circles */}
-          <div className="absolute -top-32 -left-32 w-96 h-96 bg-orange-100/50 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute top-1/3 -right-20 w-[28rem] h-[28rem] bg-orange-50/60 rounded-full blur-3xl pointer-events-none"></div>
-          <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-amber-100/40 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="bg-[#ff62001f]">
           <Herosection />
         </div>
 
