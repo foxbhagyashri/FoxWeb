@@ -87,7 +87,7 @@ function WebsiteDesign() {
       <section className="py-16 md:py-20 bg-[#F1F5F9]">
         <div className="max-w-5xl mx-auto px-6">
 
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0B3C5D] mb-6 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0529a0] mb-6 leading-tight">
             What Does a Poorly Built Website Actually Cost Your Business?
           </h2>
 
@@ -149,7 +149,7 @@ function WebsiteDesign() {
             leading design publications.
           </p>
 
-          <div className="p-6 md:p-8 bg-[#0B3C5D] rounded-xl">
+          <div className="p-6 md:p-8 bg-[#0529a0] rounded-xl">
             <p className="font-semibold text-lg md:text-xl text-white leading-snug">
               Businesses with average websites spend money driving traffic to a page
               that quietly turns leads away. That's the real cost of "good enough."
@@ -163,7 +163,7 @@ function WebsiteDesign() {
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#0B3C5D] leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#0529a0] leading-tight">
             Why Pune Businesses Choose Foxaircomm as Their Web Development Agency
           </h2>
 
@@ -236,7 +236,7 @@ function WebsiteDesign() {
           </div>
 
           {/* Outcome stat callout */}
-          <div className="mt-8 p-6 md:p-8 bg-[#0B3C5D] rounded-xl text-left">
+          <div className="mt-8 p-6 md:p-8 bg-[#0529a0] rounded-xl text-left">
             <p className="text-white font-semibold text-lg leading-snug mb-2">
               Cosmetic redesigns can lift conversions by 200%. Comprehensive UX
               overhauls can push that to 400%. We target the second number.
@@ -262,7 +262,7 @@ function WebsiteDesign() {
       <section className="py-16 md:py-20 bg-[#F1F5F9]">
         <div className="max-w-6xl mx-auto px-6 text-center">
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#0B3C5D] leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#0529a0] leading-tight">
             Common Website Problems We Solve for Pune Businesses
           </h2>
 
@@ -345,7 +345,7 @@ function WebsiteDesign() {
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6 text-center">
 
-          <h2 className="text-3xl font-bold mb-10 text-[#0B3C5D]">
+          <h2 className="text-3xl font-bold mb-10 text-[#0529a0]">
             What technologies does Foxaircomm specialize in?
 
           </h2>
@@ -406,7 +406,7 @@ function WebsiteDesign() {
       <section className="py-10 bg-white">
         <div className="max-w-4xl mx-auto px-6">
 
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#0B3C5D] leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-6 text-[#0529a0] leading-tight">
             How We Build Websites That Rank and Convert — Our 5-Step Process
           </h2>
 
@@ -423,10 +423,10 @@ function WebsiteDesign() {
             <div className="space-y-10">
 
               <div className="relative flex gap-6">
-                <div className="relative z-10 shrink-0 w-12 h-12 rounded-full bg-[#0B3C5D] text-white flex items-center justify-center font-bold">1</div>
+                <div className="relative z-10 shrink-0 w-12 h-12 rounded-full bg-[#0529a0] text-white flex items-center justify-center font-bold">1</div>
                 <div className="pt-1.5">
                   <p className="text-xs font-semibold tracking-wide text-[#f85415] uppercase mb-1">Step 1</p>
-                  <h3 className="text-xl font-bold text-[#0B3C5D] mb-2">Deep-dive research</h3>
+                  <h3 className="text-xl font-bold text-[#0529a0] mb-2">Deep-dive research</h3>
                   <p className="text-gray-600 leading-relaxed">
                     We start by analysing your competitors, auditing your current
                     digital presence, and mapping the specific search queries your
@@ -436,10 +436,10 @@ function WebsiteDesign() {
               </div>
 
               <div className="relative flex gap-6">
-                <div className="relative z-10 shrink-0 w-12 h-12 rounded-full bg-[#0B3C5D] text-white flex items-center justify-center font-bold">2</div>
+                <div className="relative z-10 shrink-0 w-12 h-12 rounded-full bg-[#0529a0] text-white flex items-center justify-center font-bold">2</div>
                 <div className="pt-1.5">
                   <p className="text-xs font-semibold tracking-wide text-[#f85415] uppercase mb-1">Step 2</p>
-                  <h3 className="text-xl font-bold text-[#0B3C5D] mb-2">User-focused design and content plan</h3>
+                  <h3 className="text-xl font-bold text-[#0529a0] mb-2">User-focused design and content plan</h3>
                   <p className="text-gray-600 leading-relaxed">
                     We create a design experience aligned to how you want your
                     visitor to feel — confident, reassured, ready to act. Alongside
@@ -450,10 +450,10 @@ function WebsiteDesign() {
               </div>
 
               <div className="relative flex gap-6">
-                <div className="relative z-10 shrink-0 w-12 h-12 rounded-full bg-[#0B3C5D] text-white flex items-center justify-center font-bold">3</div>
+                <div className="relative z-10 shrink-0 w-12 h-12 rounded-full bg-[#0529a0] text-white flex items-center justify-center font-bold">3</div>
                 <div className="pt-1.5">
                   <p className="text-xs font-semibold tracking-wide text-[#f85415] uppercase mb-1">Step 3</p>
-                  <h3 className="text-xl font-bold text-[#0B3C5D] mb-2">Development and technical setup</h3>
+                  <h3 className="text-xl font-bold text-[#0529a0] mb-2">Development and technical setup</h3>
                   <p className="text-gray-600 leading-relaxed">
                     Our developers write clean, optimised code. We implement
                     performance standards from the first line — not as a post-build
@@ -464,10 +464,10 @@ function WebsiteDesign() {
               </div>
 
               <div className="relative flex gap-6">
-                <div className="relative z-10 shrink-0 w-12 h-12 rounded-full bg-[#0B3C5D] text-white flex items-center justify-center font-bold">4</div>
+                <div className="relative z-10 shrink-0 w-12 h-12 rounded-full bg-[#0529a0] text-white flex items-center justify-center font-bold">4</div>
                 <div className="pt-1.5">
                   <p className="text-xs font-semibold tracking-wide text-[#f85415] uppercase mb-1">Step 4</p>
-                  <h3 className="text-xl font-bold text-[#0B3C5D] mb-2">SEO and AEO implementation</h3>
+                  <h3 className="text-xl font-bold text-[#0529a0] mb-2">SEO and AEO implementation</h3>
                   <p className="text-gray-600 leading-relaxed">
                     We set up Schema markup (FAQPage, HowTo, LocalBusiness, Service),
                     internal linking architecture, and content structured to appear

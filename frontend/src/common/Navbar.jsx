@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
-import LOGO from "../assets/home/Logo.png";
+import LOGO from "../assets/home/Foxaircomm web logo Logo_Web logo.png";
 import Enquiry from "../components/Enquiry";
 import {
   FiPhoneCall,

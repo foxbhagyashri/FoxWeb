@@ -157,7 +157,7 @@ function GraphicsDesign() {
 
       {/* DIFFERENCE */}
       {/* SECTION 1: Why design matters */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-10 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             badge="Why It Matters"
@@ -203,7 +203,7 @@ function GraphicsDesign() {
       </section>
 
       {/* SECTION 2: Services overview */}
-      <section className="py-20 px-4 bg-gray-50">
+      <section className="py-10 px-4 bg-gray-50">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             badge="Our Services"
@@ -234,7 +234,7 @@ function GraphicsDesign() {
       </section>
 
       {/* SECTION 3: Service deep-dives */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-10 px-4 bg-white">
         <div className="max-w-5xl mx-auto space-y-6">
           {[
             {
@@ -421,7 +421,7 @@ function GraphicsDesign() {
 
       {/* SERVICES */}
       {/* SECTION 1: How to choose */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-10 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
           <SectionHeader
             badge="Before You Decide"
@@ -576,7 +576,7 @@ function GraphicsDesign() {
       </section>
 
       {/* SECTION 2: Tools table */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-10 px-4 bg-white">
         <div className="max-w-5xl mx-auto">
           <SectionHeader
             badge="Our Toolkit"
@@ -648,7 +648,7 @@ function GraphicsDesign() {
       </section>
 
       {/* SECTION 4: Value beyond visuals */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-10 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <SectionHeader
             badge="Beyond the Visuals"
@@ -724,7 +724,7 @@ function GraphicsDesign() {
 
 
       {/* INDUSTRIES */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-10 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <SectionHeader
             badge="FAQs"

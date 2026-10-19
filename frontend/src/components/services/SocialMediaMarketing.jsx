@@ -403,7 +403,7 @@ function SocialMediaMarketing() {
       `}</style>
 
         {/* ── Breadcrumbs ── */}
-        <Breadcrumbs
+        {/* <Breadcrumbs
           eyebrow="Social Media Marketing Agency · Pune"
           title="Social Media Marketing"
           items={[
@@ -411,7 +411,7 @@ function SocialMediaMarketing() {
             { label: "Services", href: "/services" },
             { label: "Social Media Marketing" },
           ]}
-        />
+        /> */}
 
         {/* ── What is social media marketing? ── */}
         <section className="smm-body bg-[#052ba7] py-10 px-4">
@@ -519,7 +519,7 @@ function SocialMediaMarketing() {
               <Building2 className="w-5 h-5 text-[#f85415] mb-2" />
               <span className="smm-display block text-2xl font-bold text-gray-900">120+</span>
               <span className="block text-[11px] text-gray-500 mt-1 leading-tight">
-                Pune &amp; PCMC clients served
+                Pune & PCMC clients served
               </span>
             </div>
 
@@ -528,6 +528,7 @@ function SocialMediaMarketing() {
               <span className="smm-display block text-2xl font-bold text-gray-900">8</span>
               <span className="block text-[11px] text-gray-500 mt-1 leading-tight">
                 Industries with active campaigns
+
               </span>
             </div>
 
@@ -535,7 +536,7 @@ function SocialMediaMarketing() {
               <Wallet className="w-5 h-5 text-[#f85415] mb-2" />
               <span className="smm-display block text-2xl font-bold text-gray-900">₹4Cr+</span>
               <span className="block text-[11px] text-gray-500 mt-1 leading-tight">
-                Meta Ads spend managed since 2018
+                Meta Ads spend managed  since 2018
               </span>
             </div>
 
@@ -543,7 +544,7 @@ function SocialMediaMarketing() {
               <Timer className="w-5 h-5 text-[#f85415] mb-2" />
               <span className="smm-display block text-2xl font-bold text-gray-900">48-hr</span>
               <span className="block text-[11px] text-gray-500 mt-1 leading-tight">
-                Free audit turnaround
+                hour free audit turnaround
               </span>
             </div>
 
@@ -593,7 +594,6 @@ function SocialMediaMarketing() {
                 </div>
                 <span className="text-md text-white leading-relaxed">
                   Social media marketing is a digital marketing strategy that uses platforms like Instagram, Facebook, LinkedIn, and YouTube to increase brand awareness, generate leads, drive website traffic, and improve sales through organic content and paid advertising campaigns.
-
                 </span>
               </div>
 
@@ -603,7 +603,6 @@ function SocialMediaMarketing() {
                 </div>
                 <span className="text-md text-white leading-relaxed">
                   For Pune businesses, Foxaircomm provides end-to-end social media marketing services — from Meta Ads management and Reels-first content to complete social media management with measurable monthly reporting.
-
                 </span>
               </div>
 
@@ -635,11 +634,11 @@ function SocialMediaMarketing() {
 
               <p className="text-md text-gray-700 leading-relaxed mb-4 max-w-3xl">
                 Pune's business landscape has shifted significantly over the last three years.
+
               </p>
               <p className="text-md text-gray-700 leading-relaxed mb-6 max-w-3xl text-justify">
-                The IT corridor from Hinjewadi to Kharadi. The D2C retail surge in Aundh and Viman
-                Nagar. Funded startups across PCMC. The growing hospitality and healthcare sectors.
-                Local buyers are now digitally active at every stage of the purchase journey.
+                The IT corridor from Hinjewadi to Kharadi. The D2C retail surge in Aundh and Viman Nagar. Funded startups across PCMC. The growing hospitality and healthcare sectors. Local buyers are now digitally active at every stage of the purchase journey.
+
               </p>
 
               {/* Bullet list */}
@@ -659,13 +658,12 @@ function SocialMediaMarketing() {
               </div>
 
               <p className="text-md text-gray-700 leading-relaxed mb-4 max-w-3xl text-justify">
-                The Pune consumer is mobile-first, price-sensitive, and value-driven — and responds
-                to content that speaks to those characteristics specifically.
+                The Pune consumer is mobile-first, price-sensitive, and value-driven — and responds to content that speaks to those characteristics specifically.
+
               </p>
               <p className="text-md text-gray-700 leading-relaxed max-w-3xl text-justify">
-                A national creative agency applying generic templates to a Pune audience
-                consistently underperforms a specialist social media marketing agency in Pune with
-                real local insight.
+                A national creative agency applying generic templates to a Pune audience consistently underperforms a specialist social media marketing agency in Pune with real local insight.
+
               </p>
             </div>
 
@@ -680,7 +678,7 @@ function SocialMediaMarketing() {
               ></div>
 
               <div className="relative">
-                <h3 className="inline-block text-md font-medium text-black bg-emerald-500/10 border border-emerald-500/20 rounded-md px-2.5 py-1 tracking-wide mb-6">
+                <h3 className="inline-block text-md font-medium text-white bg-emerald-500/10 border border-emerald-500/20 rounded-md px-2.5 py-1 tracking-wide mb-6">
                   Foxaircomm Market Observation · Pune Consumer Behaviour
                 </h3>
 
@@ -688,28 +686,23 @@ function SocialMediaMarketing() {
                   <p className="font-serif text-4xl md:text-5xl font-semibold text-white leading-none">
                     2.4×
                   </p>
-                  <p className="text-md text-black leading-relaxed pt-1 max-w-xl text-justify">
-                    Across campaigns run for Pune-based service businesses, Reels under 18 seconds
-                    currently outperform static creatives by 2.4× in engagement rate — and drive
-                    60% more link clicks at equivalent ad spend.
+                  <p className="text-md text-white leading-relaxed pt-1 max-w-xl text-justify">
+                    Across campaigns run for Pune-based service businesses, Reels under 18 seconds currently outperform static creatives by 2.4× in engagement rate — and drive 60% more link clicks at equivalent ad spend.
                   </p>
                 </div>
 
-                <p className="text-md text-black leading-relaxed mb-6 max-w-2xl text-justify">
-                  Brands still posting only static graphics are paying a compounding visibility
-                  penalty month over month.
+                <p className="text-md text-white leading-relaxed mb-6 max-w-2xl text-justify">
+                  Brands still posting only static graphics are paying a compounding visibility penalty month over month.
+
                 </p>
 
-                <p className="text-md text-black leading-relaxed mb-7 max-w-2xl text-justify">
-                  The question isn't whether social media works for Pune businesses. It's whether
-                  your brand is using it with enough precision to see results — or whether a
-                  competitor's social media agency in Pune is capturing the leads that should be
-                  yours.
+                <p className="text-md text-white leading-relaxed mb-7 max-w-2xl text-justify">
+                  The question isn't whether social media works for Pune businesses. It's whether your brand is using it with enough precision to see results — or whether a competitor's social media agency in Pune is capturing the leads that should be yours.
                 </p>
 
                 <a
                   href="#platforms"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-black hover:text-emerald-400 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-white hover:text-emerald-400 transition-colors"
                 >
                   See the platforms we manage
                   <ArrowRight className="w-4 h-4" />
@@ -738,6 +731,7 @@ function SocialMediaMarketing() {
               </h2>
               <p className="text-gray-600 text-md leading-relaxed max-w-3xl text-justify">
                 Foxaircomm works with businesses across Pune and PCMC that share one common need: they want social media to function as a genuine lead and revenue channel — not just a brand awareness exercise.
+
               </p>
               <p className="text-gray-600 text-md leading-relaxed max-w-3xl text-justify">
                 Our social media marketing services in Pune are designed for businesses where enquiry volume directly drives revenue.
@@ -794,8 +788,7 @@ function SocialMediaMarketing() {
                       <ShoppingBag className="w-4 h-4" />
                     </div>
                     <p className="text-md text-gray-600 leading-relaxed pt-1.5">
-                      Retail and e-commerce brands are driving online orders and footfall
-                      through Instagram and Facebook advertising
+                      Retail and e-commerce brands are driving online orders and footfall through Instagram and Facebook advertising
                     </p>
                   </div>
 
@@ -804,8 +797,8 @@ function SocialMediaMarketing() {
                       <Home className="w-4 h-4" />
                     </div>
                     <p className="text-md text-gray-600 leading-relaxed pt-1.5">
-                      Real estate developers and brokers targeting buyers across Wakad,
-                      Balewadi, Undri, Talegaon, and emerging Pune corridors
+                      Real estate developers and brokers targeting buyers across Wakad, Balewadi, Undri, Talegaon, and emerging Pune corridors
+
                     </p>
                   </div>
 
@@ -814,8 +807,7 @@ function SocialMediaMarketing() {
                       <HeartPulse className="w-4 h-4" />
                     </div>
                     <p className="text-md text-gray-600 leading-relaxed pt-1.5">
-                      Healthcare clinics and diagnostic centres are building appointment volume
-                      through educational content and Meta Ads
+                      Healthcare clinics and diagnostic centres are building appointment volume through educational content and Meta Ads
                     </p>
                   </div>
 
@@ -824,8 +816,8 @@ function SocialMediaMarketing() {
                       <GraduationCap className="w-4 h-4" />
                     </div>
                     <p className="text-md text-gray-600 leading-relaxed pt-1.5">
-                      Education institutes and coaching centres are running high-volume lead
-                      campaigns during the admission seasons
+                      Education institutes and coaching centres are running high-volume lead campaigns during the admission seasons
+
                     </p>
                   </div>
 
@@ -834,8 +826,8 @@ function SocialMediaMarketing() {
                       <UtensilsCrossed className="w-4 h-4" />
                     </div>
                     <p className="text-md text-gray-600 leading-relaxed pt-1.5">
-                      Hospitality and F&amp;B businesses in Baner, Koregaon Park, and Camp are
-                      building loyal customer communities
+                      Hospitality and F&B businesses in Baner, Koregaon Park, and Camp are building loyal customer communities
+
                     </p>
                   </div>
 
@@ -844,8 +836,8 @@ function SocialMediaMarketing() {
                       <Rocket className="w-4 h-4" />
                     </div>
                     <p className="text-md text-gray-600 leading-relaxed pt-1.5">
-                      Startups launching brand presence on social media with a platform-first
-                      strategy and performance tracking
+                      Startups are launching brand presence on social media with a platform-first strategy and performance tracking
+
                     </p>
                   </div>
 
@@ -854,8 +846,8 @@ function SocialMediaMarketing() {
                       <Briefcase className="w-4 h-4" />
                     </div>
                     <p className="text-md text-gray-600 leading-relaxed pt-1.5">
-                      Established businesses are shifting budgets from print and hoardings to
-                      digital, with clear ROI accountability
+                      Established businesses are shifting budgets from print and hoardings to digital, with clear ROI accountability
+
                     </p>
                   </div>
                 </div>
@@ -897,15 +889,14 @@ function SocialMediaMarketing() {
                         3
                       </span>
                       <p className="text-md text-gray-700 leading-relaxed pt-1">
-                        A competitor has visibly overtaken you on Instagram in the last six
-                        months.
+                        A competitor has visibly overtaken you on Instagram in the last six months.
                       </p>
                     </div>
                   </div>
 
                   <p className="text-md text-gray-600 leading-relaxed border-t border-gray-100 pt-6">
-                    Any one of these is sufficient reason to bring in a specialist performance
-                    marketing agency in Pune with dedicated SMM capability.
+                    Any one of these is sufficient reason to bring in a specialist performance marketing agency in Pune with dedicated SMM capability.
+
                   </p>
                 </div>
               </div>
@@ -929,9 +920,7 @@ function SocialMediaMarketing() {
             </h2>
 
             <p className="text-md text-gray-600 leading-relaxed mb-10 max-w-2xl">
-              As a full-service social media agency in Pune, Foxaircomm manages social media across
-              the platforms Pune audiences actually use — with platform-native content built for how
-              each algorithm and audience behaves, not repurposed across channels.
+              As a full-service social media agency in Pune, Foxaircomm manages social media across the platforms Pune audiences actually use — with platform-native content built for how each algorithm and audience behaves, not repurposed across channels.
             </p>
 
             {/* Platform grid */}
@@ -982,6 +971,7 @@ function SocialMediaMarketing() {
               </h2>
               <p className="text-gray-600 text-base leading-relaxed max-w-3xl">
                 These are the five most common situations we hear from Pune business owners who contact us after managing social media in-house or through a general-purpose digital marketing vendor.
+
               </p>
             </div>
 
@@ -1012,7 +1002,6 @@ function SocialMediaMarketing() {
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed">
                   Most brands confuse content activity with content strategy. Businesses that treat social media as a posting activity lose to businesses that treat it as a performance marketing system.
-
                 </p>
                 <p className="text-gray-700 text-sm leading-relaxed">
                   We rebuild the approach around business goals — every post, Reel, and Story is mapped to a conversion objective, not just a content calendar date.
@@ -1048,7 +1037,6 @@ function SocialMediaMarketing() {
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed">
                   Boosting posts is not advertising. As a dedicated Facebook Ads agency in Pune, we run structured Meta Ads campaigns — audience segmentation, custom creatives, A/B testing, retargeting — built around a defined cost per enquiry.
-
                 </p>
               </div>
             </div>
@@ -1080,7 +1068,6 @@ function SocialMediaMarketing() {
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed">
                   Our full-service social media management services in Pune cover strategy, creative production, scheduling, community management, and reporting. Your team reviews results — we handle everything else.
-
                 </p>
               </div>
             </div>
@@ -1112,7 +1099,6 @@ function SocialMediaMarketing() {
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed">
                   Reach and impressions tell you nothing about business performance. Monthly reporting covers leads generated, cost per lead, engagement rate, and conversion path from social to sale.
-
                 </p>
               </div>
             </div>
@@ -1130,7 +1116,6 @@ function SocialMediaMarketing() {
                 </div>
                 <p className="text-gray-800 text-sm font-medium leading-relaxed">
                   Competitor Brands are Growing Faster on Instagram — and You Don't Know Why
-
                 </p>
               </div>
               <div className="relative bg-[#eef2ff] border border-blue-100 rounded-2xl p-6 overflow-hidden">
@@ -1145,11 +1130,9 @@ function SocialMediaMarketing() {
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed mb-3">
                   When a competitor outpaces you on social media, it's rarely about budget — it's strategy. We combine Reels-first content, paid amplification, and targeted influencer collaboration to build brand dominance in your specific niche.
-
                 </p>
                 <p className="text-gray-700 text-sm leading-relaxed">
                   For Pune's mobile-first, value-driven audience, generic national-agency content doesn't convert. Local context does.
-
                 </p>
               </div>
             </div>
@@ -1174,7 +1157,6 @@ function SocialMediaMarketing() {
                 </h2>
                 <p className="text-sm text-gray-500 max-w-xs md:text-right leading-relaxed">
                   Our campaign process eliminates guesswork at every stage. Every client, whether a Hinjewadi startup or a Viman Nagar retail brand, goes through the same structured system, adapted to their industry and audience.
-
                 </p>
               </div>
             </div>
@@ -1219,6 +1201,7 @@ function SocialMediaMarketing() {
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">
                   Full audit of platforms and ad accounts. We identify what's working, what's wasting budget, and where the competitive opportunity lies in your market.
+
                 </p>
               </div>
 
@@ -1258,7 +1241,7 @@ function SocialMediaMarketing() {
                   Creative Production
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">
-                  Copywriting, design, Reels scripting, and editing all in-house. Brand tone and visual identity are maintained across every deliverable — no drift between platforms, creators, or campaign phases.
+                  Copywriting, design, Reels scripting, and editing all in-house. Brand tone and visual identity are maintained across every deliverable- no drift between platforms, creators, or campaign phases.
                 </p>
               </div>
 
@@ -1279,6 +1262,7 @@ function SocialMediaMarketing() {
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">
                   Meta Ads go live with structured targeting, creative variants, and conversion tracking in place from day one — not added later.
+
                 </p>
               </div>
 
@@ -1319,6 +1303,7 @@ function SocialMediaMarketing() {
                 </h3>
                 <p className="text-sm text-gray-500 leading-relaxed">
                   Reach, engagement, leads generated, ad spend ROI, and next-month recommendations. You know exactly what your investment produced.
+
                 </p>
               </div>
 
@@ -1339,6 +1324,7 @@ function SocialMediaMarketing() {
                 </h3>
                 <p className="text-sm text-white/70 leading-relaxed">
                   Once a campaign formula is proven, we scale it with more budget, new platforms, and broader audiences without losing efficiency.
+
                 </p>
                 <span className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#f85415] rounded-b-2xl" />
               </div>
@@ -1426,6 +1412,7 @@ function SocialMediaMarketing() {
                   </p>
                   <p className="text-sm text-gray-500">
                     Instagram Reels drove 68% of total inbound enquiries
+
                   </p>
                 </div>
 
@@ -1438,6 +1425,7 @@ function SocialMediaMarketing() {
                   </p>
                   <p className="text-sm text-gray-500">
                     Shifted from static posts to a Reels-first strategy in Month 1
+
                   </p>
                 </div>
 
@@ -1474,7 +1462,7 @@ function SocialMediaMarketing() {
                 Why choose Foxaircomm over other social media marketing companies in Pune?
               </h2>
               <p className="text-base text-gray-600 leading-relaxed">
-                There are dozens of SMM companies in Pune and PCMC offering the same list of services. What separates Foxaircomm is the operating model — specifically, what we refuse to do.
+               There are dozens of SMM companies in Pune and PCMC offering the same list of services. What separates Foxaircomm is the operating model — specifically, what we refuse to do.
               </p>
             </div>
 
@@ -1487,10 +1475,10 @@ function SocialMediaMarketing() {
                 </span>
                 <div>
                   <h3 className="text-base font-bold text-gray-900 mb-2">
-                    Performance Before Aesthetics
+                  Performance Before Aesthetics
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    We build content and campaigns around conversion goals. What looks good and what generates leads are not always the same. We optimise for enquiries first, then get the creative right.
+                We build content and campaigns around conversion goals. What looks good and what generates leads are not always the same. We optimise for enquiries first, then get the creative right.
                   </p>
                 </div>
               </div>
@@ -1501,13 +1489,14 @@ function SocialMediaMarketing() {
                 </span>
                 <div>
                   <h3 className="text-base font-bold text-gray-900 mb-2">
-                    Deep Local Market Understanding
+                  Deep Local Market Understanding
+
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                    We know how the Pune consumer searches, what they respond to, and what moves them from discovery to enquiry across categories like real estate, healthcare, F&B, and retail.
+                  We know how the Pune consumer searches, what they respond to, and what moves them from discovery to enquiry across categories like real estate, healthcare, F&B, and retail. 
                   </p>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                    Generic national-agency templates don't work for PCMC markets the way local context does. That's the advantage of working with Pune social media specialists, not a city-agnostic vendor managing 200 clients across India.
+                  Generic national-agency templates don't work for PCMC markets the way local context does. That's the advantage of working with Pune social media specialists, not a city-agnostic vendor managing 200 clients across India.
                   </p>
                 </div>
               </div>
@@ -1521,7 +1510,7 @@ function SocialMediaMarketing() {
                     No Account Manager Handoffs
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed mb-2">
-                    Your brand is managed by the same strategist who builds your campaigns, not transferred between junior executives after onboarding.
+                   Your brand is managed by the same strategist who builds your campaigns, not transferred between junior executives after onboarding. 
                   </p>
                   <p className="text-sm font-semibold text-[#0529a0]">
                     One contact, full accountability.
@@ -1593,7 +1582,9 @@ function SocialMediaMarketing() {
             />
 
             <p className="text-base text-gray-600 max-w-3xl mb-10 leading-relaxed">
-              This is a real decision every Pune business owner faces before investing in social media marketing services. Here's an honest comparison.
+           This is a real decision every Pune business owner faces before investing in social media marketing services. Here's an honest comparison.
+
+
             </p>
 
             <table className="w-full border-collapse bg-white rounded-3xl overflow-hidden">
@@ -1908,7 +1899,7 @@ function SocialMediaMarketing() {
                   <path d="M9.352 7.32c-3.912 2.16-6.352 5.68-6.352 9.6 0 3.28 2.16 5.6 4.88 5.6 2.56 0 4.48-2 4.48-4.4 0-2.24-1.6-3.92-3.68-4.16-.24-.04-.4-.08-.4-.24 0-1.6 2.16-3.76 4.32-4.72l-3.248-1.68zm14.4 0c-3.92 2.16-6.36 5.68-6.36 9.6 0 3.28 2.16 5.6 4.88 5.6 2.56 0 4.48-2 4.48-4.4 0-2.24-1.6-3.92-3.68-4.16-.24-.04-.4-.08-.4-.24 0-1.6 2.16-3.76 4.32-4.72l-3.24-1.68z" />
                 </svg>
                 <p className="text-sm text-gray-600 leading-relaxed mb-6 flex-1">
-                  As a multi-location clinic in PCMC, we needed a social media team that understood healthcare marketing — not just design. Foxaircomm handled our Instagram Reels, Meta Ads, and Google Business Profile together. Appointment enquiries went up 38% in the first 45 days.
+             As a multi-location clinic in PCMC, we needed a social media team that understood healthcare marketing — not just design. Foxaircomm handled our Instagram Reels, Meta Ads, and Google Business Profile together. Appointment enquiries went up 38% in the first 45 days.
                 </p>
                 <div className="border-t border-gray-100 pt-4">
                   <p className="text-sm font-bold text-gray-900">Healthcare Clinic Owner</p>

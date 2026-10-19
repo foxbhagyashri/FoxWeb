@@ -181,7 +181,7 @@ function PPCmanagement() {
                 {/* SECTION 1: Why design matters */}
 
                 {/* SECTION 1: What is PPC — intent narrative */}
-                <section className="py-20 px-4 bg-white">
+                <section className="py-10 px-4 bg-white">
                     <div className="max-w-4xl mx-auto">
                         <SectionHeader
                             badge="The Fundamentals"
@@ -213,7 +213,7 @@ function PPCmanagement() {
                 </section>
 
                 {/* SECTION 2: What we manage table */}
-                <section className="py-20 px-4 bg-[#F8FAFC]">
+                <section className="py-10 px-4 bg-[#F8FAFC]">
                     <div className="max-w-5xl mx-auto">
                         <SectionHeader
                             badge="Under the Hood"
@@ -340,7 +340,7 @@ function PPCmanagement() {
 
                 {/* SECTION 2: Services overview */}
 
-                <section className="py-20 px-4 bg-white">
+                <section className="py-10 px-4 bg-white">
                     <div className="max-w-6xl mx-auto">
                         <SectionHeader
                             badge="More Proof"
@@ -487,7 +487,7 @@ function PPCmanagement() {
                 </section>
 
                 {/* SECTION 1: Who needs PPC */}
-                <section className="py-20 px-4 bg-white">
+                <section className="py-10 px-4 bg-white">
                     <div className="max-w-6xl mx-auto">
                         <SectionHeader
                             badge="Is This You?"
@@ -554,7 +554,7 @@ function PPCmanagement() {
                 </section>
 
                 {/* SECTION 2: What affects CPC */}
-                <section className="py-20 px-4 bg-[#F8FAFC]">
+                <section className="py-10 px-4 bg-[#F8FAFC]">
                     <div className="max-w-4xl mx-auto">
                         <SectionHeader
                             badge="Cost Explained"
@@ -613,7 +613,7 @@ function PPCmanagement() {
                 {/* CASE STUDY */}
 
                 {/* SECTION 1: Landing page alignment */}
-                <section className="py-20 px-4 bg-[#F8FAFC]">
+                <section className="py-10 px-4 bg-[#F8FAFC]">
                     <div className="max-w-4xl mx-auto">
                         <SectionHeader
                             badge="The Overlooked Half"
@@ -679,7 +679,7 @@ function PPCmanagement() {
                 </section>
 
                 {/* SECTION 2: Problems we fix */}
-                <section className="py-20 px-4 bg-white">
+                <section className="py-10 px-4 bg-white">
                     <div className="max-w-5xl mx-auto">
                         <SectionHeader
                             badge="The Audit"
@@ -762,7 +762,7 @@ function PPCmanagement() {
                     </div>
                 </section>
                 {/* SERVICES */}
-                <section className="py-20 px-4 bg-white">
+                <section className="py-10 px-4 bg-white">
                     <div className="max-w-4xl mx-auto">
                         <SectionHeader
                             badge="Our Process"
@@ -965,7 +965,7 @@ function PPCmanagement() {
                             badge="Why Foxaircomm"
                             title="Why Choose Foxaircomm as Your PPC Agency in Pune?"
                             description="If you're evaluating what the best PPC company in Pune should actually look like, here's where most agencies fall short — and what we do instead."
-                            className="text-white" style={{ color: "#fff" }}
+                            className="" style={{ color: "#fff" }}
                         />
 
                         <div className="grid lg:grid-cols-2 gap-10 mb-14">
@@ -1081,7 +1081,7 @@ function PPCmanagement() {
                 </section>
 
                 {/* SECTION 2: Service areas */}
-                <section className="py-20 px-4 bg-white">
+                <section className="py-10 px-4 bg-white">
                     <div className="max-w-5xl mx-auto">
                         <SectionHeader
                             badge="Local Knowledge"
@@ -1139,7 +1139,7 @@ function PPCmanagement() {
                 </section>
 
                 {/* SECTION 3: FAQs — native details/summary, no hooks */}
-                <section className="py-20 px-4 bg-[#F8FAFC]">
+                <section className="py-10 px-4 bg-[#F8FAFC]">
                     <div className="max-w-4xl mx-auto">
                         <SectionHeader badge="FAQs" title="Frequently Asked Questions" />
 
@@ -1316,7 +1316,7 @@ function PPCmanagement() {
                 </section>
 
                 {/* SECTION 4: Closing CTA */}
-                <section className="py-20 px-4 bg-white">
+                <section className="py-10 px-4 bg-white">
                     <div className="max-w-3xl mx-auto text-center">
                         <div className="flex items-center justify-center gap-10 mb-10">
                             <div className="flex flex-col items-center gap-2">

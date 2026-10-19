@@ -1,6 +1,63 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import LOGO from "../assets/home/Logo.png";
+import LOGO from "../assets/home/Foxaircomm web logo Logo_Web logo.png";
+
+const SERVICES = [
+  "Social Media Marketing",
+  "Search Engine Optimization",
+  "Google Adwords",
+  "PPC Management",
+  "Website Design",
+  "Graphics Design",
+  "Custom Software Development",
+  "CRM",
+];
+
+const COMPANY = [
+  { label: "About Us", to: "/about" },
+  { label: "Careers", to: "/career" },
+  { label: "Services", to: "/services" },
+  { label: "Our Clients", to: "/clients" },
+  { label: "Blog", to: "/blog" },
+  { label: "Contact Us", to: "/contact" },
+];
+
+const LOCATIONS = [
+  {
+    city: "Pune",
+    title: "Pune Office",
+    src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.3635604935907!2d73.78211697372403!3d18.64767466528227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b932b28d611b%3A0x12cb3926a3034efe!2sFox%20Aircomm%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1779945492796!5m2!1sen!2sin",
+  },
+  {
+    city: "Mumbai",
+    title: "Mumbai Office",
+    src: "https://www.google.com/maps?q=Borivali+West+Mumbai&output=embed",
+  },
+  {
+    city: "Ahmedabad",
+    title: "Ahmedabad Office",
+    src: "https://www.google.com/maps?q=Ashram+Road+Ahmedabad&output=embed",
+  },
+];
+
+const SOCIALS = [
+  { icon: "facebook-f", label: "Facebook", url: "https://www.facebook.com/foxaircommservice/" },
+  { icon: "linkedin-in", label: "LinkedIn", url: "https://www.linkedin.com/company/foxaircomm/?originalSubdomain=in" },
+  { icon: "instagram", label: "Instagram", url: "https://www.instagram.com/fox_aircomm.pvt.ltd/?hl=en" },
+  { icon: "whatsapp", label: "WhatsApp", url: "https://wa.me/918879864151" },
+];
+
+const linkClass =
+  "theme-text-secondary text-sm font-medium transition hover:text-orange-500 hover:translate-x-0.5 inline-block";
+
+function ColumnTitle({ children }) {
+  return (
+    <h3 className="theme-text-primary mb-5 flex items-center gap-2 text-base font-bold uppercase tracking-wider">
+      <span className="h-0.5 w-5 rounded bg-orange-500" />
+      {children}
+    </h3>
+  );
+}
 
 function Footer() {
   const location = useLocation();
@@ -9,218 +66,165 @@ function Footer() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
   return (
     <footer className="theme-bg-secondary theme-border border-t">
-      <div className="container mx-auto px-4 py-12 pb-3">
-
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
-
-          {/* Company Info */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="inline-block mb-4">
-              <img
-                src={LOGO}
-                alt="Fox Aircomm Logo"
-                className="w-30 object-contain"
-              />
+      <div className="container mx-auto px-4">
+        {/* Call-to-action band */}
+        <div className="-translate-y-1/2">
+          <div className="flex flex-col items-start justify-between gap-5 rounded-2xl bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 px-6 py-7 shadow-xl md:flex-row md:items-center md:px-10">
+            <div>
+              <h2 className="text-2xl font-extrabold text-white md:text-3xl">
+                Smarter Marketing. Measurable Growth.
+              </h2>
+              <p className="mt-1 text-sm text-white/90">
+                Talk to our team about SEO, ads, web design and more.
+              </p>
+            </div>
+            <Link
+              to="/contact"
+              className="shrink-0 rounded-lg bg-white px-6 py-3 text-sm font-bold text-orange-600 transition hover:bg-orange-50"
+            >
+              Get a free consultation
             </Link>
-
-            <p className="text-md font-semibold text-black theme-text-secondary mb-4 leading-relaxed italic">
-              "Empower your brand with India’s trusted digital marketing partner—driving growth, engagement, and success in the digital age."
-            </p>
-
-
-
-            {/* <div className="flex items-center gap-2">
-              <span
-                className="w-2 h-2 rounded-full"
-                style={{ backgroundColor: "var(--accent-green)" }}
-              />
-              <span className="text-xs theme-text-secondary">
-                All systems operational
-              </span>
-            </div> */}
-
-            {/* Contact Information */}
-
           </div>
+        </div>
+
+        {/* Main grid */}
+        <div className="grid grid-cols-1 gap-10 pb-10 md:grid-cols-2 lg:grid-cols-12">
+          {/* Brand */}
+          <div className="lg:col-span-4">
+            <Link to="/" className="mb-5 inline-block">
+              <img src={LOGO} alt="Fox Aircomm Logo" className="h-14 w-auto object-contain" />
+            </Link>
+            <p className="theme-text-secondary mb-6 max-w-sm text-sm leading-relaxed">
+              Fox AirComm Pvt. Ltd. is a result-oriented digital marketing agency in Pune with
+              10+ years of experience in SEO, Google Ads, social media, web design, and branding,
+              helping 500+ clients across the globe achieve their business objectives.
+            </p>
+            <div className="flex gap-2">
+              {SOCIALS.map((s) => (
+                <a
+                  key={s.icon}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-white text-black shadow-sm transition hover:-translate-y-0.5 hover:bg-orange-500 hover:text-white"
+                >
+                  <i className={`fab fa-${s.icon}`} />
+                </a>
+              ))}
+            </div>
+          </div>
+
           {/* Services */}
-          <div>
-            <h3 className="font-semibold theme-text-primary mb-4 pl-10 text-xl text-black[rgb(0 0 0)]">
-              Services
-            </h3>
-            <ul className="space-y-3 pl-10">
-              {[
-                "Digital Marketing",
-                "SEO Services",
-                "Social Media Marketing",
-                "Content Marketing",
-                "Web Development",
-              ].map((link, i) => (
-                <li key={i}>
-                  <Link
-                    to="/services"
-                    className="text-md font-semibold theme-text-secondary hover:text-orange-500 transition"
-                  >
-                    {link}
+          <nav aria-label="Services" className="lg:col-span-3">
+            <ColumnTitle>Services</ColumnTitle>
+            <ul className="space-y-3">
+              {SERVICES.map((name) => (
+                <li key={name}>
+                  <Link to="/services" className={linkClass}>
+                    {name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Company */}
-          <div>
-            <h3 className="font-semibold theme-text-primary mb-4 text-xl pl-10">
-              Company
-            </h3>
-            <ul className="space-y-3 pl-10">
-              {["About Us", "Careers", "Our Clients", "Blog", "Contact Us"].map(
-                (link, i) => {
-                  const routes = {
-                    "About Us": "/about",
-                    "Careers": "/career",
-                    "Our Clients": "/clients",
-                    "Blog": "/blog",
-                    "Contact Us": "/contact"
-                  };
-                  return (
-                    <li key={i}>
-                      <Link
-                        to={routes[link]}
-                        className="text-md font-semibold theme-text-secondary hover:text-orange-500 transition"
-                      >
-                        {link}
-                      </Link>
-                    </li>
-                  );
-                }
-              )}
+          <nav aria-label="Company" className="lg:col-span-2">
+            <ColumnTitle>Company</ColumnTitle>
+            <ul className="space-y-3">
+              {COMPANY.map((item) => (
+                <li key={item.label}>
+                  <Link to={item.to} className={linkClass}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
-          {/* Locations (ONE LINE) */}
+          </nav>
+
+          {/* Contact */}
           <div className="lg:col-span-3">
-            <h3 className="font-semibold theme-text-primary mb-4 text-xl text-center">
-              Our Locations
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm theme-text-secondary">
-
-              {/* Pune */}
-              <div>
-                <p className="font-medium theme-text-primary mb-2 text-center">
-                  Pune
-                </p>
-                <iframe
-                  title="Pune Office"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.3635604935907!2d73.78211697372403!3d18.64767466528227!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b932b28d611b%3A0x12cb3926a3034efe!2sFox%20Aircomm%20Pvt.%20Ltd.!5e0!3m2!1sen!2sin!4v1779945492796!5m2!1sen!2sin"
-                  className="w-full h-32 rounded-md border theme-border"
-                  loading="lazy"
-                />
-              </div>
-
-              {/* Mumbai */}
-              <div>
-                <p className="font-medium theme-text-primary mb-2 text-center">
-                  Mumbai
-                </p>
-                <iframe
-                  title="Mumbai Office"
-                  src="https://www.google.com/maps?q=Borivali+West+Mumbai&output=embed"
-                  className="w-full h-32 rounded-md border theme-border"
-                  loading="lazy"
-                />
-              </div>
-
-              {/* Ahmedabad */}
-              <div>
-                <p className="font-medium theme-text-primary mb-2 text-center">
-                  Ahmedabad
-                </p>
-                <iframe
-                  title="Ahmedabad Office"
-                  src="https://www.google.com/maps?q=Ashram+Road+Ahmedabad&output=embed"
-                  className="w-full h-32 rounded-md border theme-border"
-                  loading="lazy"
-                />
-              </div>
-
-            </div>
-
-            <div className="flex flex-wrap items-center gap-4 mt-4 pt-4">
-              <div className="flex items-center gap-2">
-                <i className="fas fa-clock text-orange-500"></i>
-                <span className="text-md theme-text-secondary font-semibold">
-                  Office Time: 09:30 AM - 06:00 PM
+            <ColumnTitle>Contact</ColumnTitle>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-500/10 text-orange-500">
+                  <i className="fas fa-phone" />
                 </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <i className="fas fa-phone text-orange-500"></i>
-                <a href="tel:+918879864151" className="text-md theme-text-secondary font-semibold hover:text-orange-500 transition">
-                  Call us: +91 8879864151
+                <a href="tel:+918879864151" className="theme-text-secondary pt-1.5 text-sm font-medium transition hover:text-orange-500">
+                  +91 8879864151
                 </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <i className="fas fa-envelope text-orange-500"></i>
-                <a href="mailto:info@foxaircomm.com" className="text-md theme-text-secondary font-semibold hover:text-orange-500 transition">
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-500/10 text-orange-500">
+                  <i className="fas fa-envelope" />
+                </span>
+                <a href="mailto:info@foxaircomm.com" className="theme-text-secondary break-all pt-1.5 text-sm font-medium transition hover:text-orange-500">
                   info@foxaircomm.com
                 </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-500/10 text-orange-500">
+                  <i className="fas fa-clock" />
+                </span>
+                <span className="theme-text-secondary pt-1.5 text-sm font-medium">
+                  Office Time: 09:30 AM - 06:00 PM
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-500/10 text-orange-500">
+                  <i className="fas fa-map" />
+                </span>
+                <span className="theme-text-secondary pt-1.5 text-sm font-medium">
+                  Office No: 505-506,VTP Altitude,
+                  Dange Chowk, Aundh-Ravet BRTS Rd,
+                  Wakad, Pimpri-Chinchwad, Pune,
+                  Maharashtra 411033
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Locations */}
+        <div className="theme-border border-t pt-10">
+          <ColumnTitle>Our Locations</ColumnTitle>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            {LOCATIONS.map((loc) => (
+              <div key={loc.city} className="theme-border overflow-hidden rounded-xl border">
+                <p className="theme-text-primary flex items-center gap-2 px-4 py-2.5 text-sm font-bold">
+                  <i className="fas fa-map-marker-alt text-orange-500" />
+                  {loc.city}
+                </p>
+                <iframe
+                  title={loc.title}
+                  src={loc.src}
+                  className="h-36 w-full grayscale transition duration-300 hover:grayscale-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
               </div>
-            </div>
-            {/* <h2 className="text-center pt-4 text-xl font-semibold theme-text-secondary "><span className="bg-gradient-to-r from-orange-500 via-orange-600 to-red-500 bg-clip-text text-transparent">Fox Aircomm </span>     - Smarter Marketing. Measurable Growth.</h2> */}
-          </div>
-
-
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t theme-border mt-10 pt-5">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-md font-bold theme-text-secondary">
-              © 2025 Fox Aircomm Pvt Ltd — Best Digital Marketing Agency
-            </p>
-            <div className="flex gap-3">
-              {[
-                { icon: "facebook-f", url: "https://www.facebook.com/foxaircommservice/" },
-                { icon: "linkedin-in", url: "https://www.linkedin.com/company/foxaircomm/?originalSubdomain=in" },
-                { icon: "instagram", url: "https://www.instagram.com/fox_aircomm.pvt.ltd/?hl=en" },
-                { icon: "whatsapp", url: "https://wa.me/918879864151" }
-              ].map(
-                (item, i) => (
-                  <a
-                    key={i}
-                    href={item.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 flex items-center justify-center rounded bg-white text-black dark:hover:shadow-lg dark:hover:shadow-white/20 transition"
-                  >
-                    <i className={`fab fa-${item.icon} text-sm`} />
-                  </a>
-                )
-              )}
-            </div>
-
-            <div className="flex gap-6">
-              {["Terms & Condition", "Privacy Policy"].map((item, i) => {
-                const routes = {
-                  "Terms & Condition": "/terms",
-                  "Privacy Policy": "/privacy"
-                };
-                return (
-                  <Link
-                    key={i}
-                    to={routes[item]}
-                    className="text-md font-bold text-black theme-text-secondary hover:text-orange-500 transition"
-                  >
-                    {item}
-                  </Link>
-                );
-              })}
-            </div>
+            ))}
           </div>
         </div>
 
+        {/* Bottom bar */}
+        <div className="theme-border mt-10 flex flex-col items-center justify-between gap-4 border-t py-6 md:flex-row">
+          <p className="theme-text-secondary text-center text-sm font-medium">
+            © {new Date().getFullYear()} Fox Aircomm Pvt Ltd — Best Digital Marketing Agency
+          </p>
+          <div className="flex gap-6">
+            <Link to="/terms" className={linkClass}>
+              Terms &amp; Condition
+            </Link>
+            <Link to="/privacy" className={linkClass}>
+              Privacy Policy
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

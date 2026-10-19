@@ -672,7 +672,7 @@ function GoogleAdwords() {
         </section>
 
         {/* DIFFERENCE */}
-        <section className="py-20 px-4 bg-[#F8FAFC]">
+        <section className="py-10 px-4 bg-[#F8FAFC]">
           <div className="max-w-7xl mx-auto">
 
             {/* Header */}
@@ -778,7 +778,7 @@ function GoogleAdwords() {
         </section>
 
         {/* CASE STUDY */}
-        <section className="py-20 bg-[#F8FAFC] px-4">
+        <section className="py-10 bg-[#F8FAFC] px-4">
           <div className="max-w-6xl mx-auto">
 
             {/* Header */}
@@ -1277,7 +1277,7 @@ function GoogleAdwords() {
           </div>
         </section>
         {/* PRICING */}
-        <section className="relative py-24 px-4 bg-[#F8FAFC] overflow-hidden">
+        <section className="relative py-14 px-4 bg-[#F8FAFC] overflow-hidden">
 
           {/* Background blobs */}
           <div className="absolute top-0 left-0 w-72 h-72 bg-blue-100/50 rounded-full blur-3xl pointer-events-none" />
@@ -1576,7 +1576,7 @@ function GoogleAdwords() {
           </div>
         </section>
         {/* COMPARISON */}
-        <section className="relative py-24 px-4 bg-[#F8FAFC] overflow-hidden">
+        <section className="relative py-14 px-4 bg-[#F8FAFC] overflow-hidden">
 
           {/* Background blobs */}
           <div className="absolute top-0 left-0 w-80 h-80 bg-blue-100/40 rounded-full blur-3xl pointer-events-none" />
@@ -1736,7 +1736,7 @@ function GoogleAdwords() {
         </section>
 
         {/* FAQ */}
-        <section className="relative py-24 px-4 bg-white overflow-hidden">
+        <section className="relative py-14 px-4 bg-white overflow-hidden">
 
           {/* Background blobs */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-blue-50/60 rounded-full blur-3xl pointer-events-none" />
@@ -1908,7 +1908,7 @@ function GoogleAdwords() {
         </section>
 
         {/* CTA */}
-        <section className="py-24 bg-[#0529a0] text-white px-4 text-center">
+        <section className="py-14 bg-[#0529a0] text-white px-4 text-center">
           <div className="max-w-4xl mx-auto">
 
             <h2 className="text-4xl font-bold mb-6">

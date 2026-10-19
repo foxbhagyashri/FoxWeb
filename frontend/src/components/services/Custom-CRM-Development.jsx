@@ -1,7 +1,12 @@
 import React from "react";
+import  { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 /* Section Header */
+
+
+
+
 const SectionHeader = ({ badge, title }) => (
     <div className="max-w-4xl mb-12">
         <span className="inline-block mb-4 px-4 py-1.5 text-sm font-semibold text-[#0529a0] border border-[#0529a0]/20 rounded-full bg-white">
@@ -251,6 +256,27 @@ const reasonss = [
 
 
 function CustomCRMDevelopment() {
+
+    useEffect(() => {
+        // Guard so we never inject the loader twice (e.g. route re-mounts, React StrictMode)
+        if (!window.oaiq) {
+            (function (w, d, s, u) {
+                var q = function () { q.q.push(arguments); };
+                q.q = [];
+                w.oaiq = q;
+                var j = d.createElement(s);
+                j.async = 1;
+                j.src = u;
+                var f = d.getElementsByTagName(s)[0];
+                f.parentNode.insertBefore(j, f);
+            })(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+            window.oaiq("init", { pixelId: "NCx9oczyjh8EDr2fbHXS6Q", debug: true });
+        }
+
+        window.oaiq("measure", "page_viewed", { type: "contents" });
+    }, []);
+
     return (
         <div className="overflow-hidden bg-white">
 
@@ -316,7 +342,7 @@ function CustomCRMDevelopment() {
                         </ul>
 
                         <Link
-                            to="/contact"
+                            to="tel:8879864151"
                             className="inline-flex items-center gap-2 bg-[#f85415] hover:bg-orange-600 transition px-7 py-3.5 rounded-xl font-semibold text-sm"
                         >
                             Discuss Your Workflow with Our Pune Consultants
@@ -405,7 +431,7 @@ function CustomCRMDevelopment() {
             </section>
 
             {/* DIFFERENCE */}
-            <section className="py-20 bg-white px-4">
+            <section className="py-10 bg-white px-4">
                 <div className="max-w-7xl mx-auto">
 
                     <SectionHeader
@@ -448,7 +474,7 @@ function CustomCRMDevelopment() {
             </section>
 
             {/* CASE STUDY */}
-            <section className="py-20 bg-[#F8FAFC] px-4">
+            <section className="py-10 bg-[#F8FAFC] px-4">
                 <div className="max-w-6xl mx-auto">
 
                     <SectionHeader
@@ -510,7 +536,7 @@ function CustomCRMDevelopment() {
             </section>
 
             {/* SERVICES */}
-            <section className="py-20 bg-white px-4">
+            <section className="py-10 bg-white px-4">
                 <div className="max-w-7xl mx-auto">
 
                     <SectionHeader
@@ -562,7 +588,7 @@ function CustomCRMDevelopment() {
 
             {/* PROCESS */}
             {/* BLOCK 7 — Process */}
-            <section className="py-20 bg-[#F8FAFC] px-4">
+            <section className="py-10 bg-[#F8FAFC] px-4">
                 <div className="max-w-7xl mx-auto">
 
                     <SectionHeader
@@ -608,7 +634,7 @@ function CustomCRMDevelopment() {
             </section>
 
             {/* BLOCK 8 — Why Choose Us */}
-            <section className="py-20 bg-white px-4">
+            <section className="py-10 bg-white px-4">
                 <div className="max-w-7xl mx-auto">
 
                     <SectionHeader
@@ -743,7 +769,7 @@ function CustomCRMDevelopment() {
             </section>
 
             {/* CTA */}
-            <section class="py-24 bg-[#0529a0] px-4 text-white text-center relative overflow-hidden">
+            <section class="py-14 bg-[#0529a0] px-4 text-white text-center relative overflow-hidden">
 
 
                 <div class="absolute -top-16 -left-16 w-64 h-64 rounded-full bg-white/5 pointer-events-none"></div>

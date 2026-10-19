@@ -18,6 +18,9 @@ const Enquiry = ({ isOpen, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
+  // WhatsApp number to receive enquiries (E.164 digits only, no + or spaces)
+  const WHATSAPP_NUMBER = '918879864151';
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData(prev => ({
@@ -39,6 +42,28 @@ const Enquiry = ({ isOpen, onClose }) => {
     return newErrors;
   };
 
+  const buildWhatsAppMessage = (data) => {
+    const lines = [
+      '*New Enquiry*',
+      `Name: ${data.fullName}`,
+      `Email: ${data.email}`,
+      data.businessName ? `Business: ${data.businessName}` : null,
+      data.contactNumber ? `Contact: ${data.contactNumber}` : null,
+      `Service: ${data.typeOfService}`,
+    ].filter(Boolean);
+    return lines.join('\n');
+  };
+
+  const sendToWhatsApp = (data) => {
+    const text = encodeURIComponent(buildWhatsAppMessage(data));
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+    // Opens WhatsApp (app on mobile, WhatsApp Web on desktop) with the
+    // message pre-filled. The user still needs to tap "Send" — true
+    // fully-automatic sending requires the WhatsApp Business Cloud API
+    // and a server-side integration.
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitError('');
@@ -52,7 +77,17 @@ const Enquiry = ({ isOpen, onClose }) => {
 
     try {
       setIsSubmitting(true);
-      await submitEnquiry(formData);
+
+      // Best-effort: still record the enquiry via your backend.
+      // If it fails, don't block the user from reaching WhatsApp.
+      try {
+        await submitEnquiry(formData);
+      } catch (backendErr) {
+        console.warn('submitEnquiry failed, continuing to WhatsApp anyway:', backendErr);
+      }
+
+      sendToWhatsApp(formData);
+
       onClose();
       setFormData({
         fullName: '',

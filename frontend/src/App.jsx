@@ -563,7 +563,7 @@ function App() {
         </Suspense>
       </AnimatePresence>
 
-      <AhmedabadSection />
+      {/* <AhmedabadSection /> */}
 
       <Footer />
       <FloatingContact />
