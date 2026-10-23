@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle2, Palette, Share2, Megaphone, Globe, Package, FileText, Film, LayoutTemplate, Building2, Award, Users, Clock, Search, Lightbulb, PenTool, RefreshCw, PackageCheck, Stethoscope, ShoppingBag, GraduationCap, UtensilsCrossed, Rocket, TrendingUp, Users2, Layers, Zap, ChevronDown, Target, Unlock, Filter, Eye, FileSearch, Layout, PhoneCall, MousePointerClick, MapPin, ArrowRight, TrendingDown, AlertCircle, MapPinOff, SearchX, LayoutGrid, RefreshCcw, ShieldCheck } from "lucide-react";
 import { Helmet } from "react-helmet";
+import EnquiryPopup from "../Enquirypopup";
 
 const SectionHeader = ({ badge, title, description }) => (
     <div className="max-w-4xl mb-12">
@@ -66,6 +67,9 @@ function PPCmanagement() {
                 </title>
                 <meta name="description" content="PPC Management Services in Pune | Fox Aircomm Description: Full-funnel PPC management across Google, Bing & social platforms for businesses in Pune, Akurdi & PCMC. Fox Aircomm builds campaigns that convert." />
             </Helmet>
+
+
+            <EnquiryPopup />
 
             <div className="overflow-hidden bg-white">
 

@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 // Eager load Home page for instant first paint
 import Home from './components/Home'
+import EnquireButton from "./components/EnquireButton"
+import EnquiryPopupp from "./components/EnquiryPopupp"
 
 // Common layout components (eager loaded)
 import Navbar from './common/Navbar'
@@ -114,6 +116,8 @@ function App() {
     <>
       <Preloader />
       <Navbar />
+      {/* <EnquireButton /> */}
+      <EnquiryPopupp />
 
       <AnimatePresence mode="wait">
         <Suspense fallback={<PageLoader />}>

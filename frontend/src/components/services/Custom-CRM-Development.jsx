@@ -1,7 +1,7 @@
 import React from "react";
-import  { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import EnquiryPopup from "../Enquirypopup";
 /* Section Header */
 
 
@@ -279,6 +279,8 @@ function CustomCRMDevelopment() {
 
     return (
         <div className="overflow-hidden bg-white">
+
+            <EnquiryPopup />
 
             {/* HERO */}
             <section className="relative bg-gradient-to-br from-[#0a1f6e] via-[#0d2fa8] to-[#1a45c8] text-white overflow-hidden">

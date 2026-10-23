@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import EnquiryPopup from "../Enquirypopup";
 import {
   Target,
   Calendar,
@@ -392,6 +393,7 @@ function SocialMediaMarketing() {
         <meta name="description" content="Fox Aircomm is a social media marketing agency in Pune managing Instagram and Facebook strategy, content and growth for brands that want real engagement." />
       </Helmet>
 
+      <EnquiryPopup />
 
       <div className="overflow-hidden bg-white">
 
@@ -552,7 +554,10 @@ function SocialMediaMarketing() {
         </section>
 
         {/* ── Hero ── */}
-        <section className="smm-body relative bg-[#0529a0] py-20 px-4 overflow-hidden">
+        <section
+          className="smm-body relative isolate overflow-hidden bg-cover bg-center px-4 py-20 before:absolute before:inset-0 before:-z-10 before:bg-[#0529a0]/80"
+          style={{ backgroundImage: "url('/background.jfif')" }}
+        >
           {/* subtle dot grid texture */}
           <div
             className="absolute inset-0 opacity-[0.07]"
@@ -1462,7 +1467,7 @@ function SocialMediaMarketing() {
                 Why choose Foxaircomm over other social media marketing companies in Pune?
               </h2>
               <p className="text-base text-gray-600 leading-relaxed">
-               There are dozens of SMM companies in Pune and PCMC offering the same list of services. What separates Foxaircomm is the operating model — specifically, what we refuse to do.
+                There are dozens of SMM companies in Pune and PCMC offering the same list of services. What separates Foxaircomm is the operating model — specifically, what we refuse to do.
               </p>
             </div>
 
@@ -1475,10 +1480,10 @@ function SocialMediaMarketing() {
                 </span>
                 <div>
                   <h3 className="text-base font-bold text-gray-900 mb-2">
-                  Performance Before Aesthetics
+                    Performance Before Aesthetics
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                We build content and campaigns around conversion goals. What looks good and what generates leads are not always the same. We optimise for enquiries first, then get the creative right.
+                    We build content and campaigns around conversion goals. What looks good and what generates leads are not always the same. We optimise for enquiries first, then get the creative right.
                   </p>
                 </div>
               </div>
@@ -1489,14 +1494,14 @@ function SocialMediaMarketing() {
                 </span>
                 <div>
                   <h3 className="text-base font-bold text-gray-900 mb-2">
-                  Deep Local Market Understanding
+                    Deep Local Market Understanding
 
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed mb-3">
-                  We know how the Pune consumer searches, what they respond to, and what moves them from discovery to enquiry across categories like real estate, healthcare, F&B, and retail. 
+                    We know how the Pune consumer searches, what they respond to, and what moves them from discovery to enquiry across categories like real estate, healthcare, F&B, and retail.
                   </p>
                   <p className="text-sm text-gray-600 leading-relaxed">
-                  Generic national-agency templates don't work for PCMC markets the way local context does. That's the advantage of working with Pune social media specialists, not a city-agnostic vendor managing 200 clients across India.
+                    Generic national-agency templates don't work for PCMC markets the way local context does. That's the advantage of working with Pune social media specialists, not a city-agnostic vendor managing 200 clients across India.
                   </p>
                 </div>
               </div>
@@ -1510,7 +1515,7 @@ function SocialMediaMarketing() {
                     No Account Manager Handoffs
                   </h3>
                   <p className="text-sm text-gray-600 leading-relaxed mb-2">
-                   Your brand is managed by the same strategist who builds your campaigns, not transferred between junior executives after onboarding. 
+                    Your brand is managed by the same strategist who builds your campaigns, not transferred between junior executives after onboarding.
                   </p>
                   <p className="text-sm font-semibold text-[#0529a0]">
                     One contact, full accountability.
@@ -1582,7 +1587,7 @@ function SocialMediaMarketing() {
             />
 
             <p className="text-base text-gray-600 max-w-3xl mb-10 leading-relaxed">
-           This is a real decision every Pune business owner faces before investing in social media marketing services. Here's an honest comparison.
+              This is a real decision every Pune business owner faces before investing in social media marketing services. Here's an honest comparison.
 
 
             </p>
@@ -1899,7 +1904,7 @@ function SocialMediaMarketing() {
                   <path d="M9.352 7.32c-3.912 2.16-6.352 5.68-6.352 9.6 0 3.28 2.16 5.6 4.88 5.6 2.56 0 4.48-2 4.48-4.4 0-2.24-1.6-3.92-3.68-4.16-.24-.04-.4-.08-.4-.24 0-1.6 2.16-3.76 4.32-4.72l-3.248-1.68zm14.4 0c-3.92 2.16-6.36 5.68-6.36 9.6 0 3.28 2.16 5.6 4.88 5.6 2.56 0 4.48-2 4.48-4.4 0-2.24-1.6-3.92-3.68-4.16-.24-.04-.4-.08-.4-.24 0-1.6 2.16-3.76 4.32-4.72l-3.24-1.68z" />
                 </svg>
                 <p className="text-sm text-gray-600 leading-relaxed mb-6 flex-1">
-             As a multi-location clinic in PCMC, we needed a social media team that understood healthcare marketing — not just design. Foxaircomm handled our Instagram Reels, Meta Ads, and Google Business Profile together. Appointment enquiries went up 38% in the first 45 days.
+                  As a multi-location clinic in PCMC, we needed a social media team that understood healthcare marketing — not just design. Foxaircomm handled our Instagram Reels, Meta Ads, and Google Business Profile together. Appointment enquiries went up 38% in the first 45 days.
                 </p>
                 <div className="border-t border-gray-100 pt-4">
                   <p className="text-sm font-bold text-gray-900">Healthcare Clinic Owner</p>
@@ -1925,9 +1930,6 @@ function SocialMediaMarketing() {
             </div>
           </div>
         </section>
-
-
-
 
 
 

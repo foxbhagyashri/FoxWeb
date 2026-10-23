@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { submitEnquiry } from '../lib/formsApi';
+
+// ---------------------------------------------------------------------------
+// CONFIG  (leads go ONLY to the CRM. No WhatsApp code anywhere.)
+// "/crm-lead" = Vite proxy from vite.config.js (for local testing).
+// For the live site use your backend route, e.g. "/api/lead".
+// ---------------------------------------------------------------------------
+const CRM_URL = 'https://workspace.foxaircomm.co.in/api/webhook-leads/lead';
+const INTEGRATION_KEY = 'b781f70b-d980-4a37-9ac9-d352ca5fed85';
+
+const initialForm = {
+  fullName: '',
+  email: '',
+  businessName: '',
+  contactNumber: '',
+  typeOfService: 'Social Media Marketing',
+  consent: false,
+};
 
 const Enquiry = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    businessName: '',
-    contactNumber: '',
-    typeOfService: 'Social Media Marketing',
-    consent: false
-  });
-
+  const [formData, setFormData] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
 
-  // WhatsApp number to receive enquiries (E.164 digits only, no + or spaces)
-  const WHATSAPP_NUMBER = '918879864151';
-
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === 'checkbox' ? checked : value,
     }));
     // Clear the field-level error as the user types
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: '' }));
     }
   };
 
@@ -38,36 +43,38 @@ const Enquiry = ({ isOpen, onClose }) => {
     if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
     if (!formData.email.trim()) newErrors.email = 'Email is required';
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+    if (formData.contactNumber.replace(/\D/g, '').length < 10)
+      newErrors.contactNumber = 'Enter a valid 10-digit contact number';
     if (!formData.consent) newErrors.consent = 'Consent is required';
     return newErrors;
   };
 
-  const buildWhatsAppMessage = (data) => {
-    const lines = [
-      '*New Enquiry*',
-      `Name: ${data.fullName}`,
-      `Email: ${data.email}`,
-      data.businessName ? `Business: ${data.businessName}` : null,
-      data.contactNumber ? `Contact: ${data.contactNumber}` : null,
-      `Service: ${data.typeOfService}`,
-    ].filter(Boolean);
-    return lines.join('\n');
-  };
+  const sendToCrm = async (data) => {
+    const fullName = data.fullName.trim();
+    const [firstName, ...rest] = fullName.split(/\s+/);
 
-  const sendToWhatsApp = (data) => {
-    const text = encodeURIComponent(buildWhatsAppMessage(data));
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
-    // Opens WhatsApp (app on mobile, WhatsApp Web on desktop) with the
-    // message pre-filled. The user still needs to tap "Send" — true
-    // fully-automatic sending requires the WhatsApp Business Cloud API
-    // and a server-side integration.
-    window.open(url, '_blank', 'noopener,noreferrer');
+    const res = await fetch(CRM_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        integrationKey: INTEGRATION_KEY,
+        firstName,
+        lastName: rest.join(' '),
+        fullName,
+        email: data.email.trim(),
+        phoneNumber: data.contactNumber.replace(/\D/g, '').slice(-10),
+        service: data.typeOfService,
+      }),
+    });
+
+    if (!res.ok) throw new Error('CRM error ' + res.status);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
     setSubmitError('');
-    setErrors({});  // clear stale field errors on every submit attempt
+    setErrors({});
 
     const newErrors = validateForm();
     if (Object.keys(newErrors).length > 0) {
@@ -77,34 +84,14 @@ const Enquiry = ({ isOpen, onClose }) => {
 
     try {
       setIsSubmitting(true);
-
-      // Best-effort: still record the enquiry via your backend.
-      // If it fails, don't block the user from reaching WhatsApp.
-      try {
-        await submitEnquiry(formData);
-      } catch (backendErr) {
-        console.warn('submitEnquiry failed, continuing to WhatsApp anyway:', backendErr);
-      }
-
-      sendToWhatsApp(formData);
+      await sendToCrm(formData);
 
       onClose();
-      setFormData({
-        fullName: '',
-        email: '',
-        businessName: '',
-        contactNumber: '',
-        typeOfService: 'Social Media Marketing',
-        consent: false
-      });
+      setFormData(initialForm);
       navigate('/thank-you?type=enquiry');
     } catch (err) {
-      // Works whether formsApi uses fetch (err.message) or axios (err.response.data.message)
-      const message =
-        err?.response?.data?.message ||
-        err?.message ||
-        'Failed to send. Please try again.';
-      setSubmitError(message);
+      console.error('Enquiry submit failed:', err);
+      setSubmitError('Failed to send. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -130,13 +117,15 @@ const Enquiry = ({ isOpen, onClose }) => {
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          transition={{ type: "spring", duration: 0.5, bounce: 0.3 }}
+          transition={{ type: 'spring', duration: 0.5, bounce: 0.3 }}
           className="relative theme-bg-card rounded-2xl shadow-2xl max-w-lg w-full mx-4 my-8 md:my-12 z-[10001]"
         >
 
           {/* Close Button */}
           <button
+            type="button"
             onClick={onClose}
+            aria-label="Close"
             className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full theme-bg-secondary hover:theme-bg-tertiary transition-colors z-10"
           >
             <svg className="w-5 h-5 theme-text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,16 +135,15 @@ const Enquiry = ({ isOpen, onClose }) => {
 
           {/* Form Content */}
           <div className="p-8">
-            {/* Title */}
             <h2 className="text-2xl font-bold theme-text-primary mb-6 text-center">
               ENQUIRE NOW
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} noValidate className="space-y-4">
 
               {/* Submit Error Banner */}
               {submitError && (
-                <div className="rounded-lg border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">
+                <div role="alert" className="rounded-lg border border-red-200 bg-red-50 text-red-700 px-4 py-3 text-sm">
                   {submitError}
                 </div>
               )}
@@ -205,9 +193,10 @@ const Enquiry = ({ isOpen, onClose }) => {
                   name="contactNumber"
                   value={formData.contactNumber}
                   onChange={handleInputChange}
-                  placeholder="Contact Number"
-                  className="w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border theme-border focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="Contact Number*"
+                  className={`w-full px-4 py-3 rounded-lg theme-input theme-text-primary placeholder-theme-text-muted border ${errors.contactNumber ? 'border-red-500' : 'theme-border'} focus:outline-none focus:ring-2 focus:ring-blue-500`}
                 />
+                {errors.contactNumber && <p className="text-red-500 text-sm mt-1">{errors.contactNumber}</p>}
               </div>
 
               {/* Type of Service */}

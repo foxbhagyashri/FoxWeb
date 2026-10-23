@@ -13,6 +13,7 @@ import landingimg from "../assets/service/landingimg.png";
 import service1 from "../assets/service/service1.png";
 import service2 from "../assets/service/service2.png";
 import { Helmet } from 'react-helmet'
+import EnquiryPopup from './Enquirypopup';
 
 const images = [
   { src: service2, slogan: "Trusted by 500+ Brands to Scale Online." },
@@ -79,6 +80,8 @@ function Ourclients() {
         </title>
         <meta name="description" content="See the businesses across Akurdi, Pune, Mumbai and Ahmedabad that trust Fox Aircomm for digital marketing, web design and software solutions." />
       </Helmet>
+
+<EnquiryPopup />
 
       <div className="container mx-auto px-4 space-y-16">
 

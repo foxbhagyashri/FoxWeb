@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet"; // or "react-helmet-async" (needs <HelmetProvider> at app root)
 import { Link } from "react-router-dom";
+import EnquiryPopup from "../Enquirypopup";
 
 const PHONE_TEL = "tel:+918879864151";
 const WHATSAPP = "https://wa.me/918879864151";
@@ -297,6 +298,8 @@ function EcommWebsiteDesign() {
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
+      <EnquiryPopup />
+
       {/* HERO */}
       {/* HERO */}
       <section className="relative py-20 md:py-24 bg-[#0529a0] text-white overflow-hidden">
@@ -354,88 +357,87 @@ function EcommWebsiteDesign() {
       </section>
 
       {/* PROBLEM */}
-     {/* PROBLEM */}
-<section className="py-16 md:py-20 bg-[#F1F5F9]">
-  <div className="max-w-5xl mx-auto px-6">
-    <h2 className="text-3xl md:text-4xl font-bold text-[#0B3C5D] mb-6 leading-tight">
-      Scaling a Pune Business Online Requires More Than a Digital Catalog
-    </h2>
+      {/* PROBLEM */}
+      <section className="py-16 md:py-20 bg-[#F1F5F9]">
+        <div className="max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0B3C5D] mb-6 leading-tight">
+            Scaling a Pune Business Online Requires More Than a Digital Catalog
+          </h2>
 
-    <p className="text-lg font-semibold text-[#0B3C5D] mb-4">
-      Most e-commerce failures in the Pune market don't stem from a lack of demand, but from operational friction.
-    </p>
+          <p className="text-lg font-semibold text-[#0B3C5D] mb-4">
+            Most e-commerce failures in the Pune market don't stem from a lack of demand, but from operational friction.
+          </p>
 
-    <p className="text-gray-600 mb-10 max-w-3xl">
-      Moving from a physical footprint in Laxmi Road or Camp to a pan-India D2C model is an
-      architectural shift, not just a design project. When a store doesn't align with local buyer
-      behavior, revenue leaks at every stage:
-    </p>
+          <p className="text-gray-600 mb-10 max-w-3xl">
+            Moving from a physical footprint in Laxmi Road or Camp to a pan-India D2C model is an
+            architectural shift, not just a design project. When a store doesn't align with local buyer
+            behavior, revenue leaks at every stage:
+          </p>
 
-    <div className="grid sm:grid-cols-2 gap-5 mb-10">
-      {frictionPoints.map((f) => (
-        <div key={f.title} className="bg-white rounded-xl p-6 shadow-sm border border-black/5">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" className="mb-4" aria-hidden="true">
-            {f.icon}
-          </svg>
-          <h3 className="text-lg font-bold text-[#0B3C5D] mb-2">{f.title}</h3>
-          <p className="text-sm text-gray-600 leading-relaxed">{f.text}</p>
+          <div className="grid sm:grid-cols-2 gap-5 mb-10">
+            {frictionPoints.map((f) => (
+              <div key={f.title} className="bg-white rounded-xl p-6 shadow-sm border border-black/5">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" className="mb-4" aria-hidden="true">
+                  {f.icon}
+                </svg>
+                <h3 className="text-lg font-bold text-[#0B3C5D] mb-2">{f.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{f.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="p-6 md:p-8 bg-[#0B3C5D] rounded-xl">
+            <p className="font-semibold text-lg md:text-xl text-white leading-snug mb-3">
+              Foxaircomm builds e-commerce websites in Pune for businesses at exactly this inflection point.
+            </p>
+            <p className="text-blue-100 leading-relaxed">
+              Our engagement starts not with a theme selection, but with a store architecture review,
+              mapping your product logic, buyer journey, payment preferences, and fulfilment constraints
+              before a single line of code is written.
+            </p>
+          </div>
         </div>
-      ))}
-    </div>
-
-    <div className="p-6 md:p-8 bg-[#0B3C5D] rounded-xl">
-      <p className="font-semibold text-lg md:text-xl text-white leading-snug mb-3">
-        Foxaircomm builds e-commerce websites in Pune for businesses at exactly this inflection point.
-      </p>
-      <p className="text-blue-100 leading-relaxed">
-        Our engagement starts not with a theme selection, but with a store architecture review,
-        mapping your product logic, buyer journey, payment preferences, and fulfilment constraints
-        before a single line of code is written.
-      </p>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* WHY US */}
-   {/* WHO WE BUILD FOR */}
-<section className="py-16 md:py-20 bg-white">
-  <div className="max-w-6xl mx-auto px-6">
-    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#0B3C5D] leading-tight text-center">
-      Who We Build For: Pune Businesses That Have Outgrown Their Current Store
-    </h2>
+      {/* WHO WE BUILD FOR */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#0B3C5D] leading-tight text-center">
+            Who We Build For: Pune Businesses That Have Outgrown Their Current Store
+          </h2>
 
-    <p className="text-gray-600 max-w-3xl mx-auto mb-4 text-center">
-      Foxaircomm works with businesses at a specific inflection point where demand exists, but
-      the store's infrastructure cannot keep up with it.
-    </p>
-    <p className="text-gray-600 max-w-3xl mx-auto mb-12 text-center">
-      We do not build generic stores for generic buyers. The clients we work with share one common
-      challenge: their current platform is costing them revenue they have already earned. Here is
-      who we typically work with.
-    </p>
+          <p className="text-gray-600 max-w-3xl mx-auto mb-4 text-center">
+            Foxaircomm works with businesses at a specific inflection point where demand exists, but
+            the store's infrastructure cannot keep up with it.
+          </p>
+          <p className="text-gray-600 max-w-3xl mx-auto mb-12 text-center">
+            We do not build generic stores for generic buyers. The clients we work with share one common
+            challenge: their current platform is costing them revenue they have already earned. Here is
+            who we typically work with.
+          </p>
 
-    <div className="grid md:grid-cols-2 gap-6 text-left">
-      {audiences.map((a, i) => (
-        <div
-          key={a.title}
-          className={`bg-[#F8FAFC] p-6 rounded-xl border border-black/5 border-l-4 border-l-[#f85415] ${
-            i === audiences.length - 1 ? "md:col-span-2" : ""
-          }`}
-        >
-          <h3 className="text-lg font-bold text-[#0B3C5D] mb-3">{a.title}</h3>
-          <p className="text-gray-600 text-sm leading-relaxed mb-3">{a.situation}</p>
-          <p className="text-gray-700 text-sm leading-relaxed font-medium">{a.need}</p>
+          <div className="grid md:grid-cols-2 gap-6 text-left">
+            {audiences.map((a, i) => (
+              <div
+                key={a.title}
+                className={`bg-[#F8FAFC] p-6 rounded-xl border border-black/5 border-l-4 border-l-[#f85415] ${i === audiences.length - 1 ? "md:col-span-2" : ""
+                  }`}
+              >
+                <h3 className="text-lg font-bold text-[#0B3C5D] mb-3">{a.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-3">{a.situation}</p>
+                <p className="text-gray-700 text-sm leading-relaxed font-medium">{a.need}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link to={CONTACT_PATH} className={`${CTA_PRIMARY} mt-10`}>
+              Talk to Our Team — Free 30-Min Session <Arrow />
+            </Link>
+          </div>
         </div>
-      ))}
-    </div>
-
-    <div className="text-center">
-      <Link to={CONTACT_PATH} className={`${CTA_PRIMARY} mt-10`}>
-        Talk to Our Team — Free 30-Min Session <Arrow />
-      </Link>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* CHALLENGES */}
       <section className="py-16 md:py-20 bg-[#F1F5F9]">

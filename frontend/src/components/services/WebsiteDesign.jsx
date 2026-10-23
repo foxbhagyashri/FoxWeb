@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import EnquiryPopup from "../Enquirypopup";
 
 function WebsiteDesign() {
 
@@ -25,6 +26,8 @@ function WebsiteDesign() {
         </title>
         <meta name="description" content="Fox Aircomm is a web development company in Pune offering website design, eCommerce development, and WordPress solutions built to grow your business online." />
       </Helmet>
+
+      <EnquiryPopup />
 
 
       {/* HERO */}

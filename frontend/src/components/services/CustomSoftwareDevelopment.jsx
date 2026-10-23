@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 // import { Helmet } from "react-helmet";
+import EnquiryPopup from "../Enquirypopup";
 
 /* Section Header */
 const SectionHeader = ({ badge, title }) => (
@@ -66,6 +67,7 @@ function CustomSoftwareDevelopment() {
 
       </Helmet>
 
+<EnquiryPopup />
 
 
       {/* </Helmet> */}

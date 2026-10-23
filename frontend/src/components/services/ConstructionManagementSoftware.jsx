@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import EnquiryPopup from "../Enquirypopup"
 
 /* Section Header */
 const SectionHeader = ({ badge, title }) => (
@@ -58,6 +59,7 @@ function ConstructionManagementSoftware() {
           content="Fox Aircomm builds construction management software for contractors in Pune, covering ERP, project tracking, billing and labour management in one system."
         />
       </Helmet>
+      <EnquiryPopup />
 
       {/* HERO */}
       <section className="bg-[#0529a0] text-white py-24 px-4 text-center">

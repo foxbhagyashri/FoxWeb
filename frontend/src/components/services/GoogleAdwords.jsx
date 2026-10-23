@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LineChart, Search, Layout, Rocket, Target, RefreshCw, Factory, Briefcase, ShoppingCart, ArrowRight, Zap, TrendingUp, Check, XCircle, X, Plus, Minus } from "lucide-react";
 import { Helmet } from "react-helmet";
+import EnquiryPopup from "../Enquirypopup";
 
 const SectionHeader = ({ badge, title, description }) => (
 
@@ -533,6 +534,8 @@ function GoogleAdwords() {
         </title>
         <meta name="description" content="Fox Aircomm plans and manages Google Ads campaigns for businesses in Akurdi, PCMC Pune. Search, display and shopping ads focused on ROI." />
       </Helmet>
+
+      <EnquiryPopup />
 
       <div className="overflow-hidden bg-white">
 

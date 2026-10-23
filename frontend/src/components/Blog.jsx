@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCalendar, FaUser, FaArrowRight, FaClock, FaTag } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
+import EnquiryPopup from './Enquirypopup';
 
 // --- Article Card Component ---
 const ArticleCard = ({
@@ -132,6 +133,8 @@ const ArticlesPage = () => {
       animate="visible"
       variants={containerVariants}
     >
+
+      <EnquiryPopup />
 
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

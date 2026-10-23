@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import EnquiryPopup from "../Enquirypopup";
 
 /* Section Header */
 const SectionHeader = ({ badge, title }) => (
@@ -833,6 +834,9 @@ function SearchEngineOptimization() {
         <meta name="description" content="Fox Aircomm is a local SEO agency in Pune helping businesses rank higher with Google Business Profile and Google Maps optimisation that drives real local leads." />
       </Helmet>
 
+
+      <EnquiryPopup />
+
       <div className="overflow-hidden">
 
         {/* HERO */}
@@ -932,7 +936,7 @@ function SearchEngineOptimization() {
             <div className="mx-auto w-full max-w-md lg:max-w-none">
               <div className="overflow-hidden rounded-3xl bg-white p-2 shadow-2xl">
                 <img
-                  src="/images/seo-services-pune.png"
+                  src="/SEO Services_ Rank Higher, Grow Faster.png"
                   alt="SEO services in Pune by Foxaircomm"
                   className="h-auto w-full rounded-2xl object-contain"
                 />

@@ -1,6 +1,10 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
+import EnquiryPopup from "../Enquirypopup";
+import {
+  Building2, Search, TrendingUp, Star, Table, MapPin, Zap, MessageCircle
+} from "lucide-react";
 
 /* Section Header */
 const SectionHeader = ({ badge, title, description }) => (
@@ -60,14 +64,15 @@ function DataExtractorSoftware() {
   return (
     <div className="overflow-hidden bg-white">
 
-      <Helmet>
+      {/* <Helmet>
         <title>
           Data Extraction Software Services in Pune | Fox Aircomm
 
         </title>
         <meta name="description" content="Automate data collection with custom data extraction tools from Fox Aircomm, Akurdi PCMC Pune. Save time on manual research and reporting." />
-      </Helmet>
+      </Helmet> */}
 
+      <EnquiryPopup />
 
       {/* HERO */}
       <section className="bg-[#0529a0] text-white py-24 px-4">
@@ -80,18 +85,15 @@ function DataExtractorSoftware() {
             </span>
 
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-              Data Extractor Software for Businesses in Pune – Powered by Foxaircomm
+              Data Extractor Software for Businesses in Pune – Powered by Fox Aircomm
             </h1>
 
             <p className="text-gray-200 mb-5 leading-relaxed">
-              Extract clean, accurate, and ready-to-use data from websites,
-              directories, and Google search results without manual effort or
-              technical complexity.
+              Get clean, accurate, and ready-to-use data from websites, directories, and Google search results—without the manual work or technical hassle.
             </p>
 
             <p className="text-gray-200 mb-8 leading-relaxed">
-              Ideal for sales teams, competitor research, lead generation,
-              pricing analysis, and business intelligence.
+              Ideal for sales, research, and competitive analysis.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -104,7 +106,7 @@ function DataExtractorSoftware() {
               </Link>
 
               <Link
-                to="/contact"
+                to="tel:8879864151"
                 className="border border-white/30 px-8 py-4 rounded-xl font-semibold"
               >
                 Talk to Our Team
@@ -114,32 +116,45 @@ function DataExtractorSoftware() {
 
           </div>
 
-          <div className="bg-white rounded-3xl p-8 shadow-2xl text-gray-900">
+          <div className="bg-white rounded-2xl p-5 shadow-xl text-gray-900">
 
-            <h3 className="text-2xl font-bold text-[#0529a0] mb-8">
+            <h3 className="text-xl font-bold text-[#0529a0] mb-4">
               What You Can Extract
             </h3>
 
-            <div className="grid gap-5">
+            {/* Illustration */}
+            <div className="rounded-xl overflow-hidden mb-4 bg-[#eef2ff]">
+              <img
+                src="/Data Extractor Software Infographic.png"
+                alt="Data extraction from Google, social media, reviews and business listings"
+                className="w-full max-h-48 object-cover object-center"
+              />
+            </div>
 
+            <div className="grid sm:grid-cols-2 gap-2">
               {[
-                "Business listings & contact details",
-                "Google search result data",
-                "Product pricing & competitor data",
-                "Reviews & ratings",
-                "URLs, webpage text & structured tables",
-                "Local business and service provider data",
-              ].map((item, i) => (
+                { Icon: Building2, text: "Business listings & contact details" },
+                { Icon: Search, text: "Google search result data" },
+                { Icon: TrendingUp, text: "Product pricing & competitor data" },
+                { Icon: Star, text: "Reviews & ratings" },
+                { Icon: Table, text: "URLs, webpage text & structured tables" },
+                { Icon: MapPin, text: "Local business and service provider data" },
+              ].map(({ Icon, text }, i) => (
                 <div
                   key={i}
-                  className="border rounded-xl p-5 hover:shadow-md transition"
+                  className="border rounded-lg p-2 flex items-center gap-2.5 hover:shadow-md transition"
                 >
-                  <p className="font-medium text-gray-700">
-                    {item}
-                  </p>
+                  <div
+                    className={`w-8 h-8 min-w-[32px] rounded-lg flex items-center justify-center ${i % 2 === 0
+                        ? "bg-[#0529a0]/10 text-[#0529a0]"
+                        : "bg-[#f85415]/10 text-[#f85415]"
+                      }`}
+                  >
+                    <Icon className="w-4 h-4" strokeWidth={1.75} />
+                  </div>
+                  <p className="text-sm font-medium text-gray-700 leading-snug">{text}</p>
                 </div>
               ))}
-
             </div>
 
           </div>
@@ -151,32 +166,71 @@ function DataExtractorSoftware() {
       <section className="py-20 bg-white px-4">
         <div className="max-w-7xl mx-auto">
 
-          <SectionHeader
-            badge="Why Choose Us"
-            title="What Makes Foxaircomm’s Data Extractor Different"
-            description="A complete data extraction environment designed for businesses that depend on accurate and fast information."
-          />
+          <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Left: copy */}
+            <div>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-medium tracking-widest uppercase text-[#0529a0] bg-[#eef2ff] border border-blue-100 px-3.5 py-1.5 rounded-full mb-4">
+                Why Choose Us
+              </span>
 
-            {[
-              "Structured data extraction from multiple public sources",
-              "Google search result extraction support",
-              "Custom extraction setups based on business goals",
-              "Local onboarding and support from Pune-based experts",
-            ].map((item, i) => (
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-snug mb-3">
+                What makes Fox Aircomm’s{" "}
+                <span className="text-[#0529a0]">data extractor different</span>{" "}
+                from other tools?
+              </h2>
+              <div className="w-16 h-1 rounded-full bg-[#f85415] mb-6"></div>
+
+              <p className="text-gray-600 text-base leading-relaxed mb-4">
+                Fox Aircomm’s data extractor is ideal for companies that heavily depend on accurate and quick information.
+              </p>
+              <p className="text-gray-600 text-base leading-relaxed">
+                Unlike running basic scripts or using generic online tools, our structured data extraction environment takes publicly available data online and turns it into clean, ready-to-use data sets for clients.
+              </p>
+            </div>
+
+            {/* Right: highlight card */}
+            <div className="relative bg-[#0529a0] rounded-3xl p-8 md:p-10 overflow-hidden shadow-xl">
+              {/* dot texture */}
               <div
-                key={i}
-                className="border rounded-2xl p-7 hover:shadow-lg transition"
-              >
-                <p className="text-gray-700 font-medium leading-relaxed">
-                  {item}
+                className="absolute inset-0 opacity-[0.07]"
+                style={{
+                  backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
+                  backgroundSize: "20px 20px",
+                }}
+              ></div>
+
+              <div className="relative">
+                <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center mb-5">
+                  <MapPin className="w-5 h-5 text-white" strokeWidth={1.8} />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">
+                  A local Pune-based solution
+                </h3>
+                <p className="text-white/80 text-base leading-relaxed mb-6">
+                  We are a local Pune-based solution—deployed and supported right here. This means we can set up clients quickly, respond to queries almost immediately, and build customised data extraction solutions tailored to the Indian market.
                 </p>
+
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { Icon: Zap, label: "Quick setup" },
+                    { Icon: MessageCircle, label: "Fast response" },
+                    { Icon: Settings, label: "Custom built" },
+                  ].map(({ Icon, label }) => (
+                    <div
+                      key={label}
+                      className="bg-white/10 border border-white/10 rounded-xl p-3 flex flex-col items-center text-center gap-2"
+                    >
+                      <Icon className="w-5 h-5 text-orange-400" strokeWidth={1.75} />
+                      <span className="text-xs font-medium text-white leading-snug">{label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+              <span className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#f85415]" />
+            </div>
 
           </div>
-
         </div>
       </section>
 

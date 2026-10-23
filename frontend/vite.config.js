@@ -8,7 +8,19 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': 'http://localhost:5174',
+
+      '/crm-lead': {
+        target: 'https://workspace.foxaircomm.co.in',
+        changeOrigin: true,
+        secure: true,
+        rewrite: () => '/api/webhook-leads/lead',
+        configure: (proxy) => {
+          proxy.on('proxyReq', (req) => {
+            req.removeHeader('origin')
+            req.removeHeader('referer')
+          })
+        },
+      },
     },
   },
-  
 })

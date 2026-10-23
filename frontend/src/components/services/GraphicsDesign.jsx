@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle2, Palette, Share2, Megaphone, Globe, Package, FileText, Film, LayoutTemplate, Building2, Award, Users, Clock, Search, Lightbulb, PenTool, RefreshCw, PackageCheck, Stethoscope, ShoppingBag, GraduationCap, UtensilsCrossed, Rocket, TrendingUp, Users2, Layers, Zap, ChevronDown } from "lucide-react";
 import { Helmet } from "react-helmet";
+import EnquiryPopup from "../Enquirypopup";
+
 
 const SectionHeader = ({ badge, title, description }) => (
   <div className="max-w-4xl mb-12">
@@ -63,6 +65,8 @@ function GraphicsDesign() {
         </title>
         <meta name="description" content="Fox Aircomm is an affordable graphic design company in Pune creating custom social media creatives, ad creatives and website graphics for growing brands." />
       </Helmet>
+
+      <EnquiryPopup />
 
       {/* HERO */}
       <section className="bg-[#0529a0] text-white py-24 px-4 overflow-hidden">

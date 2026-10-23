@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Users, TrendingUp, Share2, Code2, Megaphone, Palette } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, Link } from "react-router-dom";
+import EnquiryPopup from "./Enquirypopup";
 import mobileImg from "../assets/home/mobile.png";
 import processImg from "/ChatGPT Image Sep 18, 2026, 05_32_45 PM.png";
 import { HeartPulse, GraduationCap, Building2, Briefcase, Landmark, Headset, Award, Plane, Store, Sparkles, Compass, Sofa, Target, Layers, Activity, MessageSquare, ShieldCheck } from "lucide-react";
@@ -185,7 +186,7 @@ const rise = {
 };
 
 const capabilities = [
-  { icon: Search, title: "SEO & Paid Ads", text: "Visibility that converts" },
+  { icon: Search, title: "SEO & GMB SEO", text: "Visibility that converts" },
   { icon: Share2, title: "Social & Creative", text: "Content that engages" },
   { icon: Code2, title: "Web Development", text: "Built for performance" },
   { icon: BarChart3, title: "CRM & Performance", text: "Measurable outcomes" },
@@ -725,6 +726,8 @@ function Home() {
           content="Fox Aircomm  is a digital marketing agency in Pune and PCMC offering SEO, Google Ads, social media marketing, and web design to grow your business."
         />
       </Helmet>
+
+      <EnquiryPopup />
 
       <div className="w-full mx-auto">
         <div className="bg-[#ff62001f]">
@@ -1360,7 +1363,7 @@ function Home() {
                       className={`${inputBase} theme-border`}
                     >
                       {['Social Media Marketing', 'Web Development', 'Mobile App Development', 'SEO Services',
-                        'Content Marketing', 'Google Adwords', 'Email Marketing', 'Other'].map((s) => (
+                        'Content Marketing', 'Google Adwords', 'Other'].map((s) => (
                           <option key={s} value={s}>{s}</option>
                         ))}
                     </select>
@@ -2032,7 +2035,7 @@ function Home() {
                 </summary>
                 <div className="foxair-faq__answer">
                   <ul>
-                    <li>There are seven main types of digital marketing, including SEO, PPC, Social Media, Content Marketing, Email Marketing, Affiliate Marketing, and Influencer Marketing.</li>
+                    <li>There are seven main types of digital marketing, including SEO, PPC, Social Media, Content Marketing, Affiliate Marketing, and Influencer Marketing.</li>
                     <li>At Fox Aircomm , we don't just throw all of them at you.</li>
                     <li>We analyse which ones your business actually needs to succeed in the Pune market and focus on those.</li>
                   </ul>
